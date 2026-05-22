@@ -323,42 +323,117 @@ const DAYS=["월","화","수","목","금"];
 const REGIONS={서울:["대치","목동","중계"],부산:["센텀","사직"]};
 function allAreas(){ return [].concat(...Object.values(REGIONS)); }
 
-const SEED=[
- ["윤재준","통합사회","윤재준의 스케치북 PRE-SEASON","중3","수","저녁","총 4회","심화 핵심범위 / 7/22~8/12 / 4회차 시 진도 비법노트 배부"],
- ["마진호","통합과학","물리화학 심화단원 개념완성","중3","수","오전","총 4회","물/화 핵심범위 / 교재비 1만원 / 매주 마스터북 제공"],
- ["정성원","영어","독해의 틀 (감으로 독해하지 않는 법)","중3","금","오전","총 3회","독해 / 정성WON 월간지 과제"],
- ["조은진","영어","어법","중3","화","오전","총 3회","The Core Grammar 마스터북 / 연계: 중3 영어 조기개강반"],
- ["송형주","수학","대수 (기본+실력)","중3","월·금","오후","총 6회","대수 처음/1회독 학생 대상 / 연계: 중3 수학정규 X2반"],
- ["신경식","수학","대수 (실력+심화)","중3","화·목","오후","총 7회","최상위 수학의 표준 / 연계: 중3 수학정규 X1반"],
- ["김해인","수학","공통수학2+미적분1 (기본+실력)","중3","화·수·목","오후","총 11회","공통수학2 핵심 + 미적분1 기본 / 연계: 중3 수학정규 X2반"],
- ["전현우","수학","공통수학2+미적분1 (실력+심화)","중3","월·수·금","오후","총 10회","내신+수능기출 자체교재 / 클리닉 수 18:00-22:00"],
- ["윤지원","국어","문학","중3","목","오전","총 4회","SHERPA 교재 / 매주 문학 개념어 30개"],
- ["김가경","국어","현대문법","중3","월","오전","총 3회","중3 2학기 시험범위 영상강의 추가제공"],
- ["김재웅","통합사회","2학기 내신대비 핵심단원","고1","수","오전","총 4회","2학기 범위 / 연계: 통사+한국사 내신강좌"],
- ["박헌진","통합과학","2학기 내신대비 심화단원","고1","화","오전","총 3회","2학기 범위 / 내신강좌 연계"],
- ["조은진","영어","종합 (내신+수능)","고1","수","오전","총 4회","수능독해+어법 결합 / 내신강좌 연계"],
- ["장미리","수학","대수 (기본+실력)","고1","화·목","오후","총 6회","기본 원리 중심 / 연계: 고1 수학정규 S반"],
- ["전현우","수학","대수 (실력+심화)","고1","화·목","오후","총 7회","25-26 내신기출 미리경험 / 연계: 단대부고반"],
- ["윤지원","국어","고전문학","고1","월","오전","총 3회","교재 고3 수준 / 내신강좌 연계"],
- ["채수용","수학","공통수학2 (기본+실력)","고1","월·수·금","오후","총 10회","종강 후 점검 클리닉 8/14 / 연계: S반"],
- ["윤대호","수학","공통수학2 (실력+심화)","고1","월·수·금","오후","총 10회","내신기출 / 연계: 고1 수학정규 X1반"],
- ["김가경","국어","고전문법","고1","금","오전","총 3회","중세국어 중심 / 현대문법 추가영상"],
- ["최가형","과학(진로선택)","지구시스템과학","고2","수","저녁","총 5회","18:00-21:00 / 1회차 7/15 / 2학기 내신대비"],
- ["황민준","과학(진로선택)","세포와 물질대사 전범위 특강","고1~고2","금","저녁","총 4회","18:00-21:00 / 7/24 개강 / 수업 내 완료"],
- ["윤용균","과학(진로선택)","물질과 에너지 전범위 특강","고1~고2","화","저녁","총 5회","18:00-21:00 / 7/21 개강 / 중간내신 연합반"],
- ["장선근","과학(진로선택)","역학과 에너지 전범위 특강","고1~고2","월","저녁","총 5회","18:00-21:00 / 7/20 개강 / 교재 RUN2U PHYSICS"],
- ["김선덕","영어","압권 (수능 시작)","고2","수","오후","총 4회","2025 대수능 만점자 강사 / 정규반 연계"],
- ["김해인","수학","확률과 통계 (기본+실력)","고2","화·목","오전","총 7회","확통 모든 개념 / 연계: 고2 수학정규 S반"],
- ["정석원","수학","확률과 통계 (실력+심화)","고2","화·목","오전","총 7회","내신 1등급+수능 100점 목표 / X2반 연계"],
- ["서정인","수학","미적분1 (기본+실력)","고2","월·수·금","오전","총 10회","개념 70%+문제풀이 30% / X2반 연계"],
- ["이승철","수학","미적분1 (실력+심화)","고2","월·수·금","오전","총 10회","그래프 추론 완성 / X1·X2반 연계"],
- ["윤지원","국어","화법과 언어","고2","월","오후","총 3회","현대문법 고2 범위 완성 / 내신강좌 연계"],
- ["이민수","국어","독서 기출분석","고2","목","오후","총 4회","글 전체 구조 독해 훈련"],
- ["윤난경","국어","문학 3점 다 맞기","고2","화","오후","총 3회","평가원 고난도 3점 출제원리 / 내신강좌 연계"],
-].map((r,i)=>({
-  id:"seed"+i, city:"부산", area:"센텀", academy:"교육인 썸머스쿨", teacher:r[0], subject:r[1], course:r[2],
-  grade:r[3], days:r[4].split("·"), period:r[5], time:"", sessions:r[6], note:r[7]
-}));
+const EDUIN_SENTUM="교육인학원 센텀점";
+const EDUIN_COURSES=[
+ // 7월 수파르타 — 부일고1
+ {grade:"고1",subject:"수학",course:"부일고1 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",note:"7월 말 개강 / 부일고 자사고 수학 내신대비 / 기본기+부교재 완벽 분석"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강 / 부일고 영어 내신대비 / 공통A·B 중 1 추가 선택"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
+ {grade:"고1",subject:"국어",course:"부일고1 국어 수파르타",teacher:"김지수",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"7월 말 개강 / 부일고 국어 내신대비"},
+ // 7월 수파르타 — 부일고2
+ {grade:"고2",subject:"수학",course:"부일고2 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",note:"7월 말 개강 / 부일고 수학 내신대비"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
+ // 7월 수파르타 — 해운대고1
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (평일)",teacher:"이영환",days:["월","수","금"],period:"저녁",time:"17:00-22:00",sessions:"주 3회",note:"7월 말 개강 / 해운대고 수학 내신대비 / 주말반과 병행 (주 5회)"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (주말)",teacher:"이영환",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회",note:"7월 말 개강 / 평일반과 함께 주 5회 구성"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 수파르타",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",note:"7월 말 개강 / 해운대고 국어 내신대비"},
+ // 7월 수파르타 — 해운대고2
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (평일)",teacher:"차동우",days:["월","화","수","목","금"],period:"저녁",time:"20:00-23:00",sessions:"주 5회",note:"7월 말 개강 / 일요반과 함께 주 6회"},
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (일요)",teacher:"차동우",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 추가",note:"7월 말 개강 / 평일반과 병행"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
+ // 6월 CUT CLASS (반년컷)
+ {grade:"고3",subject:"수학",course:"고3 수능 수학 2등급 반년컷",teacher:"",days:["토","일"],period:"오후",time:"",sessions:"주 2회",note:"6월 개강 / 6월 모평 4등급 이하 집중 / 등급 상승 핵심 압축훈련 / 시간 문의"},
+ {grade:"고3",subject:"영어",course:"고3 수능 영어 1등급 반년컷",teacher:"",days:["일"],period:"오후",time:"",sessions:"주 1회",note:"6월 개강 / 6월 모평 3등급 이하 집중 / 시간 문의"},
+ // 자사특목 — 부일고1
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수1)",teacher:"김형석",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",note:"자사특목 정규 / 공통수학1 / 일요 공수2와 함께 주 2회 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수2)",teacher:"김형석",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",note:"자사특목 정규 / 공통수학2"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 (자사특목)",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-18:00",sessions:"주 1회",note:"자사특목 정규 / 부일고 영어 내신대비 / 5/9 개강"},
+ // 자사특목 — 부산외고1
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 A (오전)",teacher:"차동우",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회 (오전반)",note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 B (오후)",teacher:"차동우",days:["토","일"],period:"오후",time:"13:30-16:30",sessions:"주 2회 (오후반)",note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"영어",course:"부산외고1 영어",teacher:"윤훈관",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 부산외고 영어 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"국어",course:"부산외고1 국어",teacher:"김지수",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"자사특목 / 부산외고 국어 내신대비 / 5/17 개강"},
+ {grade:"고1",subject:"사회",course:"부산외고1 통합사회",teacher:"김규생",days:["일"],period:"오전",time:"09:30-12:30",sessions:"주 1회",note:"자사특목 / 부산외고 통사 내신대비 / 5/17 개강"},
+ // 자사특목 — 해운대고1
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수1)",teacher:"이영환",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",note:"자사특목 / 공통수학1 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수2)",teacher:"이영환",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",note:"자사특목 / 공통수학2"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 CORE",teacher:"이영환",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 MASTER",teacher:"이영환",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-18:00",sessions:"주 1회",note:"자사특목 / 해운대고 영어 내신대비 / 5/10 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어1)",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",note:"자사특목 / 공통국어1 / 5/9 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어2)",teacher:"김지수",days:["목"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",note:"자사특목 / 공통국어2"},
+ // 자사특목 — 부일고2
+ {grade:"고2",subject:"수학",course:"부일고2 수학 (미적분1 심화)",teacher:"김형석",days:["토","일"],period:"오후",time:"13:00-16:00",sessions:"주 2회",note:"자사특목 / 미적분1 심화 / 5/9 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오전",time:"09:00-13:00",sessions:"주 1회",note:"자사특목 / 5/10 개강"},
+ // 자사특목 — 부산외고2
+ {grade:"고2",subject:"수학",course:"부산외고2 수학 S (100점 목표)",teacher:"김형석",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 100점 목표 / 5/16 개강"},
+ {grade:"고2",subject:"영어",course:"부산외고2 영어",teacher:"윤훈관",days:["토"],period:"오전",time:"09:00-13:00",sessions:"주 1회",note:"자사특목 / 5/16 개강"},
+ {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"전인재",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",note:"자사특목 / 5/17 개강"},
+ {grade:"고2",subject:"사회",course:"부산외고2 국제계열 사회",teacher:"김규생",days:["일"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 국제계열 / 5/17 개강"},
+ // 자사특목 — 해운대고2
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 5/10 개강"},
+ // 자사특목 — 부산예고1
+ {grade:"고1",subject:"수학",course:"부산예고1 수학",teacher:"차동우",days:["토"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 5/9 개강"},
+ {grade:"고1",subject:"영어",course:"부산예고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 5/11 개강"},
+ // 고등 in센텀 — 해강고1
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (수요반)",teacher:"차동우",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (수)",note:"해강고 내신대비 / 토요반과 함께 주 2회 / 5/6 개강"},
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (토요반)",teacher:"차동우",days:["토"],period:"오후",time:"16:00-19:00",sessions:"주 1회 (토)",note:"해강고 내신대비"},
+ {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"권정은",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"해강고 내신대비 / 5/5 개강"},
+ // 고등 in센텀 — 센텀여고1
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"김명욱",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",note:"센텀여고 내신대비 / 토요반과 함께 주 2회 / 5/5 개강"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"김명욱",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",note:"센텀여고 내신대비"},
+ {grade:"고1",subject:"영어",course:"센텀여고1 영어",teacher:"윤훈관",days:["수"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"센텀여고 내신대비 / 5/6 개강"},
+ {grade:"고1",subject:"국어",course:"센텀여고1 국어",teacher:"교육인 국어팀",days:["토"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"센텀여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 덕문여고1
+ {grade:"고1",subject:"영어",course:"덕문여고1 영어",teacher:"권정은",days:["토"],period:"오후",time:"13:00-17:00",sessions:"주 1회",note:"덕문여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 센텀고1
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"김명욱",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",note:"센텀고 내신대비 / 일요반과 함께 주 2회 / 5/7 개강"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"김명욱",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",note:"센텀고 내신대비"},
+ // 고등 in센텀 — 학산여고1
+ {grade:"고1",subject:"영어",course:"학산여고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"학산여고 내신대비 / 5/4 개강"},
+ // 고등 in센텀 — 덕문여고2
+ {grade:"고2",subject:"수학",course:"덕문여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"덕문여고 내신대비 / 5/6 개강"},
+ {grade:"고2",subject:"영어",course:"덕문여고2 영어",teacher:"권정은",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"덕문여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 동여고2
+ {grade:"고2",subject:"수학",course:"동여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"동여고 내신대비 / 5/6 개강"},
+ // 정규 영어 in센텀 — 고3
+ {grade:"고3",subject:"영어",course:"고3 수능실전대비반",teacher:"정준호",days:["일"],period:"오후",time:"13:00-16:00",sessions:"주 1회",note:"고3·재수생 / 27수능 100점 목표"},
+ {grade:"고3",subject:"영어",course:"고3 보카트레이닝",teacher:"",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"고3·재수생 / 1회당 단어 200개 암기 후 귀가 / 교육인 단어암기비법 / 5/10 개강"},
+ // 정규 영어 in센텀 — 중등 SUMMIT
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT S",teacher:"",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"최상위 영어 실력 / 고난도 문법+독해+서술형 / 5/5 개강"},
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT K",teacher:"",days:["월","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"최상위 영어 실력 / 5/4 개강"},
+ // 정규 영어 in센텀 — 중등 문법
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL3",teacher:"",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (화반)",teacher:"",days:["화"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (수반)",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL1",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL1"},
+ // 정규 영어 in센텀 — 중등 독해
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL3",teacher:"",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (목반)",teacher:"",days:["목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (금반)",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL1",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL1"},
+ // 정규 영어 in센텀 — 중등 수능형·보카
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (화반)",teacher:"",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"중학생 대상 1년 완성 수능형 영어체계 / 4/30 개강"},
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (목반)",teacher:"",days:["목"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"중학생 대상 1년 완성 수능형 영어체계"},
+ {grade:"중3",subject:"영어",course:"중등 보카트레이닝",teacher:"",days:["월"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"중등 / 단어 200개/회 / 교육인 단어암기비법 / 5/4 개강"},
+ // 정규 수학 in센텀 — 심화반
+ {grade:"고1",subject:"수학",course:"공통수학1 (심화) 공.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"17:00-18:30",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"공통수학2 (심화) 공.심.쟁",teacher:"김형석",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"대수 (심화) 대.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"18:30-20:00",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (김명욱T)",teacher:"김명욱",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"기본~심화 / 개인별 맞춤 수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (이영환T)",teacher:"이영환",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"기본~심화 / 개인별 맞춤 교재+진도+수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 수능대비 (강필T)",teacher:"강필",days:["일"],period:"저녁",time:"17:30-21:30",sessions:"주 1회",note:"공통+미적분 1등급 목표 / 자체교재+프린트+영상보충 / 5/3 개강"},
+];
+
+const SEED=EDUIN_COURSES.map((c,i)=>Object.assign({id:"eduin"+i,city:"부산",area:"센텀",academy:EDUIN_SENTUM},c));
 
 const DEMO=[
  {city:"서울",area:"대치",academy:"대치 더수학",teacher:"한지훈",subject:"수학",course:"미적분 심화 (킬러 대비)",grade:"고2",days:["월","수","금"],period:"저녁",time:"19:00-22:00",sessions:"총 12회",note:"평가원 4점 집중 / 자체 클리닉"},
@@ -369,7 +444,7 @@ const DEMO=[
  {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",note:"내신 대비"},
 ].map((d,i)=>({id:"demo"+i,...d}));
 
-const KEY="classpick:courses:v1";
+const KEY="classpick:courses:v2";
 let courses=[];
 let myIds=[];
 let pickedDays=[];
