@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>클래스픽 · 동네 명강만 골라 담는 곳</title>
+<meta name="description" content="대치·목동·중계·센텀·사직 — 엄선된 학원 강좌를 비교하고 시간표 겹침까지 한눈에." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#16203a;
+    --ink-soft:#46546f;
+    --paper:#f3efe6;
+    --card:#ffffff;
+    --line:#e4ddcd;
+    --brand:#e0521f;
+    --brand-deep:#b73f12;
+    --good:#1f7a5e;
+    --warn:#c0392b;
+    --warn-bg:#fbe9e7;
+    --chip:#eef0f4;
+    --shadow:0 1px 0 rgba(22,32,58,.04), 0 8px 24px -16px rgba(22,32,58,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:"Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding-bottom:60px}
+  a{color:inherit}
+  .mono{font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
+
+  header.bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);color:#fff;
+    border-bottom:3px solid var(--brand);
+  }
+  .bar-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{display:flex;align-items:baseline;gap:8px;cursor:default}
+  .logo .mark{font-family:"Black Han Sans",sans-serif;font-size:30px;letter-spacing:-1px;line-height:1}
+  .logo .mark .dot{color:var(--brand)}
+  .logo .sub{font-size:11px;color:#aeb8cc;letter-spacing:.12em}
+  .nav-spacer{flex:1}
+  .modeswitch{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+  .modeswitch button{
+    border:0;background:transparent;color:#c9d1e2;font-family:inherit;font-weight:700;font-size:13px;
+    padding:8px 16px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap
+  }
+  .modeswitch button.on{background:#fff;color:var(--ink)}
+  .cartbtn{
+    border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:700;font-size:13px;
+    padding:9px 16px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s
+  }
+  .cartbtn:hover{background:var(--brand-deep)}
+  .cartbtn .n{background:#fff;color:var(--brand);border-radius:999px;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 5px}
+
+  main{max-width:1180px;margin:0 auto;padding:0 20px}
+  .hero{padding:34px 0 18px}
+  .hero h1{font-size:30px;line-height:1.25;letter-spacing:-.5px}
+  .hero h1 b{color:var(--brand)}
+  .hero p{margin-top:10px;color:var(--ink-soft);font-size:15px;line-height:1.6;max-width:680px}
+
+  .ad{
+    border:1px dashed #c7bfad;border-radius:12px;background:repeating-linear-gradient(45deg,#efe9dc,#efe9dc 10px,#ece5d6 10px,#ece5d6 20px);
+    color:#9b8f74;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;
+    font-size:12px;letter-spacing:.1em;font-weight:700;
+  }
+  .ad .tag{background:#fff;border:1px solid #d8cfb8;border-radius:6px;padding:2px 8px;color:#a08a55;font-family:"IBM Plex Mono",monospace}
+  .ad.banner{height:92px;margin:8px 0 22px}
+  .ad.inline{height:120px;margin:18px 0}
+  .ad.foot{height:90px;margin:30px 0 0}
+
+  .toolbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:sticky;top:74px;z-index:20}
+  .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:11px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em}
+  .field select,.field input{
+    font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink);min-width:108px;outline:none;transition:.15s
+  }
+  .field input{min-width:200px}
+  .field select:focus,.field input:focus{border-color:var(--brand)}
+  .resetbtn{border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-family:inherit;font-weight:700;font-size:13px;padding:9px 14px;border-radius:9px;cursor:pointer}
+  .resetbtn:hover{border-color:var(--ink-soft)}
+
+  .countbar{display:flex;align-items:center;justify-content:space-between;margin:22px 0 12px;gap:12px;flex-wrap:wrap}
+  .countbar .cnt{font-size:14px;color:var(--ink-soft)}
+  .countbar .cnt b{color:var(--ink);font-size:18px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .course{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;position:relative;transition:.15s}
+  .course:hover{border-color:#cdc4b0;transform:translateY(-2px)}
+  .course .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .subj{font-size:11px;font-weight:900;color:#fff;padding:3px 9px;border-radius:6px;letter-spacing:.02em}
+  .gradechip{font-size:11px;font-weight:700;border:1.5px solid var(--ink);border-radius:6px;padding:2px 8px}
+  .acad{font-size:11px;color:var(--ink-soft);margin-left:auto;font-weight:700}
+  .course h3{font-size:16px;line-height:1.35;font-weight:700}
+  .meta{display:flex;flex-wrap:wrap;gap:7px;font-size:12px}
+  .meta span{background:var(--chip);border-radius:6px;padding:4px 8px;color:#384b6b;font-weight:500}
+  .meta .day{background:#fff;border:1.5px solid var(--ink);font-weight:700}
+  .note{font-size:12px;color:var(--ink-soft);line-height:1.5;border-top:1px dashed var(--line);padding-top:9px}
+  .teacher{font-size:12px;color:var(--ink-soft);font-weight:700}
+  .addbtn{margin-top:2px;border:0;background:var(--ink);color:#fff;font-family:inherit;font-weight:700;font-size:13px;padding:10px;border-radius:9px;cursor:pointer;transition:.15s}
+  .addbtn:hover{background:#0e1730}
+  .addbtn.added{background:var(--good)}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:14px}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:760px;margin:6px auto 0}
+  .panel h2{font-size:20px;margin-bottom:4px}
+  .panel .lead{color:var(--ink-soft);font-size:14px;line-height:1.6;margin-bottom:20px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-grid .full{grid-column:1/-1}
+  .form-grid label{display:block;font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.04em}
+  .form-grid input,.form-grid select,.form-grid textarea{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}
+  .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--brand)}
+  .daypick{display:flex;gap:6px;flex-wrap:wrap}
+  .daypick .d{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 0;width:46px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;user-select:none;transition:.12s}
+  .daypick .d.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .submit{margin-top:20px;width:100%;border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:900;font-size:15px;padding:14px;border-radius:11px;cursor:pointer}
+  .submit:hover{background:var(--brand-deep)}
+  .mylist-acad{margin:26px auto 0;max-width:760px}
+  .mylist-acad h3{font-size:14px;color:var(--ink-soft);margin-bottom:10px;letter-spacing:.04em}
+  .acad-row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px}
+  .acad-row .info{flex:1;min-width:0}
+  .acad-row .info b{font-size:14px}
+  .acad-row .info small{display:block;color:var(--ink-soft);font-size:12px;margin-top:2px}
+  .delbtn{border:1.5px solid var(--warn);color:var(--warn);background:#fff;border-radius:8px;font-family:inherit;font-weight:700;font-size:12px;padding:7px 11px;cursor:pointer}
+  .delbtn:hover{background:var(--warn);color:#fff}
+
+  .scrim{position:fixed;inset:0;background:rgba(16,23,40,.45);z-index:60;opacity:0;pointer-events:none;transition:.2s}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:460px;max-width:92vw;background:var(--paper);z-index:70;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px -20px rgba(0,0,0,.5)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{background:var(--ink);color:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .drawer-head h2{font-size:18px;flex:1}
+  .drawer-head .x{background:rgba(255,255,255,.12);border:0;color:#fff;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer}
+  .drawer-body{flex:1;overflow:auto;padding:18px 20px}
+  .verdict{border-radius:12px;padding:14px 16px;margin-bottom:18px;font-weight:700;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+  .verdict.ok{background:#e7f4ee;color:var(--good);border:1px solid #bfe3d3}
+  .verdict.bad{background:var(--warn-bg);color:var(--warn);border:1px solid #f3c4bd}
+  .verdict.none{background:#fff;color:var(--ink-soft);border:1px solid var(--line)}
+  .verdict .big{font-family:"Black Han Sans",sans-serif;font-size:22px;line-height:1}
+  .conflict-detail{font-size:12px;font-weight:500;margin-top:6px}
+
+  .wk{width:100%;border-collapse:separate;border-spacing:4px;margin:6px 0 18px}
+  .wk th{font-size:11px;color:var(--ink-soft);font-weight:700;padding:4px}
+  .wk td{background:#fff;border:1px solid var(--line);border-radius:8px;vertical-align:top;height:54px;padding:4px;width:18%}
+  .wk td.has{background:#fff}
+  .wk td.clash{background:var(--warn-bg);border-color:var(--warn)}
+  .wk .period-lab{font-size:11px;font-weight:700;color:var(--ink-soft);text-align:left;width:10%;padding-right:6px}
+  .cellchip{font-size:9.5px;font-weight:700;color:#fff;border-radius:4px;padding:2px 4px;margin-bottom:3px;line-height:1.2;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .picked{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+  .picked .pinfo{flex:1;min-width:0}
+  .picked .pinfo b{font-size:13.5px;display:block}
+  .picked .pinfo small{color:var(--ink-soft);font-size:11.5px;display:block;margin-top:2px}
+  .picked .bar{width:5px;align-self:stretch;border-radius:3px}
+  .cart-empty{text-align:center;color:var(--ink-soft);padding:50px 10px;line-height:1.6}
+  .drawer-foot{padding:14px 20px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-soft);line-height:1.5}
+
+  footer{max-width:1180px;margin:40px auto 0;padding:24px 20px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:12px;line-height:1.7}
+  footer b{color:var(--ink)}
+
+  @media (max-width:640px){
+    .hero h1{font-size:24px}
+    .form-grid{grid-template-columns:1fr}
+    .toolbar{position:static}
+    .field input{min-width:140px}
+    .field select,.field input{flex:1}
+    .field{flex:1 1 45%}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="logo">
+      <div class="mark">클래스픽<span class="dot">.</span></div>
+      <div class="sub mono">CLASSPICK</div>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="modeswitch">
+      <button id="m-parent" class="on" onclick="setMode('parent')">학부모 · 강좌검색</button>
+      <button id="m-acad" onclick="setMode('academy')">학원 · 시간표등록</button>
+    </div>
+    <button id="cartbtn" class="cartbtn" onclick="openCart()">내 시간표 <span class="n" id="cartn">0</span></button>
+  </div>
+</header>
+
+<main>
+  <section id="view-parent">
+    <div class="hero">
+      <h1>동네 <b>명강</b>만 골라 담는 곳</h1>
+      <p>대치·목동·중계·센텀·사직 — 지역별로 엄선된 학원 강좌를 한눈에 비교하고, 듣고 싶은 수업을 담아 요일·시간이 겹치는지 바로 확인하세요.</p>
+    </div>
+
+    <div class="ad banner"><span class="tag">AD</span> 광고 영역 · 배너 (728×90) — 광고문의</div>
+
+    <div class="toolbar">
+      <div class="filters">
+        <div class="field">
+          <label>지역</label>
+          <select id="f-city" onchange="onCityChange('f');render()"><option value="">전체</option><option>서울</option><option>부산</option></select>
+        </div>
+        <div class="field">
+          <label>동네</label>
+          <select id="f-area" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>학년</label>
+          <select id="f-grade" onchange="render()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option></select>
+        </div>
+        <div class="field">
+          <label>과목</label>
+          <select id="f-subject" onchange="render()"><option value="">전체</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+        </div>
+        <div class="field">
+          <label>요일</label>
+          <select id="f-day" onchange="render()"><option value="">전체</option><option>월</option><option>화</option><option>수</option><option>목</option><option>금</option></select>
+        </div>
+        <div class="field">
+          <label>시간대</label>
+          <select id="f-period" onchange="render()"><option value="">전체</option><option>오전</option><option>오후</option><option>저녁</option></select>
+        </div>
+        <div class="field">
+          <label>학원</label>
+          <select id="f-acad" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field" style="flex:1">
+          <label>검색어 (강좌·강사)</label>
+          <input id="f-q" type="text" placeholder="예) 미적분, 어법, 윤지원…" oninput="render()" />
+        </div>
+        <button class="resetbtn" onclick="resetFilters()">초기화</button>
+      </div>
+    </div>
+
+    <div class="countbar">
+      <div class="cnt"><b id="reslen">0</b> 개 강좌</div>
+    </div>
+
+    <div class="grid" id="results"></div>
+
+    <div class="ad inline"><span class="tag">AD</span> 광고 영역 · 인피드 (검색결과 사이) — 광고문의</div>
+  </section>
+
+  <section id="view-academy" style="display:none">
+    <div class="hero">
+      <h1>우리 학원 강좌를 <b>클래스픽</b>에 올리세요</h1>
+      <p>엄선된 강좌만 모이는 클래스픽에 등록하면 학부모 검색에 바로 노출됩니다. 강사 개인정보(연락처·사진)는 받지 않으며, 등록·수정·삭제는 학원이 직접 관리합니다.</p>
+    </div>
+
+    <div class="panel">
+      <h2>강좌 등록</h2>
+      <p class="lead">필수 항목만 입력해도 등록됩니다.</p>
+      <div class="form-grid">
+        <div><label>학원명 *</label><input id="i-acad" placeholder="예) 교육인학원 센텀점" /></div>
+        <div><label>강사명</label><input id="i-teacher" placeholder="예) 김해인" /></div>
+        <div>
+          <label>지역 *</label>
+          <select id="i-city" onchange="onCityChange('i')"><option value="">선택</option><option>서울</option><option>부산</option></select>
+        </div>
+        <div>
+          <label>동네 *</label>
+          <select id="i-area"><option value="">선택</option></select>
+        </div>
+        <div>
+          <label>과목 *</label>
+          <select id="i-subject"><option value="">선택</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+        </div>
+        <div>
+          <label>대상학년 *</label>
+          <select id="i-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고1~고2</option></select>
+        </div>
+        <div class="full"><label>강좌명 *</label><input id="i-course" placeholder="예) 미적분1 (기본+실력)" /></div>
+        <div class="full">
+          <label>요일 * (복수선택)</label>
+          <div class="daypick" id="daypick">
+            <div class="d" data-d="월">월</div><div class="d" data-d="화">화</div><div class="d" data-d="수">수</div><div class="d" data-d="목">목</div><div class="d" data-d="금">금</div><div class="d" data-d="토">토</div><div class="d" data-d="일">일</div>
+          </div>
+        </div>
+        <div>
+          <label>시간대 *</label>
+          <select id="i-period"><option value="">선택</option><option>오전</option><option>오후</option><option>저녁</option></select>
+        </div>
+        <div><label>구체 시간 (선택)</label><input id="i-time" placeholder="예) 18:00-21:00" /></div>
+        <div><label>회차 (선택)</label><input id="i-sessions" placeholder="예) 총 10회" /></div>
+        <div class="full"><label>비고 (선택)</label><textarea id="i-note" rows="2" placeholder="교재, 연계반 등"></textarea></div>
+      </div>
+      <button class="submit" onclick="addCourse()">강좌 등록하기</button>
+    </div>
+
+    <div class="mylist-acad">
+      <h3>등록된 강좌 (학원명으로 조회 · 위 학원명 칸에 입력 후 표시)</h3>
+      <div id="acad-list"></div>
+    </div>
+  </section>
+
+  <div class="ad foot"><span class="tag">AD</span> 광고 영역 · 하단 배너 — 광고문의</div>
+
+  <footer>
+    <b>클래스픽</b>은 학원이 직접 등록한 강좌 정보를 학부모가 검색·비교할 수 있게 돕는 정보 서비스입니다.
+    강사 개인정보는 수집하지 않으며, 각 강좌 정보의 등록·수정·삭제 권한은 해당 학원에 있습니다. 시간표는 변경될 수 있으니 수강 전 해당 학원에 직접 확인하세요.
+    <br>※ 데모 화면입니다. 표시된 강좌는 예시 데이터입니다.
+  </footer>
+</main>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>내 시간표 겹침 확인</h2>
+    <button class="x" onclick="closeCart()">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-foot">담은 강좌가 같은 <b>요일·시간대</b>에 겹치면 빨간색으로 표시됩니다. 구체 시간(예: 오전반 09–11시 vs 11–13시)까지는 학원에 확인해 주세요.</div>
+</aside>
+
+<script>
+const SUBJ_COLOR = {국어:"#c0392b",영어:"#2f6f9e",수학:"#e0521f",과학:"#1f7a5e",사회:"#7c5cc4"};
+function subjColor(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return SUBJ_COLOR[k]; } return "#5a6678"; }
+function subjGroup(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return k; } return s; }
+const PERIODS=["오전","오후","저녁"];
+const DAYS=["월","화","수","목","금"];
+const REGIONS={서울:["대치","목동","중계"],부산:["센텀","사직"]};
+function allAreas(){ return [].concat(...Object.values(REGIONS)); }
+
+const SEED=[
+ ["윤재준","통합사회","윤재준의 스케치북 PRE-SEASON","중3","수","저녁","총 4회","심화 핵심범위 / 7/22~8/12 / 4회차 시 진도 비법노트 배부"],
+ ["마진호","통합과학","물리화학 심화단원 개념완성","중3","수","오전","총 4회","물/화 핵심범위 / 교재비 1만원 / 매주 마스터북 제공"],
+ ["정성원","영어","독해의 틀 (감으로 독해하지 않는 법)","중3","금","오전","총 3회","독해 / 정성WON 월간지 과제"],
+ ["조은진","영어","어법","중3","화","오전","총 3회","The Core Grammar 마스터북 / 연계: 중3 영어 조기개강반"],
+ ["송형주","수학","대수 (기본+실력)","중3","월·금","오후","총 6회","대수 처음/1회독 학생 대상 / 연계: 중3 수학정규 X2반"],
+ ["신경식","수학","대수 (실력+심화)","중3","화·목","오후","총 7회","최상위 수학의 표준 / 연계: 중3 수학정규 X1반"],
+ ["김해인","수학","공통수학2+미적분1 (기본+실력)","중3","화·수·목","오후","총 11회","공통수학2 핵심 + 미적분1 기본 / 연계: 중3 수학정규 X2반"],
+ ["전현우","수학","공통수학2+미적분1 (실력+심화)","중3","월·수·금","오후","총 10회","내신+수능기출 자체교재 / 클리닉 수 18:00-22:00"],
+ ["윤지원","국어","문학","중3","목","오전","총 4회","SHERPA 교재 / 매주 문학 개념어 30개"],
+ ["김가경","국어","현대문법","중3","월","오전","총 3회","중3 2학기 시험범위 영상강의 추가제공"],
+ ["김재웅","통합사회","2학기 내신대비 핵심단원","고1","수","오전","총 4회","2학기 범위 / 연계: 통사+한국사 내신강좌"],
+ ["박헌진","통합과학","2학기 내신대비 심화단원","고1","화","오전","총 3회","2학기 범위 / 내신강좌 연계"],
+ ["조은진","영어","종합 (내신+수능)","고1","수","오전","총 4회","수능독해+어법 결합 / 내신강좌 연계"],
+ ["장미리","수학","대수 (기본+실력)","고1","화·목","오후","총 6회","기본 원리 중심 / 연계: 고1 수학정규 S반"],
+ ["전현우","수학","대수 (실력+심화)","고1","화·목","오후","총 7회","25-26 내신기출 미리경험 / 연계: 단대부고반"],
+ ["윤지원","국어","고전문학","고1","월","오전","총 3회","교재 고3 수준 / 내신강좌 연계"],
+ ["채수용","수학","공통수학2 (기본+실력)","고1","월·수·금","오후","총 10회","종강 후 점검 클리닉 8/14 / 연계: S반"],
+ ["윤대호","수학","공통수학2 (실력+심화)","고1","월·수·금","오후","총 10회","내신기출 / 연계: 고1 수학정규 X1반"],
+ ["김가경","국어","고전문법","고1","금","오전","총 3회","중세국어 중심 / 현대문법 추가영상"],
+ ["최가형","과학(진로선택)","지구시스템과학","고2","수","저녁","총 5회","18:00-21:00 / 1회차 7/15 / 2학기 내신대비"],
+ ["황민준","과학(진로선택)","세포와 물질대사 전범위 특강","고1~고2","금","저녁","총 4회","18:00-21:00 / 7/24 개강 / 수업 내 완료"],
+ ["윤용균","과학(진로선택)","물질과 에너지 전범위 특강","고1~고2","화","저녁","총 5회","18:00-21:00 / 7/21 개강 / 중간내신 연합반"],
+ ["장선근","과학(진로선택)","역학과 에너지 전범위 특강","고1~고2","월","저녁","총 5회","18:00-21:00 / 7/20 개강 / 교재 RUN2U PHYSICS"],
+ ["김선덕","영어","압권 (수능 시작)","고2","수","오후","총 4회","2025 대수능 만점자 강사 / 정규반 연계"],
+ ["김해인","수학","확률과 통계 (기본+실력)","고2","화·목","오전","총 7회","확통 모든 개념 / 연계: 고2 수학정규 S반"],
+ ["정석원","수학","확률과 통계 (실력+심화)","고2","화·목","오전","총 7회","내신 1등급+수능 100점 목표 / X2반 연계"],
+ ["서정인","수학","미적분1 (기본+실력)","고2","월·수·금","오전","총 10회","개념 70%+문제풀이 30% / X2반 연계"],
+ ["이승철","수학","미적분1 (실력+심화)","고2","월·수·금","오전","총 10회","그래프 추론 완성 / X1·X2반 연계"],
+ ["윤지원","국어","화법과 언어","고2","월","오후","총 3회","현대문법 고2 범위 완성 / 내신강좌 연계"],
+ ["이민수","국어","독서 기출분석","고2","목","오후","총 4회","글 전체 구조 독해 훈련"],
+ ["윤난경","국어","문학 3점 다 맞기","고2","화","오후","총 3회","평가원 고난도 3점 출제원리 / 내신강좌 연계"],
+].map((r,i)=>({
+  id:"seed"+i, city:"부산", area:"센텀", academy:"교육인 썸머스쿨", teacher:r[0], subject:r[1], course:r[2],
+  grade:r[3], days:r[4].split("·"), period:r[5], time:"", sessions:r[6], note:r[7]
+}));
+
+const DEMO=[
+ {city:"서울",area:"대치",academy:"대치 더수학",teacher:"한지훈",subject:"수학",course:"미적분 심화 (킬러 대비)",grade:"고2",days:["월","수","금"],period:"저녁",time:"19:00-22:00",sessions:"총 12회",note:"평가원 4점 집중 / 자체 클리닉"},
+ {city:"서울",area:"대치",academy:"대치 명문국어",teacher:"서연우",subject:"국어",course:"독서 고난도 트레이닝",grade:"고2",days:["화","목"],period:"오후",time:"",sessions:"총 8회",note:"비문학 구조독해"},
+ {city:"서울",area:"목동",academy:"목동 코어영어",teacher:"이수민",subject:"영어",course:"수능 어법·구문 완성",grade:"고1",days:["수"],period:"오전",time:"",sessions:"총 6회",note:"내신+수능 병행"},
+ {city:"서울",area:"중계",academy:"중계 탑사이언스",teacher:"박도현",subject:"과학",course:"물리 역학 전범위",grade:"고2",days:["월"],period:"저녁",time:"18:00-21:00",sessions:"총 5회",note:"1등급 목표반"},
+ {city:"부산",area:"사직",academy:"사직 정상수학",teacher:"최예린",subject:"수학",course:"공통수학2 개념완성",grade:"고1",days:["화","목"],period:"오후",time:"",sessions:"총 7회",note:"기초부터 탄탄"},
+ {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",note:"내신 대비"},
+].map((d,i)=>({id:"demo"+i,...d}));
+
+const KEY="classpick:courses:v1";
+let courses=[];
+let myIds=[];
+let pickedDays=[];
+let mode="parent";
+
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){ courses=JSON.parse(raw); return; }
+  }catch(e){ console.warn("load failed",e); }
+  courses=SEED.concat(DEMO);
+  save();
+}
+function save(){
+  try{ localStorage.setItem(KEY,JSON.stringify(courses)); }
+  catch(e){ console.warn("save failed",e); }
+}
+
+function setMode(m){
+  mode=m;
+  document.getElementById("view-parent").style.display = m==="parent"?"block":"none";
+  document.getElementById("view-academy").style.display = m==="academy"?"block":"none";
+  document.getElementById("m-parent").classList.toggle("on",m==="parent");
+  document.getElementById("m-acad").classList.toggle("on",m==="academy");
+  document.getElementById("cartbtn").style.display = m==="parent"?"flex":"none";
+  window.scrollTo(0,0);
+  if(m==="academy") renderAcadList();
+}
+
+function onCityChange(prefix){
+  const city=document.getElementById(prefix+"-city").value;
+  const areaSel=document.getElementById(prefix+"-area");
+  const isFilter=prefix==="f";
+  const areas=city?REGIONS[city]:(isFilter?allAreas():[]);
+  const first=isFilter?'<option value="">전체</option>':'<option value="">선택</option>';
+  areaSel.innerHTML=first+areas.map(a=>`<option>${a}</option>`).join("");
+}
+function gradeMatch(courseGrade, filter){
+  if(!filter) return true;
+  if(courseGrade===filter) return true;
+  if(courseGrade.includes("~")){
+    return courseGrade.split("~").includes(filter);
+  }
+  return false;
+}
+function refreshAcadOptions(){
+  const sel=document.getElementById("f-acad");
+  const cur=sel.value;
+  const names=[...new Set(courses.map(c=>c.academy))].sort();
+  sel.innerHTML='<option value="">전체</option>'+names.map(n=>`<option>${esc(n)}</option>`).join("");
+  if(names.includes(cur)) sel.value=cur;
+}
+function esc(s){return (s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+function render(){
+  refreshAcadOptions();
+  const city=document.getElementById("f-city").value;
+  const area=document.getElementById("f-area").value;
+  const g=document.getElementById("f-grade").value;
+  const sub=document.getElementById("f-subject").value;
+  const day=document.getElementById("f-day").value;
+  const per=document.getElementById("f-period").value;
+  const ac=document.getElementById("f-acad").value;
+  const q=document.getElementById("f-q").value.trim();
+  const list=courses.filter(c=>
+     (!city || c.city===city) &&
+     (!area || c.area===area) &&
+     gradeMatch(c.grade,g) &&
+     (!sub || subjGroup(c.subject)===sub) &&
+     (!day || c.days.includes(day)) &&
+     (!per || c.period===per) &&
+     (!ac || c.academy===ac) &&
+     (!q || (c.course+c.teacher+c.subject+c.note).includes(q))
+  );
+  document.getElementById("reslen").textContent=list.length;
+  const wrap=document.getElementById("results");
+  if(!list.length){ wrap.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요. 필터를 바꿔보세요.</div>'; return; }
+  wrap.innerHTML=list.map(c=>{
+    const col=subjColor(c.subject);
+    const added=myIds.includes(c.id);
+    return `<div class="course">
+      <div class="top">
+        <span class="subj" style="background:${col}">${esc(c.subject)}</span>
+        <span class="gradechip">${esc(c.grade)}</span>
+        <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
+      </div>
+      <h3>${esc(c.course)}</h3>
+      <div class="meta">
+        ${c.days.map(d=>`<span class="day">${d}</span>`).join("")}
+        <span>${esc(c.period)}</span>
+        ${c.time?`<span>${esc(c.time)}</span>`:""}
+        ${c.sessions?`<span>${esc(c.sessions)}</span>`:""}
+      </div>
+      ${c.teacher?`<div class="teacher">${esc(c.teacher)} 선생님</div>`:""}
+      ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
+      <button class="addbtn ${added?'added':''}" onclick="toggle('${c.id}')">${added?'✓ 담음 · 빼기':'＋ 내 시간표에 담기'}</button>
+    </div>`;
+  }).join("");
+}
+function resetFilters(){
+  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q"].forEach(id=>document.getElementById(id).value="");
+  onCityChange('f'); document.getElementById("f-area").value="";
+  render();
+}
+function toggle(id){
+  const i=myIds.indexOf(id);
+  if(i>=0) myIds.splice(i,1); else myIds.push(id);
+  document.getElementById("cartn").textContent=myIds.length;
+  render();
+  if(document.getElementById("drawer").classList.contains("open")) renderCart();
+}
+
+function openCart(){ renderCart(); document.getElementById("scrim").classList.add("open"); document.getElementById("drawer").classList.add("open"); }
+function closeCart(){ document.getElementById("scrim").classList.remove("open"); document.getElementById("drawer").classList.remove("open"); }
+
+function findConflicts(picked){
+  const pairs=[];
+  for(let i=0;i<picked.length;i++) for(let j=i+1;j<picked.length;j++){
+    const a=picked[i],b=picked[j];
+    if(a.period===b.period){
+      const shared=a.days.filter(d=>b.days.includes(d));
+      if(shared.length) pairs.push({a,b,shared,period:a.period});
+    }
+  }
+  return pairs;
+}
+function renderCart(){
+  const picked=myIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean);
+  const body=document.getElementById("drawer-body");
+  if(!picked.length){ body.innerHTML='<div class="cart-empty">아직 담은 강좌가 없어요.<br>검색 화면에서 듣고 싶은 강좌를<br>＋ 버튼으로 담아보세요.</div>'; return; }
+  const conflicts=findConflicts(picked);
+  let verdict;
+  if(conflicts.length){
+    verdict=`<div class="verdict bad"><span class="big">!</span><div>시간이 겹쳐요 (${conflicts.length}건)
+      ${conflicts.map(c=>`<div class="conflict-detail">· <b>${esc(c.a.course)}</b> ↔ <b>${esc(c.b.course)}</b> — ${c.shared.join("·")} ${c.period} 중복</div>`).join("")}
+    </div></div>`;
+  }else{
+    verdict=`<div class="verdict ok"><span class="big">✓</span><div>겹치는 시간이 없어요!<br><span style="font-weight:500;font-size:12px">담은 ${picked.length}개 강좌를 모두 들을 수 있습니다.</span></div></div>`;
+  }
+  const cellMap={}; PERIODS.forEach(p=>DAYS.forEach(d=>cellMap[p+d]=[]));
+  picked.forEach(c=>c.days.forEach(d=>{ if(cellMap[c.period+d]) cellMap[c.period+d].push(c); }));
+  let grid='<table class="wk"><tr><th class="period-lab"></th>'+DAYS.map(d=>`<th>${d}</th>`).join("")+'</tr>';
+  PERIODS.forEach(p=>{
+    grid+=`<tr><td class="period-lab">${p}</td>`;
+    DAYS.forEach(d=>{
+      const arr=cellMap[p+d];
+      const clash=arr.length>1?"clash":(arr.length?"has":"");
+      grid+=`<td class="${clash}">${arr.map(c=>`<span class="cellchip" style="background:${subjColor(c.subject)}">${esc(c.course.split(" ")[0])}</span>`).join("")}</td>`;
+    });
+    grid+="</tr>";
+  });
+  grid+="</table>";
+  const items=picked.map(c=>`<div class="picked">
+      <div class="bar" style="background:${subjColor(c.subject)}"></div>
+      <div class="pinfo"><b>${esc(c.course)}</b>
+        <small>${esc(c.area||"")} · ${esc(c.academy)} · ${esc(c.subject)} · ${c.days.join("·")} ${esc(c.period)}${c.time?" "+esc(c.time):""}</small></div>
+      <button class="delbtn" onclick="toggle('${c.id}')">빼기</button>
+    </div>`).join("");
+  body.innerHTML=verdict+grid+items;
+}
+
+document.getElementById("daypick").addEventListener("click",e=>{
+  const el=e.target.closest(".d"); if(!el) return;
+  el.classList.toggle("on");
+  const d=el.dataset.d;
+  const i=pickedDays.indexOf(d);
+  if(i>=0) pickedDays.splice(i,1); else pickedDays.push(d);
+});
+function addCourse(){
+  const acad=document.getElementById("i-acad").value.trim();
+  const city=document.getElementById("i-city").value;
+  const area=document.getElementById("i-area").value;
+  const subject=document.getElementById("i-subject").value;
+  const grade=document.getElementById("i-grade").value;
+  const course=document.getElementById("i-course").value.trim();
+  const period=document.getElementById("i-period").value;
+  if(!acad||!city||!area||!subject||!grade||!course||!pickedDays.length||!period){
+    alert("필수 항목(*)을 모두 입력해주세요: 학원명, 지역, 동네, 과목, 학년, 강좌명, 요일, 시간대"); return;
+  }
+  const order={월:0,화:1,수:2,목:3,금:4,토:5,일:6};
+  const days=[...pickedDays].sort((a,b)=>order[a]-order[b]);
+  courses.push({
+    id:"u"+Date.now(), city, area, academy:acad, teacher:document.getElementById("i-teacher").value.trim(),
+    subject, course, grade, days, period,
+    time:document.getElementById("i-time").value.trim(),
+    sessions:document.getElementById("i-sessions").value.trim(),
+    note:document.getElementById("i-note").value.trim()
+  });
+  save();
+  ["i-teacher","i-course","i-time","i-sessions","i-note"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("i-subject").value="";document.getElementById("i-grade").value="";document.getElementById("i-period").value="";
+  pickedDays=[]; document.querySelectorAll("#daypick .d").forEach(d=>d.classList.remove("on"));
+  alert("등록되었습니다! 학부모 검색 화면에 바로 노출됩니다.");
+  renderAcadList(); render();
+}
+function renderAcadList(){
+  const acad=document.getElementById("i-acad").value.trim();
+  const box=document.getElementById("acad-list");
+  if(!acad){ box.innerHTML='<div style="color:#9a8f78;font-size:13px;padding:8px 2px">위 「학원명」 칸에 학원 이름을 입력하면, 해당 학원이 등록한 강좌가 여기 표시됩니다.</div>'; return; }
+  const mine=courses.filter(c=>c.academy===acad);
+  if(!mine.length){ box.innerHTML=`<div style="color:#9a8f78;font-size:13px;padding:8px 2px">「${esc(acad)}」(으)로 등록된 강좌가 없습니다.</div>`; return; }
+  box.innerHTML=mine.map(c=>`<div class="acad-row">
+    <div class="info"><b>${esc(c.course)}</b><small>${esc(c.area||"")} · ${esc(c.subject)} · ${esc(c.grade)} · ${c.days.join("·")} ${esc(c.period)}${c.teacher?" · "+esc(c.teacher):""}</small></div>
+    <button class="delbtn" onclick="delCourse('${c.id}')">삭제</button>
+  </div>`).join("");
+}
+function delCourse(id){
+  if(!confirm("이 강좌를 삭제할까요?")) return;
+  courses=courses.filter(c=>c.id!==id);
+  myIds=myIds.filter(x=>x!==id);
+  save(); renderAcadList(); render();
+  document.getElementById("cartn").textContent=myIds.length;
+}
+document.getElementById("i-acad").addEventListener("input",renderAcadList);
+
+load(); onCityChange('f'); render();
+</script>
+</body>
+</html>

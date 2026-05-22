@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (Phase 2 prep)
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env*.local
+
+# Vercel
+.vercel
