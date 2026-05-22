@@ -19,3 +19,10 @@ out/
 
 # Vercel
 .vercel
+
+# Local scratch (data extraction artifacts)
+naver_tmp.html
+naver_imgs/
+img_urls.txt
+june_timetable.txt
+*.hwp_extracted.txt
