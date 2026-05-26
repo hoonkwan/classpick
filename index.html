@@ -41,12 +41,13 @@
   .logo .mark .dot{color:var(--brand)}
   .logo .sub{font-size:11px;color:#aeb8cc;letter-spacing:.12em}
   .nav-spacer{flex:1}
-  .modeswitch{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+  .modeswitch{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px;flex-wrap:wrap}
   .modeswitch button{
     border:0;background:transparent;color:#c9d1e2;font-family:inherit;font-weight:700;font-size:13px;
-    padding:8px 16px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap
+    padding:8px 14px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap
   }
   .modeswitch button.on{background:#fff;color:var(--ink)}
+  .modeswitch button:hover:not(.on){color:#fff}
   .cartbtn{
     border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:700;font-size:13px;
     padding:9px 16px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s
@@ -70,7 +71,7 @@
   .ad.inline{height:120px;margin:18px 0}
   .ad.foot{height:90px;margin:30px 0 0}
 
-  .toolbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:sticky;top:74px;z-index:20}
+  .toolbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:sticky;top:106px;z-index:20}
   .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
   .field{display:flex;flex-direction:column;gap:5px}
   .field label{font-size:11px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em}
@@ -98,12 +99,85 @@
   .meta span{background:var(--chip);border-radius:6px;padding:4px 8px;color:#384b6b;font-weight:500}
   .meta .day{background:#fff;border:1.5px solid var(--ink);font-weight:700}
   .note{font-size:12px;color:var(--ink-soft);line-height:1.5;border-top:1px dashed var(--line);padding-top:9px}
-  .teacher{font-size:12px;color:var(--ink-soft);font-weight:700}
+  .teacher{font-size:12px;color:var(--ink-soft);font-weight:700;cursor:pointer}
+  .teacher:hover{color:var(--brand);text-decoration:underline}
+  .monthchips{display:flex;flex-wrap:wrap;gap:3px;font-size:10.5px}
+  .monthchips .mc{background:#eaf0f7;color:#384b6b;border-radius:4px;padding:2px 5px;font-weight:700}
+  .monthchips .mc.hot{background:var(--brand);color:#fff}
   .addbtn{margin-top:2px;border:0;background:var(--ink);color:#fff;font-family:inherit;font-weight:700;font-size:13px;padding:10px;border-radius:9px;cursor:pointer;transition:.15s}
   .addbtn:hover{background:#0e1730}
   .addbtn.added{background:var(--good)}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:14px}
 
+  /* ===== View: by Academy ===== */
+  .picker-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20}
+  .picker-row .field select{min-width:220px}
+  .acad-summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;box-shadow:var(--shadow);margin-bottom:18px}
+  .acad-summary h2{font-size:24px;letter-spacing:-.3px}
+  .acad-summary .where{color:var(--ink-soft);font-size:13px;margin-top:4px}
+  .acad-stats{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+  .acad-stats .stat{display:flex;flex-direction:column;gap:2px}
+  .acad-stats .stat .v{font-family:"Black Han Sans",sans-serif;font-size:26px;color:var(--brand)}
+  .acad-stats .stat .l{font-size:11px;color:var(--ink-soft);letter-spacing:.06em;font-weight:700}
+
+  .month-timeline{margin:18px 0 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .month-timeline h3{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:12px;font-weight:700}
+  .mt-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+  .mt-cell{background:#f5efe2;border:1px solid var(--line);border-radius:8px;padding:9px 4px 8px;text-align:center;cursor:pointer;transition:.15s;position:relative;min-height:60px;display:flex;flex-direction:column;justify-content:center}
+  .mt-cell:hover{border-color:var(--brand)}
+  .mt-cell.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .mt-cell.on .mt-num{color:var(--brand)}
+  .mt-cell .mt-month{font-size:10.5px;font-weight:700;color:var(--ink-soft);letter-spacing:.04em}
+  .mt-cell.on .mt-month{color:#aeb8cc}
+  .mt-cell .mt-num{font-family:"Black Han Sans",sans-serif;font-size:20px;margin-top:2px;color:var(--ink)}
+  .mt-cell.zero{opacity:.4}
+  .mt-cell.zero .mt-num{color:var(--ink-soft)}
+
+  .month-block{margin-top:22px}
+  .month-block h3{font-size:18px;border-left:4px solid var(--brand);padding-left:10px;margin-bottom:12px}
+  .month-block h3 .badge{background:var(--brand);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:8px;font-family:inherit;letter-spacing:.04em}
+  .month-block h3 small{font-size:13px;color:var(--ink-soft);font-weight:500;margin-left:6px}
+
+  /* ===== View: by Teacher ===== */
+  .teacher-summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .teacher-avatar{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:28px;flex-shrink:0}
+  .teacher-info{flex:1;min-width:180px}
+  .teacher-info h2{font-size:22px}
+  .teacher-info .sub{color:var(--ink-soft);font-size:13px;margin-top:4px}
+  .teacher-stats{display:flex;gap:18px;flex-wrap:wrap}
+  .teacher-stats .stat{text-align:center}
+  .teacher-stats .stat .v{font-family:"Black Han Sans",sans-serif;font-size:22px;color:var(--brand);line-height:1}
+  .teacher-stats .stat .l{font-size:10.5px;color:var(--ink-soft);letter-spacing:.06em;margin-top:3px;font-weight:700}
+
+  .year-cal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:18px;overflow-x:auto}
+  .year-cal h3{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:14px;font-weight:700}
+  .yc-table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+  .yc-table th{font-size:11px;font-weight:700;color:var(--ink-soft);padding:6px 4px;text-align:center;letter-spacing:.04em}
+  .yc-table td.label{font-size:12.5px;font-weight:700;color:var(--ink);text-align:left;padding:8px 10px 8px 0;white-space:nowrap;border-bottom:1px solid #f0eada;width:1%}
+  .yc-table td.label .gtag{display:inline-block;font-size:10px;background:var(--chip);padding:1px 6px;border-radius:4px;margin-right:5px;font-weight:700}
+  .yc-row td.cell{border-bottom:1px solid #f0eada;padding:4px 1.5px;width:8.33%}
+  .yc-bar{height:18px;border-radius:4px;background:#cfd6e2;position:relative}
+  .yc-bar.on{background:var(--brand)}
+  .yc-bar.on.summer{background:#d65a25;background-image:linear-gradient(45deg,rgba(255,255,255,.18) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.18) 50%,rgba(255,255,255,.18) 75%,transparent 75%);background-size:8px 8px}
+
+  .semester-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .semester-tabs button{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.15s}
+  .semester-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .semester-tabs button:hover:not(.on){border-color:var(--ink-soft)}
+
+  /* ===== View: by Month ===== */
+  .month-pills{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20}
+  .month-pill{background:#f5efe2;border:1.5px solid var(--line);border-radius:10px;padding:11px 4px;text-align:center;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:2px}
+  .month-pill:hover{border-color:var(--brand)}
+  .month-pill.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .month-pill .mp-n{font-family:"Black Han Sans",sans-serif;font-size:20px}
+  .month-pill .mp-c{font-size:10.5px;letter-spacing:.04em;font-weight:700;opacity:.85}
+
+  .acad-group{margin-top:22px}
+  .acad-group h3{font-size:17px;border-left:4px solid var(--ink);padding-left:10px;margin-bottom:10px}
+  .acad-group h3 .acount{background:var(--chip);font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:8px}
+
+  /* ===== Academy form (existing) ===== */
   .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:760px;margin:6px auto 0}
   .panel h2{font-size:20px;margin-bottom:4px}
   .panel .lead{color:var(--ink-soft);font-size:14px;line-height:1.6;margin-bottom:20px}
@@ -112,9 +186,9 @@
   .form-grid label{display:block;font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.04em}
   .form-grid input,.form-grid select,.form-grid textarea{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}
   .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--brand)}
-  .daypick{display:flex;gap:6px;flex-wrap:wrap}
-  .daypick .d{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 0;width:46px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;user-select:none;transition:.12s}
-  .daypick .d.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .daypick,.monthpick{display:flex;gap:6px;flex-wrap:wrap}
+  .daypick .d,.monthpick .m{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 0;width:46px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;user-select:none;transition:.12s}
+  .daypick .d.on,.monthpick .m.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .submit{margin-top:20px;width:100%;border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:900;font-size:15px;padding:14px;border-radius:11px;cursor:pointer}
   .submit:hover{background:var(--brand-deep)}
   .mylist-acad{margin:26px auto 0;max-width:760px}
@@ -160,13 +234,15 @@
   footer{max-width:1180px;margin:40px auto 0;padding:24px 20px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:12px;line-height:1.7}
   footer b{color:var(--ink)}
 
-  @media (max-width:640px){
+  @media (max-width:760px){
     .hero h1{font-size:24px}
     .form-grid{grid-template-columns:1fr}
-    .toolbar{position:static}
+    .toolbar,.picker-row,.month-pills{position:static}
     .field input{min-width:140px}
     .field select,.field input{flex:1}
     .field{flex:1 1 45%}
+    .month-pills{grid-template-columns:repeat(6,1fr)}
+    .mt-grid{grid-template-columns:repeat(6,1fr)}
   }
 </style>
 </head>
@@ -180,15 +256,21 @@
     </div>
     <div class="nav-spacer"></div>
     <div class="modeswitch">
-      <button id="m-parent" class="on" onclick="setMode('parent')">학부모 · 강좌검색</button>
-      <button id="m-acad" onclick="setMode('academy')">학원 · 시간표등록</button>
+      <button id="m-search" class="on" onclick="setMode('search')">🔍 검색</button>
+      <button id="m-byacad" onclick="setMode('byacad')">🏫 학원별</button>
+      <button id="m-byteach" onclick="setMode('byteach')">👤 강사별</button>
+      <button id="m-bymonth" onclick="setMode('bymonth')">📅 월별</button>
+      <button id="m-acad" onclick="setMode('academy')">＋ 학원등록</button>
     </div>
     <button id="cartbtn" class="cartbtn" onclick="openCart()">내 시간표 <span class="n" id="cartn">0</span></button>
   </div>
 </header>
 
 <main>
-  <section id="view-parent">
+  <!-- ============================================================
+       VIEW 1: SEARCH (학부모 검색 — 기존)
+       ============================================================ -->
+  <section id="view-search">
     <div class="hero">
       <h1>동네 <b>명강</b>만 골라 담는 곳</h1>
       <p>대치·목동·중계·센텀·사직 — 지역별로 엄선된 학원 강좌를 한눈에 비교하고, 듣고 싶은 수업을 담아 요일·시간이 겹치는지 바로 확인하세요.</p>
@@ -208,7 +290,7 @@
         </div>
         <div class="field">
           <label>학년</label>
-          <select id="f-grade" onchange="render()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option></select>
+          <select id="f-grade" onchange="render()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
         </div>
         <div class="field">
           <label>과목</label>
@@ -216,11 +298,15 @@
         </div>
         <div class="field">
           <label>요일</label>
-          <select id="f-day" onchange="render()"><option value="">전체</option><option>월</option><option>화</option><option>수</option><option>목</option><option>금</option></select>
+          <select id="f-day" onchange="render()"><option value="">전체</option><option>월</option><option>화</option><option>수</option><option>목</option><option>금</option><option>토</option><option>일</option></select>
         </div>
         <div class="field">
           <label>시간대</label>
           <select id="f-period" onchange="render()"><option value="">전체</option><option>오전</option><option>오후</option><option>저녁</option></select>
+        </div>
+        <div class="field">
+          <label>월</label>
+          <select id="f-month" onchange="render()"><option value="">전체</option></select>
         </div>
         <div class="field">
           <label>학원</label>
@@ -243,6 +329,69 @@
     <div class="ad inline"><span class="tag">AD</span> 광고 영역 · 인피드 (검색결과 사이) — 광고문의</div>
   </section>
 
+  <!-- ============================================================
+       VIEW 2: BY ACADEMY (학원별 — 신규)
+       ============================================================ -->
+  <section id="view-byacad" style="display:none">
+    <div class="hero">
+      <h1>학원별로 <b>몇월에 무슨 수업</b>이 열리는지 한눈에</h1>
+      <p>학원을 선택하면 그 학원의 전 강좌가 월 타임라인으로 펼쳐집니다. 방학특강·정규반·시즌반을 시각적으로 구분해서 보여드려요.</p>
+    </div>
+
+    <div class="picker-row">
+      <div class="field" style="flex:1">
+        <label>학원 선택</label>
+        <select id="ba-pick" onchange="renderByAcad()"></select>
+      </div>
+      <div class="field">
+        <label>학년 필터</label>
+        <select id="ba-grade" onchange="renderByAcad()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      </div>
+      <div class="field">
+        <label>과목 필터</label>
+        <select id="ba-subject" onchange="renderByAcad()"><option value="">전체</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+      </div>
+    </div>
+
+    <div id="byacad-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 3: BY TEACHER (강사별 — 신규)
+       ============================================================ -->
+  <section id="view-byteach" style="display:none">
+    <div class="hero">
+      <h1>강사별 <b>1년·학기·월</b> 커리큘럼</h1>
+      <p>강사를 선택하면 그 분의 1년 전체 강좌가 캘린더 그리드로 펼쳐지고, 학기/방학별로 무엇을 가르치는지 한눈에 보입니다.</p>
+    </div>
+
+    <div class="picker-row">
+      <div class="field" style="flex:1">
+        <label>강사 선택</label>
+        <select id="bt-pick" onchange="renderByTeach()"></select>
+      </div>
+    </div>
+
+    <div id="byteach-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 4: BY MONTH (월별 — 신규)
+       ============================================================ -->
+  <section id="view-bymonth" style="display:none">
+    <div class="hero">
+      <h1>이번 달엔 <b>어떤 수업</b>이 열리나요?</h1>
+      <p>월을 선택하면 그 달에 운영되는 모든 강좌가 학원별로 정리됩니다. 방학특강 시즌이 한눈에 들어오죠.</p>
+    </div>
+
+    <div class="month-pills" id="month-pills"></div>
+
+    <div id="bymonth-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 5: ACADEMY REGISTRATION (학원 등록 — 기존)
+       ============================================================ -->
   <section id="view-academy" style="display:none">
     <div class="hero">
       <h1>우리 학원 강좌를 <b>클래스픽</b>에 올리세요</h1>
@@ -269,7 +418,7 @@
         </div>
         <div>
           <label>대상학년 *</label>
-          <select id="i-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고1~고2</option></select>
+          <select id="i-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option><option>고1~고2</option></select>
         </div>
         <div class="full"><label>강좌명 *</label><input id="i-course" placeholder="예) 미적분1 (기본+실력)" /></div>
         <div class="full">
@@ -277,6 +426,10 @@
           <div class="daypick" id="daypick">
             <div class="d" data-d="월">월</div><div class="d" data-d="화">화</div><div class="d" data-d="수">수</div><div class="d" data-d="목">목</div><div class="d" data-d="금">금</div><div class="d" data-d="토">토</div><div class="d" data-d="일">일</div>
           </div>
+        </div>
+        <div class="full">
+          <label>운영 월 * (복수선택 — 정규반은 5~12월 / 방학특강은 7~8월 등)</label>
+          <div class="monthpick" id="monthpick"></div>
         </div>
         <div>
           <label>시간대 *</label>
@@ -315,145 +468,177 @@
 </aside>
 
 <script>
+/* =========================================================================
+   1. CONSTANTS
+   ========================================================================= */
 const SUBJ_COLOR = {국어:"#c0392b",영어:"#2f6f9e",수학:"#e0521f",과학:"#1f7a5e",사회:"#7c5cc4"};
 function subjColor(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return SUBJ_COLOR[k]; } return "#5a6678"; }
 function subjGroup(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return k; } return s; }
 const PERIODS=["오전","오후","저녁"];
 const DAYS=["월","화","수","목","금"];
+const ALL_DAYS=["월","화","수","목","금","토","일"];
 const REGIONS={서울:["대치","목동","중계"],부산:["센텀","사직"]};
 function allAreas(){ return [].concat(...Object.values(REGIONS)); }
+const ALL_MONTHS=[1,2,3,4,5,6,7,8,9,10,11,12];
+const REG_YEAR=[5,6,7,8,9,10,11,12];   // 5월 시작 정규반
+const SUMMER=[7,8];                      // 여름방학특강
+const HALFYEAR=[6,7,8,9,10,11];          // 반년컷 (수능까지)
+const G3_REG=[3,4,5,6,7,8,9,10,11];      // 고3 정규 (수능까지)
+const SEMESTERS=[
+  {key:"s1",label:"1학기 (3~6월)",months:[3,4,5,6]},
+  {key:"summer",label:"여름방학 (7~8월)",months:[7,8]},
+  {key:"s2",label:"2학기 (9~12월)",months:[9,10,11,12]},
+  {key:"winter",label:"겨울방학 (1~2월)",months:[1,2]}
+];
+function isSummer(months){ return months.includes(7) || months.includes(8); }
 
+/* =========================================================================
+   2. SEED DATA (교육인학원 센텀점 + 데모)
+   ========================================================================= */
 const EDUIN_SENTUM="교육인학원 센텀점";
 const EDUIN_COURSES=[
  // 7월 수파르타 — 부일고1
- {grade:"고1",subject:"수학",course:"부일고1 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",note:"7월 말 개강 / 부일고 자사고 수학 내신대비 / 기본기+부교재 완벽 분석"},
- {grade:"고1",subject:"영어",course:"부일고1 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강 / 부일고 영어 내신대비 / 공통A·B 중 1 추가 선택"},
- {grade:"고1",subject:"영어",course:"부일고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
- {grade:"고1",subject:"영어",course:"부일고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
- {grade:"고1",subject:"국어",course:"부일고1 국어 수파르타",teacher:"김지수",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"7월 말 개강 / 부일고 국어 내신대비"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 부일고 자사고 수학 내신대비 / 기본기+부교재 완벽 분석"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",months:SUMMER,note:"7월 말 개강 / 부일고 영어 내신대비 / 공통A·B 중 1 추가 선택"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",months:SUMMER,note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",months:SUMMER,note:"7월 말 개강 / 학교별반과 함께 주 2회 구성"},
+ {grade:"고1",subject:"국어",course:"부일고1 국어 수파르타",teacher:"김지수",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:SUMMER,note:"7월 말 개강 / 부일고 국어 내신대비"},
  // 7월 수파르타 — 부일고2
- {grade:"고2",subject:"수학",course:"부일고2 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",note:"7월 말 개강 / 부일고 수학 내신대비"},
- {grade:"고2",subject:"영어",course:"부일고2 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
- {grade:"고2",subject:"영어",course:"부일고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
- {grade:"고2",subject:"영어",course:"부일고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
+ {grade:"고2",subject:"수학",course:"부일고2 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 부일고 수학 내신대비"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",months:SUMMER,note:"7월 말 개강"},
  // 7월 수파르타 — 해운대고1
- {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (평일)",teacher:"이영환",days:["월","수","금"],period:"저녁",time:"17:00-22:00",sessions:"주 3회",note:"7월 말 개강 / 해운대고 수학 내신대비 / 주말반과 병행 (주 5회)"},
- {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (주말)",teacher:"이영환",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회",note:"7월 말 개강 / 평일반과 함께 주 5회 구성"},
- {grade:"고1",subject:"영어",course:"해운대고1 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
- {grade:"고1",subject:"영어",course:"해운대고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
- {grade:"고1",subject:"영어",course:"해운대고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
- {grade:"고1",subject:"국어",course:"해운대고1 국어 수파르타",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",note:"7월 말 개강 / 해운대고 국어 내신대비"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (평일)",teacher:"이영환",days:["월","수","금"],period:"저녁",time:"17:00-22:00",sessions:"주 3회",months:SUMMER,note:"7월 말 개강 / 해운대고 수학 내신대비 / 주말반과 병행 (주 5회)"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (주말)",teacher:"이영환",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회",months:SUMMER,note:"7월 말 개강 / 평일반과 함께 주 5회 구성"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 학교별반",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 수파르타",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:SUMMER,note:"7월 말 개강 / 해운대고 국어 내신대비"},
  // 7월 수파르타 — 해운대고2
- {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (평일)",teacher:"차동우",days:["월","화","수","목","금"],period:"저녁",time:"20:00-23:00",sessions:"주 5회",note:"7월 말 개강 / 일요반과 함께 주 6회"},
- {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (일요)",teacher:"차동우",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 추가",note:"7월 말 개강 / 평일반과 병행"},
- {grade:"고2",subject:"영어",course:"해운대고2 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",note:"7월 말 개강"},
- {grade:"고2",subject:"영어",course:"해운대고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",note:"7월 말 개강"},
- {grade:"고2",subject:"영어",course:"해운대고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",note:"7월 말 개강"},
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (평일)",teacher:"차동우",days:["월","화","수","목","금"],period:"저녁",time:"20:00-23:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 일요반과 함께 주 6회"},
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (일요)",teacher:"차동우",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 추가",months:SUMMER,note:"7월 말 개강 / 평일반과 병행"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 학교별반",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (학교별)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 공통A",teacher:"윤훈관",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통A)",months:SUMMER,note:"7월 말 개강"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 공통B",teacher:"윤훈관",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (공통B)",months:SUMMER,note:"7월 말 개강"},
  // 6월 CUT CLASS (반년컷)
- {grade:"고3",subject:"수학",course:"고3 수능 수학 2등급 반년컷",teacher:"",days:["토","일"],period:"오후",time:"",sessions:"주 2회",note:"6월 개강 / 6월 모평 4등급 이하 집중 / 등급 상승 핵심 압축훈련 / 시간 문의"},
- {grade:"고3",subject:"영어",course:"고3 수능 영어 1등급 반년컷",teacher:"",days:["일"],period:"오후",time:"",sessions:"주 1회",note:"6월 개강 / 6월 모평 3등급 이하 집중 / 시간 문의"},
+ {grade:"고3",subject:"수학",course:"고3 수능 수학 2등급 반년컷",teacher:"",days:["토","일"],period:"오후",time:"",sessions:"주 2회",months:HALFYEAR,note:"6월 개강 / 6월 모평 4등급 이하 집중 / 등급 상승 핵심 압축훈련 / 시간 문의"},
+ {grade:"고3",subject:"영어",course:"고3 수능 영어 1등급 반년컷",teacher:"",days:["일"],period:"오후",time:"",sessions:"주 1회",months:HALFYEAR,note:"6월 개강 / 6월 모평 3등급 이하 집중 / 시간 문의"},
  // 자사특목 — 부일고1
- {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수1)",teacher:"김형석",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",note:"자사특목 정규 / 공통수학1 / 일요 공수2와 함께 주 2회 / 5/9 개강"},
- {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수2)",teacher:"김형석",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",note:"자사특목 정규 / 공통수학2"},
- {grade:"고1",subject:"영어",course:"부일고1 영어 (자사특목)",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-18:00",sessions:"주 1회",note:"자사특목 정규 / 부일고 영어 내신대비 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수1)",teacher:"김형석",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"자사특목 정규 / 공통수학1 / 일요 공수2와 함께 주 2회 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수2)",teacher:"김형석",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"자사특목 정규 / 공통수학2"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 (자사특목)",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-18:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 정규 / 부일고 영어 내신대비 / 5/9 개강"},
  // 자사특목 — 부산외고1
- {grade:"고1",subject:"수학",course:"부산외고1 수학 A (오전)",teacher:"차동우",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회 (오전반)",note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
- {grade:"고1",subject:"수학",course:"부산외고1 수학 B (오후)",teacher:"차동우",days:["토","일"],period:"오후",time:"13:30-16:30",sessions:"주 2회 (오후반)",note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
- {grade:"고1",subject:"영어",course:"부산외고1 영어",teacher:"윤훈관",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 부산외고 영어 내신대비 / 5/16 개강"},
- {grade:"고1",subject:"국어",course:"부산외고1 국어",teacher:"김지수",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"자사특목 / 부산외고 국어 내신대비 / 5/17 개강"},
- {grade:"고1",subject:"사회",course:"부산외고1 통합사회",teacher:"김규생",days:["일"],period:"오전",time:"09:30-12:30",sessions:"주 1회",note:"자사특목 / 부산외고 통사 내신대비 / 5/17 개강"},
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 A (오전)",teacher:"차동우",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회 (오전반)",months:REG_YEAR,note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 B (오후)",teacher:"차동우",days:["토","일"],period:"오후",time:"13:30-16:30",sessions:"주 2회 (오후반)",months:REG_YEAR,note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"영어",course:"부산외고1 영어",teacher:"윤훈관",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 부산외고 영어 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"국어",course:"부산외고1 국어",teacher:"김지수",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 부산외고 국어 내신대비 / 5/17 개강"},
+ {grade:"고1",subject:"사회",course:"부산외고1 통합사회",teacher:"김규생",days:["일"],period:"오전",time:"09:30-12:30",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 부산외고 통사 내신대비 / 5/17 개강"},
  // 자사특목 — 해운대고1
- {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수1)",teacher:"이영환",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",note:"자사특목 / 공통수학1 / 5/9 개강"},
- {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수2)",teacher:"이영환",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",note:"자사특목 / 공통수학2"},
- {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 CORE",teacher:"이영환",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",note:"자사특목 / 개인별 맞춤 클리닉"},
- {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 MASTER",teacher:"이영환",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 개인별 맞춤 클리닉"},
- {grade:"고1",subject:"영어",course:"해운대고1 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-18:00",sessions:"주 1회",note:"자사특목 / 해운대고 영어 내신대비 / 5/10 개강"},
- {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어1)",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",note:"자사특목 / 공통국어1 / 5/9 개강"},
- {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어2)",teacher:"김지수",days:["목"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",note:"자사특목 / 공통국어2"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수1)",teacher:"이영환",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"자사특목 / 공통수학1 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수2)",teacher:"이영환",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"자사특목 / 공통수학2"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 CORE",teacher:"이영환",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 MASTER",teacher:"이영환",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-18:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 해운대고 영어 내신대비 / 5/10 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어1)",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 공통국어1 / 5/9 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어2)",teacher:"김지수",days:["목"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 공통국어2"},
  // 자사특목 — 부일고2
- {grade:"고2",subject:"수학",course:"부일고2 수학 (미적분1 심화)",teacher:"김형석",days:["토","일"],period:"오후",time:"13:00-16:00",sessions:"주 2회",note:"자사특목 / 미적분1 심화 / 5/9 개강"},
- {grade:"고2",subject:"영어",course:"부일고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오전",time:"09:00-13:00",sessions:"주 1회",note:"자사특목 / 5/10 개강"},
+ {grade:"고2",subject:"수학",course:"부일고2 수학 (미적분1 심화)",teacher:"김형석",days:["토","일"],period:"오후",time:"13:00-16:00",sessions:"주 2회",months:REG_YEAR,note:"자사특목 / 미적분1 심화 / 5/9 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/10 개강"},
  // 자사특목 — 부산외고2
- {grade:"고2",subject:"수학",course:"부산외고2 수학 S (100점 목표)",teacher:"김형석",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 100점 목표 / 5/16 개강"},
- {grade:"고2",subject:"영어",course:"부산외고2 영어",teacher:"윤훈관",days:["토"],period:"오전",time:"09:00-13:00",sessions:"주 1회",note:"자사특목 / 5/16 개강"},
- {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"전인재",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",note:"자사특목 / 5/17 개강"},
- {grade:"고2",subject:"사회",course:"부산외고2 국제계열 사회",teacher:"김규생",days:["일"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 국제계열 / 5/17 개강"},
+ {grade:"고2",subject:"수학",course:"부산외고2 수학 S (100점 목표)",teacher:"김형석",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 100점 목표 / 5/16 개강"},
+ {grade:"고2",subject:"영어",course:"부산외고2 영어",teacher:"윤훈관",days:["토"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/16 개강"},
+ {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"전인재",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/17 개강"},
+ {grade:"고2",subject:"사회",course:"부산외고2 국제계열 사회",teacher:"김규생",days:["일"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 국제계열 / 5/17 개강"},
  // 자사특목 — 해운대고2
- {grade:"고2",subject:"영어",course:"해운대고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 5/10 개강"},
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/10 개강"},
  // 자사특목 — 부산예고1
- {grade:"고1",subject:"수학",course:"부산예고1 수학",teacher:"차동우",days:["토"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"자사특목 / 5/9 개강"},
- {grade:"고1",subject:"영어",course:"부산예고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"자사특목 / 5/11 개강"},
+ {grade:"고1",subject:"수학",course:"부산예고1 수학",teacher:"차동우",days:["토"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/9 개강"},
+ {grade:"고1",subject:"영어",course:"부산예고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/11 개강"},
  // 고등 in센텀 — 해강고1
- {grade:"고1",subject:"수학",course:"해강고1 수학 (수요반)",teacher:"차동우",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (수)",note:"해강고 내신대비 / 토요반과 함께 주 2회 / 5/6 개강"},
- {grade:"고1",subject:"수학",course:"해강고1 수학 (토요반)",teacher:"차동우",days:["토"],period:"오후",time:"16:00-19:00",sessions:"주 1회 (토)",note:"해강고 내신대비"},
- {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"권정은",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"해강고 내신대비 / 5/5 개강"},
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (수요반)",teacher:"차동우",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (수)",months:REG_YEAR,note:"해강고 내신대비 / 토요반과 함께 주 2회 / 5/6 개강"},
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (토요반)",teacher:"차동우",days:["토"],period:"오후",time:"16:00-19:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"해강고 내신대비"},
+ {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"권정은",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"해강고 내신대비 / 5/5 개강"},
  // 고등 in센텀 — 센텀여고1
- {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"김명욱",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",note:"센텀여고 내신대비 / 토요반과 함께 주 2회 / 5/5 개강"},
- {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"김명욱",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",note:"센텀여고 내신대비"},
- {grade:"고1",subject:"영어",course:"센텀여고1 영어",teacher:"윤훈관",days:["수"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"센텀여고 내신대비 / 5/6 개강"},
- {grade:"고1",subject:"국어",course:"센텀여고1 국어",teacher:"교육인 국어팀",days:["토"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"센텀여고 내신대비 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"김명욱",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",months:REG_YEAR,note:"센텀여고 내신대비 / 토요반과 함께 주 2회 / 5/5 개강"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"김명욱",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"센텀여고 내신대비"},
+ {grade:"고1",subject:"영어",course:"센텀여고1 영어",teacher:"윤훈관",days:["수"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비 / 5/6 개강"},
+ {grade:"고1",subject:"국어",course:"센텀여고1 국어",teacher:"교육인 국어팀",days:["토"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비 / 5/9 개강"},
  // 고등 in센텀 — 덕문여고1
- {grade:"고1",subject:"영어",course:"덕문여고1 영어",teacher:"권정은",days:["토"],period:"오후",time:"13:00-17:00",sessions:"주 1회",note:"덕문여고 내신대비 / 5/9 개강"},
+ {grade:"고1",subject:"영어",course:"덕문여고1 영어",teacher:"권정은",days:["토"],period:"오후",time:"13:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/9 개강"},
  // 고등 in센텀 — 센텀고1
- {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"김명욱",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",note:"센텀고 내신대비 / 일요반과 함께 주 2회 / 5/7 개강"},
- {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"김명욱",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",note:"센텀고 내신대비"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"김명욱",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",months:REG_YEAR,note:"센텀고 내신대비 / 일요반과 함께 주 2회 / 5/7 개강"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"김명욱",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"센텀고 내신대비"},
  // 고등 in센텀 — 학산여고1
- {grade:"고1",subject:"영어",course:"학산여고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"학산여고 내신대비 / 5/4 개강"},
+ {grade:"고1",subject:"영어",course:"학산여고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학산여고 내신대비 / 5/4 개강"},
  // 고등 in센텀 — 덕문여고2
- {grade:"고2",subject:"수학",course:"덕문여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"덕문여고 내신대비 / 5/6 개강"},
- {grade:"고2",subject:"영어",course:"덕문여고2 영어",teacher:"권정은",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"덕문여고 내신대비 / 5/9 개강"},
+ {grade:"고2",subject:"수학",course:"덕문여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/6 개강"},
+ {grade:"고2",subject:"영어",course:"덕문여고2 영어",teacher:"권정은",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/9 개강"},
  // 고등 in센텀 — 동여고2
- {grade:"고2",subject:"수학",course:"동여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"동여고 내신대비 / 5/6 개강"},
+ {grade:"고2",subject:"수학",course:"동여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"동여고 내신대비 / 5/6 개강"},
  // 정규 영어 in센텀 — 고3
- {grade:"고3",subject:"영어",course:"고3 수능실전대비반",teacher:"정준호",days:["일"],period:"오후",time:"13:00-16:00",sessions:"주 1회",note:"고3·재수생 / 27수능 100점 목표"},
- {grade:"고3",subject:"영어",course:"고3 보카트레이닝",teacher:"",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"고3·재수생 / 1회당 단어 200개 암기 후 귀가 / 교육인 단어암기비법 / 5/10 개강"},
+ {grade:"고3",subject:"영어",course:"고3 수능실전대비반",teacher:"정준호",days:["일"],period:"오후",time:"13:00-16:00",sessions:"주 1회",months:G3_REG,note:"고3·재수생 / 27수능 100점 목표"},
+ {grade:"고3",subject:"영어",course:"고3 보카트레이닝",teacher:"",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:G3_REG,note:"고3·재수생 / 1회당 단어 200개 암기 후 귀가 / 교육인 단어암기비법 / 5/10 개강"},
  // 정규 영어 in센텀 — 중등 SUMMIT
- {grade:"중3",subject:"영어",course:"중등 SUMMIT S",teacher:"",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"최상위 영어 실력 / 고난도 문법+독해+서술형 / 5/5 개강"},
- {grade:"중3",subject:"영어",course:"중등 SUMMIT K",teacher:"",days:["월","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",note:"최상위 영어 실력 / 5/4 개강"},
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT S",teacher:"",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"최상위 영어 실력 / 고난도 문법+독해+서술형 / 5/5 개강"},
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT K",teacher:"",days:["월","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"최상위 영어 실력 / 5/4 개강"},
  // 정규 영어 in센텀 — 중등 문법
- {grade:"중3",subject:"영어",course:"중등 문법 LEVEL3",teacher:"",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL3"},
- {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (화반)",teacher:"",days:["화"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL2"},
- {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (수반)",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL2"},
- {grade:"중3",subject:"영어",course:"중등 문법 LEVEL1",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 문법 / LEVEL1"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL3",teacher:"",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (화반)",teacher:"",days:["화"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (수반)",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL1",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL1"},
  // 정규 영어 in센텀 — 중등 독해
- {grade:"중3",subject:"영어",course:"중등 독해 LEVEL3",teacher:"",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL3"},
- {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (목반)",teacher:"",days:["목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL2"},
- {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (금반)",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL2"},
- {grade:"중3",subject:"영어",course:"중등 독해 LEVEL1",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"학교별·수준별 내신 독해 / LEVEL1"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL3",teacher:"",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (목반)",teacher:"",days:["목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (금반)",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL1",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL1"},
  // 정규 영어 in센텀 — 중등 수능형·보카
- {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (화반)",teacher:"",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"중학생 대상 1년 완성 수능형 영어체계 / 4/30 개강"},
- {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (목반)",teacher:"",days:["목"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",note:"중학생 대상 1년 완성 수능형 영어체계"},
- {grade:"중3",subject:"영어",course:"중등 보카트레이닝",teacher:"",days:["월"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"중등 / 단어 200개/회 / 교육인 단어암기비법 / 5/4 개강"},
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (화반)",teacher:"",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"중학생 대상 1년 완성 수능형 영어체계 / 4/30 개강"},
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (목반)",teacher:"",days:["목"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"중학생 대상 1년 완성 수능형 영어체계"},
+ {grade:"중3",subject:"영어",course:"중등 보카트레이닝",teacher:"",days:["월"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"중등 / 단어 200개/회 / 교육인 단어암기비법 / 5/4 개강"},
  // 정규 수학 in센텀 — 심화반
- {grade:"고1",subject:"수학",course:"공통수학1 (심화) 공.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"17:00-18:30",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
- {grade:"고1",subject:"수학",course:"공통수학2 (심화) 공.심.쟁",teacher:"김형석",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
- {grade:"고1",subject:"수학",course:"대수 (심화) 대.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"18:30-20:00",sessions:"주 1회",note:"교재: 고쟁이 / 진행중"},
- {grade:"고2",subject:"수학",course:"미적분1 개별진도 (김명욱T)",teacher:"김명욱",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"기본~심화 / 개인별 맞춤 수업"},
- {grade:"고2",subject:"수학",course:"미적분1 개별진도 (이영환T)",teacher:"이영환",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",note:"기본~심화 / 개인별 맞춤 교재+진도+수업"},
- {grade:"고2",subject:"수학",course:"미적분1 수능대비 (강필T)",teacher:"강필",days:["일"],period:"저녁",time:"17:30-21:30",sessions:"주 1회",note:"공통+미적분 1등급 목표 / 자체교재+프린트+영상보충 / 5/3 개강"},
+ {grade:"고1",subject:"수학",course:"공통수학1 (심화) 공.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"17:00-18:30",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"공통수학2 (심화) 공.심.쟁",teacher:"김형석",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"대수 (심화) 대.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"18:30-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (김명욱T)",teacher:"김명욱",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"기본~심화 / 개인별 맞춤 수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (이영환T)",teacher:"이영환",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"기본~심화 / 개인별 맞춤 교재+진도+수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 수능대비 (강필T)",teacher:"강필",days:["일"],period:"저녁",time:"17:30-21:30",sessions:"주 1회",months:REG_YEAR,note:"공통+미적분 1등급 목표 / 자체교재+프린트+영상보충 / 5/3 개강"},
 ];
 
 const SEED=EDUIN_COURSES.map((c,i)=>Object.assign({id:"eduin"+i,city:"부산",area:"센텀",academy:EDUIN_SENTUM},c));
 
 const DEMO=[
- {city:"서울",area:"대치",academy:"대치 더수학",teacher:"한지훈",subject:"수학",course:"미적분 심화 (킬러 대비)",grade:"고2",days:["월","수","금"],period:"저녁",time:"19:00-22:00",sessions:"총 12회",note:"평가원 4점 집중 / 자체 클리닉"},
- {city:"서울",area:"대치",academy:"대치 명문국어",teacher:"서연우",subject:"국어",course:"독서 고난도 트레이닝",grade:"고2",days:["화","목"],period:"오후",time:"",sessions:"총 8회",note:"비문학 구조독해"},
- {city:"서울",area:"목동",academy:"목동 코어영어",teacher:"이수민",subject:"영어",course:"수능 어법·구문 완성",grade:"고1",days:["수"],period:"오전",time:"",sessions:"총 6회",note:"내신+수능 병행"},
- {city:"서울",area:"중계",academy:"중계 탑사이언스",teacher:"박도현",subject:"과학",course:"물리 역학 전범위",grade:"고2",days:["월"],period:"저녁",time:"18:00-21:00",sessions:"총 5회",note:"1등급 목표반"},
- {city:"부산",area:"사직",academy:"사직 정상수학",teacher:"최예린",subject:"수학",course:"공통수학2 개념완성",grade:"고1",days:["화","목"],period:"오후",time:"",sessions:"총 7회",note:"기초부터 탄탄"},
- {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",note:"내신 대비"},
+ {city:"서울",area:"대치",academy:"대치 더수학",teacher:"한지훈",subject:"수학",course:"미적분 심화 (킬러 대비)",grade:"고2",days:["월","수","금"],period:"저녁",time:"19:00-22:00",sessions:"총 12회",months:REG_YEAR,note:"평가원 4점 집중 / 자체 클리닉"},
+ {city:"서울",area:"대치",academy:"대치 명문국어",teacher:"서연우",subject:"국어",course:"독서 고난도 트레이닝",grade:"고2",days:["화","목"],period:"오후",time:"",sessions:"총 8회",months:REG_YEAR,note:"비문학 구조독해"},
+ {city:"서울",area:"목동",academy:"목동 코어영어",teacher:"이수민",subject:"영어",course:"수능 어법·구문 완성",grade:"고1",days:["수"],period:"오전",time:"",sessions:"총 6회",months:SUMMER,note:"내신+수능 병행 / 여름특강"},
+ {city:"서울",area:"중계",academy:"중계 탑사이언스",teacher:"박도현",subject:"과학",course:"물리 역학 전범위",grade:"고2",days:["월"],period:"저녁",time:"18:00-21:00",sessions:"총 5회",months:REG_YEAR,note:"1등급 목표반"},
+ {city:"부산",area:"사직",academy:"사직 정상수학",teacher:"최예린",subject:"수학",course:"공통수학2 개념완성",grade:"고1",days:["화","목"],period:"오후",time:"",sessions:"총 7회",months:REG_YEAR,note:"기초부터 탄탄"},
+ {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",months:REG_YEAR,note:"내신 대비"},
 ].map((d,i)=>({id:"demo"+i,...d}));
 
-const KEY="classpick:courses:v2";
+const KEY="classpick:courses:v3";
 let courses=[];
 let myIds=[];
 let pickedDays=[];
-let mode="parent";
+let pickedMonths=[];
+let mode="search";
+let currentMonth=7;
+let currentSemester="all";
 
+/* =========================================================================
+   3. STORAGE
+   ========================================================================= */
 function load(){
   try{
     const raw=localStorage.getItem(KEY);
     if(raw){ courses=JSON.parse(raw); return; }
+    const oldRaw=localStorage.getItem("classpick:courses:v2");
+    if(oldRaw){
+      const old=JSON.parse(oldRaw);
+      courses=old.map(c=>c.months?c:Object.assign({months:REG_YEAR},c));
+      save();
+      return;
+    }
   }catch(e){ console.warn("load failed",e); }
   courses=SEED.concat(DEMO);
   save();
@@ -463,17 +648,30 @@ function save(){
   catch(e){ console.warn("save failed",e); }
 }
 
+/* =========================================================================
+   4. MODE SWITCH
+   ========================================================================= */
 function setMode(m){
   mode=m;
-  document.getElementById("view-parent").style.display = m==="parent"?"block":"none";
-  document.getElementById("view-academy").style.display = m==="academy"?"block":"none";
-  document.getElementById("m-parent").classList.toggle("on",m==="parent");
-  document.getElementById("m-acad").classList.toggle("on",m==="academy");
-  document.getElementById("cartbtn").style.display = m==="parent"?"flex":"none";
+  ["search","byacad","byteach","bymonth","academy"].forEach(k=>{
+    document.getElementById("view-"+k).style.display = (m===k)?"block":"none";
+  });
+  ["m-search","m-byacad","m-byteach","m-bymonth","m-acad"].forEach(k=>{
+    document.getElementById(k).classList.remove("on");
+  });
+  const map={search:"m-search",byacad:"m-byacad",byteach:"m-byteach",bymonth:"m-bymonth",academy:"m-acad"};
+  document.getElementById(map[m]).classList.add("on");
+  document.getElementById("cartbtn").style.display = (m==="academy")?"none":"flex";
   window.scrollTo(0,0);
   if(m==="academy") renderAcadList();
+  if(m==="byacad") renderByAcad();
+  if(m==="byteach") renderByTeach();
+  if(m==="bymonth") renderByMonth();
 }
 
+/* =========================================================================
+   5. UTILITIES
+   ========================================================================= */
 function onCityChange(prefix){
   const city=document.getElementById(prefix+"-city").value;
   const areaSel=document.getElementById(prefix+"-area");
@@ -497,10 +695,20 @@ function refreshAcadOptions(){
   sel.innerHTML='<option value="">전체</option>'+names.map(n=>`<option>${esc(n)}</option>`).join("");
   if(names.includes(cur)) sel.value=cur;
 }
+function refreshMonthOptions(){
+  const sel=document.getElementById("f-month");
+  const cur=sel.value;
+  sel.innerHTML='<option value="">전체</option>'+ALL_MONTHS.map(m=>`<option value="${m}">${m}월</option>`).join("");
+  if(cur) sel.value=cur;
+}
 function esc(s){return (s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
 
+/* =========================================================================
+   6. VIEW 1 — SEARCH
+   ========================================================================= */
 function render(){
   refreshAcadOptions();
+  refreshMonthOptions();
   const city=document.getElementById("f-city").value;
   const area=document.getElementById("f-area").value;
   const g=document.getElementById("f-grade").value;
@@ -508,6 +716,7 @@ function render(){
   const day=document.getElementById("f-day").value;
   const per=document.getElementById("f-period").value;
   const ac=document.getElementById("f-acad").value;
+  const mo=parseInt(document.getElementById("f-month").value)||0;
   const q=document.getElementById("f-q").value.trim();
   const list=courses.filter(c=>
      (!city || c.city===city) &&
@@ -517,35 +726,40 @@ function render(){
      (!day || c.days.includes(day)) &&
      (!per || c.period===per) &&
      (!ac || c.academy===ac) &&
+     (!mo || (c.months||[]).includes(mo)) &&
      (!q || (c.course+c.teacher+c.subject+c.note).includes(q))
   );
   document.getElementById("reslen").textContent=list.length;
   const wrap=document.getElementById("results");
   if(!list.length){ wrap.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요. 필터를 바꿔보세요.</div>'; return; }
-  wrap.innerHTML=list.map(c=>{
-    const col=subjColor(c.subject);
-    const added=myIds.includes(c.id);
-    return `<div class="course">
-      <div class="top">
-        <span class="subj" style="background:${col}">${esc(c.subject)}</span>
-        <span class="gradechip">${esc(c.grade)}</span>
-        <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
-      </div>
-      <h3>${esc(c.course)}</h3>
-      <div class="meta">
-        ${c.days.map(d=>`<span class="day">${d}</span>`).join("")}
-        <span>${esc(c.period)}</span>
-        ${c.time?`<span>${esc(c.time)}</span>`:""}
-        ${c.sessions?`<span>${esc(c.sessions)}</span>`:""}
-      </div>
-      ${c.teacher?`<div class="teacher">${esc(c.teacher)} 선생님</div>`:""}
-      ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
-      <button class="addbtn ${added?'added':''}" onclick="toggle('${c.id}')">${added?'✓ 담음 · 빼기':'＋ 내 시간표에 담기'}</button>
-    </div>`;
-  }).join("");
+  wrap.innerHTML=list.map(courseCard).join("");
+}
+function courseCard(c){
+  const col=subjColor(c.subject);
+  const added=myIds.includes(c.id);
+  const isShortSummer=isSummer(c.months) && c.months.length<=3;
+  const monthStr=(c.months||[]).map(m=>`<span class="mc${isShortSummer&&(m===7||m===8)?' hot':''}">${m}월</span>`).join("");
+  return `<div class="course">
+    <div class="top">
+      <span class="subj" style="background:${col}">${esc(c.subject)}</span>
+      <span class="gradechip">${esc(c.grade)}</span>
+      <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
+    </div>
+    <h3>${esc(c.course)}</h3>
+    <div class="meta">
+      ${c.days.map(d=>`<span class="day">${d}</span>`).join("")}
+      <span>${esc(c.period)}</span>
+      ${c.time?`<span>${esc(c.time)}</span>`:""}
+      ${c.sessions?`<span>${esc(c.sessions)}</span>`:""}
+    </div>
+    ${monthStr?`<div class="monthchips">${monthStr}</div>`:""}
+    ${c.teacher?`<div class="teacher" onclick="jumpToTeacher('${esc(c.teacher)}')">${esc(c.teacher)} 선생님 →</div>`:""}
+    ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
+    <button class="addbtn ${added?'added':''}" onclick="toggle('${c.id}')">${added?'✓ 담음 · 빼기':'＋ 내 시간표에 담기'}</button>
+  </div>`;
 }
 function resetFilters(){
-  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q"].forEach(id=>document.getElementById(id).value="");
+  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q","f-month"].forEach(id=>document.getElementById(id).value="");
   onCityChange('f'); document.getElementById("f-area").value="";
   render();
 }
@@ -553,10 +767,188 @@ function toggle(id){
   const i=myIds.indexOf(id);
   if(i>=0) myIds.splice(i,1); else myIds.push(id);
   document.getElementById("cartn").textContent=myIds.length;
-  render();
+  if(mode==="search") render();
+  if(mode==="byacad") renderByAcad();
+  if(mode==="byteach") renderByTeach();
+  if(mode==="bymonth") renderByMonth();
   if(document.getElementById("drawer").classList.contains("open")) renderCart();
 }
 
+/* =========================================================================
+   7. VIEW 2 — BY ACADEMY
+   ========================================================================= */
+function renderByAcad(){
+  const sel=document.getElementById("ba-pick");
+  const names=[...new Set(courses.map(c=>c.academy))].sort();
+  const cur=sel.value || names[0] || "";
+  sel.innerHTML=names.map(n=>`<option ${n===cur?"selected":""}>${esc(n)}</option>`).join("");
+  const acad=sel.value;
+  const g=document.getElementById("ba-grade").value;
+  const sub=document.getElementById("ba-subject").value;
+  const mine=courses.filter(c=>c.academy===acad && gradeMatch(c.grade,g) && (!sub||subjGroup(c.subject)===sub));
+  const body=document.getElementById("byacad-body");
+  if(!mine.length){ body.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요.</div>'; return; }
+
+  const monthCount=Array(13).fill(0);
+  mine.forEach(c=>(c.months||[]).forEach(m=>monthCount[m]++));
+  const maxCount=Math.max(...monthCount.slice(1));
+
+  const sample=mine[0]; const where=`${sample.city||""} ${sample.area||""}`.trim();
+  const teachers=[...new Set(mine.map(c=>c.teacher).filter(Boolean))];
+  const subjects=[...new Set(mine.map(c=>subjGroup(c.subject)))];
+  const peakMonth=monthCount.indexOf(maxCount);
+
+  let html=`
+    <div class="acad-summary">
+      <h2>${esc(acad)}</h2>
+      <div class="where">${esc(where)}</div>
+      <div class="acad-stats">
+        <div class="stat"><span class="v">${mine.length}</span><span class="l">강좌</span></div>
+        <div class="stat"><span class="v">${teachers.length}</span><span class="l">강사</span></div>
+        <div class="stat"><span class="v">${subjects.length}</span><span class="l">과목</span></div>
+        <div class="stat"><span class="v">${peakMonth}월</span><span class="l">최다 운영월 (${maxCount}개)</span></div>
+      </div>
+    </div>
+    <div class="month-timeline">
+      <h3>📅 월 타임라인 — 클릭하면 그 달의 강좌만 펼쳐집니다</h3>
+      <div class="mt-grid">`;
+  ALL_MONTHS.forEach(m=>{
+    const n=monthCount[m];
+    html+=`<div class="mt-cell ${n===0?'zero':''}" onclick="scrollToMonth(${m})">
+      <span class="mt-month">${m}월</span><span class="mt-num">${n}</span>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  ALL_MONTHS.forEach(m=>{
+    const inMonth=mine.filter(c=>(c.months||[]).includes(m));
+    if(!inMonth.length) return;
+    const summerTag=(m===7||m===8)?'<span class="badge">방학특강 시즌</span>':'';
+    html+=`<div class="month-block" id="acad-m-${m}">
+      <h3>${m}월 ${summerTag}<small>${inMonth.length}개 강좌</small></h3>
+      <div class="grid">${inMonth.map(courseCard).join("")}</div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+function scrollToMonth(m){
+  const el=document.getElementById("acad-m-"+m);
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* =========================================================================
+   8. VIEW 3 — BY TEACHER
+   ========================================================================= */
+function renderByTeach(){
+  const sel=document.getElementById("bt-pick");
+  const teachers=[...new Set(courses.map(c=>c.teacher).filter(Boolean))].sort();
+  const cur=sel.value || teachers[0] || "";
+  sel.innerHTML=teachers.map(t=>`<option ${t===cur?"selected":""}>${esc(t)}</option>`).join("");
+  const t=sel.value;
+  const mine=courses.filter(c=>c.teacher===t);
+  const body=document.getElementById("byteach-body");
+  if(!mine.length){ body.innerHTML='<div class="empty">강사 정보가 없어요.</div>'; return; }
+
+  const acads=[...new Set(mine.map(c=>c.academy))];
+  const subjects=[...new Set(mine.map(c=>subjGroup(c.subject)))];
+  const grades=[...new Set(mine.map(c=>c.grade))];
+  const initial=t.charAt(0);
+
+  let html=`
+    <div class="teacher-summary">
+      <div class="teacher-avatar">${esc(initial)}</div>
+      <div class="teacher-info">
+        <h2>${esc(t)} 선생님</h2>
+        <div class="sub">${esc(acads.join(" · "))} · ${esc(subjects.join("·"))} · ${esc(grades.join("·"))}</div>
+      </div>
+      <div class="teacher-stats">
+        <div class="stat"><div class="v">${mine.length}</div><div class="l">강좌</div></div>
+        <div class="stat"><div class="v">${grades.length}</div><div class="l">학년</div></div>
+        <div class="stat"><div class="v">${subjects.length}</div><div class="l">과목</div></div>
+      </div>
+    </div>
+
+    <div class="year-cal">
+      <h3>📊 1년 캘린더 — 가로축은 1~12월, 색띠는 운영기간</h3>
+      <table class="yc-table">
+        <thead><tr><th></th>${ALL_MONTHS.map(m=>`<th>${m}월</th>`).join("")}</tr></thead>
+        <tbody>`;
+  mine.forEach(c=>{
+    const col=subjColor(c.subject);
+    html+=`<tr class="yc-row"><td class="label"><span class="gtag">${esc(c.grade)}</span>${esc(c.course)}</td>`;
+    ALL_MONTHS.forEach(m=>{
+      const on=(c.months||[]).includes(m);
+      const summer=on && (m===7||m===8) && isSummer(c.months) && c.months.length<=3;
+      html+=`<td class="cell"><div class="yc-bar ${on?'on':''} ${summer?'summer':''}" style="${on?'background:'+col:''}" title="${on?m+'월':''}"></div></td>`;
+    });
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  html+=`<div class="semester-tabs">
+    <button class="${currentSemester==='all'?'on':''}" onclick="setSemester('all')">전체</button>
+    ${SEMESTERS.map(s=>`<button class="${currentSemester===s.key?'on':''}" onclick="setSemester('${s.key}')">${s.label}</button>`).join("")}
+  </div>`;
+
+  const sem=SEMESTERS.find(s=>s.key===currentSemester);
+  const semCourses = sem ? mine.filter(c=>(c.months||[]).some(m=>sem.months.includes(m))) : mine;
+  if(!semCourses.length){
+    html+='<div class="empty">이 학기에는 강좌가 없어요.</div>';
+  } else {
+    html+=`<div class="grid">${semCourses.map(courseCard).join("")}</div>`;
+  }
+  body.innerHTML=html;
+}
+function setSemester(k){ currentSemester=k; renderByTeach(); }
+function jumpToTeacher(name){
+  setMode("byteach");
+  setTimeout(()=>{
+    document.getElementById("bt-pick").value=name;
+    renderByTeach();
+  },50);
+}
+
+/* =========================================================================
+   9. VIEW 4 — BY MONTH
+   ========================================================================= */
+function renderByMonth(){
+  const pills=document.getElementById("month-pills");
+  pills.innerHTML=ALL_MONTHS.map(m=>{
+    const n=courses.filter(c=>(c.months||[]).includes(m)).length;
+    return `<div class="month-pill ${m===currentMonth?'on':''}" onclick="setMonth(${m})">
+      <span class="mp-n">${m}</span><span class="mp-c">${n}개</span>
+    </div>`;
+  }).join("");
+
+  const inMonth=courses.filter(c=>(c.months||[]).includes(currentMonth));
+  const body=document.getElementById("bymonth-body");
+  if(!inMonth.length){ body.innerHTML='<div class="empty">이 달에 운영되는 강좌가 없어요.</div>'; return; }
+
+  const byAcad={};
+  inMonth.forEach(c=>{ if(!byAcad[c.academy]) byAcad[c.academy]=[]; byAcad[c.academy].push(c); });
+  const acadNames=Object.keys(byAcad).sort();
+  const summerNote=(currentMonth===7||currentMonth===8)?
+    '<div style="background:#fbe9e7;border:1px solid #f3c4bd;border-radius:10px;padding:14px 16px;margin-bottom:18px;color:#a93515;font-weight:700">🔥 여름방학 시즌 — 방학특강이 집중되는 시기입니다</div>':'';
+
+  let html=`<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:18px">
+    <h2 style="font-size:22px">${currentMonth}월에 운영되는 강좌</h2>
+    <div style="color:var(--ink-soft);font-size:13px;margin-top:5px">${inMonth.length}개 강좌 · ${acadNames.length}개 학원</div>
+  </div>${summerNote}`;
+
+  acadNames.forEach(a=>{
+    const arr=byAcad[a];
+    html+=`<div class="acad-group">
+      <h3>${esc(a)}<span class="acount">${arr.length}개</span></h3>
+      <div class="grid">${arr.map(courseCard).join("")}</div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+function setMonth(m){ currentMonth=m; renderByMonth(); }
+
+/* =========================================================================
+   10. CART
+   ========================================================================= */
 function openCart(){ renderCart(); document.getElementById("scrim").classList.add("open"); document.getElementById("drawer").classList.add("open"); }
 function closeCart(){ document.getElementById("scrim").classList.remove("open"); document.getElementById("drawer").classList.remove("open"); }
 
@@ -566,7 +958,8 @@ function findConflicts(picked){
     const a=picked[i],b=picked[j];
     if(a.period===b.period){
       const shared=a.days.filter(d=>b.days.includes(d));
-      if(shared.length) pairs.push({a,b,shared,period:a.period});
+      const monthsShared=(a.months||[]).filter(m=>(b.months||[]).includes(m));
+      if(shared.length && monthsShared.length) pairs.push({a,b,shared,period:a.period,months:monthsShared});
     }
   }
   return pairs;
@@ -579,7 +972,7 @@ function renderCart(){
   let verdict;
   if(conflicts.length){
     verdict=`<div class="verdict bad"><span class="big">!</span><div>시간이 겹쳐요 (${conflicts.length}건)
-      ${conflicts.map(c=>`<div class="conflict-detail">· <b>${esc(c.a.course)}</b> ↔ <b>${esc(c.b.course)}</b> — ${c.shared.join("·")} ${c.period} 중복</div>`).join("")}
+      ${conflicts.map(c=>`<div class="conflict-detail">· <b>${esc(c.a.course)}</b> ↔ <b>${esc(c.b.course)}</b> — ${c.shared.join("·")} ${c.period} · ${c.months.join("·")}월 중복</div>`).join("")}
     </div></div>`;
   }else{
     verdict=`<div class="verdict ok"><span class="big">✓</span><div>겹치는 시간이 없어요!<br><span style="font-weight:500;font-size:12px">담은 ${picked.length}개 강좌를 모두 들을 수 있습니다.</span></div></div>`;
@@ -600,10 +993,25 @@ function renderCart(){
   const items=picked.map(c=>`<div class="picked">
       <div class="bar" style="background:${subjColor(c.subject)}"></div>
       <div class="pinfo"><b>${esc(c.course)}</b>
-        <small>${esc(c.area||"")} · ${esc(c.academy)} · ${esc(c.subject)} · ${c.days.join("·")} ${esc(c.period)}${c.time?" "+esc(c.time):""}</small></div>
+        <small>${esc(c.area||"")} · ${esc(c.academy)} · ${esc(c.subject)} · ${c.days.join("·")} ${esc(c.period)}${c.time?" "+esc(c.time):""} · ${(c.months||[]).join("·")}월</small></div>
       <button class="delbtn" onclick="toggle('${c.id}')">빼기</button>
     </div>`).join("");
   body.innerHTML=verdict+grid+items;
+}
+
+/* =========================================================================
+   11. ACADEMY REGISTRATION
+   ========================================================================= */
+function buildMonthPick(){
+  const wrap=document.getElementById("monthpick");
+  wrap.innerHTML=ALL_MONTHS.map(m=>`<div class="m" data-m="${m}">${m}</div>`).join("");
+  wrap.addEventListener("click",e=>{
+    const el=e.target.closest(".m"); if(!el) return;
+    el.classList.toggle("on");
+    const m=parseInt(el.dataset.m);
+    const i=pickedMonths.indexOf(m);
+    if(i>=0) pickedMonths.splice(i,1); else pickedMonths.push(m);
+  });
 }
 
 document.getElementById("daypick").addEventListener("click",e=>{
@@ -613,6 +1021,7 @@ document.getElementById("daypick").addEventListener("click",e=>{
   const i=pickedDays.indexOf(d);
   if(i>=0) pickedDays.splice(i,1); else pickedDays.push(d);
 });
+
 function addCourse(){
   const acad=document.getElementById("i-acad").value.trim();
   const city=document.getElementById("i-city").value;
@@ -621,14 +1030,15 @@ function addCourse(){
   const grade=document.getElementById("i-grade").value;
   const course=document.getElementById("i-course").value.trim();
   const period=document.getElementById("i-period").value;
-  if(!acad||!city||!area||!subject||!grade||!course||!pickedDays.length||!period){
-    alert("필수 항목(*)을 모두 입력해주세요: 학원명, 지역, 동네, 과목, 학년, 강좌명, 요일, 시간대"); return;
+  if(!acad||!city||!area||!subject||!grade||!course||!pickedDays.length||!period||!pickedMonths.length){
+    alert("필수 항목(*)을 모두 입력해주세요: 학원명, 지역, 동네, 과목, 학년, 강좌명, 요일, 운영 월, 시간대"); return;
   }
   const order={월:0,화:1,수:2,목:3,금:4,토:5,일:6};
   const days=[...pickedDays].sort((a,b)=>order[a]-order[b]);
+  const months=[...pickedMonths].sort((a,b)=>a-b);
   courses.push({
     id:"u"+Date.now(), city, area, academy:acad, teacher:document.getElementById("i-teacher").value.trim(),
-    subject, course, grade, days, period,
+    subject, course, grade, days, period, months,
     time:document.getElementById("i-time").value.trim(),
     sessions:document.getElementById("i-sessions").value.trim(),
     note:document.getElementById("i-note").value.trim()
@@ -636,7 +1046,9 @@ function addCourse(){
   save();
   ["i-teacher","i-course","i-time","i-sessions","i-note"].forEach(id=>document.getElementById(id).value="");
   document.getElementById("i-subject").value="";document.getElementById("i-grade").value="";document.getElementById("i-period").value="";
-  pickedDays=[]; document.querySelectorAll("#daypick .d").forEach(d=>d.classList.remove("on"));
+  pickedDays=[]; pickedMonths=[];
+  document.querySelectorAll("#daypick .d").forEach(d=>d.classList.remove("on"));
+  document.querySelectorAll("#monthpick .m").forEach(d=>d.classList.remove("on"));
   alert("등록되었습니다! 학부모 검색 화면에 바로 노출됩니다.");
   renderAcadList(); render();
 }
@@ -647,7 +1059,7 @@ function renderAcadList(){
   const mine=courses.filter(c=>c.academy===acad);
   if(!mine.length){ box.innerHTML=`<div style="color:#9a8f78;font-size:13px;padding:8px 2px">「${esc(acad)}」(으)로 등록된 강좌가 없습니다.</div>`; return; }
   box.innerHTML=mine.map(c=>`<div class="acad-row">
-    <div class="info"><b>${esc(c.course)}</b><small>${esc(c.area||"")} · ${esc(c.subject)} · ${esc(c.grade)} · ${c.days.join("·")} ${esc(c.period)}${c.teacher?" · "+esc(c.teacher):""}</small></div>
+    <div class="info"><b>${esc(c.course)}</b><small>${esc(c.area||"")} · ${esc(c.subject)} · ${esc(c.grade)} · ${c.days.join("·")} ${esc(c.period)}${c.teacher?" · "+esc(c.teacher):""} · ${(c.months||[]).join("·")}월</small></div>
     <button class="delbtn" onclick="delCourse('${c.id}')">삭제</button>
   </div>`).join("");
 }
@@ -660,7 +1072,13 @@ function delCourse(id){
 }
 document.getElementById("i-acad").addEventListener("input",renderAcadList);
 
-load(); onCityChange('f'); render();
+/* =========================================================================
+   12. INIT
+   ========================================================================= */
+load();
+buildMonthPick();
+onCityChange('f');
+render();
 </script>
 </body>
 </html>

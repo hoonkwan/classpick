@@ -1,28 +1,4 @@
-# OS
+.workspace/
 .DS_Store
-Thumbs.db
-desktop.ini
-
-# Editors
-.vscode/
-.idea/
-*.swp
-*~
-
-# Node (Phase 2 prep)
+*.bak
 node_modules/
-.next/
-out/
-.env
-.env.local
-.env*.local
-
-# Vercel
-.vercel
-
-# Local scratch (data extraction artifacts)
-naver_tmp.html
-naver_imgs/
-img_urls.txt
-june_timetable.txt
-*.hwp_extracted.txt
