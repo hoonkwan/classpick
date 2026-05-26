@@ -368,6 +368,43 @@
 
   .empty-soft{padding:30px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
 
+  /* ===== 동적 신호 배지 (NEW/HOT/D-day) + 시즌배너 ===== */
+  .signal-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
+  .sig{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:900;color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:-.1px;line-height:1.4;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
+  .sig-new{background:linear-gradient(135deg,#1f7a5e,#2c9b78)}
+  .sig-hot{background:linear-gradient(135deg,#e0521f,#ff6a32)}
+  .sig-hot::before{content:"🔥";margin-right:2px}
+  .sig-dday{background:#16203a;border:1px solid #2a3554}
+  .sig-dday b{color:#ffb677;font-family:"IBM Plex Mono",monospace;letter-spacing:-.2px}
+  .sig-views{background:#eef0f4;color:var(--ink-soft);font-weight:700}
+  .sig-views .em{font-size:9.5px;margin-right:2px;opacity:.7}
+  @keyframes popIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+  .season-banner{
+    background:linear-gradient(120deg,#fff7ec 0%,#fff 70%);
+    border:1.5px solid #f3c4bd;border-radius:13px;
+    padding:14px 18px;margin:0 0 18px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px -8px rgba(224,82,31,.18);
+    position:relative;overflow:hidden;
+  }
+  .season-banner::before{
+    content:"";position:absolute;top:-50%;right:-5%;width:180px;height:180px;
+    background:radial-gradient(circle,rgba(224,82,31,.1) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .season-banner .se-emoji{font-size:30px;line-height:1;z-index:1}
+  .season-banner .se-msg{flex:1;min-width:160px;z-index:1}
+  .season-banner .se-msg b{color:var(--brand);font-weight:900}
+  .season-banner .se-msg .se-title{font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.4;letter-spacing:-.2px}
+  .season-banner .se-msg .se-sub{font-size:11.5px;color:var(--ink-soft);margin-top:3px;font-weight:600}
+  .season-banner .se-cta{
+    background:var(--ink);color:#fff;font-family:inherit;font-weight:800;font-size:12.5px;
+    padding:8px 14px;border-radius:8px;border:0;cursor:pointer;letter-spacing:-.2px;z-index:1;
+    transition:.15s;
+  }
+  .season-banner .se-cta:hover{background:#0e1730}
+
   /* ===== Notice Modal (첫 방문 공지) ===== */
   .notice-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
   .notice-overlay.show{display:flex;animation:fadeIn .2s ease-out}
@@ -455,7 +492,19 @@
       <button class="promo-cta">지금 보기 →</button>
     </a>
 
+    <div id="season-banner-wrap"></div>
+
     <div class="browse-filters" id="browse-area-filter"></div>
+
+    <div class="browse-section" id="browse-recent-section" style="display:none">
+      <h2>📌 다시 보기 <span class="count" id="browse-recent-count">0</span></h2>
+      <div class="grid" id="browse-recent-cards"></div>
+    </div>
+
+    <div class="browse-section" id="browse-hot-section" style="display:none">
+      <h2>🔥 지금 인기 <span class="count" id="browse-hot-count">0</span></h2>
+      <div class="grid" id="browse-hot-cards"></div>
+    </div>
 
     <div class="browse-section">
       <h2>🏫 학원 <span class="count" id="browse-acad-count">0</span></h2>
@@ -878,7 +927,78 @@ function enrichCourse(c){
   if(!c.school) c.school=deriveSchool(c);
   if(!c.courseType) c.courseType=deriveCourseType(c);
   if(!c.schoolGrade) c.schoolGrade=deriveSchoolGrade(c);
+  if(!c.createdAt){
+    // 시드 강좌는 ID에서 seed pseudo-random 0~90일 전 부여, 사용자 강좌(u*)는 현재
+    if(c.id && c.id.toString().startsWith("u")){
+      c.createdAt=Date.now();
+    } else {
+      // ID 해시 기반 결정적 무작위
+      let h=0; const idStr=c.id||c.course||"x";
+      for(let i=0;i<idStr.length;i++){ h=((h<<5)-h)+idStr.charCodeAt(i); h|=0; }
+      const daysAgo=Math.abs(h)%90;
+      c.createdAt=Date.now()-daysAgo*86400000;
+    }
+  }
   return c;
+}
+
+/* ===== 동적 신호 헬퍼 (NEW/HOT/D-day/시즌) ===== */
+const NEW_THRESHOLD_DAYS=14;
+const HOT_CLICK_THRESHOLD=3;          // 본인 클릭 3회 이상이면 개인 HOT
+const CLICK_KEY="classpick:clicks:v1";
+const RECENT_KEY="classpick:recent:v1";
+let clickStats=(()=>{try{return JSON.parse(localStorage.getItem(CLICK_KEY))||{}}catch(e){return{}}})();
+let recentViewedIds=(()=>{try{return JSON.parse(localStorage.getItem(RECENT_KEY))||[]}catch(e){return[]}})();
+
+function saveClicks(){ try{localStorage.setItem(CLICK_KEY,JSON.stringify(clickStats))}catch(e){} }
+function saveRecent(){ try{localStorage.setItem(RECENT_KEY,JSON.stringify(recentViewedIds))}catch(e){} }
+function trackView(id){
+  if(!id) return;
+  recentViewedIds=[id,...recentViewedIds.filter(x=>x!==id)].slice(0,12);
+  clickStats[id]=(clickStats[id]||0)+1;
+  saveRecent(); saveClicks();
+}
+
+function isNewCourse(c){
+  if(!c.createdAt) return false;
+  return (Date.now()-c.createdAt) < NEW_THRESHOLD_DAYS*86400000;
+}
+// HOT: 시즌·유형 알고리즘 + 본인 클릭 누적 둘 중 하나
+function isHotCourse(c){
+  if((clickStats[c.id]||0) >= HOT_CLICK_THRESHOLD) return true;
+  const now=new Date(); const m=now.getMonth()+1;
+  const ms=c.months||[];
+  const inSeason = ms.includes(m) || ms.includes(m+1);
+  const hotType = ["방학특강","반년컷","자사특목","수능대비","상위권"].includes(c.courseType);
+  return inSeason && hotType;
+}
+// 개강 D-day: months 중 다음 시작월의 1일까지 일수
+function ddayToNextStart(c){
+  const ms=c.months||[]; if(!ms.length) return null;
+  // 짧은 기간(방학특강·반년컷 등)에만 의미 있음
+  if(ms.length>4) return null;
+  const now=new Date(); const cy=now.getFullYear(); const cm=now.getMonth()+1;
+  let target=null;
+  // 아직 시작 안한 첫 운영월
+  for(const x of ms.slice().sort((a,b)=>a-b)){
+    if(x>cm){ target=new Date(cy,x-1,1); break; }
+  }
+  if(!target) return null;
+  const days=Math.ceil((target-now)/86400000);
+  if(days<=0||days>90) return null;
+  return days;
+}
+
+function seasonInfo(){
+  const m=new Date().getMonth()+1;
+  if(m>=3 && m<=4) return {emoji:"🌸",msg:"1학기 개강 시즌 · 새 학년 정규반 진행중",cta:"카테고리에서 정규반 보기",mode:"category"};
+  if(m===5) return {emoji:"🌱",msg:"1학기 진행중 · 여름방학 특강 곧 시작 · 자사특목 정규반 인기",cta:"자사특목 보기",mode:"category"};
+  if(m===6) return {emoji:"🎯",msg:"6월 모평 · 고3 반년컷 시즌",cta:"반년컷 보기",mode:"category"};
+  if(m===7||m===8) return {emoji:"☀️",msg:"여름방학 시즌! 방학특강이 집중되는 시기",cta:"방학특강 모아보기",mode:"category"};
+  if(m===9) return {emoji:"🍁",msg:"2학기 개강 · 9월 모평 대비",cta:"2학기 강좌 보기",mode:"bymonth"};
+  if(m>=10 && m<=11) return {emoji:"📐",msg:"수능 임박 · 고3 막바지 · 예비고1 겨울특강 시작",cta:"강좌 보기",mode:"category"};
+  if(m===12||m===1||m===2) return {emoji:"❄️",msg:"겨울방학 시즌 · 예비고1·예비고2 특강 대거 개강",cta:"방학특강 모아보기",mode:"category"};
+  return {emoji:"📚",msg:"수업 진행중",cta:"둘러보기",mode:"browse"};
 }
 
 /* =========================================================================
@@ -1167,12 +1287,55 @@ function esc(s){return (s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">"
    5.5 VIEW 0 — BROWSE (기본 진입 — 카드로 바로 클릭)
    ========================================================================= */
 function renderBrowse(){
+  // 시즌 배너
+  const sb=seasonInfo();
+  document.getElementById("season-banner-wrap").innerHTML=`
+    <div class="season-banner">
+      <span class="se-emoji">${sb.emoji}</span>
+      <div class="se-msg">
+        <div class="se-title">${esc(sb.msg)}</div>
+        <div class="se-sub">${new Date().getFullYear()}년 ${new Date().getMonth()+1}월 기준 · 클래스픽 큐레이션</div>
+      </div>
+      <button class="se-cta" onclick="setMode('${sb.mode}')">${esc(sb.cta)} →</button>
+    </div>
+  `;
+
   const areas=[...new Set(courses.map(c=>c.area).filter(Boolean))].sort();
   document.getElementById("browse-area-filter").innerHTML =
     `<button class="chip ${browseArea===""?'on':''}" onclick="setBrowseArea('')">전체</button>` +
     areas.map(a=>`<button class="chip ${browseArea===a?'on':''}" onclick="setBrowseArea('${esc(a)}')">${esc(a)}</button>`).join("");
 
   const filtered = browseArea ? courses.filter(c=>c.area===browseArea) : courses;
+
+  // 다시 보기 (최근 클릭한 강좌)
+  const recentSection=document.getElementById("browse-recent-section");
+  const recent=recentViewedIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean).slice(0,8);
+  if(recent.length){
+    recentSection.style.display="";
+    document.getElementById("browse-recent-count").textContent=recent.length;
+    document.getElementById("browse-recent-cards").innerHTML=recent.map(courseCard).join("");
+  } else {
+    recentSection.style.display="none";
+  }
+
+  // 지금 인기 (HOT 점수 상위 8개)
+  const hotSection=document.getElementById("browse-hot-section");
+  const scored=filtered.map(c=>{
+    let score=0;
+    if(isHotCourse(c)) score+=10;
+    score+=(clickStats[c.id]||0)*3;
+    if(isNewCourse(c)) score+=4;
+    const dday=ddayToNextStart(c);
+    if(dday!==null && dday<=30) score+=5;
+    return {c,score};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,8);
+  if(scored.length){
+    hotSection.style.display="";
+    document.getElementById("browse-hot-count").textContent=scored.length;
+    document.getElementById("browse-hot-cards").innerHTML=scored.map(x=>courseCard(x.c)).join("");
+  } else {
+    hotSection.style.display="none";
+  }
 
   // 학원 카드
   const acadMap={};
@@ -1313,12 +1476,23 @@ function courseCard(c){
   const monthStr=(c.months||[]).map(m=>`<span class="mc${isShortSummer&&(m===7||m===8)?' hot':''}">${m}월</span>`).join("");
   const sgBadge=c.schoolGrade?`<span class="sg-badge">${esc(c.schoolGrade)}</span>`:"";
   const ctBadge=c.courseType?`<span class="ct-badge" style="background:${courseTypeColor(c.courseType)}"><span class="em">${courseTypeEmoji(c.courseType)}</span>${esc(c.courseType)}</span>`:"";
+  // 동적 신호 배지
+  const sigs=[];
+  if(isNewCourse(c)) sigs.push('<span class="sig sig-new">NEW</span>');
+  if(isHotCourse(c)) sigs.push('<span class="sig sig-hot">HOT</span>');
+  const dday=ddayToNextStart(c);
+  if(dday!==null) sigs.push(`<span class="sig sig-dday">개강 <b>D-${dday}</b></span>`);
+  const vc=clickStats[c.id]||0;
+  if(vc>=2) sigs.push(`<span class="sig sig-views"><span class="em">👁</span>${vc}</span>`);
+  const sigRow=sigs.length?`<div class="signal-row">${sigs.join("")}</div>`:"";
+
   return `<div class="course">
     <div class="top">
       <span class="subj" style="background:${col}">${esc(c.subject)}</span>
       <span class="gradechip">${esc(c.grade)}</span>
       <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
     </div>
+    ${sigRow}
     <h3>${esc(c.course)}</h3>
     ${(sgBadge||ctBadge)?`<div style="display:flex;gap:5px;flex-wrap:wrap">${sgBadge}${ctBadge}</div>`:""}
     <div class="meta">
@@ -1340,12 +1514,15 @@ function resetFilters(){
 }
 function toggle(id){
   const i=myIds.indexOf(id);
-  if(i>=0) myIds.splice(i,1); else myIds.push(id);
+  if(i>=0){ myIds.splice(i,1); }
+  else { myIds.push(id); trackView(id); }
   document.getElementById("cartn").textContent=myIds.length;
   if(mode==="search") render();
   if(mode==="byacad") renderByAcad();
   if(mode==="byteach") renderByTeach();
   if(mode==="bymonth") renderByMonth();
+  if(mode==="category") renderByCategory();
+  if(mode==="browse") renderBrowse();
   if(document.getElementById("drawer").classList.contains("open")) renderCart();
 }
 
