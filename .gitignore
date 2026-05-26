@@ -2,3 +2,8 @@
 .DS_Store
 *.bak
 node_modules/
+
+# 학원시간표 원본 스크린샷 — 저작권 회피용. 추출 데이터만 index.html에 들어감.
+명인학원시간표*.png
+명작학원시간표*.png
+*.png
