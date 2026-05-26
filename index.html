@@ -758,18 +758,46 @@ let browseArea="";
    3. STORAGE
    ========================================================================= */
 function load(){
+  // 1) 구버전(v2·v3) localStorage에서 사용자가 직접 등록한 강좌(id="u..."로 시작)만 추출해 보존, 나머지 청소
+  let preserveUser=[];
+  try{
+    ["classpick:courses:v2","classpick:courses:v3"].forEach(oldKey=>{
+      const raw=localStorage.getItem(oldKey);
+      if(raw){
+        const arr=JSON.parse(raw);
+        arr.filter(c=>c && c.id && c.id.toString().startsWith("u")).forEach(c=>{
+          if(!c.months) c.months=REG_YEAR;
+          preserveUser.push(c);
+        });
+        localStorage.removeItem(oldKey);
+      }
+    });
+  }catch(e){ console.warn("legacy cleanup failed",e); }
+
+  // 2) 현재 v4 데이터 로드 + 누락된 시드(명인·명작) 자동 보강
   try{
     const raw=localStorage.getItem(KEY);
-    if(raw){ courses=JSON.parse(raw); return; }
-    const oldRaw=localStorage.getItem("classpick:courses:v2");
-    if(oldRaw){
-      const old=JSON.parse(oldRaw);
-      courses=old.map(c=>c.months?c:Object.assign({months:REG_YEAR},c));
+    if(raw){
+      let parsed=JSON.parse(raw);
+      const existIds=new Set(parsed.map(c=>c.id));
+      // 명인학원 자동 보강
+      if(!parsed.some(c=>c.academy===MYUNGIN)){
+        MYUNGIN_SEED.forEach(c=>{ if(!existIds.has(c.id)) parsed.push(c); });
+      }
+      // 명작학원 자동 보강
+      if(!parsed.some(c=>c.academy===MYUNGJAK)){
+        MYUNGJAK_SEED.forEach(c=>{ if(!existIds.has(c.id)) parsed.push(c); });
+      }
+      // 구버전에서 살린 사용자 강좌 병합
+      preserveUser.forEach(uc=>{ if(!existIds.has(uc.id)) parsed.push(uc); });
+      courses=parsed;
       save();
       return;
     }
-  }catch(e){ console.warn("load failed",e); }
-  courses=SEED.concat(MYUNGIN_SEED).concat(MYUNGJAK_SEED).concat(DEMO);
+  }catch(e){ console.warn("v4 load failed",e); }
+
+  // 3) v4도 비어있으면 새 시드 풀세트
+  courses=SEED.concat(MYUNGIN_SEED).concat(MYUNGJAK_SEED).concat(DEMO).concat(preserveUser);
   save();
 }
 function save(){
