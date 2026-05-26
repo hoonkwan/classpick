@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>클래스픽 · 동네 명강만 골라 담는 곳</title>
-<meta name="description" content="대치·목동·중계·센텀·사직 — 엄선된 학원 강좌를 비교하고 시간표 겹침까지 한눈에." />
+<meta name="description" content="부산 센텀·사직 — 동네 학원 강좌를 비교하고 시간표 겹침까지 한눈에." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -292,12 +292,12 @@
     </div>
     <div class="nav-spacer"></div>
     <div class="modeswitch">
-      <button id="m-browse" class="on" onclick="setMode('browse')">🏠 둘러보기</button>
+      <button id="m-browse" class="on" onclick="setMode('browse')">🏠 클래스픽!</button>
       <button id="m-byacad" onclick="setMode('byacad')">🏫 학원별</button>
       <button id="m-byteach" onclick="setMode('byteach')">👤 강사별</button>
       <button id="m-bymonth" onclick="setMode('bymonth')">📅 월별</button>
       <button id="m-search" onclick="setMode('search')">🔍 검색</button>
-      <button id="m-acad" onclick="setMode('academy')">＋ 학원등록</button>
+      <button id="m-acad" onclick="setMode('academy')">＋ 수업등록</button>
     </div>
     <button id="cartbtn" class="cartbtn" onclick="openCart()">내 시간표 <span class="n" id="cartn">0</span></button>
   </div>
@@ -345,7 +345,7 @@
   <section id="view-search" style="display:none">
     <div class="hero">
       <h1>동네 <b>명강</b>만 골라 담는 곳</h1>
-      <p>대치·목동·중계·센텀·사직 — 지역별로 엄선된 학원 강좌를 한눈에 비교하고, 듣고 싶은 수업을 담아 요일·시간이 겹치는지 바로 확인하세요.</p>
+      <p>부산 센텀·사직 — 동네 학원 강좌를 한눈에 비교하고, 듣고 싶은 수업을 담아 요일·시간이 겹치는지 바로 확인하세요.</p>
     </div>
 
     <div class="ad banner"><span class="tag">AD</span> 광고 영역 · 배너 (728×90) — 광고문의</div>
@@ -354,7 +354,7 @@
       <div class="filters">
         <div class="field">
           <label>지역</label>
-          <select id="f-city" onchange="onCityChange('f');render()"><option value="">전체</option><option>서울</option><option>부산</option></select>
+          <select id="f-city" onchange="onCityChange('f');render()"><option value="">전체</option><option>부산</option></select>
         </div>
         <div class="field">
           <label>동네</label>
@@ -478,7 +478,7 @@
         <div><label>강사명</label><input id="i-teacher" placeholder="예) 김해인" /></div>
         <div>
           <label>지역 *</label>
-          <select id="i-city" onchange="onCityChange('i')"><option value="">선택</option><option>서울</option><option>부산</option></select>
+          <select id="i-city" onchange="onCityChange('i')"><option value="">선택</option><option>부산</option></select>
         </div>
         <div>
           <label>동네 *</label>
@@ -551,7 +551,7 @@ function subjGroup(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return k; }
 const PERIODS=["오전","오후","저녁"];
 const DAYS=["월","화","수","목","금"];
 const ALL_DAYS=["월","화","수","목","금","토","일"];
-const REGIONS={서울:["대치","목동","중계"],부산:["센텀","사직"]};
+const REGIONS={부산:["센텀","사직"]};
 function allAreas(){ return [].concat(...Object.values(REGIONS)); }
 const ALL_MONTHS=[1,2,3,4,5,6,7,8,9,10,11,12];
 const REG_YEAR=[5,6,7,8,9,10,11,12];   // 5월 시작 정규반
@@ -736,15 +736,12 @@ const MYUNGJAK_COURSES=[
 const MYUNGJAK_SEED=MYUNGJAK_COURSES.map((c,i)=>Object.assign({id:"myungjak"+i,city:"부산",area:"센텀",academy:MYUNGJAK},c));
 
 const DEMO=[
- {city:"서울",area:"대치",academy:"대치 더수학",teacher:"한지훈",subject:"수학",course:"미적분 심화 (킬러 대비)",grade:"고2",days:["월","수","금"],period:"저녁",time:"19:00-22:00",sessions:"총 12회",months:REG_YEAR,note:"평가원 4점 집중 / 자체 클리닉"},
- {city:"서울",area:"대치",academy:"대치 명문국어",teacher:"서연우",subject:"국어",course:"독서 고난도 트레이닝",grade:"고2",days:["화","목"],period:"오후",time:"",sessions:"총 8회",months:REG_YEAR,note:"비문학 구조독해"},
- {city:"서울",area:"목동",academy:"목동 코어영어",teacher:"이수민",subject:"영어",course:"수능 어법·구문 완성",grade:"고1",days:["수"],period:"오전",time:"",sessions:"총 6회",months:SUMMER,note:"내신+수능 병행 / 여름특강"},
- {city:"서울",area:"중계",academy:"중계 탑사이언스",teacher:"박도현",subject:"과학",course:"물리 역학 전범위",grade:"고2",days:["월"],period:"저녁",time:"18:00-21:00",sessions:"총 5회",months:REG_YEAR,note:"1등급 목표반"},
  {city:"부산",area:"사직",academy:"사직 정상수학",teacher:"최예린",subject:"수학",course:"공통수학2 개념완성",grade:"고1",days:["화","목"],period:"오후",time:"",sessions:"총 7회",months:REG_YEAR,note:"기초부터 탄탄"},
  {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",months:REG_YEAR,note:"내신 대비"},
 ].map((d,i)=>({id:"demo"+i,...d}));
 
-const KEY="classpick:courses:v4";
+const KEY="classpick:courses:v5";
+const LEGACY_KEYS=["classpick:courses:v2","classpick:courses:v3","classpick:courses:v4"];
 let courses=[];
 let myIds=[];
 let pickedDays=[];
@@ -758,10 +755,10 @@ let browseArea="";
    3. STORAGE
    ========================================================================= */
 function load(){
-  // 1) 구버전(v2·v3) localStorage에서 사용자가 직접 등록한 강좌(id="u..."로 시작)만 추출해 보존, 나머지 청소
+  // 1) 구버전(v2·v3·v4) localStorage에서 사용자가 직접 등록한 강좌(id="u..."로 시작)만 추출해 보존, 나머지 청소
   let preserveUser=[];
   try{
-    ["classpick:courses:v2","classpick:courses:v3"].forEach(oldKey=>{
+    LEGACY_KEYS.forEach(oldKey=>{
       const raw=localStorage.getItem(oldKey);
       if(raw){
         const arr=JSON.parse(raw);
