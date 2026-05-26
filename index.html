@@ -279,6 +279,34 @@
   .takedown-note b{color:var(--warn);font-weight:900}
   .takedown-note a{color:var(--warn);font-weight:700;text-decoration:underline}
 
+  /* ===== View: Category (📁 카테고리) ===== */
+  .axis-toggle{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20;flex-wrap:wrap}
+  .axis-toggle button{flex:1;min-width:140px;border:0;background:transparent;color:var(--ink);font-family:inherit;font-weight:800;font-size:13.5px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:.15s;letter-spacing:-.2px}
+  .axis-toggle button.on{background:var(--ink);color:#fff}
+  .axis-toggle button:hover:not(.on){background:#f5efe2}
+  .axis-toggle .ax-emoji{font-size:15px;margin-right:6px}
+  .cat-search{margin-bottom:14px}
+  .cat-search input{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;background:#fff;color:var(--ink);outline:none;transition:.15s}
+  .cat-search input:focus{border-color:var(--brand)}
+
+  .cat-group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+  .cat-group-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .cat-group-title{font-family:"Black Han Sans",sans-serif;font-size:24px;letter-spacing:-1px;line-height:1.1;color:var(--ink)}
+  .cat-group-icon{font-size:22px}
+  .cat-group-count{background:var(--brand);color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:.02em}
+  .cat-group-sub{font-size:12px;color:var(--ink-soft);font-weight:700;margin-left:auto}
+  .cat-subj-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .cat-subj-pills .pill{font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:999px;cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.15s}
+  .cat-subj-pills .pill:hover{border-color:var(--ink-soft)}
+  .cat-subj-pills .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .cat-subj-pills .pill .cnt{opacity:.7;margin-left:5px}
+
+  .ct-badge{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:800;color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:-.1px}
+  .ct-badge .em{font-size:10px}
+  .sg-badge{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;color:var(--ink);padding:2px 7px;border-radius:5px;background:#eef0f4;letter-spacing:-.1px;border:1px solid #dee3eb}
+
+  .empty-soft{padding:30px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
+
   /* ===== Notice Modal (첫 방문 공지) ===== */
   .notice-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
   .notice-overlay.show{display:flex;animation:fadeIn .2s ease-out}
@@ -328,6 +356,7 @@
     <div class="nav-spacer"></div>
     <div class="modeswitch">
       <button id="m-browse" class="on" onclick="setMode('browse')">🏠 클래스픽!</button>
+      <button id="m-category" onclick="setMode('category')">📁 카테고리</button>
       <button id="m-byacad" onclick="setMode('byacad')">🏫 학원별</button>
       <button id="m-byteach" onclick="setMode('byteach')">👤 강사별</button>
       <button id="m-bymonth" onclick="setMode('bymonth')">📅 월별</button>
@@ -419,9 +448,17 @@
           <label>학원</label>
           <select id="f-acad" onchange="render()"><option value="">전체</option></select>
         </div>
+        <div class="field">
+          <label>학교</label>
+          <select id="f-school" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>강좌유형</label>
+          <select id="f-ctype" onchange="render()"><option value="">전체</option></select>
+        </div>
         <div class="field" style="flex:1">
           <label>검색어 (강좌·강사)</label>
-          <input id="f-q" type="text" placeholder="예) 미적분, 어법, 윤지원…" oninput="render()" />
+          <input id="f-q" type="text" placeholder="예) 미적분, 어법, 자사특목, 부일고…" oninput="render()" />
         </div>
         <button class="resetbtn" onclick="resetFilters()">초기화</button>
       </div>
@@ -497,6 +534,28 @@
   </section>
 
   <!-- ============================================================
+       VIEW 4.5: BY CATEGORY (카테고리별 묶음 — 신규)
+       ============================================================ -->
+  <section id="view-category" style="display:none">
+    <div class="hero">
+      <h1>같은 내용의 수업은 <b>한 곳에</b> 모아서</h1>
+      <p>학교별·학년+과목별·강좌유형별로 같은 카테고리의 강좌를 묶어서 보여드립니다. 자녀 학교나 듣고 싶은 과목을 골라서 같은 카테고리의 강좌를 한 번에 비교하세요.</p>
+    </div>
+
+    <div class="axis-toggle">
+      <button id="ax-school" class="on" onclick="setCategoryAxis('school')"><span class="ax-emoji">🏫</span>학교+학년별</button>
+      <button id="ax-gs" onclick="setCategoryAxis('gradeSubject')"><span class="ax-emoji">📘</span>학년+과목별</button>
+      <button id="ax-ct" onclick="setCategoryAxis('courseType')"><span class="ax-emoji">🏷</span>강좌유형별</button>
+    </div>
+
+    <div class="cat-search">
+      <input id="cat-q" type="text" placeholder="카테고리 또는 강좌 검색 (예: 부일고1, 고1 영어, 자사특목, 미적분…)" oninput="renderByCategory()" />
+    </div>
+
+    <div id="category-body"></div>
+  </section>
+
+  <!-- ============================================================
        VIEW 5: ACADEMY REGISTRATION (학원 등록 — 기존)
        ============================================================ -->
   <section id="view-academy" style="display:none">
@@ -526,6 +585,14 @@
         <div>
           <label>대상학년 *</label>
           <select id="i-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option><option>고1~고2</option></select>
+        </div>
+        <div>
+          <label>대상학교 (선택 — 학교별 강좌인 경우)</label>
+          <select id="i-school"><option value="">없음/공통</option></select>
+        </div>
+        <div>
+          <label>강좌유형</label>
+          <select id="i-ctype"><option value="">자동 분류</option></select>
         </div>
         <div class="full"><label>강좌명 *</label><input id="i-course" placeholder="예) 미적분1 (기본+실력)" /></div>
         <div class="full">
@@ -654,6 +721,74 @@ const SEMESTERS=[
   {key:"winter",label:"겨울방학 (1~2월)",months:[1,2]}
 ];
 function isSummer(months){ return months.includes(7) || months.includes(8); }
+
+/* ===== 카테고리 마스터 (학교 · 강좌유형) ===== */
+const KNOWN_SCHOOLS=[
+  "부일고","해운대고","부산외고","부산예고","해강고",
+  "센텀여고","센텀고","학산여고","덕문여고","동여고"
+];
+// 강좌유형 — 우선순위 높은 것부터. 사이트 표시 색·아이콘과 연동.
+const COURSE_TYPES=[
+  {key:"방학특강",color:"#d65a25",emoji:"☀️"},
+  {key:"반년컷",color:"#a93515",emoji:"🎯"},
+  {key:"자사특목",color:"#7c5cc4",emoji:"🏛"},
+  {key:"수능대비",color:"#2f6f9e",emoji:"📐"},
+  {key:"상위권",color:"#b73f12",emoji:"⭐"},
+  {key:"심화",color:"#e0521f",emoji:"🔥"},
+  {key:"준심화",color:"#e08a3c",emoji:"🔶"},
+  {key:"개념",color:"#1f7a5e",emoji:"📖"},
+  {key:"솔루션",color:"#3c6e8a",emoji:"🧩"},
+  {key:"개별진도",color:"#4a5a78",emoji:"👤"},
+  {key:"클리닉",color:"#9e3f5e",emoji:"💊"},
+  {key:"단어",color:"#5a6b3e",emoji:"📝"},
+  {key:"문법",color:"#6b4e3e",emoji:"📚"},
+  {key:"독해",color:"#4e6b3e",emoji:"📖"},
+  {key:"학교내신",color:"#3e4e6b",emoji:"🏫"},
+  {key:"일반",color:"#5a6678",emoji:"📌"}
+];
+function courseTypeColor(t){ const x=COURSE_TYPES.find(c=>c.key===t); return x?x.color:"#5a6678"; }
+function courseTypeEmoji(t){ const x=COURSE_TYPES.find(c=>c.key===t); return x?x.emoji:"📌"; }
+
+/* ===== 자동 추출 (school/courseType/schoolGrade) ===== */
+function deriveSchool(c){
+  const text=(c.course||"")+" "+(c.note||"");
+  for(const s of KNOWN_SCHOOLS){ if(text.includes(s)) return s; }
+  return "";
+}
+function deriveCourseType(c){
+  const text=(c.course||"")+" "+(c.note||"");
+  if(text.includes("수파르타")) return "방학특강";
+  const months=c.months||[];
+  if(months.length && months.length<=3 && isSummer(months)) return "방학특강";
+  if(text.includes("반년컷")) return "반년컷";
+  if(text.includes("자사특목")) return "자사특목";
+  if(text.includes("수능")) return "수능대비";
+  if(text.includes("SUMMIT")||text.includes("상위권")) return "상위권";
+  if(text.includes("준심화")) return "준심화";
+  if(text.includes("심화")) return "심화";
+  if(text.includes("개념")) return "개념";
+  if(text.includes("솔루션")) return "솔루션";
+  if(text.includes("개별진도")||text.includes("1:1")||text.includes("스카이매쓰")) return "개별진도";
+  if(text.includes("클리닉")) return "클리닉";
+  if(text.includes("보카")||text.includes("단어")) return "단어";
+  if(text.includes("문법")) return "문법";
+  if(text.includes("독해")) return "독해";
+  if(text.includes("내신")) return "학교내신";
+  return "일반";
+}
+function deriveSchoolGrade(c){
+  const s=deriveSchool(c);
+  if(!s) return "";
+  const m=c.grade?c.grade.match(/(\d)/):null;
+  return m ? s+m[1] : s;
+}
+function enrichCourse(c){
+  if(!c) return c;
+  if(!c.school) c.school=deriveSchool(c);
+  if(!c.courseType) c.courseType=deriveCourseType(c);
+  if(!c.schoolGrade) c.schoolGrade=deriveSchoolGrade(c);
+  return c;
+}
 
 /* =========================================================================
    2. SEED DATA (교육인학원 센텀점 + 데모)
@@ -864,6 +999,7 @@ function load(){
       // 구버전에서 살린 사용자 강좌 병합
       preserveUser.forEach(uc=>{ if(!existIds.has(uc.id)) parsed.push(uc); });
       courses=parsed;
+      courses.forEach(enrichCourse);
       save();
       return;
     }
@@ -871,6 +1007,7 @@ function load(){
 
   // 3) v4도 비어있으면 새 시드 풀세트
   courses=SEED.concat(MYUNGIN_SEED).concat(MYUNGJAK_SEED).concat(DEMO).concat(preserveUser);
+  courses.forEach(enrichCourse);
   save();
 }
 function save(){
@@ -883,17 +1020,18 @@ function save(){
    ========================================================================= */
 function setMode(m){
   mode=m;
-  ["browse","search","byacad","byteach","bymonth","academy"].forEach(k=>{
+  ["browse","category","search","byacad","byteach","bymonth","academy"].forEach(k=>{
     document.getElementById("view-"+k).style.display = (m===k)?"block":"none";
   });
-  ["m-browse","m-search","m-byacad","m-byteach","m-bymonth","m-acad"].forEach(k=>{
+  ["m-browse","m-category","m-search","m-byacad","m-byteach","m-bymonth","m-acad"].forEach(k=>{
     document.getElementById(k).classList.remove("on");
   });
-  const map={browse:"m-browse",search:"m-search",byacad:"m-byacad",byteach:"m-byteach",bymonth:"m-bymonth",academy:"m-acad"};
+  const map={browse:"m-browse",category:"m-category",search:"m-search",byacad:"m-byacad",byteach:"m-byteach",bymonth:"m-bymonth",academy:"m-acad"};
   document.getElementById(map[m]).classList.add("on");
   document.getElementById("cartbtn").style.display = (m==="academy")?"none":"flex";
   window.scrollTo(0,0);
   if(m==="browse") renderBrowse();
+  if(m==="category") renderByCategory();
   if(m==="academy") renderAcadList();
   if(m==="byacad") renderByAcad();
   if(m==="byteach") renderByTeach();
@@ -1027,9 +1165,27 @@ function openAcad(name){
 /* =========================================================================
    6. VIEW 1 — SEARCH
    ========================================================================= */
+function refreshSchoolOptions(){
+  const sel=document.getElementById("f-school");
+  const cur=sel.value;
+  const list=[...new Set(courses.map(c=>c.school).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">전체</option>'+list.map(s=>`<option>${esc(s)}</option>`).join("");
+  if(list.includes(cur)) sel.value=cur;
+}
+function refreshCtypeOptions(){
+  const sel=document.getElementById("f-ctype");
+  const cur=sel.value;
+  const list=[...new Set(courses.map(c=>c.courseType).filter(Boolean))];
+  const order={};COURSE_TYPES.forEach((c,i)=>order[c.key]=i);
+  list.sort((a,b)=>(order[a]??99)-(order[b]??99));
+  sel.innerHTML='<option value="">전체</option>'+list.map(s=>`<option>${esc(s)}</option>`).join("");
+  if(list.includes(cur)) sel.value=cur;
+}
 function render(){
   refreshAcadOptions();
   refreshMonthOptions();
+  refreshSchoolOptions();
+  refreshCtypeOptions();
   const city=document.getElementById("f-city").value;
   const area=document.getElementById("f-area").value;
   const g=document.getElementById("f-grade").value;
@@ -1037,6 +1193,8 @@ function render(){
   const day=document.getElementById("f-day").value;
   const per=document.getElementById("f-period").value;
   const ac=document.getElementById("f-acad").value;
+  const sch=document.getElementById("f-school").value;
+  const ct=document.getElementById("f-ctype").value;
   const mo=parseInt(document.getElementById("f-month").value)||0;
   const q=document.getElementById("f-q").value.trim();
   const list=courses.filter(c=>
@@ -1047,8 +1205,10 @@ function render(){
      (!day || c.days.includes(day)) &&
      (!per || c.period===per) &&
      (!ac || c.academy===ac) &&
+     (!sch || c.school===sch) &&
+     (!ct || c.courseType===ct) &&
      (!mo || (c.months||[]).includes(mo)) &&
-     (!q || (c.course+c.teacher+c.subject+c.note).includes(q))
+     (!q || (c.course+c.teacher+c.subject+c.note+(c.school||"")+(c.schoolGrade||"")+(c.courseType||"")).includes(q))
   );
   document.getElementById("reslen").textContent=list.length;
   const wrap=document.getElementById("results");
@@ -1058,8 +1218,10 @@ function render(){
 function courseCard(c){
   const col=subjColor(c.subject);
   const added=myIds.includes(c.id);
-  const isShortSummer=isSummer(c.months) && c.months.length<=3;
+  const isShortSummer=isSummer(c.months||[]) && (c.months||[]).length<=3;
   const monthStr=(c.months||[]).map(m=>`<span class="mc${isShortSummer&&(m===7||m===8)?' hot':''}">${m}월</span>`).join("");
+  const sgBadge=c.schoolGrade?`<span class="sg-badge">${esc(c.schoolGrade)}</span>`:"";
+  const ctBadge=c.courseType?`<span class="ct-badge" style="background:${courseTypeColor(c.courseType)}"><span class="em">${courseTypeEmoji(c.courseType)}</span>${esc(c.courseType)}</span>`:"";
   return `<div class="course">
     <div class="top">
       <span class="subj" style="background:${col}">${esc(c.subject)}</span>
@@ -1067,6 +1229,7 @@ function courseCard(c){
       <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
     </div>
     <h3>${esc(c.course)}</h3>
+    ${(sgBadge||ctBadge)?`<div style="display:flex;gap:5px;flex-wrap:wrap">${sgBadge}${ctBadge}</div>`:""}
     <div class="meta">
       ${c.days.map(d=>`<span class="day">${d}</span>`).join("")}
       <span>${esc(c.period)}</span>
@@ -1080,7 +1243,7 @@ function courseCard(c){
   </div>`;
 }
 function resetFilters(){
-  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q","f-month"].forEach(id=>document.getElementById(id).value="");
+  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q","f-month","f-school","f-ctype"].forEach(id=>document.getElementById(id).value="");
   onCityChange('f'); document.getElementById("f-area").value="";
   render();
 }
@@ -1268,6 +1431,110 @@ function renderByMonth(){
 function setMonth(m){ currentMonth=m; renderByMonth(); }
 
 /* =========================================================================
+   9.5 VIEW 4.5 — BY CATEGORY (카테고리 묶음)
+   ========================================================================= */
+let categoryAxis="school";
+let catSubjFilter={};
+
+function setCategoryAxis(a){
+  categoryAxis=a; catSubjFilter={};
+  ["ax-school","ax-gs","ax-ct"].forEach(k=>document.getElementById(k).classList.remove("on"));
+  const map={school:"ax-school",gradeSubject:"ax-gs",courseType:"ax-ct"};
+  document.getElementById(map[a]).classList.add("on");
+  renderByCategory();
+}
+function setCatSubj(g,s){ catSubjFilter[g]=s; renderByCategory(); }
+
+function renderByCategory(){
+  const q=(document.getElementById("cat-q").value||"").trim().toLowerCase();
+  const matchQ=c=>{
+    if(!q) return true;
+    return (c.course+c.note+c.teacher+c.subject+c.grade+c.academy+(c.school||"")+(c.schoolGrade||"")+(c.courseType||"")).toLowerCase().includes(q);
+  };
+
+  let groups={};
+  let keyFn;
+  if(categoryAxis==="school"){
+    keyFn=c=>c.schoolGrade||"";
+  } else if(categoryAxis==="gradeSubject"){
+    keyFn=c=>`${c.grade} ${subjGroup(c.subject)}`;
+  } else {
+    keyFn=c=>c.courseType||"일반";
+  }
+  courses.forEach(c=>{
+    if(!matchQ(c)) return;
+    const k=keyFn(c);
+    if(!k) return;
+    if(!groups[k]) groups[k]=[];
+    groups[k].push(c);
+  });
+  let groupOrder=Object.keys(groups);
+  if(categoryAxis==="gradeSubject"){
+    const gOrder={"중3":0,"고1":1,"고2":2,"고3":3};
+    groupOrder.sort((a,b)=>{
+      const [ag,as]=a.split(" "); const [bg,bs]=b.split(" ");
+      const dg=(gOrder[ag]??99)-(gOrder[bg]??99);
+      if(dg) return dg;
+      return as.localeCompare(bs,"ko");
+    });
+  } else if(categoryAxis==="courseType"){
+    const ctOrder={};
+    COURSE_TYPES.forEach((c,i)=>ctOrder[c.key]=i);
+    groupOrder.sort((a,b)=>(ctOrder[a]??99)-(ctOrder[b]??99));
+  } else {
+    groupOrder.sort((a,b)=>groups[b].length-groups[a].length);
+  }
+
+  const body=document.getElementById("category-body");
+  if(!groupOrder.length){
+    body.innerHTML='<div class="empty">조건에 맞는 카테고리가 없어요. 검색어를 바꿔보세요.</div>';
+    return;
+  }
+
+  body.innerHTML=groupOrder.map(g=>{
+    const arr=groups[g];
+    const acads=new Set(arr.map(c=>c.academy));
+    const teachers=new Set(arr.map(c=>c.teacher).filter(Boolean));
+    let icon="", sub="";
+    if(categoryAxis==="school"){
+      icon="🏫"; sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
+    } else if(categoryAxis==="gradeSubject"){
+      const sj=subjGroup(arr[0].subject);
+      icon=sj==="영어"?"🇬🇧":sj==="수학"?"➗":sj==="국어"?"📖":sj==="과학"?"🧪":"🌏";
+      sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
+    } else {
+      icon=courseTypeEmoji(g); sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
+    }
+
+    let pills="";
+    if(categoryAxis==="school"){
+      const subjMap={};
+      arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
+      const subjList=Object.keys(subjMap).sort();
+      const cur=catSubjFilter[g]||"전체";
+      pills=`<div class="cat-subj-pills">
+        <button class="pill ${cur==='전체'?'on':''}" onclick="setCatSubj('${esc(g)}','전체')">전체<span class="cnt">${arr.length}</span></button>
+        ${subjList.map(s=>`<button class="pill ${cur===s?'on':''}" onclick="setCatSubj('${esc(g)}','${esc(s)}')">${esc(s)}<span class="cnt">${subjMap[s]}</span></button>`).join("")}
+      </div>`;
+    }
+    const filtered = (categoryAxis==="school" && catSubjFilter[g] && catSubjFilter[g]!=="전체")
+      ? arr.filter(c=>subjGroup(c.subject)===catSubjFilter[g])
+      : arr;
+
+    return `<div class="cat-group">
+      <div class="cat-group-head">
+        <span class="cat-group-icon">${icon}</span>
+        <span class="cat-group-title">${esc(g)}</span>
+        <span class="cat-group-count">${arr.length}개 강좌</span>
+        <span class="cat-group-sub">${sub}</span>
+      </div>
+      ${pills}
+      <div class="grid">${filtered.map(courseCard).join("")}</div>
+    </div>`;
+  }).join("");
+}
+
+/* =========================================================================
    10. CART
    ========================================================================= */
 function openCart(){ renderCart(); document.getElementById("scrim").classList.add("open"); document.getElementById("drawer").classList.add("open"); }
@@ -1334,6 +1601,12 @@ function buildMonthPick(){
     if(i>=0) pickedMonths.splice(i,1); else pickedMonths.push(m);
   });
 }
+function buildFormCategoryPicks(){
+  const sSel=document.getElementById("i-school");
+  if(sSel) sSel.innerHTML='<option value="">없음/공통</option>'+KNOWN_SCHOOLS.map(s=>`<option>${esc(s)}</option>`).join("");
+  const ctSel=document.getElementById("i-ctype");
+  if(ctSel) ctSel.innerHTML='<option value="">자동 분류</option>'+COURSE_TYPES.map(c=>`<option value="${esc(c.key)}">${c.emoji} ${esc(c.key)}</option>`).join("");
+}
 
 document.getElementById("daypick").addEventListener("click",e=>{
   const el=e.target.closest(".d"); if(!el) return;
@@ -1357,16 +1630,22 @@ function addCourse(){
   const order={월:0,화:1,수:2,목:3,금:4,토:5,일:6};
   const days=[...pickedDays].sort((a,b)=>order[a]-order[b]);
   const months=[...pickedMonths].sort((a,b)=>a-b);
-  courses.push({
+  const schoolPick=document.getElementById("i-school").value;
+  const ctypePick=document.getElementById("i-ctype").value;
+  const newC={
     id:"u"+Date.now(), city, area, academy:acad, teacher:document.getElementById("i-teacher").value.trim(),
     subject, course, grade, days, period, months,
+    school: schoolPick || "",
+    courseType: ctypePick || "",
     time:document.getElementById("i-time").value.trim(),
     sessions:document.getElementById("i-sessions").value.trim(),
     note:document.getElementById("i-note").value.trim()
-  });
+  };
+  enrichCourse(newC);  // school/courseType이 비어있으면 자동 추출
+  courses.push(newC);
   save();
   ["i-teacher","i-course","i-time","i-sessions","i-note"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("i-subject").value="";document.getElementById("i-grade").value="";document.getElementById("i-period").value="";
+  ["i-subject","i-grade","i-period","i-school","i-ctype"].forEach(id=>document.getElementById(id).value="");
   pickedDays=[]; pickedMonths=[];
   document.querySelectorAll("#daypick .d").forEach(d=>d.classList.remove("on"));
   document.querySelectorAll("#monthpick .m").forEach(d=>d.classList.remove("on"));
@@ -1414,6 +1693,7 @@ function reopenNotice(){
 
 load();
 buildMonthPick();
+buildFormCategoryPicks();
 onCityChange('f');
 render();
 renderBrowse();
