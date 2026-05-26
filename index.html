@@ -268,6 +268,30 @@
   .takedown-note b{color:var(--warn);font-weight:900}
   .takedown-note a{color:var(--warn);font-weight:700;text-decoration:underline}
 
+  /* ===== Notice Modal (첫 방문 공지) ===== */
+  .notice-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+  .notice-overlay.show{display:flex;animation:fadeIn .2s ease-out}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .notice-modal{background:var(--card);border-radius:16px;max-width:560px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);overflow:hidden;animation:slideUp .25s ease-out}
+  @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .notice-head{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:10px}
+  .notice-head .ico{font-size:22px}
+  .notice-head h2{font-size:17px;font-weight:900;letter-spacing:-.3px}
+  .notice-body{padding:22px 24px;font-size:13.5px;line-height:1.65;color:var(--ink);max-height:65vh;overflow-y:auto}
+  .notice-body h3{font-size:14px;color:var(--brand);font-weight:900;margin:16px 0 7px;letter-spacing:-.2px}
+  .notice-body h3:first-child{margin-top:0}
+  .notice-body p{color:var(--ink-soft);margin:4px 0 8px}
+  .notice-body ul{padding-left:18px;margin:6px 0}
+  .notice-body ul li{margin:4px 0;color:var(--ink-soft);font-size:13px}
+  .notice-takedown{background:#fff7f1;border:1.5px solid #f3c4bd;border-radius:11px;padding:14px 16px;margin-top:6px}
+  .notice-takedown b{color:var(--warn);font-weight:900}
+  .notice-takedown a{color:var(--warn);font-weight:800;text-decoration:underline}
+  .notice-takedown .hint{font-size:11.5px;color:var(--ink-soft);font-weight:600;margin-top:6px;display:block}
+  .notice-foot{padding:14px 24px 20px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--line)}
+  .notice-foot button{font-family:inherit;font-weight:800;font-size:14px;padding:11px 24px;border-radius:10px;cursor:pointer;border:0;background:var(--ink);color:#fff;transition:.15s;letter-spacing:-.2px}
+  .notice-foot button:hover{background:#0e1730}
+  .footer-notice-link{color:var(--ink);font-weight:700;text-decoration:underline;cursor:pointer;background:none;border:0;font-family:inherit;font-size:inherit;padding:0}
+
   @media (max-width:760px){
     .hero h1{font-size:24px}
     .form-grid{grid-template-columns:1fr}
@@ -333,7 +357,7 @@
     </div>
 
     <div class="takedown-note">
-      <b>학원·강사 정보 정정/삭제 요청</b> — 본 사이트의 강좌 정보는 각 학원의 공개된 블로그·홈페이지 정보를 토대로 수집·정리한 정보 큐레이션 서비스입니다. 정정이나 삭제를 원하시는 학원·강사 분께서는 <a href="mailto:classpick@example.com?subject=정정/삭제 요청">classpick@example.com</a> 으로 학원명·강좌명을 보내주시면 <b>영업일 1일 이내 처리</b>합니다.
+      <b>학원·강사 정보 정정/삭제 요청</b> — 본 사이트의 강좌 정보는 각 학원의 공개된 블로그·홈페이지 정보를 토대로 수집·정리한 정보 큐레이션 서비스입니다. 정정이나 삭제를 원하시는 학원·강사 분께서는 <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a> 으로 학원명·강좌명을 보내주시면 <b>영업일 1일 이내 처리</b>합니다.
     </div>
 
     <div class="ad inline"><span class="tag">AD</span> 광고 영역 · 인피드 — 광고문의</div>
@@ -523,13 +547,46 @@
   <div class="ad foot"><span class="tag">AD</span> 광고 영역 · 하단 배너 — 광고문의</div>
 
   <footer>
-    <b>클래스픽</b>은 동네 학원의 공개된 강좌 정보를 학부모가 비교·선택할 수 있게 돕는 정보 큐레이션 서비스입니다.
+    <b>클래스픽</b>은 부산 센텀·사직 지역 동네 학원의 공개된 강좌 정보를 학부모가 비교·선택할 수 있게 돕는 정보 큐레이션 서비스입니다.
     강사 연락처·사진 등 민감 개인정보는 수집하지 않으며, 표시된 정보는 각 학원의 블로그·홈페이지에 공개된 시간표를 토대로 정리한 것입니다. 시간표는 변경될 수 있으니 수강 전 해당 학원에 직접 확인하세요.
     <br><br>
-    <b>정정·삭제 요청</b> — 학원 또는 강사 본인은 <a href="mailto:classpick@example.com?subject=정정/삭제 요청" style="color:var(--ink);font-weight:700">classpick@example.com</a> 으로 학원명·강좌명을 보내주시면 영업일 1일 이내 처리해 드립니다.
-    <br>※ 본 사이트는 현재 베타 단계이며, 표시된 강좌는 공개 정보 기반의 예시 큐레이션입니다.
+    <b>정정·삭제 요청</b> — 학원 또는 강사 본인은 <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청" style="color:var(--ink);font-weight:700">class-pick@naver.com</a> 으로 학원명·강좌명을 보내주시면 영업일 1일 이내 처리해 드립니다. · <button class="footer-notice-link" onclick="reopenNotice()">공지 다시 보기</button>
+    <br>※ 본 사이트는 베타 단계이며, 표시된 강좌는 공개 정보 기반의 예시 큐레이션입니다. · 운영: 클래스픽 운영팀
   </footer>
 </main>
+
+<!-- ============================================================
+     공지 모달 (첫 방문 1회 노출 — 학부모 안내 + 학원/강사 정정삭제 창구)
+     ============================================================ -->
+<div class="notice-overlay" id="notice-overlay">
+  <div class="notice-modal">
+    <div class="notice-head">
+      <span class="ico">📚</span>
+      <h2>클래스픽 안내 — 처음 오신 분께</h2>
+    </div>
+    <div class="notice-body">
+      <p><b>클래스픽</b>은 부산 센텀·사직 지역 학원의 공개 강좌 정보를 학부모 편의를 위해 정리·비교하는 정보 큐레이션 서비스입니다.</p>
+
+      <h3>👨‍👩‍👧 학부모님께</h3>
+      <ul>
+        <li>표시된 강좌는 각 학원의 공개된 블로그·홈페이지 자료를 토대로 정리한 것입니다.</li>
+        <li>시간표는 변경될 수 있으니 수강 전 해당 학원에 직접 확인해 주세요.</li>
+        <li>강사 연락처·사진 등 민감 개인정보는 수집하지 않습니다.</li>
+        <li>본 서비스는 광고 외 일체의 학원 추천·수수료를 받지 않으며, 학원별 동일한 약관·정렬 기준을 적용합니다.</li>
+      </ul>
+
+      <h3>🏫 학원·강사 분께</h3>
+      <p>강좌 정보의 <b>정정·삭제 요청</b>은 아래 메일로 보내주시면 영업일 1일 이내에 처리해 드립니다. 별도 사유 확인 없이 즉시 반영합니다.</p>
+      <div class="notice-takedown">
+        📧 <b>요청 메일:</b> <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a>
+        <span class="hint">학원명·강좌명을 함께 기재해 주시면 빠른 처리에 도움이 됩니다. · 클래스픽 운영팀</span>
+      </div>
+    </div>
+    <div class="notice-foot">
+      <button onclick="dismissNotice()">확인했습니다</button>
+    </div>
+  </div>
+</div>
 
 <div class="scrim" id="scrim" onclick="closeCart()"></div>
 <aside class="drawer" id="drawer">
@@ -1320,11 +1377,28 @@ document.getElementById("i-acad").addEventListener("input",renderAcadList);
 /* =========================================================================
    12. INIT
    ========================================================================= */
+/* =========================================================================
+   13. NOTICE MODAL (첫 방문 공지 — 학원 양해 메일 대체용 안전장치)
+   ========================================================================= */
+const NOTICE_KEY="classpick:notice:dismissed:v1";
+function showNoticeIfFirst(){
+  if(localStorage.getItem(NOTICE_KEY)) return;
+  document.getElementById("notice-overlay").classList.add("show");
+}
+function dismissNotice(){
+  try{ localStorage.setItem(NOTICE_KEY,new Date().toISOString()); }catch(e){}
+  document.getElementById("notice-overlay").classList.remove("show");
+}
+function reopenNotice(){
+  document.getElementById("notice-overlay").classList.add("show");
+}
+
 load();
 buildMonthPick();
 onCityChange('f');
 render();
 renderBrowse();
+showNoticeIfFirst();
 </script>
 </body>
 </html>
