@@ -368,6 +368,59 @@
 
   .empty-soft{padding:30px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
 
+  /* ===== AI 검색 박스 ===== */
+  .ai-search-box{
+    background:linear-gradient(135deg,#fff 0%,#fff7ec 100%);
+    border:1.5px solid var(--brand);border-radius:14px;
+    padding:18px 20px 16px;margin-bottom:20px;
+    box-shadow:0 8px 20px -10px rgba(224,82,31,.25);
+  }
+  .ai-search-title{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+  .ai-search-title h3{font-family:"Black Han Sans",sans-serif;font-size:18px;letter-spacing:-.5px;color:var(--ink)}
+  .ai-search-title .pulse{font-size:18px;animation:pulse 2s ease-in-out infinite}
+  .ai-search-title .tag{font-size:10px;background:var(--brand);color:#fff;padding:2px 7px;border-radius:5px;font-weight:800;letter-spacing:.04em;margin-left:auto;font-family:"IBM Plex Mono",monospace}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+  .ai-search-input-wrap{
+    display:flex;align-items:center;gap:8px;
+    background:#fff;border:2px solid var(--ink);border-radius:10px;
+    padding:4px 4px 4px 14px;transition:.15s;
+  }
+  .ai-search-input-wrap:focus-within{border-color:var(--brand);box-shadow:0 0 0 4px rgba(224,82,31,.12)}
+  #ai-q{flex:1;border:0;outline:0;font-family:inherit;font-size:14.5px;padding:11px 0;background:transparent;color:var(--ink);min-width:0}
+  #ai-q::placeholder{color:#9aa3b3}
+  .ai-btn{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:10px 20px;font-family:inherit;font-weight:800;font-size:13.5px;cursor:pointer;letter-spacing:-.2px;transition:.15s;white-space:nowrap}
+  .ai-btn:hover{background:#0e1730}
+  .ai-suggests{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .ai-suggests-label{font-size:11px;color:var(--ink-soft);font-weight:700;letter-spacing:.04em;margin-right:4px;align-self:center}
+  .ai-suggests .suggest{font-size:12px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+  .ai-suggests .suggest:hover{border-color:var(--brand);color:var(--brand);background:#fff7f1}
+
+  .ai-result-section{
+    background:var(--card);border:1.5px solid var(--brand);
+    border-radius:14px;padding:18px 20px;margin-bottom:20px;
+    box-shadow:0 8px 20px -10px rgba(224,82,31,.2);
+    animation:slideUpAi .3s ease-out;
+  }
+  @keyframes slideUpAi{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .ai-summary{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+  .ai-summary .qbox{flex:1;min-width:200px}
+  .ai-summary .qbox .qline{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.5}
+  .ai-summary .qbox .qline b{color:var(--brand)}
+  .ai-summary .qbox .qline .cnt{font-family:"Black Han Sans",sans-serif;font-size:22px;color:var(--brand);margin:0 4px}
+  .ai-filter-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+  .ai-filter-tags span{font-size:11px;color:var(--ink-soft);font-weight:700;background:#f5efe2;padding:3px 9px;border-radius:5px;border:1px solid var(--line)}
+  .ai-clear-btn{background:#fff;border:1.5px solid var(--line);color:var(--ink-soft);font-family:inherit;font-weight:700;font-size:12px;padding:7px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;transition:.15s}
+  .ai-clear-btn:hover{border-color:var(--warn);color:var(--warn)}
+  .ai-empty-result{padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:13.5px;line-height:1.8}
+  .ai-empty-result .big{font-size:32px;margin-bottom:8px}
+
+  @media (max-width:760px){
+    .ai-search-input-wrap{flex-direction:column;align-items:stretch;padding:10px}
+    #ai-q{padding:8px 4px}
+    .ai-btn{width:100%}
+  }
+
   /* ===== 동적 신호 배지 (NEW/HOT/D-day) + 시즌배너 ===== */
   .signal-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
   .sig{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:900;color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:-.1px;line-height:1.4;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
@@ -493,6 +546,30 @@
     </a>
 
     <div id="season-banner-wrap"></div>
+
+    <div class="ai-search-box">
+      <div class="ai-search-title">
+        <span class="pulse">✨</span>
+        <h3>AI 검색</h3>
+        <span class="tag">BETA</span>
+      </div>
+      <div class="ai-search-input-wrap">
+        <input id="ai-q" type="text" placeholder="자연어로 물어보세요 — 예: 교육인에서 진행하는 수업 / 센텀에서 영어 강의 / 부일고1 자사특목" onkeydown="if(event.key==='Enter')runAiSearch()" />
+        <button class="ai-btn" onclick="runAiSearch()">🔎 검색</button>
+      </div>
+      <div class="ai-suggests">
+        <span class="ai-suggests-label">예시:</span>
+        <span class="suggest" onclick="setAiQuery('교육인에서 진행하는 모든 수업')">교육인에서 진행하는 모든 수업</span>
+        <span class="suggest" onclick="setAiQuery('센텀에서 영어 강의')">센텀에서 영어 강의</span>
+        <span class="suggest" onclick="setAiQuery('자사특목 수학')">자사특목 수학</span>
+        <span class="suggest" onclick="setAiQuery('이번 달 강좌')">이번 달 강좌</span>
+        <span class="suggest" onclick="setAiQuery('부일고1 수업')">부일고1 수업</span>
+        <span class="suggest" onclick="setAiQuery('7월 방학특강')">7월 방학특강</span>
+        <span class="suggest" onclick="setAiQuery('윤훈관 선생님 강좌')">윤훈관 선생님 강좌</span>
+      </div>
+    </div>
+
+    <div id="ai-result"></div>
 
     <div class="browse-filters" id="browse-area-filter"></div>
 
@@ -1414,6 +1491,155 @@ function openAcad(name){
     const sel=document.getElementById("ba-pick");
     if(sel){ sel.value=name; renderByAcad(); }
   },50);
+}
+
+/* =========================================================================
+   5.6 AI 검색 (자연어 → 10축 필터 자동 매칭, 로컬 100%)
+   ========================================================================= */
+function setAiQuery(q){ document.getElementById("ai-q").value=q; runAiSearch(); }
+function clearAiSearch(){ document.getElementById("ai-q").value=""; document.getElementById("ai-result").innerHTML=""; }
+
+function parseAiQuery(q){
+  const filters={};
+
+  // 학원명 (부분 매칭, 우선순위 긴 키워드부터)
+  const academyKw=[
+    ["교육인","교육인학원 센텀점"],
+    ["명인","명인학원"],
+    ["명작","명작학원"],
+    ["정상수학","사직 정상수학"],
+    ["한울국어","사직 한울국어"]
+  ];
+  for(const [k,v] of academyKw){ if(q.includes(k)){ filters.academy=v; break; } }
+
+  // 동네
+  if(q.includes("센텀")) filters.area="센텀";
+  else if(q.includes("사직")) filters.area="사직";
+
+  // 학년 (예비고1 → 고1)
+  if(q.includes("예비고1")||q.includes("예비 고1")||q.includes("예비고 1")) filters.grade="고1";
+  else if(q.includes("예비고2")||q.includes("예비 고2")) filters.grade="고2";
+  else if(q.includes("중3")) filters.grade="중3";
+  else if(q.includes("고1")) filters.grade="고1";
+  else if(q.includes("고2")) filters.grade="고2";
+  else if(q.includes("고3")) filters.grade="고3";
+
+  // 과목
+  for(const s of ["영어","수학","국어","과학","사회"]){
+    if(q.includes(s)){ filters.subject=s; break; }
+  }
+
+  // 강좌유형 (우선순위 — 더 구체적인 키워드 먼저)
+  const typeKw=[
+    ["자사특목","자사특목"],
+    ["수파르타","방학특강"],
+    ["여름특강","방학특강"],
+    ["겨울특강","방학특강"],
+    ["방학특강","방학특강"],
+    ["반년컷","반년컷"],
+    ["수능대비","수능대비"],
+    ["수능","수능대비"],
+    ["SUMMIT","상위권"],
+    ["summit","상위권"],
+    ["상위권","상위권"],
+    ["준심화","준심화"],
+    ["심화","심화"],
+    ["솔루션","솔루션"],
+    ["스카이매쓰","개별진도"],
+    ["개별진도","개별진도"],
+    ["1:1","개별진도"],
+    ["클리닉","클리닉"],
+    ["보카","단어"],
+    ["단어","단어"],
+    ["문법","문법"],
+    ["독해","독해"],
+    ["개념","개념"],
+    ["내신","학교내신"]
+  ];
+  for(const [k,v] of typeKw){ if(q.includes(k)){ filters.courseType=v; break; } }
+
+  // 학교
+  for(const s of KNOWN_SCHOOLS){ if(q.includes(s)){ filters.school=s; break; } }
+
+  // 강사 (동적 — 현재 데이터 기반)
+  const teacherList=[...new Set(courses.map(c=>c.teacher).filter(Boolean))];
+  for(const t of teacherList){ if(q.includes(t)){ filters.teacher=t; break; } }
+
+  // 월 / 시기
+  const monthMatch=q.match(/(\d{1,2})월/);
+  if(monthMatch){
+    const m=parseInt(monthMatch[1]);
+    if(m>=1&&m<=12) filters.month=m;
+  } else {
+    if(q.includes("여름")) filters.month=7;
+    else if(q.includes("겨울")) filters.month=1;
+    else if(q.includes("봄")) filters.month=3;
+    else if(q.includes("가을")) filters.month=9;
+    else if(q.includes("이번 달")||q.includes("이번달")||q.includes("이달")||q.includes("현재")) filters.month=new Date().getMonth()+1;
+  }
+
+  // 요일
+  const dayKw={"월요일":"월","화요일":"화","수요일":"수","목요일":"목","금요일":"금","토요일":"토","일요일":"일","주말":"토"};
+  for(const [k,v] of Object.entries(dayKw)){ if(q.includes(k)){ filters.day=v; break; } }
+  if(!filters.day && q.includes("주말")) filters.day="토";
+
+  // 시간대
+  if(q.includes("오전")) filters.period="오전";
+  else if(q.includes("오후")) filters.period="오후";
+  else if(q.includes("저녁")||q.includes("야간")||q.includes("밤")) filters.period="저녁";
+
+  return filters;
+}
+
+function executeAiFilters(f){
+  return courses.filter(c =>
+    (!f.academy || c.academy===f.academy) &&
+    (!f.area || c.area===f.area) &&
+    (!f.subject || subjGroup(c.subject)===f.subject) &&
+    (!f.grade || gradeMatch(c.grade,f.grade)) &&
+    (!f.courseType || c.courseType===f.courseType) &&
+    (!f.school || c.school===f.school) &&
+    (!f.teacher || c.teacher===f.teacher) &&
+    (!f.month || (c.months||[]).includes(f.month)) &&
+    (!f.day || c.days.includes(f.day)) &&
+    (!f.period || c.period===f.period)
+  );
+}
+
+function runAiSearch(){
+  const q=(document.getElementById("ai-q").value||"").trim();
+  if(!q){ clearAiSearch(); return; }
+  const f=parseAiQuery(q);
+  const results=executeAiFilters(f);
+
+  const tags=[];
+  if(f.academy) tags.push(`🏫 ${esc(f.academy)}`);
+  if(f.area) tags.push(`📍 ${esc(f.area)}`);
+  if(f.school) tags.push(`🎒 ${esc(f.school)}`);
+  if(f.teacher) tags.push(`👤 ${esc(f.teacher)} 선생님`);
+  if(f.grade) tags.push(`📚 ${esc(f.grade)}`);
+  if(f.subject) tags.push(`✏️ ${esc(f.subject)}`);
+  if(f.courseType) tags.push(`${courseTypeEmoji(f.courseType)} ${esc(f.courseType)}`);
+  if(f.month) tags.push(`📅 ${f.month}월`);
+  if(f.day) tags.push(`📆 ${esc(f.day)}요일`);
+  if(f.period) tags.push(`⏰ ${esc(f.period)}`);
+
+  const noMatch = !Object.keys(f).length;
+  const html = `
+    <div class="ai-result-section">
+      <div class="ai-summary">
+        <div class="qbox">
+          <div class="qline">🔎 <b>"${esc(q)}"</b>${noMatch?" — 키워드를 인식하지 못했어요. 그래도 전체에서 텍스트 일치 시도해볼게요.":""} 검색 결과 <span class="cnt">${results.length}</span>개</div>
+          ${tags.length?`<div class="ai-filter-tags">${tags.map(t=>`<span>${t}</span>`).join("")}</div>`:""}
+        </div>
+        <button class="ai-clear-btn" onclick="clearAiSearch()">× 초기화</button>
+      </div>
+      ${results.length
+        ? `<div class="grid">${results.map(courseCard).join("")}</div>`
+        : `<div class="ai-empty-result"><div class="big">🤔</div>조건에 맞는 강좌가 없어요.<br><span style="font-size:12px">키워드를 더 단순하게 — 예: '센텀 영어' '자사특목' '부일고1' 같이 시도해보세요.</span></div>`}
+    </div>
+  `;
+  document.getElementById("ai-result").innerHTML=html;
 }
 
 /* =========================================================================
