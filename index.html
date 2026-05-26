@@ -276,13 +276,20 @@
   .verdict .big{font-family:"Black Han Sans",sans-serif;font-size:22px;line-height:1}
   .conflict-detail{font-size:12px;font-weight:500;margin-top:6px}
 
-  .wk{width:100%;border-collapse:separate;border-spacing:4px;margin:6px 0 18px}
-  .wk th{font-size:11px;color:var(--ink-soft);font-weight:700;padding:4px}
-  .wk td{background:#fff;border:1px solid var(--line);border-radius:8px;vertical-align:top;height:54px;padding:4px;width:18%}
+  .wk{width:100%;border-collapse:separate;border-spacing:3px;margin:6px 0 18px;table-layout:fixed}
+  .wk th{font-size:10.5px;color:var(--ink-soft);font-weight:700;padding:4px 2px}
+  .wk td{background:#fff;border:1px solid var(--line);border-radius:6px;vertical-align:top;height:60px;padding:3px;width:11%;overflow:hidden}
   .wk td.has{background:#fff}
   .wk td.clash{background:var(--warn-bg);border-color:var(--warn)}
-  .wk .period-lab{font-size:11px;font-weight:700;color:var(--ink-soft);text-align:left;width:10%;padding-right:6px}
-  .cellchip{font-size:9.5px;font-weight:700;color:#fff;border-radius:4px;padding:2px 4px;margin-bottom:3px;line-height:1.2;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .wk .period-lab{font-size:10px;font-weight:800;color:var(--ink-soft);text-align:left;width:9%;padding-right:4px}
+  .cellchip{font-size:9px;font-weight:700;color:#fff;border-radius:3px;padding:2px 3px;margin-bottom:2px;line-height:1.2;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* 내 시간표 사용 안내 */
+  .cart-guide{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-bottom:16px;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  .cart-guide b{color:var(--ink);font-weight:800}
+  .cart-guide ol{margin:6px 0 0 18px;padding:0}
+  .cart-guide ol li{margin:3px 0}
+  .cart-guide .ico{font-size:15px;margin-right:4px}
 
   .picked{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
   .picked .pinfo{flex:1;min-width:0}
@@ -499,6 +506,98 @@
   .notice-foot button:hover{background:#0e1730}
   .footer-notice-link{color:var(--ink);font-weight:700;text-decoration:underline;cursor:pointer;background:none;border:0;font-family:inherit;font-size:inherit;padding:0}
 
+  /* ===== 회원 시스템 (로그인/가입/모달) ===== */
+  .auth-btns{display:flex;gap:6px}
+  .auth-btn{border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 13px;border-radius:999px;cursor:pointer;transition:.15s;letter-spacing:-.2px;white-space:nowrap}
+  .auth-btn:hover{background:rgba(255,255,255,.12)}
+  .auth-btn.primary{background:var(--brand);border-color:var(--brand)}
+  .auth-btn.primary:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+  .auth-userinfo{display:flex;align-items:center;gap:8px;color:#fff;font-size:12.5px;font-weight:700}
+  .auth-userinfo .av{width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:14px}
+  .auth-userinfo .who{display:flex;flex-direction:column;line-height:1.2}
+  .auth-userinfo .who small{font-size:10px;color:#aeb8cc;font-weight:600;letter-spacing:.04em}
+
+  .member-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+  .member-overlay.show{display:flex;animation:fadeIn .2s ease-out}
+  .member-modal{background:var(--card);border-radius:18px;max-width:640px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);overflow:hidden;animation:slideUp .25s ease-out;max-height:92vh;display:flex;flex-direction:column}
+  .member-head{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0}
+  .member-head h2{font-size:17px;font-weight:900;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+  .member-head h2 .badge{font-family:"IBM Plex Mono",monospace;font-size:10px;background:var(--brand);padding:2px 7px;border-radius:5px;font-weight:800;letter-spacing:.04em}
+  .member-head .x{background:rgba(255,255,255,.12);border:0;color:#fff;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;flex-shrink:0}
+
+  .m-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:14px 20px 0;background:var(--paper)}
+  .m-tab{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:12px;padding:10px 4px;border-radius:9px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:-.2px}
+  .m-tab .em{font-size:18px}
+  .m-tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .m-tab:hover:not(.on){border-color:var(--ink-soft)}
+
+  .m-body{flex:1;overflow-y:auto;padding:18px 24px 20px;background:var(--paper)}
+  .m-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .m-form-grid .full{grid-column:1/-1}
+  .m-form-grid label{display:block;font-size:11.5px;font-weight:800;color:var(--ink-soft);margin-bottom:5px;letter-spacing:.04em}
+  .m-form-grid label .req{color:var(--warn);margin-left:2px}
+  .m-form-grid input,.m-form-grid select{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none;transition:.15s}
+  .m-form-grid input:focus,.m-form-grid select:focus{border-color:var(--brand)}
+  .m-form-grid .hint{font-size:11px;color:var(--ink-soft);margin-top:4px;font-weight:600;line-height:1.5}
+
+  .m-phone-row{display:flex;gap:6px}
+  .m-phone-row input{flex:1}
+  .m-phone-row .send-btn{background:var(--ink);color:#fff;border:0;border-radius:9px;padding:0 16px;font-family:inherit;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap;transition:.15s}
+  .m-phone-row .send-btn:hover{background:#0e1730}
+  .m-phone-row .send-btn:disabled{background:#9aa3b3;cursor:not-allowed}
+  .m-sms-demo{background:#fff7ec;border:1.5px solid #f3c4bd;border-radius:9px;padding:11px 13px;font-size:12.5px;color:#a93515;margin-top:8px;display:none}
+  .m-sms-demo.show{display:block;animation:fadeIn .2s}
+  .m-sms-demo b{color:var(--brand);font-family:"IBM Plex Mono",monospace;font-size:18px;letter-spacing:.2em}
+  .m-sms-demo .demo-tag{font-size:10px;background:var(--warn);color:#fff;padding:1px 6px;border-radius:4px;font-weight:800;letter-spacing:.04em;margin-left:6px}
+  .m-sms-input-row{display:none;gap:6px;margin-top:8px}
+  .m-sms-input-row.show{display:flex;animation:fadeIn .2s}
+  .m-sms-input-row input{flex:1}
+  .m-sms-input-row .verify-btn{background:var(--good);color:#fff;border:0;border-radius:9px;padding:0 16px;font-family:inherit;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap}
+  .m-sms-verified{display:none;background:#e7f4ee;border:1.5px solid #bfe3d3;border-radius:9px;padding:9px 13px;font-size:12.5px;color:var(--good);font-weight:800;margin-top:8px}
+  .m-sms-verified.show{display:flex;align-items:center;gap:6px;animation:fadeIn .2s}
+
+  .m-biz-status{font-size:11.5px;font-weight:700;margin-top:5px;display:none}
+  .m-biz-status.show{display:block;animation:fadeIn .2s}
+  .m-biz-status.ok{color:var(--good)}
+  .m-biz-status.bad{color:var(--warn)}
+
+  .m-consent{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+  .m-consent .c-row{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:5px 0}
+  .m-consent .c-row input[type="checkbox"]{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+  .m-consent .c-row label{font-weight:600;cursor:pointer}
+  .m-consent .c-row a{color:var(--ink);font-weight:700;text-decoration:underline}
+  .m-consent .c-all{padding-bottom:8px;border-bottom:1px dashed var(--line);margin-bottom:6px}
+  .m-consent .c-all label{font-weight:800;color:var(--ink);font-size:13.5px}
+
+  .m-submit{margin-top:14px;width:100%;background:var(--brand);color:#fff;border:0;border-radius:11px;padding:14px;font-family:inherit;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:-.2px;transition:.15s}
+  .m-submit:hover{background:var(--brand-deep)}
+  .m-submit:disabled{background:#cfd6e2;cursor:not-allowed}
+  .m-switch{text-align:center;margin-top:14px;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+  .m-switch a{color:var(--brand);font-weight:800;text-decoration:underline;cursor:pointer}
+
+  .m-success{padding:30px 20px;text-align:center}
+  .m-success .em{font-size:48px;margin-bottom:10px}
+  .m-success h3{font-size:18px;color:var(--ink);margin-bottom:6px;letter-spacing:-.3px}
+  .m-success p{font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+
+  @media (max-width:760px){
+    .m-tabs{grid-template-columns:repeat(3,1fr)}
+    .m-form-grid{grid-template-columns:1fr}
+  }
+
+  /* ===== 비회원 강좌 마스킹 ===== */
+  .member-cta-card{
+    background:linear-gradient(135deg,#fff7ec 0%,#fff 100%);
+    border:1.5px dashed var(--brand);border-radius:14px;
+    padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    text-align:center;cursor:pointer;transition:.18s;min-height:200px;
+  }
+  .member-cta-card:hover{background:linear-gradient(135deg,#fff7ec 0%,#ffeacc 100%);transform:translateY(-2px)}
+  .member-cta-card .ico{font-size:36px}
+  .member-cta-card .ttl{font-size:14px;font-weight:700;color:var(--ink);line-height:1.5}
+  .member-cta-card .ttl b{color:var(--brand);font-family:"Black Han Sans",sans-serif;font-size:18px;display:block;margin:4px 0}
+  .member-cta-card .cta-btn{background:var(--brand);color:#fff;border:0;border-radius:9px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer;letter-spacing:-.2px}
+
   @media (max-width:760px){
     .hero h1{font-size:24px}
     .form-grid{grid-template-columns:1fr}
@@ -530,6 +629,10 @@
       <button id="m-bymonth" onclick="setMode('bymonth')">📅 월별</button>
       <button id="m-search" onclick="setMode('search')">🔍 검색</button>
       <button id="m-acad" onclick="setMode('academy')">＋ 수업등록</button>
+    </div>
+    <div class="auth-btns" id="auth-btns">
+      <button class="auth-btn" onclick="openMemberLogin()">로그인</button>
+      <button class="auth-btn primary" onclick="openMemberSignup()">회원가입</button>
     </div>
     <button id="cartbtn" class="cartbtn" onclick="openCart()">내 시간표 <span class="n" id="cartn">0</span></button>
   </div>
@@ -896,18 +999,19 @@
     <div class="notice-body">
       <p><b>클래스픽</b>은 부산 센텀·사직 지역 학원의 공개 강좌 정보를 학부모 편의를 위해 정리·비교하는 정보 큐레이션 서비스입니다.</p>
 
-      <h3>👨‍👩‍👧 학부모님께</h3>
-      <ul>
-        <li>표시된 강좌는 각 학원의 공개된 블로그·홈페이지 자료를 토대로 정리한 것입니다.</li>
-        <li>시간표는 변경될 수 있으니 수강 전 해당 학원에 직접 확인해 주세요.</li>
-        <li>강사 연락처·사진 등 민감 개인정보는 수집하지 않습니다.</li>
-        <li>본 서비스는 광고 외 일체의 학원 추천·수수료를 받지 않으며, 학원별 동일한 약관·정렬 기준을 적용합니다.</li>
-      </ul>
+      <h3>🎁 6월까지 학원 등록 — 무료 광고</h3>
+      <p>6월 30일까지 클래스픽에 강좌를 등록하시는 학원·교습소는 <b>프리미엄 광고 슬롯에 무료 노출</b>됩니다. 수업 등록 후 <a href="mailto:class-pick@naver.com?subject=수업등록 완료 알림">class-pick@naver.com</a>으로 등록 완료를 알려주시면 광고 슬롯 배정해 드립니다.</p>
 
-      <h3>🏫 학원·강사 분께</h3>
-      <p>강좌 정보의 <b>정정·삭제 요청</b>은 아래 메일로 보내주시면 영업일 1일 이내에 처리해 드립니다. 별도 사유 확인 없이 즉시 반영합니다.</p>
+      <h3>📨 시간표 일괄 등록 — 메일 전송</h3>
+      <p>수업등록 폼을 일일이 채우기 번거로우시면, 학원 시간표(PDF·이미지·블로그 링크 무관)를 <a href="mailto:class-pick@naver.com?subject=시간표 일괄 등록 요청">class-pick@naver.com</a>으로 보내주세요. 운영팀이 검토 후 영업일 1일 이내 직접 등록해 드립니다.</p>
+
+      <h3>🔐 학부모·학생 — 회원가입 안내</h3>
+      <p>일부 강좌는 무료 열람 가능하지만, <b>전체 강좌·시간표 충돌 분석·인기 강좌 비교</b>는 회원가입 후 이용 가능합니다. 회원가입은 1분 이내, <b>학교/학년/연락처</b>만 입력하면 됩니다.</p>
+
+      <h3>🏫 학원·강사 분께 — 정정/삭제 요청</h3>
+      <p>강좌 정보의 정정·삭제 요청은 <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a>으로 학원명·강좌명을 보내주시면 <b>영업일 1일 이내 별도 사유 확인 없이</b> 우선 반영합니다.</p>
       <div class="notice-takedown">
-        📧 <b>요청 메일:</b> <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a>
+        📧 <b>요청 메일:</b> <a href="mailto:class-pick@naver.com">class-pick@naver.com</a>
         <span class="hint">학원명·강좌명을 함께 기재해 주시면 빠른 처리에 도움이 됩니다. · 클래스픽 운영팀</span>
       </div>
 
@@ -916,8 +1020,29 @@
       </p>
     </div>
     <div class="notice-foot">
-      <button onclick="dismissNotice()">확인했습니다</button>
+      <button onclick="dismissNoticeAndOpenSignup()" style="background:var(--brand);margin-right:8px">＋ 회원가입</button>
+      <button onclick="dismissNotice()">먼저 둘러보기</button>
     </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     회원 모달 (가입 / 로그인 / 프로필)
+     ============================================================ -->
+<div class="member-overlay" id="member-overlay">
+  <div class="member-modal">
+    <div class="member-head">
+      <h2 id="member-title">회원가입 <span class="badge">BETA</span></h2>
+      <button class="x" onclick="closeMember()">×</button>
+    </div>
+    <div class="m-tabs" id="member-tabs">
+      <button class="m-tab on" data-type="student" onclick="setMemberType('student')"><span class="em">🎓</span>학생</button>
+      <button class="m-tab" data-type="parent" onclick="setMemberType('parent')"><span class="em">👨‍👩‍👧</span>학부모</button>
+      <button class="m-tab" data-type="teacher" onclick="setMemberType('teacher')"><span class="em">👤</span>강사</button>
+      <button class="m-tab" data-type="academy" onclick="setMemberType('academy')"><span class="em">🏫</span>학원</button>
+      <button class="m-tab" data-type="institute" onclick="setMemberType('institute')"><span class="em">📚</span>교습소</button>
+    </div>
+    <div class="m-body" id="member-body"></div>
   </div>
 </div>
 
@@ -928,7 +1053,7 @@
     <button class="x" onclick="closeCart()">×</button>
   </div>
   <div class="drawer-body" id="drawer-body"></div>
-  <div class="drawer-foot">담은 강좌가 같은 <b>요일·시간대</b>에 겹치면 빨간색으로 표시됩니다. 구체 시간(예: 오전반 09–11시 vs 11–13시)까지는 학원에 확인해 주세요.</div>
+  <div class="drawer-foot">담은 강좌가 같은 <b>요일·시간대·운영월</b> 3가지 모두 겹치면 빨간색으로 표시됩니다. 주간 그리드는 <b>월~일 7일</b> 모두 반영되며, 구체 시간(예: 오전반 09–11시 vs 11–13시)까지는 학원에 직접 확인해 주세요.</div>
 </aside>
 
 <script>
@@ -1652,7 +1777,7 @@ function runAiSearch(){
         <button class="ai-clear-btn" onclick="clearAiSearch()">× 초기화</button>
       </div>
       ${results.length
-        ? `<div class="grid">${results.map(courseCard).join("")}</div>`
+        ? `<div class="grid">${renderCardList(results)}</div>`
         : `<div class="ai-empty-result"><div class="big">🤔</div>조건에 맞는 강좌가 없어요.<br><span style="font-size:12px">키워드를 더 단순하게 — 예: '센텀 영어' '자사특목' '부일고1' 같이 시도해보세요.</span></div>`}
     </div>
   `;
@@ -1710,7 +1835,7 @@ function render(){
   document.getElementById("reslen").textContent=list.length;
   const wrap=document.getElementById("results");
   if(!list.length){ wrap.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요. 필터를 바꿔보세요.</div>'; return; }
-  wrap.innerHTML=list.map(courseCard).join("");
+  wrap.innerHTML=renderCardList(list);
 }
 function courseCard(c){
   const col=subjColor(c.subject);
@@ -1821,7 +1946,7 @@ function renderByAcad(){
     const summerTag=(m===7||m===8)?'<span class="badge">방학특강 시즌</span>':'';
     html+=`<div class="month-block" id="acad-m-${m}">
       <h3>${m}월 ${summerTag}<small>${inMonth.length}개 강좌</small></h3>
-      <div class="grid">${inMonth.map(courseCard).join("")}</div>
+      <div class="grid">${renderCardList(inMonth)}</div>
     </div>`;
   });
   body.innerHTML=html;
@@ -1890,7 +2015,7 @@ function renderByTeach(){
   if(!semCourses.length){
     html+='<div class="empty">이 학기에는 강좌가 없어요.</div>';
   } else {
-    html+=`<div class="grid">${semCourses.map(courseCard).join("")}</div>`;
+    html+=`<div class="grid">${renderCardList(semCourses)}</div>`;
   }
   body.innerHTML=html;
 }
@@ -1934,7 +2059,7 @@ function renderByMonth(){
     const arr=byAcad[a];
     html+=`<div class="acad-group">
       <h3>${esc(a)}<span class="acount">${arr.length}개</span></h3>
-      <div class="grid">${arr.map(courseCard).join("")}</div>
+      <div class="grid">${renderCardList(arr)}</div>
     </div>`;
   });
   body.innerHTML=html;
@@ -2056,7 +2181,7 @@ function renderByCategory(){
           <span class="cat-group-sub">${m.sub}</span>
         </div>
         ${pills}
-        <div class="grid">${filtered.map(courseCard).join("")}</div>
+        <div class="grid">${renderCardList(filtered)}</div>
       </div>
     `;
     return;
@@ -2106,7 +2231,22 @@ function findConflicts(picked){
 function renderCart(){
   const picked=myIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean);
   const body=document.getElementById("drawer-body");
-  if(!picked.length){ body.innerHTML='<div class="cart-empty">아직 담은 강좌가 없어요.<br>검색 화면에서 듣고 싶은 강좌를<br>＋ 버튼으로 담아보세요.</div>'; return; }
+  if(!picked.length){
+    body.innerHTML=`
+      <div class="cart-guide">
+        <b><span class="ico">📋</span>내 시간표 사용법</b>
+        <ol>
+          <li>강좌 카드의 <b>＋ 내 시간표에 담기</b> 버튼을 누르세요.</li>
+          <li>이 화면이 자동으로 갱신됩니다.</li>
+          <li>요일·시간이 겹치면 <b style="color:var(--warn)">빨간색 알림</b>이 뜹니다.</li>
+          <li>주간 그리드(월~일 × 오전·오후·저녁)로 한눈에 확인하세요.</li>
+          <li>저장은 자동 — 다음 방문 시에도 그대로 유지됩니다.</li>
+        </ol>
+      </div>
+      <div class="cart-empty">아직 담은 강좌가 없어요.<br>검색·둘러보기·카테고리 화면에서<br>듣고 싶은 강좌를 ＋ 버튼으로 담아보세요.</div>
+    `;
+    return;
+  }
   const conflicts=findConflicts(picked);
   let verdict;
   if(conflicts.length){
@@ -2116,12 +2256,12 @@ function renderCart(){
   }else{
     verdict=`<div class="verdict ok"><span class="big">✓</span><div>겹치는 시간이 없어요!<br><span style="font-weight:500;font-size:12px">담은 ${picked.length}개 강좌를 모두 들을 수 있습니다.</span></div></div>`;
   }
-  const cellMap={}; PERIODS.forEach(p=>DAYS.forEach(d=>cellMap[p+d]=[]));
+  const cellMap={}; PERIODS.forEach(p=>ALL_DAYS.forEach(d=>cellMap[p+d]=[]));
   picked.forEach(c=>c.days.forEach(d=>{ if(cellMap[c.period+d]) cellMap[c.period+d].push(c); }));
-  let grid='<table class="wk"><tr><th class="period-lab"></th>'+DAYS.map(d=>`<th>${d}</th>`).join("")+'</tr>';
+  let grid='<table class="wk"><tr><th class="period-lab"></th>'+ALL_DAYS.map(d=>`<th>${d}</th>`).join("")+'</tr>';
   PERIODS.forEach(p=>{
     grid+=`<tr><td class="period-lab">${p}</td>`;
-    DAYS.forEach(d=>{
+    ALL_DAYS.forEach(d=>{
       const arr=cellMap[p+d];
       const clash=arr.length>1?"clash":(arr.length?"has":"");
       grid+=`<td class="${clash}">${arr.map(c=>`<span class="cellchip" style="background:${subjColor(c.subject)}">${esc(c.course.split(" ")[0])}</span>`).join("")}</td>`;
@@ -2135,7 +2275,8 @@ function renderCart(){
         <small>${esc(c.area||"")} · ${esc(c.academy)} · ${esc(c.subject)} · ${c.days.join("·")} ${esc(c.period)}${c.time?" "+esc(c.time):""} · ${(c.months||[]).join("·")}월</small></div>
       <button class="delbtn" onclick="toggle('${c.id}')">빼기</button>
     </div>`).join("");
-  body.innerHTML=verdict+grid+items;
+  const miniGuide=`<div class="cart-guide" style="font-size:11.5px;padding:10px 13px;margin-bottom:12px"><b><span class="ico">💡</span>활용 팁</b> · 강좌 더 담아 충돌 확인 / 빼기는 각 카드 우측 버튼 / 다음 방문 시 자동 유지</div>`;
+  body.innerHTML=miniGuide+verdict+grid+items;
 }
 
 /* =========================================================================
@@ -2227,6 +2368,361 @@ document.getElementById("i-acad").addEventListener("input",renderAcadList);
    12. INIT
    ========================================================================= */
 /* =========================================================================
+   12.5 회원 시스템 (가입/로그인/세션 — localStorage 기반 베타)
+   ========================================================================= */
+const MEMBERS_KEY="classpick:members:v2";
+const SESSION_KEY="classpick:session:v2";
+const MEMBER_TYPE_LABELS={
+  student:{emoji:"🎓",label:"학생"},
+  parent:{emoji:"👨‍👩‍👧",label:"학부모"},
+  teacher:{emoji:"👤",label:"강사"},
+  academy:{emoji:"🏫",label:"학원"},
+  institute:{emoji:"📚",label:"교습소"}
+};
+let memberMode="signup";          // 'signup' | 'login' | 'success'
+let memberType="student";
+let pendingSmsCode=null;
+let pendingSmsPhone="";
+let smsVerified=false;
+let bizValid=false;
+
+function getMembers(){try{return JSON.parse(localStorage.getItem(MEMBERS_KEY))||[]}catch(e){return[]}}
+function saveMembers(arr){try{localStorage.setItem(MEMBERS_KEY,JSON.stringify(arr))}catch(e){}}
+function getSession(){try{return JSON.parse(localStorage.getItem(SESSION_KEY))||null}catch(e){return null}}
+function saveSession(s){try{localStorage.setItem(SESSION_KEY,JSON.stringify(s))}catch(e){}}
+function clearSession(){try{localStorage.removeItem(SESSION_KEY)}catch(e){}}
+function isMember(){ return !!getSession(); }
+function currentMember(){ return getSession(); }
+
+function refreshAuthButtons(){
+  const wrap=document.getElementById("auth-btns");
+  const s=currentMember();
+  if(s){
+    const meta=MEMBER_TYPE_LABELS[s.type]||{emoji:"👤",label:"회원"};
+    wrap.innerHTML=`
+      <div class="auth-userinfo">
+        <div class="av">${esc((s.name||meta.emoji).charAt(0))}</div>
+        <div class="who"><span>${esc(s.name||"회원")}</span><small>${esc(meta.label)}</small></div>
+      </div>
+      <button class="auth-btn" onclick="logoutMember()">로그아웃</button>
+    `;
+  } else {
+    wrap.innerHTML=`
+      <button class="auth-btn" onclick="openMemberLogin()">로그인</button>
+      <button class="auth-btn primary" onclick="openMemberSignup()">회원가입</button>
+    `;
+  }
+}
+
+function openMemberSignup(){ memberMode="signup"; resetSmsState(); openMember(); }
+function openMemberLogin(){ memberMode="login"; resetSmsState(); openMember(); }
+function openMember(){
+  document.getElementById("member-overlay").classList.add("show");
+  document.getElementById("member-title").innerHTML = memberMode==="signup"
+    ? '회원가입 <span class="badge">BETA</span>'
+    : '로그인';
+  document.getElementById("member-tabs").style.display = memberMode==="signup"?"grid":"none";
+  renderMemberBody();
+}
+function closeMember(){
+  document.getElementById("member-overlay").classList.remove("show");
+  resetSmsState();
+}
+function setMemberType(t){
+  memberType=t; resetSmsState();
+  document.querySelectorAll(".m-tab").forEach(el=>el.classList.toggle("on",el.dataset.type===t));
+  renderMemberBody();
+}
+function resetSmsState(){
+  pendingSmsCode=null; pendingSmsPhone=""; smsVerified=false; bizValid=false;
+}
+function dismissNoticeAndOpenSignup(){ dismissNotice(); openMemberSignup(); }
+
+function renderMemberBody(){
+  const body=document.getElementById("member-body");
+  if(memberMode==="login"){ body.innerHTML=loginFormHtml(); return; }
+  if(memberMode==="success"){ body.innerHTML=successHtml(); return; }
+  body.innerHTML=signupFormHtml(memberType);
+  if(memberType==="academy"||memberType==="institute") bindBizValidate();
+}
+
+function bizValidate(input){
+  const digits=(input||"").replace(/[^0-9]/g,"");
+  if(digits.length!==10) return {valid:false,msg:"10자리 숫자를 입력해주세요"};
+  const w=[1,3,7,1,3,7,1,3,5];
+  let sum=0;
+  for(let i=0;i<9;i++) sum+=parseInt(digits[i])*w[i];
+  sum+=Math.floor(parseInt(digits[8])*5/10);
+  const check=(10-sum%10)%10;
+  if(check!==parseInt(digits[9])) return {valid:false,msg:"유효하지 않은 사업자등록번호입니다"};
+  return {valid:true,msg:"유효한 사업자등록번호입니다 ✓"};
+}
+function bindBizValidate(){
+  const input=document.getElementById("m-biz");
+  const status=document.getElementById("m-biz-status");
+  if(!input||!status) return;
+  input.addEventListener("input",e=>{
+    const v=e.target.value;
+    if(!v){status.className="m-biz-status";status.textContent="";bizValid=false;return}
+    const r=bizValidate(v);
+    bizValid=r.valid;
+    status.className="m-biz-status show "+(r.valid?"ok":"bad");
+    status.textContent=r.msg;
+  });
+}
+
+function requestSms(){
+  const input=document.getElementById("m-phone");
+  if(!input) return;
+  const raw=input.value.trim().replace(/-/g,"").replace(/\s/g,"");
+  if(!/^010\d{8}$/.test(raw)){
+    alert("010으로 시작하는 11자리 휴대폰 번호를 입력해주세요"); return;
+  }
+  pendingSmsPhone=raw;
+  pendingSmsCode=Math.floor(100000+Math.random()*900000);
+  smsVerified=false;
+  const demo=document.getElementById("m-sms-demo");
+  demo.innerHTML=`📱 데모 인증코드: <b>${pendingSmsCode}</b> <span class="demo-tag">DEMO</span><br><span style="font-size:11px;color:var(--ink-soft);font-weight:600">베타 단계 — 실제 SMS 미발송. 실서비스 전환 시 SMS API 연결 예정.</span>`;
+  demo.classList.add("show");
+  document.getElementById("m-sms-input-row").classList.add("show");
+  document.getElementById("m-sms-verified").classList.remove("show");
+  document.getElementById("m-sms-send-btn").textContent="재전송";
+}
+function verifySms(){
+  const input=document.getElementById("m-sms-code");
+  if(!input) return;
+  if(parseInt(input.value.trim())===pendingSmsCode){
+    smsVerified=true;
+    document.getElementById("m-sms-input-row").classList.remove("show");
+    document.getElementById("m-sms-demo").classList.remove("show");
+    document.getElementById("m-sms-verified").classList.add("show");
+  } else {
+    alert("인증번호가 맞지 않아요. 다시 확인해 주세요.");
+  }
+}
+
+function signupFormHtml(t){
+  const isAcad = (t==="academy"||t==="institute");
+  const acadLabel = t==="academy"?"학원":"교습소";
+  const isTeacher = t==="teacher";
+  const isStudParent = (t==="student"||t==="parent");
+
+  return `
+    <div class="m-form-grid">
+      <div class="full">
+        <label>${isAcad?acadLabel+"명":"이름"} <span class="req">*</span></label>
+        <input id="m-name" placeholder="${isAcad?(acadLabel+"명 (예: 교육인학원 센텀점)"):"실명"}" />
+      </div>
+      <div class="full">
+        <label>이메일 (선택)</label>
+        <input id="m-email" type="email" placeholder="문의·알림 받을 이메일" />
+      </div>
+
+      ${isAcad?`
+      <div class="full">
+        <label>사업자등록번호 <span class="req">*</span></label>
+        <input id="m-biz" maxlength="12" placeholder="10자리 숫자 (예: 1234567890)" />
+        <div id="m-biz-status" class="m-biz-status"></div>
+      </div>
+      <div><label>대표자명</label><input id="m-rep" /></div>
+      <div><label>주소 (선택)</label><input id="m-addr" placeholder="센텀·사직 지역" /></div>
+      `:""}
+
+      ${isTeacher?`
+      <div><label>소속 학원 (선택)</label><input id="m-affil" /></div>
+      <div><label>담당 과목 (선택)</label>
+        <select id="m-subject"><option value="">선택</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+      </div>
+      `:""}
+
+      ${isStudParent?`
+      <div><label>학생 학교 <span class="req">*</span></label>
+        <select id="m-school">
+          <option value="">선택</option>
+          ${KNOWN_SCHOOLS.map(s=>`<option>${esc(s)}</option>`).join("")}
+          <option value="기타">기타 (직접 입력)</option>
+        </select>
+      </div>
+      <div><label>학생 학년 <span class="req">*</span></label>
+        <select id="m-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      </div>
+      `:""}
+
+      ${(isTeacher||isStudParent)?`
+      <div class="full">
+        <label>휴대폰 번호 <span class="req">*</span> (문자인증 필수)</label>
+        <div class="m-phone-row">
+          <input id="m-phone" maxlength="13" placeholder="010-1234-5678" />
+          <button class="send-btn" id="m-sms-send-btn" onclick="requestSms()">인증요청</button>
+        </div>
+        <div id="m-sms-demo" class="m-sms-demo"></div>
+        <div id="m-sms-input-row" class="m-sms-input-row">
+          <input id="m-sms-code" maxlength="6" placeholder="6자리 코드" />
+          <button class="verify-btn" onclick="verifySms()">확인</button>
+        </div>
+        <div id="m-sms-verified" class="m-sms-verified">✓ 휴대폰 인증 완료</div>
+      </div>
+      `:""}
+
+      <div class="full">
+        <label>비밀번호 <span class="req">*</span></label>
+        <input id="m-pw" type="password" placeholder="6자 이상" />
+      </div>
+    </div>
+
+    <div class="m-consent">
+      <div class="c-row c-all">
+        <input type="checkbox" id="m-c-all" onchange="toggleAllConsent(this)" />
+        <label for="m-c-all">전체 동의</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-tos" />
+        <label for="m-c-tos">[필수] <a href="/terms.html" target="_blank">이용약관</a>에 동의합니다</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-priv" />
+        <label for="m-c-priv">[필수] <a href="/privacy.html" target="_blank">개인정보처리방침</a>에 동의합니다</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-mkt" />
+        <label for="m-c-mkt">[선택] 신규 강좌·이벤트 안내 수신 동의</label>
+      </div>
+    </div>
+
+    <button class="m-submit" onclick="submitSignup()">＋ 가입하기</button>
+    <div class="m-switch">이미 회원이신가요? <a onclick="memberMode='login';openMember()">로그인 →</a></div>
+  `;
+}
+
+function loginFormHtml(){
+  return `
+    <div class="m-form-grid">
+      <div class="full">
+        <label>이메일 또는 이름</label>
+        <input id="m-login-id" placeholder="가입 시 입력한 이메일 또는 이름" />
+      </div>
+      <div class="full">
+        <label>비밀번호</label>
+        <input id="m-login-pw" type="password" />
+      </div>
+    </div>
+    <button class="m-submit" onclick="submitLogin()">로그인</button>
+    <div class="m-switch">아직 회원이 아니신가요? <a onclick="memberMode='signup';memberType='student';openMember()">회원가입 →</a></div>
+  `;
+}
+
+function successHtml(){
+  return `
+    <div class="m-success">
+      <div class="em">🎉</div>
+      <h3>환영합니다!</h3>
+      <p>회원가입이 완료되었습니다.<br>이제 전체 강좌·시간표 충돌 분석·인기 강좌를 모두 이용하실 수 있어요.</p>
+      <button class="m-submit" onclick="closeMember()">시작하기</button>
+    </div>
+  `;
+}
+
+function toggleAllConsent(box){
+  const checked=box.checked;
+  ["m-c-tos","m-c-priv","m-c-mkt"].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.checked=checked;
+  });
+}
+
+function submitSignup(){
+  const name=(document.getElementById("m-name")?.value||"").trim();
+  const email=(document.getElementById("m-email")?.value||"").trim();
+  const pw=(document.getElementById("m-pw")?.value||"").trim();
+  const tos=document.getElementById("m-c-tos")?.checked;
+  const priv=document.getElementById("m-c-priv")?.checked;
+  if(!name) return alert("이름/명칭을 입력해주세요");
+  if(pw.length<6) return alert("비밀번호는 6자 이상 입력해주세요");
+  if(!tos||!priv) return alert("필수 약관에 동의해주세요");
+
+  const record={id:"m"+Date.now(),type:memberType,name,email,pwHash:btoa(pw),createdAt:Date.now()};
+
+  // 타입별 추가 필드 + 검증
+  if(memberType==="academy"||memberType==="institute"){
+    const biz=(document.getElementById("m-biz")?.value||"").trim();
+    if(!bizValid) return alert("유효한 사업자등록번호를 입력해주세요");
+    record.bizNo=biz;
+    record.rep=(document.getElementById("m-rep")?.value||"").trim();
+    record.addr=(document.getElementById("m-addr")?.value||"").trim();
+  }
+  if(memberType==="teacher"){
+    if(!smsVerified) return alert("휴대폰 인증을 완료해주세요");
+    record.phone=pendingSmsPhone;
+    record.affil=(document.getElementById("m-affil")?.value||"").trim();
+    record.subject=document.getElementById("m-subject")?.value||"";
+  }
+  if(memberType==="student"||memberType==="parent"){
+    if(!smsVerified) return alert("휴대폰 인증을 완료해주세요");
+    const school=document.getElementById("m-school")?.value;
+    const grade=document.getElementById("m-grade")?.value;
+    if(!school) return alert("학생 학교를 선택해주세요");
+    if(!grade) return alert("학생 학년을 선택해주세요");
+    record.phone=pendingSmsPhone;
+    record.studentSchool=school;
+    record.studentGrade=grade;
+  }
+
+  const members=getMembers();
+  members.push(record);
+  saveMembers(members);
+  saveSession({id:record.id,type:record.type,name:record.name});
+  refreshAuthButtons();
+  memberMode="success"; renderMemberBody();
+  // 회원이 됐으니 마스킹 해제 — 현재 화면 리렌더
+  refreshAllViews();
+}
+
+function submitLogin(){
+  const id=(document.getElementById("m-login-id")?.value||"").trim();
+  const pw=(document.getElementById("m-login-pw")?.value||"").trim();
+  if(!id||!pw) return alert("이메일/이름과 비밀번호를 입력해주세요");
+  const pwHash=btoa(pw);
+  const m=getMembers().find(x=>(x.email===id||x.name===id)&&x.pwHash===pwHash);
+  if(!m) return alert("계정을 찾을 수 없거나 비밀번호가 맞지 않아요.\n베타 단계 — localStorage에만 저장됩니다.");
+  saveSession({id:m.id,type:m.type,name:m.name});
+  refreshAuthButtons();
+  closeMember();
+  refreshAllViews();
+}
+
+function logoutMember(){
+  if(!confirm("로그아웃 하시겠어요?")) return;
+  clearSession();
+  refreshAuthButtons();
+  refreshAllViews();
+}
+
+function refreshAllViews(){
+  if(mode==="search") render();
+  if(mode==="browse") renderBrowse();
+  if(mode==="category") renderByCategory();
+  if(mode==="byacad") renderByAcad();
+  if(mode==="byteach") renderByTeach();
+  if(mode==="bymonth") renderByMonth();
+  if(mode==="academy") renderAcadList();
+  if(document.getElementById("ai-q") && document.getElementById("ai-q").value) runAiSearch();
+}
+
+/* =========================================================================
+   12.7 비회원 마스킹 — 첫 12개 자유열람, 이후 CTA 카드
+   ========================================================================= */
+const FREE_CARD_LIMIT=12;
+function renderCardList(arr){
+  if(isMember() || arr.length<=FREE_CARD_LIMIT) return arr.map(courseCard).join("");
+  const shown=arr.slice(0,FREE_CARD_LIMIT).map(courseCard).join("");
+  const rest=arr.length-FREE_CARD_LIMIT;
+  return shown + `<div class="member-cta-card" onclick="openMemberSignup()">
+    <div class="ico">🔓</div>
+    <div class="ttl">회원가입하면<br><b>${rest}개 더</b><br>볼 수 있어요</div>
+    <button class="cta-btn">＋ 무료 가입 (1분)</button>
+  </div>`;
+}
+
+/* =========================================================================
    13. NOTICE MODAL (첫 방문 공지 — 학원 양해 메일 대체용 안전장치)
    ========================================================================= */
 const NOTICE_KEY="classpick:notice:dismissed:v1";
@@ -2245,6 +2741,7 @@ function reopenNotice(){
 load();
 buildMonthPick();
 buildFormCategoryPicks();
+refreshAuthButtons();
 onCityChange('f');
 render();
 renderBrowse();
