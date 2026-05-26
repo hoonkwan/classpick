@@ -368,6 +368,23 @@
 
   .empty-soft{padding:30px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
 
+  /* ===== 카테고리 그룹 카드 (drill-down 1단계) ===== */
+  .cat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;animation:fadeInCards .3s ease-out}
+  @keyframes fadeInCards{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .cat-card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 18px 16px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;display:flex;flex-direction:column;gap:9px;position:relative}
+  .cat-card:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:0 14px 30px -16px rgba(22,32,58,.4)}
+  .cat-card-cta{position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.04em}
+  .cat-card-icon{font-size:32px;line-height:1}
+  .cat-card-name{font-family:"Black Han Sans",sans-serif;font-size:22px;letter-spacing:-1px;line-height:1.1;color:var(--ink)}
+  .cat-card-meta{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-soft);font-weight:700;flex-wrap:wrap}
+  .cat-card-meta .count{background:var(--brand);color:#fff;padding:2px 9px;border-radius:5px;font-size:11px;letter-spacing:-.1px}
+  .cat-card-subjects{display:flex;flex-wrap:wrap;gap:4px;border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+  .cat-card-subjects span{font-size:10.5px;background:var(--chip);color:#384b6b;padding:2px 7px;border-radius:5px;font-weight:700;letter-spacing:-.1px}
+  .cat-card-subjects span b{color:var(--brand);font-weight:900;margin-right:2px}
+
+  .cat-back-btn{background:#fff;border:1.5px solid var(--line);color:var(--ink);font-family:inherit;font-weight:800;font-size:13px;padding:9px 16px;border-radius:10px;cursor:pointer;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;transition:.15s;letter-spacing:-.2px}
+  .cat-back-btn:hover{border-color:var(--brand);color:var(--brand);background:#fff7f1}
+
   /* ===== AI 검색 박스 ===== */
   .ai-search-box{
     background:linear-gradient(135deg,#fff 0%,#fff7ec 100%);
@@ -766,7 +783,7 @@
     </div>
 
     <div class="cat-search">
-      <input id="cat-q" type="text" placeholder="카테고리 또는 강좌 검색 (예: 부일고1, 고1 영어, 자사특목, 미적분…)" oninput="renderByCategory()" />
+      <input id="cat-q" type="text" placeholder="카테고리 또는 강좌 검색 (예: 부일고1, 고1 영어, 자사특목, 미적분…)" oninput="onCatSearchInput()" />
     </div>
 
     <div id="category-body"></div>
@@ -1929,15 +1946,23 @@ function setMonth(m){ currentMonth=m; renderByMonth(); }
    ========================================================================= */
 let categoryAxis="school";
 let catSubjFilter={};
+let categorySelectedGroup=null;  // drill-down: 선택된 그룹 키 (null이면 카드 그리드)
 
 function setCategoryAxis(a){
-  categoryAxis=a; catSubjFilter={};
+  categoryAxis=a; catSubjFilter={}; categorySelectedGroup=null;
   ["ax-school","ax-gs","ax-ct"].forEach(k=>document.getElementById(k).classList.remove("on"));
   const map={school:"ax-school",gradeSubject:"ax-gs",courseType:"ax-ct"};
   document.getElementById(map[a]).classList.add("on");
   renderByCategory();
 }
 function setCatSubj(g,s){ catSubjFilter[g]=s; renderByCategory(); }
+function openCategoryGroup(g){
+  categorySelectedGroup=g;
+  renderByCategory();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function closeCategoryGroup(){ categorySelectedGroup=null; renderByCategory(); }
+function onCatSearchInput(){ categorySelectedGroup=null; renderByCategory(); }
 
 function renderByCategory(){
   const q=(document.getElementById("cat-q").value||"").trim().toLowerCase();
@@ -1985,47 +2010,79 @@ function renderByCategory(){
     return;
   }
 
-  body.innerHTML=groupOrder.map(g=>{
+  // ===== 그룹 헬퍼 (아이콘·서브타이틀 계산) =====
+  const groupMeta = g => {
     const arr=groups[g];
     const acads=new Set(arr.map(c=>c.academy));
     const teachers=new Set(arr.map(c=>c.teacher).filter(Boolean));
-    let icon="", sub="";
-    if(categoryAxis==="school"){
-      icon="🏫"; sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
-    } else if(categoryAxis==="gradeSubject"){
+    let icon="";
+    if(categoryAxis==="school"){ icon="🏫"; }
+    else if(categoryAxis==="gradeSubject"){
       const sj=subjGroup(arr[0].subject);
       icon=sj==="영어"?"🇬🇧":sj==="수학"?"➗":sj==="국어"?"📖":sj==="과학"?"🧪":"🌏";
-      sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
     } else {
-      icon=courseTypeEmoji(g); sub=`${acads.size}개 학원 · ${teachers.size}명 강사`;
+      icon=courseTypeEmoji(g);
     }
+    return {arr,acads,teachers,icon,sub:`${acads.size}개 학원 · ${teachers.size}명 강사`};
+  };
 
+  // ===== Depth 2: 선택된 그룹 상세 =====
+  if(categorySelectedGroup && groups[categorySelectedGroup]){
+    const g=categorySelectedGroup;
+    const m=groupMeta(g);
+    const arr=m.arr;
     let pills="";
-    if(categoryAxis==="school"){
-      const subjMap={};
-      arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
-      const subjList=Object.keys(subjMap).sort();
+    const subjMap={};
+    arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
+    const subjList=Object.keys(subjMap).sort();
+    if(subjList.length>1){
       const cur=catSubjFilter[g]||"전체";
       pills=`<div class="cat-subj-pills">
         <button class="pill ${cur==='전체'?'on':''}" onclick="setCatSubj('${esc(g)}','전체')">전체<span class="cnt">${arr.length}</span></button>
         ${subjList.map(s=>`<button class="pill ${cur===s?'on':''}" onclick="setCatSubj('${esc(g)}','${esc(s)}')">${esc(s)}<span class="cnt">${subjMap[s]}</span></button>`).join("")}
       </div>`;
     }
-    const filtered = (categoryAxis==="school" && catSubjFilter[g] && catSubjFilter[g]!=="전체")
+    const filtered = (catSubjFilter[g] && catSubjFilter[g]!=="전체")
       ? arr.filter(c=>subjGroup(c.subject)===catSubjFilter[g])
       : arr;
 
-    return `<div class="cat-group">
-      <div class="cat-group-head">
-        <span class="cat-group-icon">${icon}</span>
-        <span class="cat-group-title">${esc(g)}</span>
-        <span class="cat-group-count">${arr.length}개 강좌</span>
-        <span class="cat-group-sub">${sub}</span>
+    body.innerHTML=`
+      <button class="cat-back-btn" onclick="closeCategoryGroup()">← 전체 카테고리로 돌아가기</button>
+      <div class="cat-group">
+        <div class="cat-group-head">
+          <span class="cat-group-icon">${m.icon}</span>
+          <span class="cat-group-title">${esc(g)}</span>
+          <span class="cat-group-count">${arr.length}개 강좌</span>
+          <span class="cat-group-sub">${m.sub}</span>
+        </div>
+        ${pills}
+        <div class="grid">${filtered.map(courseCard).join("")}</div>
       </div>
-      ${pills}
-      <div class="grid">${filtered.map(courseCard).join("")}</div>
+    `;
+    return;
+  }
+
+  // ===== Depth 1: 그룹 카드 그리드 =====
+  body.innerHTML=`<div class="cat-cards">${groupOrder.map(g=>{
+    const m=groupMeta(g);
+    const subjMap={};
+    m.arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
+    const subjTags=Object.keys(subjMap).sort().map(s=>`<span><b>${subjMap[s]}</b>${esc(s)}</span>`).join("");
+    const safeG=esc(g).replace(/'/g,"\\'");
+    return `<div class="cat-card" onclick="openCategoryGroup('${safeG}')">
+      <span class="cat-card-cta">자세히 →</span>
+      <div class="cat-card-icon">${m.icon}</div>
+      <div class="cat-card-name">${esc(g)}</div>
+      <div class="cat-card-meta">
+        <span class="count">${m.arr.length}개 강좌</span>
+        <span>·</span>
+        <span>${m.acads.size}개 학원</span>
+        <span>·</span>
+        <span>${m.teachers.size}명 강사</span>
+      </div>
+      ${subjTags?`<div class="cat-card-subjects">${subjTags}</div>`:""}
     </div>`;
-  }).join("");
+  }).join("")}</div>`;
 }
 
 /* =========================================================================
