@@ -1,0 +1,2751 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>클래스픽 · 동네 명강만 골라 담는 곳</title>
+<meta name="description" content="부산 센텀·사직 — 동네 학원 강좌를 비교하고 시간표 겹침까지 한눈에." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#16203a;
+    --ink-soft:#46546f;
+    --paper:#f3efe6;
+    --card:#ffffff;
+    --line:#e4ddcd;
+    --brand:#e0521f;
+    --brand-deep:#b73f12;
+    --good:#1f7a5e;
+    --warn:#c0392b;
+    --warn-bg:#fbe9e7;
+    --chip:#eef0f4;
+    --shadow:0 1px 0 rgba(22,32,58,.04), 0 8px 24px -16px rgba(22,32,58,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:"Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding-bottom:60px}
+  a{color:inherit}
+  .mono{font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
+
+  header.bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);color:#fff;
+    border-bottom:3px solid var(--brand);
+  }
+  .bar-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{display:flex;align-items:baseline;gap:8px;cursor:default}
+  .logo .mark{font-family:"Black Han Sans",sans-serif;font-size:30px;letter-spacing:-1px;line-height:1}
+  .logo .mark .dot{color:var(--brand)}
+  .logo .sub{font-size:11px;color:#aeb8cc;letter-spacing:.12em}
+  .nav-spacer{flex:1}
+  .modeswitch{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px;flex-wrap:wrap}
+  .modeswitch button{
+    border:0;background:transparent;color:#c9d1e2;font-family:inherit;font-weight:700;font-size:13px;
+    padding:8px 14px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap
+  }
+  .modeswitch button.on{background:#fff;color:var(--ink)}
+  .modeswitch button:hover:not(.on){color:#fff}
+  .cartbtn{
+    border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:700;font-size:13px;
+    padding:9px 16px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.15s
+  }
+  .cartbtn:hover{background:var(--brand-deep)}
+  .cartbtn .n{background:#fff;color:var(--brand);border-radius:999px;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 5px}
+
+  main{max-width:1180px;margin:0 auto;padding:0 20px}
+  .hero{padding:34px 0 18px}
+  .hero h1{font-size:30px;line-height:1.25;letter-spacing:-.5px}
+  .hero h1 b{color:var(--brand)}
+  .hero p{margin-top:10px;color:var(--ink-soft);font-size:15px;line-height:1.6;max-width:680px}
+
+  .ad{
+    border:1px dashed #c7bfad;border-radius:12px;background:repeating-linear-gradient(45deg,#efe9dc,#efe9dc 10px,#ece5d6 10px,#ece5d6 20px);
+    color:#9b8f74;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;
+    font-size:12px;letter-spacing:.1em;font-weight:700;
+  }
+  .ad .tag{background:#fff;border:1px solid #d8cfb8;border-radius:6px;padding:2px 8px;color:#a08a55;font-family:"IBM Plex Mono",monospace}
+  .ad.banner{height:92px;margin:8px 0 22px}
+  .ad.inline{height:120px;margin:18px 0}
+  .ad.foot{height:90px;margin:30px 0 0}
+
+  /* ===== 홍보 배너 (센텀 BIG3) ===== */
+  .promo-ad{
+    background:linear-gradient(120deg,#0e1730 0%,#1a2547 50%,#2a3460 100%);
+    border:0;border-radius:14px;
+    color:#fff;text-decoration:none;
+    height:auto;min-height:108px;
+    padding:16px 22px;margin:8px 0 22px;
+    display:flex;align-items:center;gap:22px;
+    position:relative;overflow:hidden;cursor:pointer;
+    box-shadow:0 12px 32px -14px rgba(22,32,58,.5),0 1px 0 rgba(255,255,255,.04) inset;
+    transition:.2s;
+  }
+  .promo-ad:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(22,32,58,.6)}
+  .promo-ad::before{
+    content:"";position:absolute;top:-40%;right:-10%;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(224,82,31,.32) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .promo-ad::after{
+    content:"";position:absolute;bottom:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--brand),#ffb677,var(--brand));
+  }
+  .promo-tag{
+    position:absolute;top:10px;right:14px;
+    background:rgba(255,255,255,.14);color:#fff;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:700;
+    padding:2px 8px;border-radius:5px;letter-spacing:.04em;
+    border:1px solid rgba(255,255,255,.22);
+  }
+  .promo-left{display:flex;flex-direction:column;gap:5px;z-index:2;min-width:0}
+  .promo-brand{display:flex;align-items:baseline;gap:6px}
+  .promo-brand .label{font-size:11px;font-weight:800;color:#aeb8cc;letter-spacing:.16em}
+  .promo-brand .big{font-family:"Black Han Sans",sans-serif;font-size:30px;color:var(--brand);letter-spacing:-1.5px;line-height:1}
+  .promo-title{font-size:16px;font-weight:700;line-height:1.4;letter-spacing:-.3px}
+  .promo-title b{color:#ffb677;font-weight:900}
+  .promo-teachers{display:flex;gap:8px;z-index:2;flex-wrap:wrap}
+  .ptcard{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;padding:8px 14px;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    min-width:78px;backdrop-filter:blur(4px);
+  }
+  .ptcard .num{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:#ffb677;font-weight:700;letter-spacing:.06em}
+  .ptcard .name{font-family:"Black Han Sans",sans-serif;font-size:18px;letter-spacing:-.5px}
+  .promo-cta{
+    margin-left:auto;z-index:2;
+    background:var(--brand);color:#fff;
+    font-family:"Black Han Sans",sans-serif;font-size:15px;letter-spacing:-.3px;
+    padding:10px 18px;border-radius:10px;
+    border:0;cursor:pointer;white-space:nowrap;
+    transition:.15s;
+  }
+  .promo-ad:hover .promo-cta{background:#ff6a32}
+
+  @media (max-width:760px){
+    .promo-ad{flex-direction:column;align-items:flex-start;padding:18px 18px 20px}
+    .promo-tag{top:12px;right:12px}
+    .promo-teachers{width:100%;justify-content:flex-start}
+    .promo-cta{margin-left:0;width:100%;text-align:center}
+  }
+
+  .toolbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:sticky;top:106px;z-index:20}
+  .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:11px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em}
+  .field select,.field input{
+    font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink);min-width:108px;outline:none;transition:.15s
+  }
+  .field input{min-width:200px}
+  .field select:focus,.field input:focus{border-color:var(--brand)}
+  .resetbtn{border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-family:inherit;font-weight:700;font-size:13px;padding:9px 14px;border-radius:9px;cursor:pointer}
+  .resetbtn:hover{border-color:var(--ink-soft)}
+
+  .countbar{display:flex;align-items:center;justify-content:space-between;margin:22px 0 12px;gap:12px;flex-wrap:wrap}
+  .countbar .cnt{font-size:14px;color:var(--ink-soft)}
+  .countbar .cnt b{color:var(--ink);font-size:18px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .course{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;position:relative;transition:.15s}
+  .course:hover{border-color:#cdc4b0;transform:translateY(-2px)}
+  .course .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .subj{font-size:11px;font-weight:900;color:#fff;padding:3px 9px;border-radius:6px;letter-spacing:.02em}
+  .gradechip{font-size:11px;font-weight:700;border:1.5px solid var(--ink);border-radius:6px;padding:2px 8px}
+  .acad{font-size:11px;color:var(--ink-soft);margin-left:auto;font-weight:700}
+  .course h3{font-size:16px;line-height:1.35;font-weight:700}
+  .meta{display:flex;flex-wrap:wrap;gap:7px;font-size:12px}
+  .meta span{background:var(--chip);border-radius:6px;padding:4px 8px;color:#384b6b;font-weight:500}
+  .meta .day{background:#fff;border:1.5px solid var(--ink);font-weight:700}
+  .note{font-size:12px;color:var(--ink-soft);line-height:1.5;border-top:1px dashed var(--line);padding-top:9px}
+  .teacher{font-size:12px;color:var(--ink-soft);font-weight:700;cursor:pointer}
+  .teacher:hover{color:var(--brand);text-decoration:underline}
+  .monthchips{display:flex;flex-wrap:wrap;gap:3px;font-size:10.5px}
+  .monthchips .mc{background:#eaf0f7;color:#384b6b;border-radius:4px;padding:2px 5px;font-weight:700}
+  .monthchips .mc.hot{background:var(--brand);color:#fff}
+  .addbtn{margin-top:2px;border:0;background:var(--ink);color:#fff;font-family:inherit;font-weight:700;font-size:13px;padding:10px;border-radius:9px;cursor:pointer;transition:.15s}
+  .addbtn:hover{background:#0e1730}
+  .addbtn.added{background:var(--good)}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:14px}
+
+  /* ===== View: by Academy ===== */
+  .picker-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20}
+  .picker-row .field select{min-width:220px}
+  .acad-summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;box-shadow:var(--shadow);margin-bottom:18px}
+  .acad-summary h2{font-size:24px;letter-spacing:-.3px}
+  .acad-summary .where{color:var(--ink-soft);font-size:13px;margin-top:4px}
+  .acad-stats{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+  .acad-stats .stat{display:flex;flex-direction:column;gap:2px}
+  .acad-stats .stat .v{font-family:"Black Han Sans",sans-serif;font-size:26px;color:var(--brand)}
+  .acad-stats .stat .l{font-size:11px;color:var(--ink-soft);letter-spacing:.06em;font-weight:700}
+
+  .month-timeline{margin:18px 0 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .month-timeline h3{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:12px;font-weight:700}
+  .mt-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+  .mt-cell{background:#f5efe2;border:1px solid var(--line);border-radius:8px;padding:9px 4px 8px;text-align:center;cursor:pointer;transition:.15s;position:relative;min-height:60px;display:flex;flex-direction:column;justify-content:center}
+  .mt-cell:hover{border-color:var(--brand)}
+  .mt-cell.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .mt-cell.on .mt-num{color:var(--brand)}
+  .mt-cell .mt-month{font-size:10.5px;font-weight:700;color:var(--ink-soft);letter-spacing:.04em}
+  .mt-cell.on .mt-month{color:#aeb8cc}
+  .mt-cell .mt-num{font-family:"Black Han Sans",sans-serif;font-size:20px;margin-top:2px;color:var(--ink)}
+  .mt-cell.zero{opacity:.4}
+  .mt-cell.zero .mt-num{color:var(--ink-soft)}
+
+  .month-block{margin-top:22px}
+  .month-block h3{font-size:18px;border-left:4px solid var(--brand);padding-left:10px;margin-bottom:12px}
+  .month-block h3 .badge{background:var(--brand);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:8px;font-family:inherit;letter-spacing:.04em}
+  .month-block h3 small{font-size:13px;color:var(--ink-soft);font-weight:500;margin-left:6px}
+
+  /* ===== View: by Teacher ===== */
+  .teacher-summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .teacher-avatar{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:28px;flex-shrink:0}
+  .teacher-info{flex:1;min-width:180px}
+  .teacher-info h2{font-size:22px}
+  .teacher-info .sub{color:var(--ink-soft);font-size:13px;margin-top:4px}
+  .teacher-stats{display:flex;gap:18px;flex-wrap:wrap}
+  .teacher-stats .stat{text-align:center}
+  .teacher-stats .stat .v{font-family:"Black Han Sans",sans-serif;font-size:22px;color:var(--brand);line-height:1}
+  .teacher-stats .stat .l{font-size:10.5px;color:var(--ink-soft);letter-spacing:.06em;margin-top:3px;font-weight:700}
+
+  .year-cal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:18px;overflow-x:auto}
+  .year-cal h3{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:14px;font-weight:700}
+  .yc-table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+  .yc-table th{font-size:11px;font-weight:700;color:var(--ink-soft);padding:6px 4px;text-align:center;letter-spacing:.04em}
+  .yc-table td.label{font-size:12.5px;font-weight:700;color:var(--ink);text-align:left;padding:8px 10px 8px 0;white-space:nowrap;border-bottom:1px solid #f0eada;width:1%}
+  .yc-table td.label .gtag{display:inline-block;font-size:10px;background:var(--chip);padding:1px 6px;border-radius:4px;margin-right:5px;font-weight:700}
+  .yc-row td.cell{border-bottom:1px solid #f0eada;padding:4px 1.5px;width:8.33%}
+  .yc-bar{height:18px;border-radius:4px;background:#cfd6e2;position:relative}
+  .yc-bar.on{background:var(--brand)}
+  .yc-bar.on.summer{background:#d65a25;background-image:linear-gradient(45deg,rgba(255,255,255,.18) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.18) 50%,rgba(255,255,255,.18) 75%,transparent 75%);background-size:8px 8px}
+
+  .semester-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .semester-tabs button{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.15s}
+  .semester-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .semester-tabs button:hover:not(.on){border-color:var(--ink-soft)}
+
+  /* ===== View: by Month ===== */
+  .month-pills{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20}
+  .month-pill{background:#f5efe2;border:1.5px solid var(--line);border-radius:10px;padding:11px 4px;text-align:center;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:2px}
+  .month-pill:hover{border-color:var(--brand)}
+  .month-pill.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .month-pill .mp-n{font-family:"Black Han Sans",sans-serif;font-size:20px}
+  .month-pill .mp-c{font-size:10.5px;letter-spacing:.04em;font-weight:700;opacity:.85}
+
+  .acad-group{margin-top:22px}
+  .acad-group h3{font-size:17px;border-left:4px solid var(--ink);padding-left:10px;margin-bottom:10px}
+  .acad-group h3 .acount{background:var(--chip);font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:8px}
+
+  /* ===== Academy form (existing) ===== */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:760px;margin:6px auto 0}
+  .panel h2{font-size:20px;margin-bottom:4px}
+  .panel .lead{color:var(--ink-soft);font-size:14px;line-height:1.6;margin-bottom:20px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-grid .full{grid-column:1/-1}
+  .form-grid label{display:block;font-size:12px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.04em}
+  .form-grid input,.form-grid select,.form-grid textarea{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}
+  .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--brand)}
+  .daypick,.monthpick{display:flex;gap:6px;flex-wrap:wrap}
+  .daypick .d,.monthpick .m{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 0;width:46px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;user-select:none;transition:.12s}
+  .daypick .d.on,.monthpick .m.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .submit{margin-top:20px;width:100%;border:0;background:var(--brand);color:#fff;font-family:inherit;font-weight:900;font-size:15px;padding:14px;border-radius:11px;cursor:pointer}
+  .submit:hover{background:var(--brand-deep)}
+  .mylist-acad{margin:26px auto 0;max-width:760px}
+  .mylist-acad h3{font-size:14px;color:var(--ink-soft);margin-bottom:10px;letter-spacing:.04em}
+  .acad-row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px}
+  .acad-row .info{flex:1;min-width:0}
+  .acad-row .info b{font-size:14px}
+  .acad-row .info small{display:block;color:var(--ink-soft);font-size:12px;margin-top:2px}
+  .delbtn{border:1.5px solid var(--warn);color:var(--warn);background:#fff;border-radius:8px;font-family:inherit;font-weight:700;font-size:12px;padding:7px 11px;cursor:pointer}
+  .delbtn:hover{background:var(--warn);color:#fff}
+
+  .scrim{position:fixed;inset:0;background:rgba(16,23,40,.45);z-index:60;opacity:0;pointer-events:none;transition:.2s}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:460px;max-width:92vw;background:var(--paper);z-index:70;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px -20px rgba(0,0,0,.5)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{background:var(--ink);color:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .drawer-head h2{font-size:18px;flex:1}
+  .drawer-head .x{background:rgba(255,255,255,.12);border:0;color:#fff;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer}
+  .drawer-body{flex:1;overflow:auto;padding:18px 20px}
+  .verdict{border-radius:12px;padding:14px 16px;margin-bottom:18px;font-weight:700;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+  .verdict.ok{background:#e7f4ee;color:var(--good);border:1px solid #bfe3d3}
+  .verdict.bad{background:var(--warn-bg);color:var(--warn);border:1px solid #f3c4bd}
+  .verdict.none{background:#fff;color:var(--ink-soft);border:1px solid var(--line)}
+  .verdict .big{font-family:"Black Han Sans",sans-serif;font-size:22px;line-height:1}
+  .conflict-detail{font-size:12px;font-weight:500;margin-top:6px}
+
+  .wk{width:100%;border-collapse:separate;border-spacing:3px;margin:6px 0 18px;table-layout:fixed}
+  .wk th{font-size:10.5px;color:var(--ink-soft);font-weight:700;padding:4px 2px}
+  .wk td{background:#fff;border:1px solid var(--line);border-radius:6px;vertical-align:top;height:60px;padding:3px;width:11%;overflow:hidden}
+  .wk td.has{background:#fff}
+  .wk td.clash{background:var(--warn-bg);border-color:var(--warn)}
+  .wk .period-lab{font-size:10px;font-weight:800;color:var(--ink-soft);text-align:left;width:9%;padding-right:4px}
+  .cellchip{font-size:9px;font-weight:700;color:#fff;border-radius:3px;padding:2px 3px;margin-bottom:2px;line-height:1.2;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* 내 시간표 사용 안내 */
+  .cart-guide{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-bottom:16px;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  .cart-guide b{color:var(--ink);font-weight:800}
+  .cart-guide ol{margin:6px 0 0 18px;padding:0}
+  .cart-guide ol li{margin:3px 0}
+  .cart-guide .ico{font-size:15px;margin-right:4px}
+
+  .picked{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+  .picked .pinfo{flex:1;min-width:0}
+  .picked .pinfo b{font-size:13.5px;display:block}
+  .picked .pinfo small{color:var(--ink-soft);font-size:11.5px;display:block;margin-top:2px}
+  .picked .bar{width:5px;align-self:stretch;border-radius:3px}
+  .cart-empty{text-align:center;color:var(--ink-soft);padding:50px 10px;line-height:1.6}
+  .drawer-foot{padding:14px 20px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-soft);line-height:1.5}
+
+  footer{max-width:1180px;margin:40px auto 0;padding:24px 20px 0;border-top:1px solid var(--line);color:var(--ink-soft);font-size:12px;line-height:1.7}
+  footer b{color:var(--ink)}
+  footer .op-info{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 18px;margin:16px 0 14px;max-width:620px}
+  footer .op-info > b{font-size:13px;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  footer .op-info-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;background:var(--chip);color:var(--ink-soft);padding:2px 7px;border-radius:4px;letter-spacing:.02em;font-weight:700}
+  footer .op-info dl{display:grid;grid-template-columns:max-content 1fr;gap:5px 16px;margin-top:10px;font-size:12px}
+  footer .op-info dt{font-weight:700;color:var(--ink)}
+  footer .op-info dd{color:var(--ink-soft)}
+  footer .op-info dd a{color:var(--ink);font-weight:700}
+  footer .footer-links{margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  footer .footer-links a,footer .footer-links .footer-notice-link{color:var(--ink);font-weight:700;text-decoration:underline;font-size:12.5px}
+  footer .footer-links .dot{color:var(--line);font-weight:700}
+  footer .footer-beta{margin-top:8px;font-size:11.5px;color:var(--ink-soft)}
+
+  /* ===== View: Browse (둘러보기 — 기본) ===== */
+  .browse-section{margin-top:26px}
+  .browse-section h2{font-size:19px;color:var(--ink);letter-spacing:-.3px;margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:900}
+  .browse-section h2 .count{background:var(--chip);color:var(--ink-soft);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+  .browse-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .browse-filters .chip{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+  .browse-filters .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .browse-filters .chip:hover:not(.on){border-color:var(--ink-soft)}
+  .acad-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .acad-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;display:flex;flex-direction:column;gap:11px;position:relative}
+  .acad-card:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:0 14px 30px -16px rgba(22,32,58,.4)}
+  .acad-card-head{display:flex;align-items:center;gap:12px}
+  .acad-card-logo{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#e0521f,#b73f12);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:22px;flex-shrink:0;letter-spacing:-1px}
+  .acad-card-name{font-size:15.5px;font-weight:900;line-height:1.3;letter-spacing:-.3px}
+  .acad-card-where{font-size:11px;color:var(--ink-soft);font-weight:700;margin-top:3px}
+  .acad-card-tags{display:flex;flex-wrap:wrap;gap:4px;min-height:24px}
+  .acad-card-tags span{font-size:10.5px;background:var(--chip);color:#384b6b;padding:2.5px 7px;border-radius:5px;font-weight:700}
+  .acad-card-tags .summer{background:var(--brand);color:#fff}
+  .acad-card-stats{display:flex;gap:14px;border-top:1px dashed var(--line);padding-top:11px;font-size:11.5px;color:var(--ink-soft);font-weight:700}
+  .acad-card-stats b{color:var(--brand);font-family:"Black Han Sans",sans-serif;font-size:16px;margin-right:4px;letter-spacing:-.3px}
+  .acad-card-cta{position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.04em}
+
+  .teacher-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+  .teacher-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:11px}
+  .teacher-card:hover{border-color:var(--brand);background:#fff7f1}
+  .tc-avatar{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:17px;flex-shrink:0}
+  .tc-info{flex:1;min-width:0}
+  .tc-name{font-size:13.5px;font-weight:900;letter-spacing:-.2px}
+  .tc-sub{font-size:11px;color:var(--ink-soft);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+
+  .takedown-note{background:#fff7f1;border:1px solid #f3c4bd;border-radius:11px;padding:14px 16px;font-size:12.5px;color:#a93515;line-height:1.6;margin-top:30px}
+  .takedown-note b{color:var(--warn);font-weight:900}
+  .takedown-note a{color:var(--warn);font-weight:700;text-decoration:underline}
+
+  /* ===== View: Category (📁 카테고리) ===== */
+  .axis-toggle{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:106px;z-index:20;flex-wrap:wrap}
+  .axis-toggle button{flex:1;min-width:140px;border:0;background:transparent;color:var(--ink);font-family:inherit;font-weight:800;font-size:13.5px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:.15s;letter-spacing:-.2px}
+  .axis-toggle button.on{background:var(--ink);color:#fff}
+  .axis-toggle button:hover:not(.on){background:#f5efe2}
+  .axis-toggle .ax-emoji{font-size:15px;margin-right:6px}
+  .cat-search{margin-bottom:14px}
+  .cat-search input{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;background:#fff;color:var(--ink);outline:none;transition:.15s}
+  .cat-search input:focus{border-color:var(--brand)}
+
+  .cat-group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+  .cat-group-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .cat-group-title{font-family:"Black Han Sans",sans-serif;font-size:24px;letter-spacing:-1px;line-height:1.1;color:var(--ink)}
+  .cat-group-icon{font-size:22px}
+  .cat-group-count{background:var(--brand);color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:.02em}
+  .cat-group-sub{font-size:12px;color:var(--ink-soft);font-weight:700;margin-left:auto}
+  .cat-subj-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .cat-subj-pills .pill{font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:999px;cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.15s}
+  .cat-subj-pills .pill:hover{border-color:var(--ink-soft)}
+  .cat-subj-pills .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .cat-subj-pills .pill .cnt{opacity:.7;margin-left:5px}
+
+  .ct-badge{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:800;color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:-.1px}
+  .ct-badge .em{font-size:10px}
+  .sg-badge{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;color:var(--ink);padding:2px 7px;border-radius:5px;background:#eef0f4;letter-spacing:-.1px;border:1px solid #dee3eb}
+
+  .empty-soft{padding:30px 20px;text-align:center;color:var(--ink-soft);font-size:13px}
+
+  /* ===== 카테고리 그룹 카드 (drill-down 1단계) ===== */
+  .cat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;animation:fadeInCards .3s ease-out}
+  @keyframes fadeInCards{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .cat-card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 18px 16px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;display:flex;flex-direction:column;gap:9px;position:relative}
+  .cat-card:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:0 14px 30px -16px rgba(22,32,58,.4)}
+  .cat-card-cta{position:absolute;top:18px;right:18px;font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.04em}
+  .cat-card-icon{font-size:32px;line-height:1}
+  .cat-card-name{font-family:"Black Han Sans",sans-serif;font-size:22px;letter-spacing:-1px;line-height:1.1;color:var(--ink)}
+  .cat-card-meta{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-soft);font-weight:700;flex-wrap:wrap}
+  .cat-card-meta .count{background:var(--brand);color:#fff;padding:2px 9px;border-radius:5px;font-size:11px;letter-spacing:-.1px}
+  .cat-card-subjects{display:flex;flex-wrap:wrap;gap:4px;border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+  .cat-card-subjects span{font-size:10.5px;background:var(--chip);color:#384b6b;padding:2px 7px;border-radius:5px;font-weight:700;letter-spacing:-.1px}
+  .cat-card-subjects span b{color:var(--brand);font-weight:900;margin-right:2px}
+
+  .cat-back-btn{background:#fff;border:1.5px solid var(--line);color:var(--ink);font-family:inherit;font-weight:800;font-size:13px;padding:9px 16px;border-radius:10px;cursor:pointer;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;transition:.15s;letter-spacing:-.2px}
+  .cat-back-btn:hover{border-color:var(--brand);color:var(--brand);background:#fff7f1}
+
+  /* ===== AI 검색 박스 ===== */
+  .ai-search-box{
+    background:linear-gradient(135deg,#fff 0%,#fff7ec 100%);
+    border:1.5px solid var(--brand);border-radius:14px;
+    padding:18px 20px 16px;margin-bottom:20px;
+    box-shadow:0 8px 20px -10px rgba(224,82,31,.25);
+  }
+  .ai-search-title{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+  .ai-search-title h3{font-family:"Black Han Sans",sans-serif;font-size:18px;letter-spacing:-.5px;color:var(--ink)}
+  .ai-search-title .pulse{font-size:18px;animation:pulse 2s ease-in-out infinite}
+  .ai-search-title .tag{font-size:10px;background:var(--brand);color:#fff;padding:2px 7px;border-radius:5px;font-weight:800;letter-spacing:.04em;margin-left:auto;font-family:"IBM Plex Mono",monospace}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+  .ai-search-input-wrap{
+    display:flex;align-items:center;gap:8px;
+    background:#fff;border:2px solid var(--ink);border-radius:10px;
+    padding:4px 4px 4px 14px;transition:.15s;
+  }
+  .ai-search-input-wrap:focus-within{border-color:var(--brand);box-shadow:0 0 0 4px rgba(224,82,31,.12)}
+  #ai-q{flex:1;border:0;outline:0;font-family:inherit;font-size:14.5px;padding:11px 0;background:transparent;color:var(--ink);min-width:0}
+  #ai-q::placeholder{color:#9aa3b3}
+  .ai-btn{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:10px 20px;font-family:inherit;font-weight:800;font-size:13.5px;cursor:pointer;letter-spacing:-.2px;transition:.15s;white-space:nowrap}
+  .ai-btn:hover{background:#0e1730}
+  .ai-suggests{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .ai-suggests-label{font-size:11px;color:var(--ink-soft);font-weight:700;letter-spacing:.04em;margin-right:4px;align-self:center}
+  .ai-suggests .suggest{font-size:12px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+  .ai-suggests .suggest:hover{border-color:var(--brand);color:var(--brand);background:#fff7f1}
+
+  .ai-result-section{
+    background:var(--card);border:1.5px solid var(--brand);
+    border-radius:14px;padding:18px 20px;margin-bottom:20px;
+    box-shadow:0 8px 20px -10px rgba(224,82,31,.2);
+    animation:slideUpAi .3s ease-out;
+  }
+  @keyframes slideUpAi{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .ai-summary{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+  .ai-summary .qbox{flex:1;min-width:200px}
+  .ai-summary .qbox .qline{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.5}
+  .ai-summary .qbox .qline b{color:var(--brand)}
+  .ai-summary .qbox .qline .cnt{font-family:"Black Han Sans",sans-serif;font-size:22px;color:var(--brand);margin:0 4px}
+  .ai-filter-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+  .ai-filter-tags span{font-size:11px;color:var(--ink-soft);font-weight:700;background:#f5efe2;padding:3px 9px;border-radius:5px;border:1px solid var(--line)}
+  .ai-clear-btn{background:#fff;border:1.5px solid var(--line);color:var(--ink-soft);font-family:inherit;font-weight:700;font-size:12px;padding:7px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;transition:.15s}
+  .ai-clear-btn:hover{border-color:var(--warn);color:var(--warn)}
+  .ai-empty-result{padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:13.5px;line-height:1.8}
+  .ai-empty-result .big{font-size:32px;margin-bottom:8px}
+
+  @media (max-width:760px){
+    .ai-search-input-wrap{flex-direction:column;align-items:stretch;padding:10px}
+    #ai-q{padding:8px 4px}
+    .ai-btn{width:100%}
+  }
+
+  /* ===== 동적 신호 배지 (NEW/HOT/D-day) + 시즌배너 ===== */
+  .signal-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
+  .sig{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:900;color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:-.1px;line-height:1.4;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
+  .sig-new{background:linear-gradient(135deg,#1f7a5e,#2c9b78)}
+  .sig-hot{background:linear-gradient(135deg,#e0521f,#ff6a32)}
+  .sig-hot::before{content:"🔥";margin-right:2px}
+  .sig-dday{background:#16203a;border:1px solid #2a3554}
+  .sig-dday b{color:#ffb677;font-family:"IBM Plex Mono",monospace;letter-spacing:-.2px}
+  .sig-views{background:#eef0f4;color:var(--ink-soft);font-weight:700}
+  .sig-views .em{font-size:9.5px;margin-right:2px;opacity:.7}
+  @keyframes popIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+  .season-banner{
+    background:linear-gradient(120deg,#fff7ec 0%,#fff 70%);
+    border:1.5px solid #f3c4bd;border-radius:13px;
+    padding:14px 18px;margin:0 0 18px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px -8px rgba(224,82,31,.18);
+    position:relative;overflow:hidden;
+  }
+  .season-banner::before{
+    content:"";position:absolute;top:-50%;right:-5%;width:180px;height:180px;
+    background:radial-gradient(circle,rgba(224,82,31,.1) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .season-banner .se-emoji{font-size:30px;line-height:1;z-index:1}
+  .season-banner .se-msg{flex:1;min-width:160px;z-index:1}
+  .season-banner .se-msg b{color:var(--brand);font-weight:900}
+  .season-banner .se-msg .se-title{font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.4;letter-spacing:-.2px}
+  .season-banner .se-msg .se-sub{font-size:11.5px;color:var(--ink-soft);margin-top:3px;font-weight:600}
+  .season-banner .se-cta{
+    background:var(--ink);color:#fff;font-family:inherit;font-weight:800;font-size:12.5px;
+    padding:8px 14px;border-radius:8px;border:0;cursor:pointer;letter-spacing:-.2px;z-index:1;
+    transition:.15s;
+  }
+  .season-banner .se-cta:hover{background:#0e1730}
+
+  /* ===== Notice Modal (첫 방문 공지) ===== */
+  .notice-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+  .notice-overlay.show{display:flex;animation:fadeIn .2s ease-out}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .notice-modal{background:var(--card);border-radius:16px;max-width:560px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);overflow:hidden;animation:slideUp .25s ease-out}
+  @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .notice-head{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:10px}
+  .notice-head .ico{font-size:22px}
+  .notice-head h2{font-size:17px;font-weight:900;letter-spacing:-.3px}
+  .notice-body{padding:22px 24px;font-size:13.5px;line-height:1.65;color:var(--ink);max-height:65vh;overflow-y:auto}
+  .notice-body h3{font-size:14px;color:var(--brand);font-weight:900;margin:16px 0 7px;letter-spacing:-.2px}
+  .notice-body h3:first-child{margin-top:0}
+  .notice-body p{color:var(--ink-soft);margin:4px 0 8px}
+  .notice-body ul{padding-left:18px;margin:6px 0}
+  .notice-body ul li{margin:4px 0;color:var(--ink-soft);font-size:13px}
+  .notice-takedown{background:#fff7f1;border:1.5px solid #f3c4bd;border-radius:11px;padding:14px 16px;margin-top:6px}
+  .notice-takedown b{color:var(--warn);font-weight:900}
+  .notice-takedown a{color:var(--warn);font-weight:800;text-decoration:underline}
+  .notice-takedown .hint{font-size:11.5px;color:var(--ink-soft);font-weight:600;margin-top:6px;display:block}
+  .notice-foot{padding:14px 24px 20px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--line)}
+  .notice-foot button{font-family:inherit;font-weight:800;font-size:14px;padding:11px 24px;border-radius:10px;cursor:pointer;border:0;background:var(--ink);color:#fff;transition:.15s;letter-spacing:-.2px}
+  .notice-foot button:hover{background:#0e1730}
+  .footer-notice-link{color:var(--ink);font-weight:700;text-decoration:underline;cursor:pointer;background:none;border:0;font-family:inherit;font-size:inherit;padding:0}
+
+  /* ===== 회원 시스템 (로그인/가입/모달) ===== */
+  .auth-btns{display:flex;gap:6px}
+  .auth-btn{border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 13px;border-radius:999px;cursor:pointer;transition:.15s;letter-spacing:-.2px;white-space:nowrap}
+  .auth-btn:hover{background:rgba(255,255,255,.12)}
+  .auth-btn.primary{background:var(--brand);border-color:var(--brand)}
+  .auth-btn.primary:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+  .auth-userinfo{display:flex;align-items:center;gap:8px;color:#fff;font-size:12.5px;font-weight:700}
+  .auth-userinfo .av{width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Black Han Sans",sans-serif;font-size:14px}
+  .auth-userinfo .who{display:flex;flex-direction:column;line-height:1.2}
+  .auth-userinfo .who small{font-size:10px;color:#aeb8cc;font-weight:600;letter-spacing:.04em}
+
+  .member-overlay{position:fixed;inset:0;background:rgba(16,23,40,.6);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+  .member-overlay.show{display:flex;animation:fadeIn .2s ease-out}
+  .member-modal{background:var(--card);border-radius:18px;max-width:640px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);overflow:hidden;animation:slideUp .25s ease-out;max-height:92vh;display:flex;flex-direction:column}
+  .member-head{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0}
+  .member-head h2{font-size:17px;font-weight:900;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+  .member-head h2 .badge{font-family:"IBM Plex Mono",monospace;font-size:10px;background:var(--brand);padding:2px 7px;border-radius:5px;font-weight:800;letter-spacing:.04em}
+  .member-head .x{background:rgba(255,255,255,.12);border:0;color:#fff;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;flex-shrink:0}
+
+  .m-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:14px 20px 0;background:var(--paper)}
+  .m-tab{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:12px;padding:10px 4px;border-radius:9px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:-.2px}
+  .m-tab .em{font-size:18px}
+  .m-tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .m-tab:hover:not(.on){border-color:var(--ink-soft)}
+
+  .m-body{flex:1;overflow-y:auto;padding:18px 24px 20px;background:var(--paper)}
+  .m-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .m-form-grid .full{grid-column:1/-1}
+  .m-form-grid label{display:block;font-size:11.5px;font-weight:800;color:var(--ink-soft);margin-bottom:5px;letter-spacing:.04em}
+  .m-form-grid label .req{color:var(--warn);margin-left:2px}
+  .m-form-grid input,.m-form-grid select{width:100%;font-family:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none;transition:.15s}
+  .m-form-grid input:focus,.m-form-grid select:focus{border-color:var(--brand)}
+  .m-form-grid .hint{font-size:11px;color:var(--ink-soft);margin-top:4px;font-weight:600;line-height:1.5}
+
+  .m-phone-row{display:flex;gap:6px}
+  .m-phone-row input{flex:1}
+  .m-phone-row .send-btn{background:var(--ink);color:#fff;border:0;border-radius:9px;padding:0 16px;font-family:inherit;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap;transition:.15s}
+  .m-phone-row .send-btn:hover{background:#0e1730}
+  .m-phone-row .send-btn:disabled{background:#9aa3b3;cursor:not-allowed}
+  .m-sms-demo{background:#fff7ec;border:1.5px solid #f3c4bd;border-radius:9px;padding:11px 13px;font-size:12.5px;color:#a93515;margin-top:8px;display:none}
+  .m-sms-demo.show{display:block;animation:fadeIn .2s}
+  .m-sms-demo b{color:var(--brand);font-family:"IBM Plex Mono",monospace;font-size:18px;letter-spacing:.2em}
+  .m-sms-demo .demo-tag{font-size:10px;background:var(--warn);color:#fff;padding:1px 6px;border-radius:4px;font-weight:800;letter-spacing:.04em;margin-left:6px}
+  .m-sms-input-row{display:none;gap:6px;margin-top:8px}
+  .m-sms-input-row.show{display:flex;animation:fadeIn .2s}
+  .m-sms-input-row input{flex:1}
+  .m-sms-input-row .verify-btn{background:var(--good);color:#fff;border:0;border-radius:9px;padding:0 16px;font-family:inherit;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap}
+  .m-sms-verified{display:none;background:#e7f4ee;border:1.5px solid #bfe3d3;border-radius:9px;padding:9px 13px;font-size:12.5px;color:var(--good);font-weight:800;margin-top:8px}
+  .m-sms-verified.show{display:flex;align-items:center;gap:6px;animation:fadeIn .2s}
+
+  .m-biz-status{font-size:11.5px;font-weight:700;margin-top:5px;display:none}
+  .m-biz-status.show{display:block;animation:fadeIn .2s}
+  .m-biz-status.ok{color:var(--good)}
+  .m-biz-status.bad{color:var(--warn)}
+
+  .m-consent{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+  .m-consent .c-row{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:5px 0}
+  .m-consent .c-row input[type="checkbox"]{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+  .m-consent .c-row label{font-weight:600;cursor:pointer}
+  .m-consent .c-row a{color:var(--ink);font-weight:700;text-decoration:underline}
+  .m-consent .c-all{padding-bottom:8px;border-bottom:1px dashed var(--line);margin-bottom:6px}
+  .m-consent .c-all label{font-weight:800;color:var(--ink);font-size:13.5px}
+
+  .m-submit{margin-top:14px;width:100%;background:var(--brand);color:#fff;border:0;border-radius:11px;padding:14px;font-family:inherit;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:-.2px;transition:.15s}
+  .m-submit:hover{background:var(--brand-deep)}
+  .m-submit:disabled{background:#cfd6e2;cursor:not-allowed}
+  .m-switch{text-align:center;margin-top:14px;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+  .m-switch a{color:var(--brand);font-weight:800;text-decoration:underline;cursor:pointer}
+
+  .m-success{padding:30px 20px;text-align:center}
+  .m-success .em{font-size:48px;margin-bottom:10px}
+  .m-success h3{font-size:18px;color:var(--ink);margin-bottom:6px;letter-spacing:-.3px}
+  .m-success p{font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+
+  @media (max-width:760px){
+    .m-tabs{grid-template-columns:repeat(3,1fr)}
+    .m-form-grid{grid-template-columns:1fr}
+  }
+
+  /* ===== 비회원 강좌 마스킹 ===== */
+  .member-cta-card{
+    background:linear-gradient(135deg,#fff7ec 0%,#fff 100%);
+    border:1.5px dashed var(--brand);border-radius:14px;
+    padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    text-align:center;cursor:pointer;transition:.18s;min-height:200px;
+  }
+  .member-cta-card:hover{background:linear-gradient(135deg,#fff7ec 0%,#ffeacc 100%);transform:translateY(-2px)}
+  .member-cta-card .ico{font-size:36px}
+  .member-cta-card .ttl{font-size:14px;font-weight:700;color:var(--ink);line-height:1.5}
+  .member-cta-card .ttl b{color:var(--brand);font-family:"Black Han Sans",sans-serif;font-size:18px;display:block;margin:4px 0}
+  .member-cta-card .cta-btn{background:var(--brand);color:#fff;border:0;border-radius:9px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer;letter-spacing:-.2px}
+
+  @media (max-width:760px){
+    .hero h1{font-size:24px}
+    .form-grid{grid-template-columns:1fr}
+    .toolbar,.picker-row,.month-pills{position:static}
+    .field input{min-width:140px}
+    .field select,.field input{flex:1}
+    .field{flex:1 1 45%}
+    .month-pills{grid-template-columns:repeat(6,1fr)}
+    .mt-grid{grid-template-columns:repeat(6,1fr)}
+    .acad-cards{grid-template-columns:1fr}
+    .teacher-cards{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="logo">
+      <div class="mark">클래스픽<span class="dot">.</span></div>
+      <div class="sub mono">CLASSPICK</div>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="modeswitch">
+      <button id="m-browse" class="on" onclick="setMode('browse')">🏠 클래스픽!</button>
+      <button id="m-category" onclick="setMode('category')">📁 카테고리</button>
+      <button id="m-byacad" onclick="setMode('byacad')">🏫 학원별</button>
+      <button id="m-byteach" onclick="setMode('byteach')">👤 강사별</button>
+      <button id="m-bymonth" onclick="setMode('bymonth')">📅 월별</button>
+      <button id="m-search" onclick="setMode('search')">🔍 검색</button>
+      <button id="m-acad" onclick="setMode('academy')">＋ 수업등록</button>
+    </div>
+    <div class="auth-btns" id="auth-btns">
+      <button class="auth-btn" onclick="openMemberLogin()">로그인</button>
+      <button class="auth-btn primary" onclick="openMemberSignup()">회원가입</button>
+    </div>
+    <button id="cartbtn" class="cartbtn" onclick="openCart()">내 시간표 <span class="n" id="cartn">0</span></button>
+  </div>
+</header>
+
+<main>
+  <!-- ============================================================
+       VIEW 0: BROWSE (둘러보기 — 기본 진입)
+       ============================================================ -->
+  <section id="view-browse">
+    <div class="hero">
+      <h1>동네 명강만 <b>골라 담는</b> 곳</h1>
+      <p>학원 카드를 누르면 그 학원의 1년 시간표가, 강사 카드를 누르면 그분의 1년 커리큘럼이 펼쳐집니다. 검색은 상단 🔍 검색 탭에서.</p>
+    </div>
+
+    <a href="javascript:void(0)" class="promo-ad" onclick="setMode('byteach')" aria-label="센텀 BIG3 예비고1 여름방학 특강 대개강">
+      <span class="promo-tag">광고</span>
+      <div class="promo-left">
+        <div class="promo-brand">
+          <span class="label">센텀</span>
+          <span class="big">BIG3</span>
+        </div>
+        <div class="promo-title">예비고1 여름방학 특강 <b>대개강</b></div>
+      </div>
+      <div class="promo-teachers">
+        <div class="ptcard"><span class="num">T·01</span><span class="name">이정민</span></div>
+        <div class="ptcard"><span class="num">T·02</span><span class="name">윤훈관</span></div>
+        <div class="ptcard"><span class="num">T·03</span><span class="name">박신</span></div>
+      </div>
+      <button class="promo-cta">지금 보기 →</button>
+    </a>
+
+    <div id="season-banner-wrap"></div>
+
+    <div class="ai-search-box">
+      <div class="ai-search-title">
+        <span class="pulse">✨</span>
+        <h3>AI 검색</h3>
+        <span class="tag">BETA</span>
+      </div>
+      <div class="ai-search-input-wrap">
+        <input id="ai-q" type="text" placeholder="자연어로 물어보세요 — 예: 교육인에서 진행하는 수업 / 센텀에서 영어 강의 / 부일고1 자사특목" onkeydown="if(event.key==='Enter')runAiSearch()" />
+        <button class="ai-btn" onclick="runAiSearch()">🔎 검색</button>
+      </div>
+      <div class="ai-suggests">
+        <span class="ai-suggests-label">예시:</span>
+        <span class="suggest" onclick="setAiQuery('교육인에서 진행하는 모든 수업')">교육인에서 진행하는 모든 수업</span>
+        <span class="suggest" onclick="setAiQuery('센텀에서 영어 강의')">센텀에서 영어 강의</span>
+        <span class="suggest" onclick="setAiQuery('자사특목 수학')">자사특목 수학</span>
+        <span class="suggest" onclick="setAiQuery('이번 달 강좌')">이번 달 강좌</span>
+        <span class="suggest" onclick="setAiQuery('부일고1 수업')">부일고1 수업</span>
+        <span class="suggest" onclick="setAiQuery('7월 방학특강')">7월 방학특강</span>
+        <span class="suggest" onclick="setAiQuery('윤훈관 선생님 강좌')">윤훈관 선생님 강좌</span>
+      </div>
+    </div>
+
+    <div id="ai-result"></div>
+
+    <div class="browse-filters" id="browse-area-filter"></div>
+
+    <div class="browse-section" id="browse-recent-section" style="display:none">
+      <h2>📌 다시 보기 <span class="count" id="browse-recent-count">0</span></h2>
+      <div class="grid" id="browse-recent-cards"></div>
+    </div>
+
+    <div class="browse-section" id="browse-hot-section" style="display:none">
+      <h2>🔥 지금 인기 <span class="count" id="browse-hot-count">0</span></h2>
+      <div class="grid" id="browse-hot-cards"></div>
+    </div>
+
+    <div class="browse-section">
+      <h2>🏫 학원 <span class="count" id="browse-acad-count">0</span></h2>
+      <div class="acad-cards" id="browse-acad-cards"></div>
+    </div>
+
+    <div class="browse-section">
+      <h2>👤 인기 강사 <span class="count" id="browse-teach-count">0</span></h2>
+      <div class="teacher-cards" id="browse-teach-cards"></div>
+    </div>
+
+    <div class="browse-section">
+      <h2>📅 이번 달(<span id="browse-month-label">5</span>월) 강좌 <span class="count" id="browse-month-count">0</span></h2>
+      <div class="grid" id="browse-month-cards"></div>
+    </div>
+
+    <div class="takedown-note">
+      <b>학원·강사 정보 정정/삭제 요청</b> — 본 사이트의 강좌 정보는 각 학원의 공개된 블로그·홈페이지 정보를 토대로 수집·정리한 정보 큐레이션 서비스입니다. 정정이나 삭제를 원하시는 학원·강사 분께서는 <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a> 으로 학원명·강좌명을 보내주시면 <b>영업일 1일 이내 처리</b>합니다.
+    </div>
+
+    <div class="ad inline"><span class="tag">AD</span> 광고 영역 · 인피드 — 광고문의</div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 1: SEARCH (학부모 검색)
+       ============================================================ -->
+  <section id="view-search" style="display:none">
+    <div class="hero">
+      <h1>동네 <b>명강</b>만 골라 담는 곳</h1>
+      <p>부산 센텀·사직 — 동네 학원 강좌를 한눈에 비교하고, 듣고 싶은 수업을 담아 요일·시간이 겹치는지 바로 확인하세요.</p>
+    </div>
+
+    <a href="javascript:void(0)" class="promo-ad" onclick="setMode('byteach')" aria-label="센텀 BIG3 예비고1 여름방학 특강 대개강">
+      <span class="promo-tag">광고</span>
+      <div class="promo-left">
+        <div class="promo-brand">
+          <span class="label">센텀</span>
+          <span class="big">BIG3</span>
+        </div>
+        <div class="promo-title">예비고1 여름방학 특강 <b>대개강</b></div>
+      </div>
+      <div class="promo-teachers">
+        <div class="ptcard"><span class="num">T·01</span><span class="name">이정민</span></div>
+        <div class="ptcard"><span class="num">T·02</span><span class="name">윤훈관</span></div>
+        <div class="ptcard"><span class="num">T·03</span><span class="name">박신</span></div>
+      </div>
+      <button class="promo-cta">지금 보기 →</button>
+    </a>
+
+    <div class="toolbar">
+      <div class="filters">
+        <div class="field">
+          <label>지역</label>
+          <select id="f-city" onchange="onCityChange('f');render()"><option value="">전체</option><option>부산</option></select>
+        </div>
+        <div class="field">
+          <label>동네</label>
+          <select id="f-area" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>학년</label>
+          <select id="f-grade" onchange="render()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+        </div>
+        <div class="field">
+          <label>과목</label>
+          <select id="f-subject" onchange="render()"><option value="">전체</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+        </div>
+        <div class="field">
+          <label>요일</label>
+          <select id="f-day" onchange="render()"><option value="">전체</option><option>월</option><option>화</option><option>수</option><option>목</option><option>금</option><option>토</option><option>일</option></select>
+        </div>
+        <div class="field">
+          <label>시간대</label>
+          <select id="f-period" onchange="render()"><option value="">전체</option><option>오전</option><option>오후</option><option>저녁</option></select>
+        </div>
+        <div class="field">
+          <label>월</label>
+          <select id="f-month" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>학원</label>
+          <select id="f-acad" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>학교</label>
+          <select id="f-school" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field">
+          <label>강좌유형</label>
+          <select id="f-ctype" onchange="render()"><option value="">전체</option></select>
+        </div>
+        <div class="field" style="flex:1">
+          <label>검색어 (강좌·강사)</label>
+          <input id="f-q" type="text" placeholder="예) 미적분, 어법, 자사특목, 부일고…" oninput="render()" />
+        </div>
+        <button class="resetbtn" onclick="resetFilters()">초기화</button>
+      </div>
+    </div>
+
+    <div class="countbar">
+      <div class="cnt"><b id="reslen">0</b> 개 강좌</div>
+    </div>
+
+    <div class="grid" id="results"></div>
+
+    <div class="ad inline"><span class="tag">AD</span> 광고 영역 · 인피드 (검색결과 사이) — 광고문의</div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 2: BY ACADEMY (학원별 — 신규)
+       ============================================================ -->
+  <section id="view-byacad" style="display:none">
+    <div class="hero">
+      <h1>학원별로 <b>몇월에 무슨 수업</b>이 열리는지 한눈에</h1>
+      <p>학원을 선택하면 그 학원의 전 강좌가 월 타임라인으로 펼쳐집니다. 방학특강·정규반·시즌반을 시각적으로 구분해서 보여드려요.</p>
+    </div>
+
+    <div class="picker-row">
+      <div class="field" style="flex:1">
+        <label>학원 선택</label>
+        <select id="ba-pick" onchange="renderByAcad()"></select>
+      </div>
+      <div class="field">
+        <label>학년 필터</label>
+        <select id="ba-grade" onchange="renderByAcad()"><option value="">전체</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      </div>
+      <div class="field">
+        <label>과목 필터</label>
+        <select id="ba-subject" onchange="renderByAcad()"><option value="">전체</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+      </div>
+    </div>
+
+    <div id="byacad-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 3: BY TEACHER (강사별 — 신규)
+       ============================================================ -->
+  <section id="view-byteach" style="display:none">
+    <div class="hero">
+      <h1>강사별 <b>1년·학기·월</b> 커리큘럼</h1>
+      <p>강사를 선택하면 그 분의 1년 전체 강좌가 캘린더 그리드로 펼쳐지고, 학기/방학별로 무엇을 가르치는지 한눈에 보입니다.</p>
+    </div>
+
+    <div class="picker-row">
+      <div class="field" style="flex:1">
+        <label>강사 선택</label>
+        <select id="bt-pick" onchange="renderByTeach()"></select>
+      </div>
+    </div>
+
+    <div id="byteach-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 4: BY MONTH (월별 — 신규)
+       ============================================================ -->
+  <section id="view-bymonth" style="display:none">
+    <div class="hero">
+      <h1>이번 달엔 <b>어떤 수업</b>이 열리나요?</h1>
+      <p>월을 선택하면 그 달에 운영되는 모든 강좌가 학원별로 정리됩니다. 방학특강 시즌이 한눈에 들어오죠.</p>
+    </div>
+
+    <div class="month-pills" id="month-pills"></div>
+
+    <div id="bymonth-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 4.5: BY CATEGORY (카테고리별 묶음 — 신규)
+       ============================================================ -->
+  <section id="view-category" style="display:none">
+    <div class="hero">
+      <h1>같은 내용의 수업은 <b>한 곳에</b> 모아서</h1>
+      <p>학교별·학년+과목별·강좌유형별로 같은 카테고리의 강좌를 묶어서 보여드립니다. 자녀 학교나 듣고 싶은 과목을 골라서 같은 카테고리의 강좌를 한 번에 비교하세요.</p>
+    </div>
+
+    <div class="axis-toggle">
+      <button id="ax-school" class="on" onclick="setCategoryAxis('school')"><span class="ax-emoji">🏫</span>학교+학년별</button>
+      <button id="ax-gs" onclick="setCategoryAxis('gradeSubject')"><span class="ax-emoji">📘</span>학년+과목별</button>
+      <button id="ax-ct" onclick="setCategoryAxis('courseType')"><span class="ax-emoji">🏷</span>강좌유형별</button>
+    </div>
+
+    <div class="cat-search">
+      <input id="cat-q" type="text" placeholder="카테고리 또는 강좌 검색 (예: 부일고1, 고1 영어, 자사특목, 미적분…)" oninput="onCatSearchInput()" />
+    </div>
+
+    <div id="category-body"></div>
+  </section>
+
+  <!-- ============================================================
+       VIEW 5: ACADEMY REGISTRATION (학원 등록 — 기존)
+       ============================================================ -->
+  <section id="view-academy" style="display:none">
+    <div class="hero">
+      <h1>우리 학원 강좌를 <b>클래스픽</b>에 올리세요</h1>
+      <p>엄선된 강좌만 모이는 클래스픽에 등록하면 학부모 검색에 바로 노출됩니다. 강사 개인정보(연락처·사진)는 받지 않으며, 등록·수정·삭제는 학원이 직접 관리합니다.</p>
+    </div>
+
+    <div class="panel">
+      <h2>강좌 등록</h2>
+      <p class="lead">필수 항목만 입력해도 등록됩니다.</p>
+      <div class="form-grid">
+        <div><label>학원명 *</label><input id="i-acad" placeholder="예) 교육인학원 센텀점" /></div>
+        <div><label>강사명</label><input id="i-teacher" placeholder="예) 김해인" /></div>
+        <div>
+          <label>지역 *</label>
+          <select id="i-city" onchange="onCityChange('i')"><option value="">선택</option><option>부산</option></select>
+        </div>
+        <div>
+          <label>동네 *</label>
+          <select id="i-area"><option value="">선택</option></select>
+        </div>
+        <div>
+          <label>과목 *</label>
+          <select id="i-subject"><option value="">선택</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+        </div>
+        <div>
+          <label>대상학년 *</label>
+          <select id="i-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option><option>고1~고2</option></select>
+        </div>
+        <div>
+          <label>대상학교 (선택 — 학교별 강좌인 경우)</label>
+          <select id="i-school"><option value="">없음/공통</option></select>
+        </div>
+        <div>
+          <label>강좌유형</label>
+          <select id="i-ctype"><option value="">자동 분류</option></select>
+        </div>
+        <div class="full"><label>강좌명 *</label><input id="i-course" placeholder="예) 미적분1 (기본+실력)" /></div>
+        <div class="full">
+          <label>요일 * (복수선택)</label>
+          <div class="daypick" id="daypick">
+            <div class="d" data-d="월">월</div><div class="d" data-d="화">화</div><div class="d" data-d="수">수</div><div class="d" data-d="목">목</div><div class="d" data-d="금">금</div><div class="d" data-d="토">토</div><div class="d" data-d="일">일</div>
+          </div>
+        </div>
+        <div class="full">
+          <label>운영 월 * (복수선택 — 정규반은 5~12월 / 방학특강은 7~8월 등)</label>
+          <div class="monthpick" id="monthpick"></div>
+        </div>
+        <div>
+          <label>시간대 *</label>
+          <select id="i-period"><option value="">선택</option><option>오전</option><option>오후</option><option>저녁</option></select>
+        </div>
+        <div><label>구체 시간 (선택)</label><input id="i-time" placeholder="예) 18:00-21:00" /></div>
+        <div><label>회차 (선택)</label><input id="i-sessions" placeholder="예) 총 10회" /></div>
+        <div class="full"><label>비고 (선택)</label><textarea id="i-note" rows="2" placeholder="교재, 연계반 등"></textarea></div>
+      </div>
+      <button class="submit" onclick="addCourse()">강좌 등록하기</button>
+    </div>
+
+    <div class="mylist-acad">
+      <h3>등록된 강좌 (학원명으로 조회 · 위 학원명 칸에 입력 후 표시)</h3>
+      <div id="acad-list"></div>
+    </div>
+  </section>
+
+  <div class="ad foot"><span class="tag">AD</span> 광고 영역 · 하단 배너 — 광고문의</div>
+
+  <footer>
+    <b>클래스픽</b>은 부산 센텀·사직 지역 동네 학원의 공개된 강좌 정보를 학부모가 비교·선택할 수 있게 돕는 정보 큐레이션 서비스입니다.
+    강사 연락처·사진 등 민감 개인정보는 수집하지 않으며, 표시된 정보는 각 학원의 블로그·홈페이지에 공개된 시간표를 토대로 정리한 것입니다. 시간표는 변경될 수 있으니 수강 전 해당 학원에 직접 확인하세요.
+
+    <div class="op-info">
+      <b>운영자 정보</b> <span class="op-info-tag">정보통신망법 제25조 표시</span>
+      <dl>
+        <dt>서비스명</dt><dd>클래스픽 (CLASSPICK)</dd>
+        <dt>운영</dt><dd>클래스픽 운영팀</dd>
+        <dt>적용 지역</dt><dd>부산 센텀·사직</dd>
+        <dt>문의·정정·삭제</dt><dd><a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a> · 영업일 1일 이내 처리</dd>
+        <dt>서비스 단계</dt><dd>베타 (사업자등록 전 · 광고 미운영)</dd>
+      </dl>
+    </div>
+
+    <div class="footer-links">
+      <a href="/terms.html">이용약관</a>
+      <span class="dot">·</span>
+      <a href="/privacy.html">개인정보처리방침</a>
+      <span class="dot">·</span>
+      <button class="footer-notice-link" onclick="reopenNotice()">공지 다시 보기</button>
+    </div>
+    <div class="footer-beta">※ 본 사이트는 베타 단계이며, 표시된 강좌는 공개 정보 기반의 예시 큐레이션입니다.</div>
+  </footer>
+</main>
+
+<!-- ============================================================
+     공지 모달 (첫 방문 1회 노출 — 학부모 안내 + 학원/강사 정정삭제 창구)
+     ============================================================ -->
+<div class="notice-overlay" id="notice-overlay">
+  <div class="notice-modal">
+    <div class="notice-head">
+      <span class="ico">📚</span>
+      <h2>클래스픽 안내 — 처음 오신 분께</h2>
+    </div>
+    <div class="notice-body">
+      <p><b>클래스픽</b>은 부산 센텀·사직 지역 학원의 공개 강좌 정보를 학부모 편의를 위해 정리·비교하는 정보 큐레이션 서비스입니다.</p>
+
+      <h3>🎁 6월까지 학원 등록 — 무료 광고</h3>
+      <p>6월 30일까지 클래스픽에 강좌를 등록하시는 학원·교습소는 <b>프리미엄 광고 슬롯에 무료 노출</b>됩니다. 수업 등록 후 <a href="mailto:class-pick@naver.com?subject=수업등록 완료 알림">class-pick@naver.com</a>으로 등록 완료를 알려주시면 광고 슬롯 배정해 드립니다.</p>
+
+      <h3>📨 시간표 일괄 등록 — 메일 전송</h3>
+      <p>수업등록 폼을 일일이 채우기 번거로우시면, 학원 시간표(PDF·이미지·블로그 링크 무관)를 <a href="mailto:class-pick@naver.com?subject=시간표 일괄 등록 요청">class-pick@naver.com</a>으로 보내주세요. 운영팀이 검토 후 영업일 1일 이내 직접 등록해 드립니다.</p>
+
+      <h3>🔐 학부모·학생 — 회원가입 안내</h3>
+      <p>일부 강좌는 무료 열람 가능하지만, <b>전체 강좌·시간표 충돌 분석·인기 강좌 비교</b>는 회원가입 후 이용 가능합니다. 회원가입은 1분 이내, <b>학교/학년/연락처</b>만 입력하면 됩니다.</p>
+
+      <h3>🏫 학원·강사 분께 — 정정/삭제 요청</h3>
+      <p>강좌 정보의 정정·삭제 요청은 <a href="mailto:class-pick@naver.com?subject=정정/삭제 요청">class-pick@naver.com</a>으로 학원명·강좌명을 보내주시면 <b>영업일 1일 이내 별도 사유 확인 없이</b> 우선 반영합니다.</p>
+      <div class="notice-takedown">
+        📧 <b>요청 메일:</b> <a href="mailto:class-pick@naver.com">class-pick@naver.com</a>
+        <span class="hint">학원명·강좌명을 함께 기재해 주시면 빠른 처리에 도움이 됩니다. · 클래스픽 운영팀</span>
+      </div>
+
+      <p style="margin-top:14px;font-size:12px;color:var(--ink-soft)">
+        자세한 사항은 <a href="/terms.html" style="color:var(--ink);font-weight:700">이용약관</a> 및 <a href="/privacy.html" style="color:var(--ink);font-weight:700">개인정보처리방침</a>을 참고해 주세요.
+      </p>
+    </div>
+    <div class="notice-foot">
+      <button onclick="dismissNoticeAndOpenSignup()" style="background:var(--brand);margin-right:8px">＋ 회원가입</button>
+      <button onclick="dismissNotice()">먼저 둘러보기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     회원 모달 (가입 / 로그인 / 프로필)
+     ============================================================ -->
+<div class="member-overlay" id="member-overlay">
+  <div class="member-modal">
+    <div class="member-head">
+      <h2 id="member-title">회원가입 <span class="badge">BETA</span></h2>
+      <button class="x" onclick="closeMember()">×</button>
+    </div>
+    <div class="m-tabs" id="member-tabs">
+      <button class="m-tab on" data-type="student" onclick="setMemberType('student')"><span class="em">🎓</span>학생</button>
+      <button class="m-tab" data-type="parent" onclick="setMemberType('parent')"><span class="em">👨‍👩‍👧</span>학부모</button>
+      <button class="m-tab" data-type="teacher" onclick="setMemberType('teacher')"><span class="em">👤</span>강사</button>
+      <button class="m-tab" data-type="academy" onclick="setMemberType('academy')"><span class="em">🏫</span>학원</button>
+      <button class="m-tab" data-type="institute" onclick="setMemberType('institute')"><span class="em">📚</span>교습소</button>
+    </div>
+    <div class="m-body" id="member-body"></div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>내 시간표 겹침 확인</h2>
+    <button class="x" onclick="closeCart()">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-foot">담은 강좌가 같은 <b>요일·시간대·운영월</b> 3가지 모두 겹치면 빨간색으로 표시됩니다. 주간 그리드는 <b>월~일 7일</b> 모두 반영되며, 구체 시간(예: 오전반 09–11시 vs 11–13시)까지는 학원에 직접 확인해 주세요.</div>
+</aside>
+
+<script>
+/* =========================================================================
+   1. CONSTANTS
+   ========================================================================= */
+const SUBJ_COLOR = {국어:"#c0392b",영어:"#2f6f9e",수학:"#e0521f",과학:"#1f7a5e",사회:"#7c5cc4"};
+function subjColor(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return SUBJ_COLOR[k]; } return "#5a6678"; }
+function subjGroup(s){ for(const k in SUBJ_COLOR){ if(s.includes(k)) return k; } return s; }
+const PERIODS=["오전","오후","저녁"];
+const DAYS=["월","화","수","목","금"];
+const ALL_DAYS=["월","화","수","목","금","토","일"];
+const REGIONS={부산:["센텀","사직"]};
+function allAreas(){ return [].concat(...Object.values(REGIONS)); }
+const ALL_MONTHS=[1,2,3,4,5,6,7,8,9,10,11,12];
+const REG_YEAR=[5,6,7,8,9,10,11,12];   // 5월 시작 정규반
+const SUMMER=[7,8];                      // 여름방학특강
+const HALFYEAR=[6,7,8,9,10,11];          // 반년컷 (수능까지)
+const G3_REG=[3,4,5,6,7,8,9,10,11];      // 고3 정규 (수능까지)
+const SEMESTERS=[
+  {key:"s1",label:"1학기 (3~6월)",months:[3,4,5,6]},
+  {key:"summer",label:"여름방학 (7~8월)",months:[7,8]},
+  {key:"s2",label:"2학기 (9~12월)",months:[9,10,11,12]},
+  {key:"winter",label:"겨울방학 (1~2월)",months:[1,2]}
+];
+function isSummer(months){ return months.includes(7) || months.includes(8); }
+
+/* ===== 카테고리 마스터 (학교 · 강좌유형) ===== */
+const KNOWN_SCHOOLS=[
+  "부일고","해운대고","부산외고","부산예고","해강고",
+  "센텀여고","센텀고","학산여고","덕문여고","동여고"
+];
+// 강좌유형 — 우선순위 높은 것부터. 사이트 표시 색·아이콘과 연동.
+const COURSE_TYPES=[
+  {key:"방학특강",color:"#d65a25",emoji:"☀️"},
+  {key:"반년컷",color:"#a93515",emoji:"🎯"},
+  {key:"자사특목",color:"#7c5cc4",emoji:"🏛"},
+  {key:"수능대비",color:"#2f6f9e",emoji:"📐"},
+  {key:"상위권",color:"#b73f12",emoji:"⭐"},
+  {key:"심화",color:"#e0521f",emoji:"🔥"},
+  {key:"준심화",color:"#e08a3c",emoji:"🔶"},
+  {key:"개념",color:"#1f7a5e",emoji:"📖"},
+  {key:"솔루션",color:"#3c6e8a",emoji:"🧩"},
+  {key:"개별진도",color:"#4a5a78",emoji:"👤"},
+  {key:"클리닉",color:"#9e3f5e",emoji:"💊"},
+  {key:"단어",color:"#5a6b3e",emoji:"📝"},
+  {key:"문법",color:"#6b4e3e",emoji:"📚"},
+  {key:"독해",color:"#4e6b3e",emoji:"📖"},
+  {key:"학교내신",color:"#3e4e6b",emoji:"🏫"},
+  {key:"일반",color:"#5a6678",emoji:"📌"}
+];
+function courseTypeColor(t){ const x=COURSE_TYPES.find(c=>c.key===t); return x?x.color:"#5a6678"; }
+function courseTypeEmoji(t){ const x=COURSE_TYPES.find(c=>c.key===t); return x?x.emoji:"📌"; }
+
+/* ===== 자동 추출 (school/courseType/schoolGrade) ===== */
+function deriveSchool(c){
+  const text=(c.course||"")+" "+(c.note||"");
+  for(const s of KNOWN_SCHOOLS){ if(text.includes(s)) return s; }
+  return "";
+}
+function deriveCourseType(c){
+  const text=(c.course||"")+" "+(c.note||"");
+  if(text.includes("수파르타")) return "방학특강";
+  const months=c.months||[];
+  if(months.length && months.length<=3 && isSummer(months)) return "방학특강";
+  if(text.includes("반년컷")) return "반년컷";
+  if(text.includes("자사특목")) return "자사특목";
+  if(text.includes("수능")) return "수능대비";
+  if(text.includes("SUMMIT")||text.includes("상위권")) return "상위권";
+  if(text.includes("준심화")) return "준심화";
+  if(text.includes("심화")) return "심화";
+  if(text.includes("개념")) return "개념";
+  if(text.includes("솔루션")) return "솔루션";
+  if(text.includes("개별진도")||text.includes("1:1")||text.includes("스카이매쓰")) return "개별진도";
+  if(text.includes("클리닉")) return "클리닉";
+  if(text.includes("보카")||text.includes("단어")) return "단어";
+  if(text.includes("문법")) return "문법";
+  if(text.includes("독해")) return "독해";
+  if(text.includes("내신")) return "학교내신";
+  return "일반";
+}
+function deriveSchoolGrade(c){
+  const s=deriveSchool(c);
+  if(!s) return "";
+  const m=c.grade?c.grade.match(/(\d)/):null;
+  return m ? s+m[1] : s;
+}
+function enrichCourse(c){
+  if(!c) return c;
+  if(!c.school) c.school=deriveSchool(c);
+  if(!c.courseType) c.courseType=deriveCourseType(c);
+  if(!c.schoolGrade) c.schoolGrade=deriveSchoolGrade(c);
+  if(!c.createdAt){
+    // 시드 강좌는 ID에서 seed pseudo-random 0~90일 전 부여, 사용자 강좌(u*)는 현재
+    if(c.id && c.id.toString().startsWith("u")){
+      c.createdAt=Date.now();
+    } else {
+      // ID 해시 기반 결정적 무작위
+      let h=0; const idStr=c.id||c.course||"x";
+      for(let i=0;i<idStr.length;i++){ h=((h<<5)-h)+idStr.charCodeAt(i); h|=0; }
+      const daysAgo=Math.abs(h)%90;
+      c.createdAt=Date.now()-daysAgo*86400000;
+    }
+  }
+  return c;
+}
+
+/* ===== 동적 신호 헬퍼 (NEW/HOT/D-day/시즌) ===== */
+const NEW_THRESHOLD_DAYS=14;
+const HOT_CLICK_THRESHOLD=3;          // 본인 클릭 3회 이상이면 개인 HOT
+const CLICK_KEY="classpick:clicks:v1";
+const RECENT_KEY="classpick:recent:v1";
+let clickStats=(()=>{try{return JSON.parse(localStorage.getItem(CLICK_KEY))||{}}catch(e){return{}}})();
+let recentViewedIds=(()=>{try{return JSON.parse(localStorage.getItem(RECENT_KEY))||[]}catch(e){return[]}})();
+
+function saveClicks(){ try{localStorage.setItem(CLICK_KEY,JSON.stringify(clickStats))}catch(e){} }
+function saveRecent(){ try{localStorage.setItem(RECENT_KEY,JSON.stringify(recentViewedIds))}catch(e){} }
+function trackView(id){
+  if(!id) return;
+  recentViewedIds=[id,...recentViewedIds.filter(x=>x!==id)].slice(0,12);
+  clickStats[id]=(clickStats[id]||0)+1;
+  saveRecent(); saveClicks();
+}
+
+function isNewCourse(c){
+  if(!c.createdAt) return false;
+  return (Date.now()-c.createdAt) < NEW_THRESHOLD_DAYS*86400000;
+}
+// HOT: 시즌·유형 알고리즘 + 본인 클릭 누적 둘 중 하나
+function isHotCourse(c){
+  if((clickStats[c.id]||0) >= HOT_CLICK_THRESHOLD) return true;
+  const now=new Date(); const m=now.getMonth()+1;
+  const ms=c.months||[];
+  const inSeason = ms.includes(m) || ms.includes(m+1);
+  const hotType = ["방학특강","반년컷","자사특목","수능대비","상위권"].includes(c.courseType);
+  return inSeason && hotType;
+}
+// 개강 D-day: months 중 다음 시작월의 1일까지 일수
+function ddayToNextStart(c){
+  const ms=c.months||[]; if(!ms.length) return null;
+  // 짧은 기간(방학특강·반년컷 등)에만 의미 있음
+  if(ms.length>4) return null;
+  const now=new Date(); const cy=now.getFullYear(); const cm=now.getMonth()+1;
+  let target=null;
+  // 아직 시작 안한 첫 운영월
+  for(const x of ms.slice().sort((a,b)=>a-b)){
+    if(x>cm){ target=new Date(cy,x-1,1); break; }
+  }
+  if(!target) return null;
+  const days=Math.ceil((target-now)/86400000);
+  if(days<=0||days>90) return null;
+  return days;
+}
+
+function seasonInfo(){
+  const m=new Date().getMonth()+1;
+  if(m>=3 && m<=4) return {emoji:"🌸",msg:"1학기 개강 시즌 · 새 학년 정규반 진행중",cta:"카테고리에서 정규반 보기",mode:"category"};
+  if(m===5) return {emoji:"🌱",msg:"1학기 진행중 · 여름방학 특강 곧 시작 · 자사특목 정규반 인기",cta:"자사특목 보기",mode:"category"};
+  if(m===6) return {emoji:"🎯",msg:"6월 모평 · 고3 반년컷 시즌",cta:"반년컷 보기",mode:"category"};
+  if(m===7||m===8) return {emoji:"☀️",msg:"여름방학 시즌! 방학특강이 집중되는 시기",cta:"방학특강 모아보기",mode:"category"};
+  if(m===9) return {emoji:"🍁",msg:"2학기 개강 · 9월 모평 대비",cta:"2학기 강좌 보기",mode:"bymonth"};
+  if(m>=10 && m<=11) return {emoji:"📐",msg:"수능 임박 · 고3 막바지 · 예비고1 겨울특강 시작",cta:"강좌 보기",mode:"category"};
+  if(m===12||m===1||m===2) return {emoji:"❄️",msg:"겨울방학 시즌 · 예비고1·예비고2 특강 대거 개강",cta:"방학특강 모아보기",mode:"category"};
+  return {emoji:"📚",msg:"수업 진행중",cta:"둘러보기",mode:"browse"};
+}
+
+/* =========================================================================
+   2. SEED DATA (교육인학원 센텀점 + 데모)
+   ========================================================================= */
+const EDUIN_SENTUM="교육인학원 센텀점";
+const EDUIN_COURSES=[
+ // 7월 수파르타 — 부일고1
+ {grade:"고1",subject:"수학",course:"부일고1 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 부일고 자사고 수학 내신대비 / 기본기+부교재 완벽 분석"},
+{grade:"고1",subject:"국어",course:"부일고1 국어 수파르타",teacher:"김지수",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:SUMMER,note:"7월 말 개강 / 부일고 국어 내신대비"},
+ // 7월 수파르타 — 부일고2
+ {grade:"고2",subject:"수학",course:"부일고2 수학 수파르타",teacher:"김형석",days:["월","화","수","목","금"],period:"오전",time:"10:00-15:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 부일고 수학 내신대비"},
+// 7월 수파르타 — 해운대고1
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (평일)",teacher:"이영환",days:["월","수","금"],period:"저녁",time:"17:00-22:00",sessions:"주 3회",months:SUMMER,note:"7월 말 개강 / 해운대고 수학 내신대비 / 주말반과 병행 (주 5회)"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 수파르타 (주말)",teacher:"이영환",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회",months:SUMMER,note:"7월 말 개강 / 평일반과 함께 주 5회 구성"},
+{grade:"고1",subject:"국어",course:"해운대고1 국어 수파르타",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:SUMMER,note:"7월 말 개강 / 해운대고 국어 내신대비"},
+ // 7월 수파르타 — 해운대고2
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (평일)",teacher:"차동우",days:["월","화","수","목","금"],period:"저녁",time:"20:00-23:00",sessions:"주 5회",months:SUMMER,note:"7월 말 개강 / 일요반과 함께 주 6회"},
+ {grade:"고2",subject:"수학",course:"해운대고2 수학 수파르타 (일요)",teacher:"차동우",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 추가",months:SUMMER,note:"7월 말 개강 / 평일반과 병행"},
+// 6월 CUT CLASS (반년컷)
+ {grade:"고3",subject:"수학",course:"고3 수능 수학 2등급 반년컷",teacher:"",days:["토","일"],period:"오후",time:"",sessions:"주 2회",months:HALFYEAR,note:"6월 개강 / 6월 모평 4등급 이하 집중 / 등급 상승 핵심 압축훈련 / 시간 문의"},
+ {grade:"고3",subject:"영어",course:"고3 수능 영어 1등급 반년컷",teacher:"",days:["일"],period:"오후",time:"",sessions:"주 1회",months:HALFYEAR,note:"6월 개강 / 6월 모평 3등급 이하 집중 / 시간 문의"},
+ // 자사특목 — 부일고1
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수1)",teacher:"김형석",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"자사특목 정규 / 공통수학1 / 일요 공수2와 함께 주 2회 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (자사특목·공수2)",teacher:"김형석",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"자사특목 정규 / 공통수학2"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어 (자사특목)",teacher:"윤훈관",days:["토"],period:"오후",time:"14:00-18:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 정규 / 부일고 영어 내신대비 / 5/9 개강"},
+ // 자사특목 — 부산외고1
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 A (오전)",teacher:"차동우",days:["토","일"],period:"오전",time:"10:00-13:00",sessions:"주 2회 (오전반)",months:REG_YEAR,note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+ {grade:"고1",subject:"수학",course:"부산외고1 수학 B (오후)",teacher:"차동우",days:["토","일"],period:"오후",time:"13:30-16:30",sessions:"주 2회 (오후반)",months:REG_YEAR,note:"자사특목 / 부산외고 수학 내신대비 / 5/16 개강"},
+{grade:"고1",subject:"국어",course:"부산외고1 국어",teacher:"김지수",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 부산외고 국어 내신대비 / 5/17 개강"},
+ {grade:"고1",subject:"사회",course:"부산외고1 통합사회",teacher:"김규생",days:["일"],period:"오전",time:"09:30-12:30",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 부산외고 통사 내신대비 / 5/17 개강"},
+ // 자사특목 — 해운대고1
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수1)",teacher:"이영환",days:["토"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"자사특목 / 공통수학1 / 5/9 개강"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 (자사특목·공수2)",teacher:"이영환",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"자사특목 / 공통수학2"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 CORE",teacher:"이영환",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 클리닉 MASTER",teacher:"이영환",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 개인별 맞춤 클리닉"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오후",time:"14:00-18:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 해운대고 영어 내신대비 / 5/10 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어1)",teacher:"김지수",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 공통국어1 / 5/9 개강"},
+ {grade:"고1",subject:"국어",course:"해운대고1 국어 (공통국어2)",teacher:"김지수",days:["목"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 공통국어2"},
+ // 자사특목 — 부일고2
+ {grade:"고2",subject:"수학",course:"부일고2 수학 (미적분1 심화)",teacher:"김형석",days:["토","일"],period:"오후",time:"13:00-16:00",sessions:"주 2회",months:REG_YEAR,note:"자사특목 / 미적분1 심화 / 5/9 개강"},
+ {grade:"고2",subject:"영어",course:"부일고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/10 개강"},
+ // 자사특목 — 부산외고2
+ {grade:"고2",subject:"수학",course:"부산외고2 수학 S (100점 목표)",teacher:"김형석",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 100점 목표 / 5/16 개강"},
+ {grade:"고2",subject:"영어",course:"부산외고2 영어",teacher:"윤훈관",days:["토"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/16 개강"},
+ {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"전인재",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/17 개강"},
+ {grade:"고2",subject:"사회",course:"부산외고2 국제계열 사회",teacher:"김규생",days:["일"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 국제계열 / 5/17 개강"},
+ // 자사특목 — 해운대고2
+ {grade:"고2",subject:"영어",course:"해운대고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/10 개강"},
+ // 자사특목 — 부산예고1
+ {grade:"고1",subject:"수학",course:"부산예고1 수학",teacher:"차동우",days:["토"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/9 개강"},
+ {grade:"고1",subject:"영어",course:"부산예고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 5/11 개강"},
+ // 고등 in센텀 — 해강고1
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (수요반)",teacher:"차동우",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (수)",months:REG_YEAR,note:"해강고 내신대비 / 토요반과 함께 주 2회 / 5/6 개강"},
+ {grade:"고1",subject:"수학",course:"해강고1 수학 (토요반)",teacher:"차동우",days:["토"],period:"오후",time:"16:00-19:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"해강고 내신대비"},
+ {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"권정은",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"해강고 내신대비 / 5/5 개강"},
+ // 고등 in센텀 — 센텀여고1
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"김명욱",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",months:REG_YEAR,note:"센텀여고 내신대비 / 토요반과 함께 주 2회 / 5/5 개강"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"김명욱",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"센텀여고 내신대비"},
+ {grade:"고1",subject:"영어",course:"센텀여고1 영어",teacher:"윤훈관",days:["수"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비 / 5/6 개강"},
+ {grade:"고1",subject:"국어",course:"센텀여고1 국어",teacher:"교육인 국어팀",days:["토"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 덕문여고1
+ {grade:"고1",subject:"영어",course:"덕문여고1 영어",teacher:"권정은",days:["토"],period:"오후",time:"13:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 센텀고1
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"김명욱",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",months:REG_YEAR,note:"센텀고 내신대비 / 일요반과 함께 주 2회 / 5/7 개강"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"김명욱",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"센텀고 내신대비"},
+ // 고등 in센텀 — 학산여고1
+ {grade:"고1",subject:"영어",course:"학산여고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학산여고 내신대비 / 5/4 개강"},
+ // 고등 in센텀 — 덕문여고2
+ {grade:"고2",subject:"수학",course:"덕문여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/6 개강"},
+ {grade:"고2",subject:"영어",course:"덕문여고2 영어",teacher:"권정은",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비 / 5/9 개강"},
+ // 고등 in센텀 — 동여고2
+ {grade:"고2",subject:"수학",course:"동여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"동여고 내신대비 / 5/6 개강"},
+ // 정규 영어 in센텀 — 고3
+ {grade:"고3",subject:"영어",course:"고3 수능실전대비반",teacher:"정준호",days:["일"],period:"오후",time:"13:00-16:00",sessions:"주 1회",months:G3_REG,note:"고3·재수생 / 27수능 100점 목표"},
+ {grade:"고3",subject:"영어",course:"고3 보카트레이닝",teacher:"",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:G3_REG,note:"고3·재수생 / 1회당 단어 200개 암기 후 귀가 / 교육인 단어암기비법 / 5/10 개강"},
+ // 정규 영어 in센텀 — 중등 SUMMIT
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT S",teacher:"",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"최상위 영어 실력 / 고난도 문법+독해+서술형 / 5/5 개강"},
+ {grade:"중3",subject:"영어",course:"중등 SUMMIT K",teacher:"",days:["월","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"최상위 영어 실력 / 5/4 개강"},
+ // 정규 영어 in센텀 — 중등 문법
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL3",teacher:"",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (화반)",teacher:"",days:["화"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL2 (수반)",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 문법 LEVEL1",teacher:"",days:["수"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 문법 / LEVEL1"},
+ // 정규 영어 in센텀 — 중등 독해
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL3",teacher:"",days:["금"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL3"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (목반)",teacher:"",days:["목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL2 (금반)",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL2"},
+ {grade:"중3",subject:"영어",course:"중등 독해 LEVEL1",teacher:"",days:["금"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"학교별·수준별 내신 독해 / LEVEL1"},
+ // 정규 영어 in센텀 — 중등 수능형·보카
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (화반)",teacher:"",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"중학생 대상 1년 완성 수능형 영어체계 / 4/30 개강"},
+ {grade:"중3",subject:"영어",course:"수능형 사고력 12개월완성 (목반)",teacher:"",days:["목"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"중학생 대상 1년 완성 수능형 영어체계"},
+ {grade:"중3",subject:"영어",course:"중등 보카트레이닝",teacher:"",days:["월"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"중등 / 단어 200개/회 / 교육인 단어암기비법 / 5/4 개강"},
+ // 정규 수학 in센텀 — 심화반
+ {grade:"고1",subject:"수학",course:"공통수학1 (심화) 공.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"17:00-18:30",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"공통수학2 (심화) 공.심.쟁",teacher:"김형석",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고1",subject:"수학",course:"대수 (심화) 대.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"18:30-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이 / 진행중"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (김명욱T)",teacher:"김명욱",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"기본~심화 / 개인별 맞춤 수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도 (이영환T)",teacher:"이영환",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"기본~심화 / 개인별 맞춤 교재+진도+수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 수능대비 (강필T)",teacher:"강필",days:["일"],period:"저녁",time:"17:30-21:30",sessions:"주 1회",months:REG_YEAR,note:"공통+미적분 1등급 목표 / 자체교재+프린트+영상보충 / 5/3 개강"},
+];
+
+const SEED=EDUIN_COURSES.map((c,i)=>Object.assign({id:"eduin"+i,city:"부산",area:"센텀",academy:EDUIN_SENTUM},c));
+
+/* ===== 명인학원 (부산 센텀, 대치명인학원 브랜드, 051-947-10045) ===== */
+const MYUNGIN="명인학원";
+const MYUNGIN_COURSES=[
+ // 해운대고 1학년
+ {grade:"고1",subject:"국어",course:"해운대고1 국어",teacher:"김솔미",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/10 개강"},
+ {grade:"고1",subject:"영어",course:"해운대고1 영어",teacher:"",days:["화"],period:"저녁",time:"",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/12 개강"},
+ {grade:"고1",subject:"수학",course:"해운대고1 수학 정규반",teacher:"",days:["월","수"],period:"저녁",time:"20:30-23:00",sessions:"주 2회",months:REG_YEAR,note:"내신대비 / 5/11 개강"},
+ {grade:"고1",subject:"과학",course:"해운대고1 통합과학 (연합반)",teacher:"김운영",days:["토"],period:"오후",time:"13:00-16:00",sessions:"주 1회",months:REG_YEAR,note:"통합과학 연합반 / 5/9 개강"},
+ // 부일고 1학년
+ {grade:"고1",subject:"국어",course:"부일고1 국어",teacher:"박윤현",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/10 개강"},
+ {grade:"고1",subject:"영어",course:"부일고1 영어",teacher:"차송진",days:["화"],period:"저녁",time:"18:30-21:30",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/12 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (유재준T)",teacher:"유재준",days:["월","수"],period:"저녁",time:"20:30-23:00",sessions:"주 2회",months:REG_YEAR,note:"내신대비 / 5/11 개강"},
+ {grade:"고1",subject:"수학",course:"부일고1 수학 (박현진T)",teacher:"박현진",days:["화","목"],period:"저녁",time:"19:00-22:00",sessions:"주 2회",months:REG_YEAR,note:"내신대비 / 5/12 개강"},
+ {grade:"고1",subject:"과학",course:"부일고1 통합과학",teacher:"김운영",days:["토"],period:"오후",time:"13:00-16:00",sessions:"주 1회",months:REG_YEAR,note:"통합과학 연합반 / 5/9 개강"},
+ // 해강고 1학년
+ {grade:"고1",subject:"국어",course:"해강고1 국어",teacher:"박윤현",days:["일"],period:"저녁",time:"19:00-22:00",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/12 개강"},
+ {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"백세온",days:["화"],period:"오전",time:"09:30-12:30",sessions:"주 1회",months:REG_YEAR,note:"내신대비 / 5/11 개강"},
+ {grade:"고1",subject:"수학",course:"해강고1 수학",teacher:"유재준",days:["월","수"],period:"저녁",time:"20:30-23:00",sessions:"주 2회",months:REG_YEAR,note:"내신대비 / 5/10 개강"},
+ // 스카이매쓰 1:1 (학교 무관 공통 — 상시입반)
+ {grade:"고1",subject:"수학",course:"스카이매쓰 수학 1:1 개별진도 (홍지곤T)",teacher:"홍지곤",days:["월","화","수","목","금"],period:"저녁",time:"16:30-22:30",sessions:"상시입반",months:REG_YEAR,note:"개별진도수업 / 학교별 맞춤"},
+ {grade:"고1",subject:"수학",course:"스카이매쓰 수학 1:1 개별진도 (박현진T)",teacher:"박현진",days:["토","일"],period:"오전",time:"토 09:30-14:00 / 일 10:00-14:00",sessions:"상시입반",months:REG_YEAR,note:"개별진도수업 / 학교별 맞춤"},
+];
+const MYUNGIN_SEED=MYUNGIN_COURSES.map((c,i)=>Object.assign({id:"myungin"+i,city:"부산",area:"센텀",academy:MYUNGIN},c));
+
+/* ===== 명작학원 (센텀 명작학원, 부산 센텀) ===== */
+const MYUNGJAK="명작학원";
+const MYUNGJAK_COURSES=[
+ // 자사고 대비반
+ {grade:"고1",subject:"수학",course:"공통수학1 개념 (자사고 대비)",teacher:"최재우",days:["화","목"],period:"오후",time:"16:30-18:30",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비 / 마플교과서+a / 3/3 개강"},
+ {grade:"고1",subject:"수학",course:"공통수학1 준심화 (자사고 대비)",teacher:"임상준",days:["화","목"],period:"오후",time:"16:30-18:30",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비 / 내신고쟁이+a / 3/3 개강"},
+ {grade:"고1",subject:"수학",course:"공통수학1 심화 (자사고 대비)",teacher:"김경환",days:["월","금"],period:"오후",time:"16:30-18:30",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비 / 자이스토리+a / 3/2 개강"},
+ {grade:"고1",subject:"수학",course:"대수 개념 (자사고 대비)",teacher:"임상준",days:["화","목"],period:"저녁",time:"19:00-21:00",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비 / 마플교과서+a / 3/3 개강"},
+ {grade:"고1",subject:"수학",course:"대수 심화 (자사고 대비)",teacher:"김경환",days:["월","금"],period:"오후",time:"16:30-18:30",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비"},
+ {grade:"고2",subject:"수학",course:"미적분I 준심화 (자사고 대비)",teacher:"임상준",days:["월","금"],period:"저녁",time:"19:00-21:00",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비"},
+ {grade:"고2",subject:"수학",course:"미적분I 심화 (자사고 대비)",teacher:"김경환",days:["월","금"],period:"저녁",time:"19:00-21:00",sessions:"주 2회",months:REG_YEAR,note:"자사고 대비"},
+ // 고1
+ {grade:"고1",subject:"수학",course:"고1 상위권 도약반",teacher:"김나현",days:["월","토"],period:"저녁",time:"월 21:00-23:00 / 토 12:00-14:00",sessions:"주 2회",months:REG_YEAR,note:"자이스토리+a / 3/2 개강"},
+ {grade:"고1",subject:"수학",course:"고1 솔루션반",teacher:"김재원",days:["월","토"],period:"저녁",time:"월 21:00-23:00 / 토 12:00-14:00",sessions:"주 2회",months:REG_YEAR,note:"자체교재 / 3/2 개강"},
+ {grade:"고1",subject:"수학",course:"센텀고1 A반",teacher:"김민서",days:["수","금"],period:"오후",time:"17:00-19:00",sessions:"주 2회",months:REG_YEAR,note:"센텀고 맞춤 교재선정 / 3/4 개강"},
+ {grade:"고1",subject:"수학",course:"센텀고1 B반",teacher:"김민서",days:["수","금"],period:"저녁",time:"19:00-21:00",sessions:"주 2회",months:REG_YEAR,note:"센텀고 맞춤 교재선정 / 3/4 개강"},
+ {grade:"고1",subject:"수학",course:"부산외고1 K반",teacher:"",days:["일"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",months:REG_YEAR,note:"부산외고 자사고 K반"},
+ {grade:"고1",subject:"수학",course:"부산외고1 1반",teacher:"",days:["일"],period:"저녁",time:"19:30-22:30",sessions:"주 1회",months:REG_YEAR,note:"부산외고 자사고 1반"},
+ // 고2
+ {grade:"고2",subject:"수학",course:"부산외고2 K반",teacher:"이강호",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"학교 교재+a / 2/28 개강"},
+ {grade:"고2",subject:"수학",course:"부산외고2 J반",teacher:"김재원",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"학교 교재+a / 2/28 개강"},
+ {grade:"고2",subject:"수학",course:"고2 솔루션 A반",teacher:"김재원",days:["화","목"],period:"저녁",time:"19:00-21:00",sessions:"주 2회",months:REG_YEAR,note:"자체교재 / 3/3 개강"},
+ {grade:"고2",subject:"수학",course:"고2 솔루션 B반",teacher:"김재원",days:["화","목"],period:"저녁",time:"21:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"자체교재 / 3/3 개강"},
+ // 고3
+ {grade:"고3",subject:"수학",course:"확률과통계 내신반",teacher:"최재우",days:["화","목"],period:"저녁",time:"21:00-23:00",sessions:"주 2회",months:G3_REG,note:"자이스토리+a / 3/3 개강"},
+ {grade:"고3",subject:"수학",course:"미적분 내신반",teacher:"최재우",days:["월","금"],period:"저녁",time:"21:00-23:00",sessions:"주 2회",months:G3_REG,note:"자이스토리+a / 3/2 개강"},
+ {grade:"고3",subject:"수학",course:"고3 수능대비반 (미적분)",teacher:"최재우",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:G3_REG,note:"모의고사+자체교재 / 계속반"},
+];
+const MYUNGJAK_SEED=MYUNGJAK_COURSES.map((c,i)=>Object.assign({id:"myungjak"+i,city:"부산",area:"센텀",academy:MYUNGJAK},c));
+
+const DEMO=[
+ {city:"부산",area:"사직",academy:"사직 정상수학",teacher:"최예린",subject:"수학",course:"공통수학2 개념완성",grade:"고1",days:["화","목"],period:"오후",time:"",sessions:"총 7회",months:REG_YEAR,note:"기초부터 탄탄"},
+ {city:"부산",area:"사직",academy:"사직 한울국어",teacher:"정민재",subject:"국어",course:"문학 개념 마스터",grade:"중3",days:["금"],period:"오전",time:"",sessions:"총 4회",months:REG_YEAR,note:"내신 대비"},
+].map((d,i)=>({id:"demo"+i,...d}));
+
+const KEY="classpick:courses:v6";
+const LEGACY_KEYS=["classpick:courses:v2","classpick:courses:v3","classpick:courses:v4","classpick:courses:v5"];
+let courses=[];
+let myIds=[];
+let pickedDays=[];
+let pickedMonths=[];
+let mode="browse";
+let currentMonth=(new Date().getMonth()+1)||5;
+let currentSemester="all";
+let browseArea="";
+
+/* =========================================================================
+   3. STORAGE
+   ========================================================================= */
+function load(){
+  // 1) 구버전(v2·v3·v4) localStorage에서 사용자가 직접 등록한 강좌(id="u..."로 시작)만 추출해 보존, 나머지 청소
+  let preserveUser=[];
+  try{
+    LEGACY_KEYS.forEach(oldKey=>{
+      const raw=localStorage.getItem(oldKey);
+      if(raw){
+        const arr=JSON.parse(raw);
+        arr.filter(c=>c && c.id && c.id.toString().startsWith("u")).forEach(c=>{
+          if(!c.months) c.months=REG_YEAR;
+          preserveUser.push(c);
+        });
+        localStorage.removeItem(oldKey);
+      }
+    });
+  }catch(e){ console.warn("legacy cleanup failed",e); }
+
+  // 2) 현재 v4 데이터 로드 + 누락된 시드(명인·명작) 자동 보강
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){
+      let parsed=JSON.parse(raw);
+      const existIds=new Set(parsed.map(c=>c.id));
+      // 명인학원 자동 보강
+      if(!parsed.some(c=>c.academy===MYUNGIN)){
+        MYUNGIN_SEED.forEach(c=>{ if(!existIds.has(c.id)) parsed.push(c); });
+      }
+      // 명작학원 자동 보강
+      if(!parsed.some(c=>c.academy===MYUNGJAK)){
+        MYUNGJAK_SEED.forEach(c=>{ if(!existIds.has(c.id)) parsed.push(c); });
+      }
+      // 구버전에서 살린 사용자 강좌 병합
+      preserveUser.forEach(uc=>{ if(!existIds.has(uc.id)) parsed.push(uc); });
+      courses=parsed;
+      courses.forEach(enrichCourse);
+      save();
+      return;
+    }
+  }catch(e){ console.warn("v4 load failed",e); }
+
+  // 3) v4도 비어있으면 새 시드 풀세트
+  courses=SEED.concat(MYUNGIN_SEED).concat(MYUNGJAK_SEED).concat(DEMO).concat(preserveUser);
+  courses.forEach(enrichCourse);
+  save();
+}
+function save(){
+  try{ localStorage.setItem(KEY,JSON.stringify(courses)); }
+  catch(e){ console.warn("save failed",e); }
+}
+
+/* =========================================================================
+   4. MODE SWITCH
+   ========================================================================= */
+function setMode(m){
+  mode=m;
+  ["browse","category","search","byacad","byteach","bymonth","academy"].forEach(k=>{
+    document.getElementById("view-"+k).style.display = (m===k)?"block":"none";
+  });
+  ["m-browse","m-category","m-search","m-byacad","m-byteach","m-bymonth","m-acad"].forEach(k=>{
+    document.getElementById(k).classList.remove("on");
+  });
+  const map={browse:"m-browse",category:"m-category",search:"m-search",byacad:"m-byacad",byteach:"m-byteach",bymonth:"m-bymonth",academy:"m-acad"};
+  document.getElementById(map[m]).classList.add("on");
+  document.getElementById("cartbtn").style.display = (m==="academy")?"none":"flex";
+  window.scrollTo(0,0);
+  if(m==="browse") renderBrowse();
+  if(m==="category") renderByCategory();
+  if(m==="academy") renderAcadList();
+  if(m==="byacad") renderByAcad();
+  if(m==="byteach") renderByTeach();
+  if(m==="bymonth") renderByMonth();
+}
+
+/* =========================================================================
+   5. UTILITIES
+   ========================================================================= */
+function onCityChange(prefix){
+  const city=document.getElementById(prefix+"-city").value;
+  const areaSel=document.getElementById(prefix+"-area");
+  const isFilter=prefix==="f";
+  const areas=city?REGIONS[city]:(isFilter?allAreas():[]);
+  const first=isFilter?'<option value="">전체</option>':'<option value="">선택</option>';
+  areaSel.innerHTML=first+areas.map(a=>`<option>${a}</option>`).join("");
+}
+function gradeMatch(courseGrade, filter){
+  if(!filter) return true;
+  if(courseGrade===filter) return true;
+  if(courseGrade.includes("~")){
+    return courseGrade.split("~").includes(filter);
+  }
+  return false;
+}
+function refreshAcadOptions(){
+  const sel=document.getElementById("f-acad");
+  const cur=sel.value;
+  const names=[...new Set(courses.map(c=>c.academy))].sort();
+  sel.innerHTML='<option value="">전체</option>'+names.map(n=>`<option>${esc(n)}</option>`).join("");
+  if(names.includes(cur)) sel.value=cur;
+}
+function refreshMonthOptions(){
+  const sel=document.getElementById("f-month");
+  const cur=sel.value;
+  sel.innerHTML='<option value="">전체</option>'+ALL_MONTHS.map(m=>`<option value="${m}">${m}월</option>`).join("");
+  if(cur) sel.value=cur;
+}
+function esc(s){return (s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+/* =========================================================================
+   5.5 VIEW 0 — BROWSE (기본 진입 — 카드로 바로 클릭)
+   ========================================================================= */
+function renderBrowse(){
+  // 시즌 배너
+  const sb=seasonInfo();
+  document.getElementById("season-banner-wrap").innerHTML=`
+    <div class="season-banner">
+      <span class="se-emoji">${sb.emoji}</span>
+      <div class="se-msg">
+        <div class="se-title">${esc(sb.msg)}</div>
+        <div class="se-sub">${new Date().getFullYear()}년 ${new Date().getMonth()+1}월 기준 · 클래스픽 큐레이션</div>
+      </div>
+      <button class="se-cta" onclick="setMode('${sb.mode}')">${esc(sb.cta)} →</button>
+    </div>
+  `;
+
+  const areas=[...new Set(courses.map(c=>c.area).filter(Boolean))].sort();
+  document.getElementById("browse-area-filter").innerHTML =
+    `<button class="chip ${browseArea===""?'on':''}" onclick="setBrowseArea('')">전체</button>` +
+    areas.map(a=>`<button class="chip ${browseArea===a?'on':''}" onclick="setBrowseArea('${esc(a)}')">${esc(a)}</button>`).join("");
+
+  const filtered = browseArea ? courses.filter(c=>c.area===browseArea) : courses;
+
+  // 다시 보기 (최근 클릭한 강좌)
+  const recentSection=document.getElementById("browse-recent-section");
+  const recent=recentViewedIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean).slice(0,8);
+  if(recent.length){
+    recentSection.style.display="";
+    document.getElementById("browse-recent-count").textContent=recent.length;
+    document.getElementById("browse-recent-cards").innerHTML=recent.map(courseCard).join("");
+  } else {
+    recentSection.style.display="none";
+  }
+
+  // 지금 인기 (HOT 점수 상위 8개)
+  const hotSection=document.getElementById("browse-hot-section");
+  const scored=filtered.map(c=>{
+    let score=0;
+    if(isHotCourse(c)) score+=10;
+    score+=(clickStats[c.id]||0)*3;
+    if(isNewCourse(c)) score+=4;
+    const dday=ddayToNextStart(c);
+    if(dday!==null && dday<=30) score+=5;
+    return {c,score};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,8);
+  if(scored.length){
+    hotSection.style.display="";
+    document.getElementById("browse-hot-count").textContent=scored.length;
+    document.getElementById("browse-hot-cards").innerHTML=scored.map(x=>courseCard(x.c)).join("");
+  } else {
+    hotSection.style.display="none";
+  }
+
+  // 학원 카드
+  const acadMap={};
+  filtered.forEach(c=>{
+    if(!acadMap[c.academy]) acadMap[c.academy]={courses:[],teachers:new Set(),subjects:new Set(),grades:new Set(),area:c.area||"",hasSummer:false};
+    acadMap[c.academy].courses.push(c);
+    if(c.teacher) acadMap[c.academy].teachers.add(c.teacher);
+    acadMap[c.academy].subjects.add(subjGroup(c.subject));
+    acadMap[c.academy].grades.add(c.grade);
+    if(isSummer(c.months||[]) && (c.months||[]).length<=3) acadMap[c.academy].hasSummer=true;
+  });
+  const acadNames=Object.keys(acadMap).sort((a,b)=>acadMap[b].courses.length-acadMap[a].courses.length);
+  document.getElementById("browse-acad-count").textContent=acadNames.length;
+  document.getElementById("browse-acad-cards").innerHTML=acadNames.map(n=>{
+    const m=acadMap[n];
+    const initial=n.charAt(0);
+    const subjTags=[...m.subjects].map(s=>`<span>${esc(s)}</span>`).join("");
+    const gradeTags=[...m.grades].sort().map(g=>`<span>${esc(g)}</span>`).join("");
+    const summerTag=m.hasSummer?'<span class="summer">방학특강</span>':'';
+    return `<div class="acad-card" onclick="openAcad('${esc(n)}')">
+      <span class="acad-card-cta">자세히 →</span>
+      <div class="acad-card-head">
+        <div class="acad-card-logo">${esc(initial)}</div>
+        <div>
+          <div class="acad-card-name">${esc(n)}</div>
+          <div class="acad-card-where">${esc(m.area)}</div>
+        </div>
+      </div>
+      <div class="acad-card-tags">${summerTag}${subjTags}${gradeTags}</div>
+      <div class="acad-card-stats">
+        <span><b>${m.courses.length}</b>강좌</span>
+        <span><b>${m.teachers.size}</b>강사</span>
+        <span><b>${m.subjects.size}</b>과목</span>
+      </div>
+    </div>`;
+  }).join("");
+
+  // 인기 강사 카드 (강좌 수 많은 순)
+  const teacherMap={};
+  filtered.forEach(c=>{
+    if(!c.teacher) return;
+    if(!teacherMap[c.teacher]) teacherMap[c.teacher]={count:0,academy:c.academy,subjects:new Set()};
+    teacherMap[c.teacher].count++;
+    teacherMap[c.teacher].subjects.add(subjGroup(c.subject));
+  });
+  const teacherNames=Object.keys(teacherMap).sort((a,b)=>teacherMap[b].count-teacherMap[a].count);
+  document.getElementById("browse-teach-count").textContent=teacherNames.length;
+  document.getElementById("browse-teach-cards").innerHTML=teacherNames.length
+    ? teacherNames.map(t=>{
+        const m=teacherMap[t];
+        return `<div class="teacher-card" onclick="jumpToTeacher('${esc(t)}')">
+          <div class="tc-avatar">${esc(t.charAt(0))}</div>
+          <div class="tc-info">
+            <div class="tc-name">${esc(t)} 선생님</div>
+            <div class="tc-sub">${esc([...m.subjects].join("·"))} · ${m.count}강좌</div>
+          </div>
+        </div>`;
+      }).join("")
+    : '<div class="empty">강사 정보가 등록된 강좌가 없어요.</div>';
+
+  // 이번 달 강좌
+  const nowMonth=new Date().getMonth()+1;
+  document.getElementById("browse-month-label").textContent=nowMonth;
+  const thisMonthCourses=filtered.filter(c=>(c.months||[]).includes(nowMonth));
+  document.getElementById("browse-month-count").textContent=thisMonthCourses.length;
+  const showList=thisMonthCourses.slice(0,12);
+  const more=thisMonthCourses.length>12 ? `<div class="empty" style="background:transparent;border:none">+ ${thisMonthCourses.length-12}개 더 · <a href="javascript:void(0)" onclick="setMode('bymonth')" style="color:var(--brand);font-weight:700">월별 보기 →</a></div>` : '';
+  document.getElementById("browse-month-cards").innerHTML=showList.length
+    ? showList.map(courseCard).join("") + more
+    : '<div class="empty">이번 달에 운영되는 강좌가 없어요.</div>';
+}
+function setBrowseArea(a){ browseArea=a; renderBrowse(); }
+function openAcad(name){
+  setMode("byacad");
+  setTimeout(()=>{
+    const sel=document.getElementById("ba-pick");
+    if(sel){ sel.value=name; renderByAcad(); }
+  },50);
+}
+
+/* =========================================================================
+   5.6 AI 검색 (자연어 → 10축 필터 자동 매칭, 로컬 100%)
+   ========================================================================= */
+function setAiQuery(q){ document.getElementById("ai-q").value=q; runAiSearch(); }
+function clearAiSearch(){ document.getElementById("ai-q").value=""; document.getElementById("ai-result").innerHTML=""; }
+
+function parseAiQuery(q){
+  const filters={};
+
+  // 학원명 (부분 매칭, 우선순위 긴 키워드부터)
+  const academyKw=[
+    ["교육인","교육인학원 센텀점"],
+    ["명인","명인학원"],
+    ["명작","명작학원"],
+    ["정상수학","사직 정상수학"],
+    ["한울국어","사직 한울국어"]
+  ];
+  for(const [k,v] of academyKw){ if(q.includes(k)){ filters.academy=v; break; } }
+
+  // 동네
+  if(q.includes("센텀")) filters.area="센텀";
+  else if(q.includes("사직")) filters.area="사직";
+
+  // 학년 (예비고1 → 고1)
+  if(q.includes("예비고1")||q.includes("예비 고1")||q.includes("예비고 1")) filters.grade="고1";
+  else if(q.includes("예비고2")||q.includes("예비 고2")) filters.grade="고2";
+  else if(q.includes("중3")) filters.grade="중3";
+  else if(q.includes("고1")) filters.grade="고1";
+  else if(q.includes("고2")) filters.grade="고2";
+  else if(q.includes("고3")) filters.grade="고3";
+
+  // 과목
+  for(const s of ["영어","수학","국어","과학","사회"]){
+    if(q.includes(s)){ filters.subject=s; break; }
+  }
+
+  // 강좌유형 (우선순위 — 더 구체적인 키워드 먼저)
+  const typeKw=[
+    ["자사특목","자사특목"],
+    ["수파르타","방학특강"],
+    ["여름특강","방학특강"],
+    ["겨울특강","방학특강"],
+    ["방학특강","방학특강"],
+    ["반년컷","반년컷"],
+    ["수능대비","수능대비"],
+    ["수능","수능대비"],
+    ["SUMMIT","상위권"],
+    ["summit","상위권"],
+    ["상위권","상위권"],
+    ["준심화","준심화"],
+    ["심화","심화"],
+    ["솔루션","솔루션"],
+    ["스카이매쓰","개별진도"],
+    ["개별진도","개별진도"],
+    ["1:1","개별진도"],
+    ["클리닉","클리닉"],
+    ["보카","단어"],
+    ["단어","단어"],
+    ["문법","문법"],
+    ["독해","독해"],
+    ["개념","개념"],
+    ["내신","학교내신"]
+  ];
+  for(const [k,v] of typeKw){ if(q.includes(k)){ filters.courseType=v; break; } }
+
+  // 학교
+  for(const s of KNOWN_SCHOOLS){ if(q.includes(s)){ filters.school=s; break; } }
+
+  // 강사 (동적 — 현재 데이터 기반)
+  const teacherList=[...new Set(courses.map(c=>c.teacher).filter(Boolean))];
+  for(const t of teacherList){ if(q.includes(t)){ filters.teacher=t; break; } }
+
+  // 월 / 시기
+  const monthMatch=q.match(/(\d{1,2})월/);
+  if(monthMatch){
+    const m=parseInt(monthMatch[1]);
+    if(m>=1&&m<=12) filters.month=m;
+  } else {
+    if(q.includes("여름")) filters.month=7;
+    else if(q.includes("겨울")) filters.month=1;
+    else if(q.includes("봄")) filters.month=3;
+    else if(q.includes("가을")) filters.month=9;
+    else if(q.includes("이번 달")||q.includes("이번달")||q.includes("이달")||q.includes("현재")) filters.month=new Date().getMonth()+1;
+  }
+
+  // 요일
+  const dayKw={"월요일":"월","화요일":"화","수요일":"수","목요일":"목","금요일":"금","토요일":"토","일요일":"일","주말":"토"};
+  for(const [k,v] of Object.entries(dayKw)){ if(q.includes(k)){ filters.day=v; break; } }
+  if(!filters.day && q.includes("주말")) filters.day="토";
+
+  // 시간대
+  if(q.includes("오전")) filters.period="오전";
+  else if(q.includes("오후")) filters.period="오후";
+  else if(q.includes("저녁")||q.includes("야간")||q.includes("밤")) filters.period="저녁";
+
+  return filters;
+}
+
+function executeAiFilters(f){
+  return courses.filter(c =>
+    (!f.academy || c.academy===f.academy) &&
+    (!f.area || c.area===f.area) &&
+    (!f.subject || subjGroup(c.subject)===f.subject) &&
+    (!f.grade || gradeMatch(c.grade,f.grade)) &&
+    (!f.courseType || c.courseType===f.courseType) &&
+    (!f.school || c.school===f.school) &&
+    (!f.teacher || c.teacher===f.teacher) &&
+    (!f.month || (c.months||[]).includes(f.month)) &&
+    (!f.day || c.days.includes(f.day)) &&
+    (!f.period || c.period===f.period)
+  );
+}
+
+function runAiSearch(){
+  const q=(document.getElementById("ai-q").value||"").trim();
+  if(!q){ clearAiSearch(); return; }
+  const f=parseAiQuery(q);
+  const results=executeAiFilters(f);
+
+  const tags=[];
+  if(f.academy) tags.push(`🏫 ${esc(f.academy)}`);
+  if(f.area) tags.push(`📍 ${esc(f.area)}`);
+  if(f.school) tags.push(`🎒 ${esc(f.school)}`);
+  if(f.teacher) tags.push(`👤 ${esc(f.teacher)} 선생님`);
+  if(f.grade) tags.push(`📚 ${esc(f.grade)}`);
+  if(f.subject) tags.push(`✏️ ${esc(f.subject)}`);
+  if(f.courseType) tags.push(`${courseTypeEmoji(f.courseType)} ${esc(f.courseType)}`);
+  if(f.month) tags.push(`📅 ${f.month}월`);
+  if(f.day) tags.push(`📆 ${esc(f.day)}요일`);
+  if(f.period) tags.push(`⏰ ${esc(f.period)}`);
+
+  const noMatch = !Object.keys(f).length;
+  const html = `
+    <div class="ai-result-section">
+      <div class="ai-summary">
+        <div class="qbox">
+          <div class="qline">🔎 <b>"${esc(q)}"</b>${noMatch?" — 키워드를 인식하지 못했어요. 그래도 전체에서 텍스트 일치 시도해볼게요.":""} 검색 결과 <span class="cnt">${results.length}</span>개</div>
+          ${tags.length?`<div class="ai-filter-tags">${tags.map(t=>`<span>${t}</span>`).join("")}</div>`:""}
+        </div>
+        <button class="ai-clear-btn" onclick="clearAiSearch()">× 초기화</button>
+      </div>
+      ${results.length
+        ? `<div class="grid">${renderCardList(results)}</div>`
+        : `<div class="ai-empty-result"><div class="big">🤔</div>조건에 맞는 강좌가 없어요.<br><span style="font-size:12px">키워드를 더 단순하게 — 예: '센텀 영어' '자사특목' '부일고1' 같이 시도해보세요.</span></div>`}
+    </div>
+  `;
+  document.getElementById("ai-result").innerHTML=html;
+}
+
+/* =========================================================================
+   6. VIEW 1 — SEARCH
+   ========================================================================= */
+function refreshSchoolOptions(){
+  const sel=document.getElementById("f-school");
+  const cur=sel.value;
+  const list=[...new Set(courses.map(c=>c.school).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">전체</option>'+list.map(s=>`<option>${esc(s)}</option>`).join("");
+  if(list.includes(cur)) sel.value=cur;
+}
+function refreshCtypeOptions(){
+  const sel=document.getElementById("f-ctype");
+  const cur=sel.value;
+  const list=[...new Set(courses.map(c=>c.courseType).filter(Boolean))];
+  const order={};COURSE_TYPES.forEach((c,i)=>order[c.key]=i);
+  list.sort((a,b)=>(order[a]??99)-(order[b]??99));
+  sel.innerHTML='<option value="">전체</option>'+list.map(s=>`<option>${esc(s)}</option>`).join("");
+  if(list.includes(cur)) sel.value=cur;
+}
+function render(){
+  refreshAcadOptions();
+  refreshMonthOptions();
+  refreshSchoolOptions();
+  refreshCtypeOptions();
+  const city=document.getElementById("f-city").value;
+  const area=document.getElementById("f-area").value;
+  const g=document.getElementById("f-grade").value;
+  const sub=document.getElementById("f-subject").value;
+  const day=document.getElementById("f-day").value;
+  const per=document.getElementById("f-period").value;
+  const ac=document.getElementById("f-acad").value;
+  const sch=document.getElementById("f-school").value;
+  const ct=document.getElementById("f-ctype").value;
+  const mo=parseInt(document.getElementById("f-month").value)||0;
+  const q=document.getElementById("f-q").value.trim();
+  const list=courses.filter(c=>
+     (!city || c.city===city) &&
+     (!area || c.area===area) &&
+     gradeMatch(c.grade,g) &&
+     (!sub || subjGroup(c.subject)===sub) &&
+     (!day || c.days.includes(day)) &&
+     (!per || c.period===per) &&
+     (!ac || c.academy===ac) &&
+     (!sch || c.school===sch) &&
+     (!ct || c.courseType===ct) &&
+     (!mo || (c.months||[]).includes(mo)) &&
+     (!q || (c.course+c.teacher+c.subject+c.note+(c.school||"")+(c.schoolGrade||"")+(c.courseType||"")).includes(q))
+  );
+  document.getElementById("reslen").textContent=list.length;
+  const wrap=document.getElementById("results");
+  if(!list.length){ wrap.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요. 필터를 바꿔보세요.</div>'; return; }
+  wrap.innerHTML=renderCardList(list);
+}
+function courseCard(c){
+  const col=subjColor(c.subject);
+  const added=myIds.includes(c.id);
+  const isShortSummer=isSummer(c.months||[]) && (c.months||[]).length<=3;
+  const monthStr=(c.months||[]).map(m=>`<span class="mc${isShortSummer&&(m===7||m===8)?' hot':''}">${m}월</span>`).join("");
+  const sgBadge=c.schoolGrade?`<span class="sg-badge">${esc(c.schoolGrade)}</span>`:"";
+  const ctBadge=c.courseType?`<span class="ct-badge" style="background:${courseTypeColor(c.courseType)}"><span class="em">${courseTypeEmoji(c.courseType)}</span>${esc(c.courseType)}</span>`:"";
+  // 동적 신호 배지
+  const sigs=[];
+  if(isNewCourse(c)) sigs.push('<span class="sig sig-new">NEW</span>');
+  if(isHotCourse(c)) sigs.push('<span class="sig sig-hot">HOT</span>');
+  const dday=ddayToNextStart(c);
+  if(dday!==null) sigs.push(`<span class="sig sig-dday">개강 <b>D-${dday}</b></span>`);
+  const vc=clickStats[c.id]||0;
+  if(vc>=2) sigs.push(`<span class="sig sig-views"><span class="em">👁</span>${vc}</span>`);
+  const sigRow=sigs.length?`<div class="signal-row">${sigs.join("")}</div>`:"";
+
+  return `<div class="course">
+    <div class="top">
+      <span class="subj" style="background:${col}">${esc(c.subject)}</span>
+      <span class="gradechip">${esc(c.grade)}</span>
+      <span class="acad">${esc(c.area||"")} · ${esc(c.academy)}</span>
+    </div>
+    ${sigRow}
+    <h3>${esc(c.course)}</h3>
+    ${(sgBadge||ctBadge)?`<div style="display:flex;gap:5px;flex-wrap:wrap">${sgBadge}${ctBadge}</div>`:""}
+    <div class="meta">
+      ${c.days.map(d=>`<span class="day">${d}</span>`).join("")}
+      <span>${esc(c.period)}</span>
+      ${c.time?`<span>${esc(c.time)}</span>`:""}
+      ${c.sessions?`<span>${esc(c.sessions)}</span>`:""}
+    </div>
+    ${monthStr?`<div class="monthchips">${monthStr}</div>`:""}
+    ${c.teacher?`<div class="teacher" onclick="jumpToTeacher('${esc(c.teacher)}')">${esc(c.teacher)} 선생님 →</div>`:""}
+    ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
+    <button class="addbtn ${added?'added':''}" onclick="toggle('${c.id}')">${added?'✓ 담음 · 빼기':'＋ 내 시간표에 담기'}</button>
+  </div>`;
+}
+function resetFilters(){
+  ["f-city","f-grade","f-subject","f-day","f-period","f-acad","f-q","f-month","f-school","f-ctype"].forEach(id=>document.getElementById(id).value="");
+  onCityChange('f'); document.getElementById("f-area").value="";
+  render();
+}
+function toggle(id){
+  const i=myIds.indexOf(id);
+  if(i>=0){ myIds.splice(i,1); }
+  else { myIds.push(id); trackView(id); }
+  document.getElementById("cartn").textContent=myIds.length;
+  if(mode==="search") render();
+  if(mode==="byacad") renderByAcad();
+  if(mode==="byteach") renderByTeach();
+  if(mode==="bymonth") renderByMonth();
+  if(mode==="category") renderByCategory();
+  if(mode==="browse") renderBrowse();
+  if(document.getElementById("drawer").classList.contains("open")) renderCart();
+}
+
+/* =========================================================================
+   7. VIEW 2 — BY ACADEMY
+   ========================================================================= */
+function renderByAcad(){
+  const sel=document.getElementById("ba-pick");
+  const names=[...new Set(courses.map(c=>c.academy))].sort();
+  const cur=sel.value || names[0] || "";
+  sel.innerHTML=names.map(n=>`<option ${n===cur?"selected":""}>${esc(n)}</option>`).join("");
+  const acad=sel.value;
+  const g=document.getElementById("ba-grade").value;
+  const sub=document.getElementById("ba-subject").value;
+  const mine=courses.filter(c=>c.academy===acad && gradeMatch(c.grade,g) && (!sub||subjGroup(c.subject)===sub));
+  const body=document.getElementById("byacad-body");
+  if(!mine.length){ body.innerHTML='<div class="empty">조건에 맞는 강좌가 없어요.</div>'; return; }
+
+  const monthCount=Array(13).fill(0);
+  mine.forEach(c=>(c.months||[]).forEach(m=>monthCount[m]++));
+  const maxCount=Math.max(...monthCount.slice(1));
+
+  const sample=mine[0]; const where=`${sample.city||""} ${sample.area||""}`.trim();
+  const teachers=[...new Set(mine.map(c=>c.teacher).filter(Boolean))];
+  const subjects=[...new Set(mine.map(c=>subjGroup(c.subject)))];
+  const peakMonth=monthCount.indexOf(maxCount);
+
+  let html=`
+    <div class="acad-summary">
+      <h2>${esc(acad)}</h2>
+      <div class="where">${esc(where)}</div>
+      <div class="acad-stats">
+        <div class="stat"><span class="v">${mine.length}</span><span class="l">강좌</span></div>
+        <div class="stat"><span class="v">${teachers.length}</span><span class="l">강사</span></div>
+        <div class="stat"><span class="v">${subjects.length}</span><span class="l">과목</span></div>
+        <div class="stat"><span class="v">${peakMonth}월</span><span class="l">최다 운영월 (${maxCount}개)</span></div>
+      </div>
+    </div>
+    <div class="month-timeline">
+      <h3>📅 월 타임라인 — 클릭하면 그 달의 강좌만 펼쳐집니다</h3>
+      <div class="mt-grid">`;
+  ALL_MONTHS.forEach(m=>{
+    const n=monthCount[m];
+    html+=`<div class="mt-cell ${n===0?'zero':''}" onclick="scrollToMonth(${m})">
+      <span class="mt-month">${m}월</span><span class="mt-num">${n}</span>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  ALL_MONTHS.forEach(m=>{
+    const inMonth=mine.filter(c=>(c.months||[]).includes(m));
+    if(!inMonth.length) return;
+    const summerTag=(m===7||m===8)?'<span class="badge">방학특강 시즌</span>':'';
+    html+=`<div class="month-block" id="acad-m-${m}">
+      <h3>${m}월 ${summerTag}<small>${inMonth.length}개 강좌</small></h3>
+      <div class="grid">${renderCardList(inMonth)}</div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+function scrollToMonth(m){
+  const el=document.getElementById("acad-m-"+m);
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* =========================================================================
+   8. VIEW 3 — BY TEACHER
+   ========================================================================= */
+function renderByTeach(){
+  const sel=document.getElementById("bt-pick");
+  const teachers=[...new Set(courses.map(c=>c.teacher).filter(Boolean))].sort();
+  const cur=sel.value || teachers[0] || "";
+  sel.innerHTML=teachers.map(t=>`<option ${t===cur?"selected":""}>${esc(t)}</option>`).join("");
+  const t=sel.value;
+  const mine=courses.filter(c=>c.teacher===t);
+  const body=document.getElementById("byteach-body");
+  if(!mine.length){ body.innerHTML='<div class="empty">강사 정보가 없어요.</div>'; return; }
+
+  const acads=[...new Set(mine.map(c=>c.academy))];
+  const subjects=[...new Set(mine.map(c=>subjGroup(c.subject)))];
+  const grades=[...new Set(mine.map(c=>c.grade))];
+  const initial=t.charAt(0);
+
+  let html=`
+    <div class="teacher-summary">
+      <div class="teacher-avatar">${esc(initial)}</div>
+      <div class="teacher-info">
+        <h2>${esc(t)} 선생님</h2>
+        <div class="sub">${esc(acads.join(" · "))} · ${esc(subjects.join("·"))} · ${esc(grades.join("·"))}</div>
+      </div>
+      <div class="teacher-stats">
+        <div class="stat"><div class="v">${mine.length}</div><div class="l">강좌</div></div>
+        <div class="stat"><div class="v">${grades.length}</div><div class="l">학년</div></div>
+        <div class="stat"><div class="v">${subjects.length}</div><div class="l">과목</div></div>
+      </div>
+    </div>
+
+    <div class="year-cal">
+      <h3>📊 1년 캘린더 — 가로축은 1~12월, 색띠는 운영기간</h3>
+      <table class="yc-table">
+        <thead><tr><th></th>${ALL_MONTHS.map(m=>`<th>${m}월</th>`).join("")}</tr></thead>
+        <tbody>`;
+  mine.forEach(c=>{
+    const col=subjColor(c.subject);
+    html+=`<tr class="yc-row"><td class="label"><span class="gtag">${esc(c.grade)}</span>${esc(c.course)}</td>`;
+    ALL_MONTHS.forEach(m=>{
+      const on=(c.months||[]).includes(m);
+      const summer=on && (m===7||m===8) && isSummer(c.months) && c.months.length<=3;
+      html+=`<td class="cell"><div class="yc-bar ${on?'on':''} ${summer?'summer':''}" style="${on?'background:'+col:''}" title="${on?m+'월':''}"></div></td>`;
+    });
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table></div>`;
+
+  html+=`<div class="semester-tabs">
+    <button class="${currentSemester==='all'?'on':''}" onclick="setSemester('all')">전체</button>
+    ${SEMESTERS.map(s=>`<button class="${currentSemester===s.key?'on':''}" onclick="setSemester('${s.key}')">${s.label}</button>`).join("")}
+  </div>`;
+
+  const sem=SEMESTERS.find(s=>s.key===currentSemester);
+  const semCourses = sem ? mine.filter(c=>(c.months||[]).some(m=>sem.months.includes(m))) : mine;
+  if(!semCourses.length){
+    html+='<div class="empty">이 학기에는 강좌가 없어요.</div>';
+  } else {
+    html+=`<div class="grid">${renderCardList(semCourses)}</div>`;
+  }
+  body.innerHTML=html;
+}
+function setSemester(k){ currentSemester=k; renderByTeach(); }
+function jumpToTeacher(name){
+  setMode("byteach");
+  setTimeout(()=>{
+    document.getElementById("bt-pick").value=name;
+    renderByTeach();
+  },50);
+}
+
+/* =========================================================================
+   9. VIEW 4 — BY MONTH
+   ========================================================================= */
+function renderByMonth(){
+  const pills=document.getElementById("month-pills");
+  pills.innerHTML=ALL_MONTHS.map(m=>{
+    const n=courses.filter(c=>(c.months||[]).includes(m)).length;
+    return `<div class="month-pill ${m===currentMonth?'on':''}" onclick="setMonth(${m})">
+      <span class="mp-n">${m}</span><span class="mp-c">${n}개</span>
+    </div>`;
+  }).join("");
+
+  const inMonth=courses.filter(c=>(c.months||[]).includes(currentMonth));
+  const body=document.getElementById("bymonth-body");
+  if(!inMonth.length){ body.innerHTML='<div class="empty">이 달에 운영되는 강좌가 없어요.</div>'; return; }
+
+  const byAcad={};
+  inMonth.forEach(c=>{ if(!byAcad[c.academy]) byAcad[c.academy]=[]; byAcad[c.academy].push(c); });
+  const acadNames=Object.keys(byAcad).sort();
+  const summerNote=(currentMonth===7||currentMonth===8)?
+    '<div style="background:#fbe9e7;border:1px solid #f3c4bd;border-radius:10px;padding:14px 16px;margin-bottom:18px;color:#a93515;font-weight:700">🔥 여름방학 시즌 — 방학특강이 집중되는 시기입니다</div>':'';
+
+  let html=`<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:18px">
+    <h2 style="font-size:22px">${currentMonth}월에 운영되는 강좌</h2>
+    <div style="color:var(--ink-soft);font-size:13px;margin-top:5px">${inMonth.length}개 강좌 · ${acadNames.length}개 학원</div>
+  </div>${summerNote}`;
+
+  acadNames.forEach(a=>{
+    const arr=byAcad[a];
+    html+=`<div class="acad-group">
+      <h3>${esc(a)}<span class="acount">${arr.length}개</span></h3>
+      <div class="grid">${renderCardList(arr)}</div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+function setMonth(m){ currentMonth=m; renderByMonth(); }
+
+/* =========================================================================
+   9.5 VIEW 4.5 — BY CATEGORY (카테고리 묶음)
+   ========================================================================= */
+let categoryAxis="school";
+let catSubjFilter={};
+let categorySelectedGroup=null;  // drill-down: 선택된 그룹 키 (null이면 카드 그리드)
+
+function setCategoryAxis(a){
+  categoryAxis=a; catSubjFilter={}; categorySelectedGroup=null;
+  ["ax-school","ax-gs","ax-ct"].forEach(k=>document.getElementById(k).classList.remove("on"));
+  const map={school:"ax-school",gradeSubject:"ax-gs",courseType:"ax-ct"};
+  document.getElementById(map[a]).classList.add("on");
+  renderByCategory();
+}
+function setCatSubj(g,s){ catSubjFilter[g]=s; renderByCategory(); }
+function openCategoryGroup(g){
+  categorySelectedGroup=g;
+  renderByCategory();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function closeCategoryGroup(){ categorySelectedGroup=null; renderByCategory(); }
+function onCatSearchInput(){ categorySelectedGroup=null; renderByCategory(); }
+
+function renderByCategory(){
+  const q=(document.getElementById("cat-q").value||"").trim().toLowerCase();
+  const matchQ=c=>{
+    if(!q) return true;
+    return (c.course+c.note+c.teacher+c.subject+c.grade+c.academy+(c.school||"")+(c.schoolGrade||"")+(c.courseType||"")).toLowerCase().includes(q);
+  };
+
+  let groups={};
+  let keyFn;
+  if(categoryAxis==="school"){
+    keyFn=c=>c.schoolGrade||"";
+  } else if(categoryAxis==="gradeSubject"){
+    keyFn=c=>`${c.grade} ${subjGroup(c.subject)}`;
+  } else {
+    keyFn=c=>c.courseType||"일반";
+  }
+  courses.forEach(c=>{
+    if(!matchQ(c)) return;
+    const k=keyFn(c);
+    if(!k) return;
+    if(!groups[k]) groups[k]=[];
+    groups[k].push(c);
+  });
+  let groupOrder=Object.keys(groups);
+  if(categoryAxis==="gradeSubject"){
+    const gOrder={"중3":0,"고1":1,"고2":2,"고3":3};
+    groupOrder.sort((a,b)=>{
+      const [ag,as]=a.split(" "); const [bg,bs]=b.split(" ");
+      const dg=(gOrder[ag]??99)-(gOrder[bg]??99);
+      if(dg) return dg;
+      return as.localeCompare(bs,"ko");
+    });
+  } else if(categoryAxis==="courseType"){
+    const ctOrder={};
+    COURSE_TYPES.forEach((c,i)=>ctOrder[c.key]=i);
+    groupOrder.sort((a,b)=>(ctOrder[a]??99)-(ctOrder[b]??99));
+  } else {
+    groupOrder.sort((a,b)=>groups[b].length-groups[a].length);
+  }
+
+  const body=document.getElementById("category-body");
+  if(!groupOrder.length){
+    body.innerHTML='<div class="empty">조건에 맞는 카테고리가 없어요. 검색어를 바꿔보세요.</div>';
+    return;
+  }
+
+  // ===== 그룹 헬퍼 (아이콘·서브타이틀 계산) =====
+  const groupMeta = g => {
+    const arr=groups[g];
+    const acads=new Set(arr.map(c=>c.academy));
+    const teachers=new Set(arr.map(c=>c.teacher).filter(Boolean));
+    let icon="";
+    if(categoryAxis==="school"){ icon="🏫"; }
+    else if(categoryAxis==="gradeSubject"){
+      const sj=subjGroup(arr[0].subject);
+      icon=sj==="영어"?"🇬🇧":sj==="수학"?"➗":sj==="국어"?"📖":sj==="과학"?"🧪":"🌏";
+    } else {
+      icon=courseTypeEmoji(g);
+    }
+    return {arr,acads,teachers,icon,sub:`${acads.size}개 학원 · ${teachers.size}명 강사`};
+  };
+
+  // ===== Depth 2: 선택된 그룹 상세 =====
+  if(categorySelectedGroup && groups[categorySelectedGroup]){
+    const g=categorySelectedGroup;
+    const m=groupMeta(g);
+    const arr=m.arr;
+    let pills="";
+    const subjMap={};
+    arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
+    const subjList=Object.keys(subjMap).sort();
+    if(subjList.length>1){
+      const cur=catSubjFilter[g]||"전체";
+      pills=`<div class="cat-subj-pills">
+        <button class="pill ${cur==='전체'?'on':''}" onclick="setCatSubj('${esc(g)}','전체')">전체<span class="cnt">${arr.length}</span></button>
+        ${subjList.map(s=>`<button class="pill ${cur===s?'on':''}" onclick="setCatSubj('${esc(g)}','${esc(s)}')">${esc(s)}<span class="cnt">${subjMap[s]}</span></button>`).join("")}
+      </div>`;
+    }
+    const filtered = (catSubjFilter[g] && catSubjFilter[g]!=="전체")
+      ? arr.filter(c=>subjGroup(c.subject)===catSubjFilter[g])
+      : arr;
+
+    body.innerHTML=`
+      <button class="cat-back-btn" onclick="closeCategoryGroup()">← 전체 카테고리로 돌아가기</button>
+      <div class="cat-group">
+        <div class="cat-group-head">
+          <span class="cat-group-icon">${m.icon}</span>
+          <span class="cat-group-title">${esc(g)}</span>
+          <span class="cat-group-count">${arr.length}개 강좌</span>
+          <span class="cat-group-sub">${m.sub}</span>
+        </div>
+        ${pills}
+        <div class="grid">${renderCardList(filtered)}</div>
+      </div>
+    `;
+    return;
+  }
+
+  // ===== Depth 1: 그룹 카드 그리드 =====
+  body.innerHTML=`<div class="cat-cards">${groupOrder.map(g=>{
+    const m=groupMeta(g);
+    const subjMap={};
+    m.arr.forEach(c=>{ const sg=subjGroup(c.subject); subjMap[sg]=(subjMap[sg]||0)+1; });
+    const subjTags=Object.keys(subjMap).sort().map(s=>`<span><b>${subjMap[s]}</b>${esc(s)}</span>`).join("");
+    const safeG=esc(g).replace(/'/g,"\\'");
+    return `<div class="cat-card" onclick="openCategoryGroup('${safeG}')">
+      <span class="cat-card-cta">자세히 →</span>
+      <div class="cat-card-icon">${m.icon}</div>
+      <div class="cat-card-name">${esc(g)}</div>
+      <div class="cat-card-meta">
+        <span class="count">${m.arr.length}개 강좌</span>
+        <span>·</span>
+        <span>${m.acads.size}개 학원</span>
+        <span>·</span>
+        <span>${m.teachers.size}명 강사</span>
+      </div>
+      ${subjTags?`<div class="cat-card-subjects">${subjTags}</div>`:""}
+    </div>`;
+  }).join("")}</div>`;
+}
+
+/* =========================================================================
+   10. CART
+   ========================================================================= */
+function openCart(){ renderCart(); document.getElementById("scrim").classList.add("open"); document.getElementById("drawer").classList.add("open"); }
+function closeCart(){ document.getElementById("scrim").classList.remove("open"); document.getElementById("drawer").classList.remove("open"); }
+
+function findConflicts(picked){
+  const pairs=[];
+  for(let i=0;i<picked.length;i++) for(let j=i+1;j<picked.length;j++){
+    const a=picked[i],b=picked[j];
+    if(a.period===b.period){
+      const shared=a.days.filter(d=>b.days.includes(d));
+      const monthsShared=(a.months||[]).filter(m=>(b.months||[]).includes(m));
+      if(shared.length && monthsShared.length) pairs.push({a,b,shared,period:a.period,months:monthsShared});
+    }
+  }
+  return pairs;
+}
+function renderCart(){
+  const picked=myIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean);
+  const body=document.getElementById("drawer-body");
+  if(!picked.length){
+    body.innerHTML=`
+      <div class="cart-guide">
+        <b><span class="ico">📋</span>내 시간표 사용법</b>
+        <ol>
+          <li>강좌 카드의 <b>＋ 내 시간표에 담기</b> 버튼을 누르세요.</li>
+          <li>이 화면이 자동으로 갱신됩니다.</li>
+          <li>요일·시간이 겹치면 <b style="color:var(--warn)">빨간색 알림</b>이 뜹니다.</li>
+          <li>주간 그리드(월~일 × 오전·오후·저녁)로 한눈에 확인하세요.</li>
+          <li>저장은 자동 — 다음 방문 시에도 그대로 유지됩니다.</li>
+        </ol>
+      </div>
+      <div class="cart-empty">아직 담은 강좌가 없어요.<br>검색·둘러보기·카테고리 화면에서<br>듣고 싶은 강좌를 ＋ 버튼으로 담아보세요.</div>
+    `;
+    return;
+  }
+  const conflicts=findConflicts(picked);
+  let verdict;
+  if(conflicts.length){
+    verdict=`<div class="verdict bad"><span class="big">!</span><div>시간이 겹쳐요 (${conflicts.length}건)
+      ${conflicts.map(c=>`<div class="conflict-detail">· <b>${esc(c.a.course)}</b> ↔ <b>${esc(c.b.course)}</b> — ${c.shared.join("·")} ${c.period} · ${c.months.join("·")}월 중복</div>`).join("")}
+    </div></div>`;
+  }else{
+    verdict=`<div class="verdict ok"><span class="big">✓</span><div>겹치는 시간이 없어요!<br><span style="font-weight:500;font-size:12px">담은 ${picked.length}개 강좌를 모두 들을 수 있습니다.</span></div></div>`;
+  }
+  const cellMap={}; PERIODS.forEach(p=>ALL_DAYS.forEach(d=>cellMap[p+d]=[]));
+  picked.forEach(c=>c.days.forEach(d=>{ if(cellMap[c.period+d]) cellMap[c.period+d].push(c); }));
+  let grid='<table class="wk"><tr><th class="period-lab"></th>'+ALL_DAYS.map(d=>`<th>${d}</th>`).join("")+'</tr>';
+  PERIODS.forEach(p=>{
+    grid+=`<tr><td class="period-lab">${p}</td>`;
+    ALL_DAYS.forEach(d=>{
+      const arr=cellMap[p+d];
+      const clash=arr.length>1?"clash":(arr.length?"has":"");
+      grid+=`<td class="${clash}">${arr.map(c=>`<span class="cellchip" style="background:${subjColor(c.subject)}">${esc(c.course.split(" ")[0])}</span>`).join("")}</td>`;
+    });
+    grid+="</tr>";
+  });
+  grid+="</table>";
+  const items=picked.map(c=>`<div class="picked">
+      <div class="bar" style="background:${subjColor(c.subject)}"></div>
+      <div class="pinfo"><b>${esc(c.course)}</b>
+        <small>${esc(c.area||"")} · ${esc(c.academy)} · ${esc(c.subject)} · ${c.days.join("·")} ${esc(c.period)}${c.time?" "+esc(c.time):""} · ${(c.months||[]).join("·")}월</small></div>
+      <button class="delbtn" onclick="toggle('${c.id}')">빼기</button>
+    </div>`).join("");
+  const miniGuide=`<div class="cart-guide" style="font-size:11.5px;padding:10px 13px;margin-bottom:12px"><b><span class="ico">💡</span>활용 팁</b> · 강좌 더 담아 충돌 확인 / 빼기는 각 카드 우측 버튼 / 다음 방문 시 자동 유지</div>`;
+  body.innerHTML=miniGuide+verdict+grid+items;
+}
+
+/* =========================================================================
+   11. ACADEMY REGISTRATION
+   ========================================================================= */
+function buildMonthPick(){
+  const wrap=document.getElementById("monthpick");
+  wrap.innerHTML=ALL_MONTHS.map(m=>`<div class="m" data-m="${m}">${m}</div>`).join("");
+  wrap.addEventListener("click",e=>{
+    const el=e.target.closest(".m"); if(!el) return;
+    el.classList.toggle("on");
+    const m=parseInt(el.dataset.m);
+    const i=pickedMonths.indexOf(m);
+    if(i>=0) pickedMonths.splice(i,1); else pickedMonths.push(m);
+  });
+}
+function buildFormCategoryPicks(){
+  const sSel=document.getElementById("i-school");
+  if(sSel) sSel.innerHTML='<option value="">없음/공통</option>'+KNOWN_SCHOOLS.map(s=>`<option>${esc(s)}</option>`).join("");
+  const ctSel=document.getElementById("i-ctype");
+  if(ctSel) ctSel.innerHTML='<option value="">자동 분류</option>'+COURSE_TYPES.map(c=>`<option value="${esc(c.key)}">${c.emoji} ${esc(c.key)}</option>`).join("");
+}
+
+document.getElementById("daypick").addEventListener("click",e=>{
+  const el=e.target.closest(".d"); if(!el) return;
+  el.classList.toggle("on");
+  const d=el.dataset.d;
+  const i=pickedDays.indexOf(d);
+  if(i>=0) pickedDays.splice(i,1); else pickedDays.push(d);
+});
+
+function addCourse(){
+  const acad=document.getElementById("i-acad").value.trim();
+  const city=document.getElementById("i-city").value;
+  const area=document.getElementById("i-area").value;
+  const subject=document.getElementById("i-subject").value;
+  const grade=document.getElementById("i-grade").value;
+  const course=document.getElementById("i-course").value.trim();
+  const period=document.getElementById("i-period").value;
+  if(!acad||!city||!area||!subject||!grade||!course||!pickedDays.length||!period||!pickedMonths.length){
+    alert("필수 항목(*)을 모두 입력해주세요: 학원명, 지역, 동네, 과목, 학년, 강좌명, 요일, 운영 월, 시간대"); return;
+  }
+  const order={월:0,화:1,수:2,목:3,금:4,토:5,일:6};
+  const days=[...pickedDays].sort((a,b)=>order[a]-order[b]);
+  const months=[...pickedMonths].sort((a,b)=>a-b);
+  const schoolPick=document.getElementById("i-school").value;
+  const ctypePick=document.getElementById("i-ctype").value;
+  const newC={
+    id:"u"+Date.now(), city, area, academy:acad, teacher:document.getElementById("i-teacher").value.trim(),
+    subject, course, grade, days, period, months,
+    school: schoolPick || "",
+    courseType: ctypePick || "",
+    time:document.getElementById("i-time").value.trim(),
+    sessions:document.getElementById("i-sessions").value.trim(),
+    note:document.getElementById("i-note").value.trim()
+  };
+  enrichCourse(newC);  // school/courseType이 비어있으면 자동 추출
+  courses.push(newC);
+  save();
+  ["i-teacher","i-course","i-time","i-sessions","i-note"].forEach(id=>document.getElementById(id).value="");
+  ["i-subject","i-grade","i-period","i-school","i-ctype"].forEach(id=>document.getElementById(id).value="");
+  pickedDays=[]; pickedMonths=[];
+  document.querySelectorAll("#daypick .d").forEach(d=>d.classList.remove("on"));
+  document.querySelectorAll("#monthpick .m").forEach(d=>d.classList.remove("on"));
+  alert("등록되었습니다! 학부모 검색 화면에 바로 노출됩니다.");
+  renderAcadList(); render();
+}
+function renderAcadList(){
+  const acad=document.getElementById("i-acad").value.trim();
+  const box=document.getElementById("acad-list");
+  if(!acad){ box.innerHTML='<div style="color:#9a8f78;font-size:13px;padding:8px 2px">위 「학원명」 칸에 학원 이름을 입력하면, 해당 학원이 등록한 강좌가 여기 표시됩니다.</div>'; return; }
+  const mine=courses.filter(c=>c.academy===acad);
+  if(!mine.length){ box.innerHTML=`<div style="color:#9a8f78;font-size:13px;padding:8px 2px">「${esc(acad)}」(으)로 등록된 강좌가 없습니다.</div>`; return; }
+  box.innerHTML=mine.map(c=>`<div class="acad-row">
+    <div class="info"><b>${esc(c.course)}</b><small>${esc(c.area||"")} · ${esc(c.subject)} · ${esc(c.grade)} · ${c.days.join("·")} ${esc(c.period)}${c.teacher?" · "+esc(c.teacher):""} · ${(c.months||[]).join("·")}월</small></div>
+    <button class="delbtn" onclick="delCourse('${c.id}')">삭제</button>
+  </div>`).join("");
+}
+function delCourse(id){
+  if(!confirm("이 강좌를 삭제할까요?")) return;
+  courses=courses.filter(c=>c.id!==id);
+  myIds=myIds.filter(x=>x!==id);
+  save(); renderAcadList(); render();
+  document.getElementById("cartn").textContent=myIds.length;
+}
+document.getElementById("i-acad").addEventListener("input",renderAcadList);
+
+/* =========================================================================
+   12. INIT
+   ========================================================================= */
+/* =========================================================================
+   12.5 회원 시스템 (가입/로그인/세션 — localStorage 기반 베타)
+   ========================================================================= */
+const MEMBERS_KEY="classpick:members:v2";
+const SESSION_KEY="classpick:session:v2";
+const MEMBER_TYPE_LABELS={
+  student:{emoji:"🎓",label:"학생"},
+  parent:{emoji:"👨‍👩‍👧",label:"학부모"},
+  teacher:{emoji:"👤",label:"강사"},
+  academy:{emoji:"🏫",label:"학원"},
+  institute:{emoji:"📚",label:"교습소"}
+};
+let memberMode="signup";          // 'signup' | 'login' | 'success'
+let memberType="student";
+let pendingSmsCode=null;
+let pendingSmsPhone="";
+let smsVerified=false;
+let bizValid=false;
+
+function getMembers(){try{return JSON.parse(localStorage.getItem(MEMBERS_KEY))||[]}catch(e){return[]}}
+function saveMembers(arr){try{localStorage.setItem(MEMBERS_KEY,JSON.stringify(arr))}catch(e){}}
+function getSession(){try{return JSON.parse(localStorage.getItem(SESSION_KEY))||null}catch(e){return null}}
+function saveSession(s){try{localStorage.setItem(SESSION_KEY,JSON.stringify(s))}catch(e){}}
+function clearSession(){try{localStorage.removeItem(SESSION_KEY)}catch(e){}}
+function isMember(){ return !!getSession(); }
+function currentMember(){ return getSession(); }
+
+function refreshAuthButtons(){
+  const wrap=document.getElementById("auth-btns");
+  const s=currentMember();
+  if(s){
+    const meta=MEMBER_TYPE_LABELS[s.type]||{emoji:"👤",label:"회원"};
+    wrap.innerHTML=`
+      <div class="auth-userinfo">
+        <div class="av">${esc((s.name||meta.emoji).charAt(0))}</div>
+        <div class="who"><span>${esc(s.name||"회원")}</span><small>${esc(meta.label)}</small></div>
+      </div>
+      <button class="auth-btn" onclick="logoutMember()">로그아웃</button>
+    `;
+  } else {
+    wrap.innerHTML=`
+      <button class="auth-btn" onclick="openMemberLogin()">로그인</button>
+      <button class="auth-btn primary" onclick="openMemberSignup()">회원가입</button>
+    `;
+  }
+}
+
+function openMemberSignup(){ memberMode="signup"; resetSmsState(); openMember(); }
+function openMemberLogin(){ memberMode="login"; resetSmsState(); openMember(); }
+function openMember(){
+  document.getElementById("member-overlay").classList.add("show");
+  document.getElementById("member-title").innerHTML = memberMode==="signup"
+    ? '회원가입 <span class="badge">BETA</span>'
+    : '로그인';
+  document.getElementById("member-tabs").style.display = memberMode==="signup"?"grid":"none";
+  renderMemberBody();
+}
+function closeMember(){
+  document.getElementById("member-overlay").classList.remove("show");
+  resetSmsState();
+}
+function setMemberType(t){
+  memberType=t; resetSmsState();
+  document.querySelectorAll(".m-tab").forEach(el=>el.classList.toggle("on",el.dataset.type===t));
+  renderMemberBody();
+}
+function resetSmsState(){
+  pendingSmsCode=null; pendingSmsPhone=""; smsVerified=false; bizValid=false;
+}
+function dismissNoticeAndOpenSignup(){ dismissNotice(); openMemberSignup(); }
+
+function renderMemberBody(){
+  const body=document.getElementById("member-body");
+  if(memberMode==="login"){ body.innerHTML=loginFormHtml(); return; }
+  if(memberMode==="success"){ body.innerHTML=successHtml(); return; }
+  body.innerHTML=signupFormHtml(memberType);
+  if(memberType==="academy"||memberType==="institute") bindBizValidate();
+}
+
+function bizValidate(input){
+  const digits=(input||"").replace(/[^0-9]/g,"");
+  if(digits.length!==10) return {valid:false,msg:"10자리 숫자를 입력해주세요"};
+  const w=[1,3,7,1,3,7,1,3,5];
+  let sum=0;
+  for(let i=0;i<9;i++) sum+=parseInt(digits[i])*w[i];
+  sum+=Math.floor(parseInt(digits[8])*5/10);
+  const check=(10-sum%10)%10;
+  if(check!==parseInt(digits[9])) return {valid:false,msg:"유효하지 않은 사업자등록번호입니다"};
+  return {valid:true,msg:"유효한 사업자등록번호입니다 ✓"};
+}
+function bindBizValidate(){
+  const input=document.getElementById("m-biz");
+  const status=document.getElementById("m-biz-status");
+  if(!input||!status) return;
+  input.addEventListener("input",e=>{
+    const v=e.target.value;
+    if(!v){status.className="m-biz-status";status.textContent="";bizValid=false;return}
+    const r=bizValidate(v);
+    bizValid=r.valid;
+    status.className="m-biz-status show "+(r.valid?"ok":"bad");
+    status.textContent=r.msg;
+  });
+}
+
+function requestSms(){
+  const input=document.getElementById("m-phone");
+  if(!input) return;
+  const raw=input.value.trim().replace(/-/g,"").replace(/\s/g,"");
+  if(!/^010\d{8}$/.test(raw)){
+    alert("010으로 시작하는 11자리 휴대폰 번호를 입력해주세요"); return;
+  }
+  pendingSmsPhone=raw;
+  pendingSmsCode=Math.floor(100000+Math.random()*900000);
+  smsVerified=false;
+  const demo=document.getElementById("m-sms-demo");
+  demo.innerHTML=`📱 데모 인증코드: <b>${pendingSmsCode}</b> <span class="demo-tag">DEMO</span><br><span style="font-size:11px;color:var(--ink-soft);font-weight:600">베타 단계 — 실제 SMS 미발송. 실서비스 전환 시 SMS API 연결 예정.</span>`;
+  demo.classList.add("show");
+  document.getElementById("m-sms-input-row").classList.add("show");
+  document.getElementById("m-sms-verified").classList.remove("show");
+  document.getElementById("m-sms-send-btn").textContent="재전송";
+}
+function verifySms(){
+  const input=document.getElementById("m-sms-code");
+  if(!input) return;
+  if(parseInt(input.value.trim())===pendingSmsCode){
+    smsVerified=true;
+    document.getElementById("m-sms-input-row").classList.remove("show");
+    document.getElementById("m-sms-demo").classList.remove("show");
+    document.getElementById("m-sms-verified").classList.add("show");
+  } else {
+    alert("인증번호가 맞지 않아요. 다시 확인해 주세요.");
+  }
+}
+
+function signupFormHtml(t){
+  const isAcad = (t==="academy"||t==="institute");
+  const acadLabel = t==="academy"?"학원":"교습소";
+  const isTeacher = t==="teacher";
+  const isStudParent = (t==="student"||t==="parent");
+
+  return `
+    <div class="m-form-grid">
+      <div class="full">
+        <label>${isAcad?acadLabel+"명":"이름"} <span class="req">*</span></label>
+        <input id="m-name" placeholder="${isAcad?(acadLabel+"명 (예: 교육인학원 센텀점)"):"실명"}" />
+      </div>
+      <div class="full">
+        <label>이메일 (선택)</label>
+        <input id="m-email" type="email" placeholder="문의·알림 받을 이메일" />
+      </div>
+
+      ${isAcad?`
+      <div class="full">
+        <label>사업자등록번호 <span class="req">*</span></label>
+        <input id="m-biz" maxlength="12" placeholder="10자리 숫자 (예: 1234567890)" />
+        <div id="m-biz-status" class="m-biz-status"></div>
+      </div>
+      <div><label>대표자명</label><input id="m-rep" /></div>
+      <div><label>주소 (선택)</label><input id="m-addr" placeholder="센텀·사직 지역" /></div>
+      `:""}
+
+      ${isTeacher?`
+      <div><label>소속 학원 (선택)</label><input id="m-affil" /></div>
+      <div><label>담당 과목 (선택)</label>
+        <select id="m-subject"><option value="">선택</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select>
+      </div>
+      `:""}
+
+      ${isStudParent?`
+      <div><label>학생 학교 <span class="req">*</span></label>
+        <select id="m-school">
+          <option value="">선택</option>
+          ${KNOWN_SCHOOLS.map(s=>`<option>${esc(s)}</option>`).join("")}
+          <option value="기타">기타 (직접 입력)</option>
+        </select>
+      </div>
+      <div><label>학생 학년 <span class="req">*</span></label>
+        <select id="m-grade"><option value="">선택</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      </div>
+      `:""}
+
+      ${(isTeacher||isStudParent)?`
+      <div class="full">
+        <label>휴대폰 번호 <span class="req">*</span> (문자인증 필수)</label>
+        <div class="m-phone-row">
+          <input id="m-phone" maxlength="13" placeholder="010-1234-5678" />
+          <button class="send-btn" id="m-sms-send-btn" onclick="requestSms()">인증요청</button>
+        </div>
+        <div id="m-sms-demo" class="m-sms-demo"></div>
+        <div id="m-sms-input-row" class="m-sms-input-row">
+          <input id="m-sms-code" maxlength="6" placeholder="6자리 코드" />
+          <button class="verify-btn" onclick="verifySms()">확인</button>
+        </div>
+        <div id="m-sms-verified" class="m-sms-verified">✓ 휴대폰 인증 완료</div>
+      </div>
+      `:""}
+
+      <div class="full">
+        <label>비밀번호 <span class="req">*</span></label>
+        <input id="m-pw" type="password" placeholder="6자 이상" />
+      </div>
+    </div>
+
+    <div class="m-consent">
+      <div class="c-row c-all">
+        <input type="checkbox" id="m-c-all" onchange="toggleAllConsent(this)" />
+        <label for="m-c-all">전체 동의</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-tos" />
+        <label for="m-c-tos">[필수] <a href="/terms.html" target="_blank">이용약관</a>에 동의합니다</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-priv" />
+        <label for="m-c-priv">[필수] <a href="/privacy.html" target="_blank">개인정보처리방침</a>에 동의합니다</label>
+      </div>
+      <div class="c-row">
+        <input type="checkbox" id="m-c-mkt" />
+        <label for="m-c-mkt">[선택] 신규 강좌·이벤트 안내 수신 동의</label>
+      </div>
+    </div>
+
+    <button class="m-submit" onclick="submitSignup()">＋ 가입하기</button>
+    <div class="m-switch">이미 회원이신가요? <a onclick="memberMode='login';openMember()">로그인 →</a></div>
+  `;
+}
+
+function loginFormHtml(){
+  return `
+    <div class="m-form-grid">
+      <div class="full">
+        <label>이메일 또는 이름</label>
+        <input id="m-login-id" placeholder="가입 시 입력한 이메일 또는 이름" />
+      </div>
+      <div class="full">
+        <label>비밀번호</label>
+        <input id="m-login-pw" type="password" />
+      </div>
+    </div>
+    <button class="m-submit" onclick="submitLogin()">로그인</button>
+    <div class="m-switch">아직 회원이 아니신가요? <a onclick="memberMode='signup';memberType='student';openMember()">회원가입 →</a></div>
+  `;
+}
+
+function successHtml(){
+  return `
+    <div class="m-success">
+      <div class="em">🎉</div>
+      <h3>환영합니다!</h3>
+      <p>회원가입이 완료되었습니다.<br>이제 전체 강좌·시간표 충돌 분석·인기 강좌를 모두 이용하실 수 있어요.</p>
+      <button class="m-submit" onclick="closeMember()">시작하기</button>
+    </div>
+  `;
+}
+
+function toggleAllConsent(box){
+  const checked=box.checked;
+  ["m-c-tos","m-c-priv","m-c-mkt"].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.checked=checked;
+  });
+}
+
+function submitSignup(){
+  const name=(document.getElementById("m-name")?.value||"").trim();
+  const email=(document.getElementById("m-email")?.value||"").trim();
+  const pw=(document.getElementById("m-pw")?.value||"").trim();
+  const tos=document.getElementById("m-c-tos")?.checked;
+  const priv=document.getElementById("m-c-priv")?.checked;
+  if(!name) return alert("이름/명칭을 입력해주세요");
+  if(pw.length<6) return alert("비밀번호는 6자 이상 입력해주세요");
+  if(!tos||!priv) return alert("필수 약관에 동의해주세요");
+
+  const record={id:"m"+Date.now(),type:memberType,name,email,pwHash:btoa(pw),createdAt:Date.now()};
+
+  // 타입별 추가 필드 + 검증
+  if(memberType==="academy"||memberType==="institute"){
+    const biz=(document.getElementById("m-biz")?.value||"").trim();
+    if(!bizValid) return alert("유효한 사업자등록번호를 입력해주세요");
+    record.bizNo=biz;
+    record.rep=(document.getElementById("m-rep")?.value||"").trim();
+    record.addr=(document.getElementById("m-addr")?.value||"").trim();
+  }
+  if(memberType==="teacher"){
+    if(!smsVerified) return alert("휴대폰 인증을 완료해주세요");
+    record.phone=pendingSmsPhone;
+    record.affil=(document.getElementById("m-affil")?.value||"").trim();
+    record.subject=document.getElementById("m-subject")?.value||"";
+  }
+  if(memberType==="student"||memberType==="parent"){
+    if(!smsVerified) return alert("휴대폰 인증을 완료해주세요");
+    const school=document.getElementById("m-school")?.value;
+    const grade=document.getElementById("m-grade")?.value;
+    if(!school) return alert("학생 학교를 선택해주세요");
+    if(!grade) return alert("학생 학년을 선택해주세요");
+    record.phone=pendingSmsPhone;
+    record.studentSchool=school;
+    record.studentGrade=grade;
+  }
+
+  const members=getMembers();
+  members.push(record);
+  saveMembers(members);
+  saveSession({id:record.id,type:record.type,name:record.name});
+  refreshAuthButtons();
+  memberMode="success"; renderMemberBody();
+  // 회원이 됐으니 마스킹 해제 — 현재 화면 리렌더
+  refreshAllViews();
+}
+
+function submitLogin(){
+  const id=(document.getElementById("m-login-id")?.value||"").trim();
+  const pw=(document.getElementById("m-login-pw")?.value||"").trim();
+  if(!id||!pw) return alert("이메일/이름과 비밀번호를 입력해주세요");
+  const pwHash=btoa(pw);
+  const m=getMembers().find(x=>(x.email===id||x.name===id)&&x.pwHash===pwHash);
+  if(!m) return alert("계정을 찾을 수 없거나 비밀번호가 맞지 않아요.\n베타 단계 — localStorage에만 저장됩니다.");
+  saveSession({id:m.id,type:m.type,name:m.name});
+  refreshAuthButtons();
+  closeMember();
+  refreshAllViews();
+}
+
+function logoutMember(){
+  if(!confirm("로그아웃 하시겠어요?")) return;
+  clearSession();
+  refreshAuthButtons();
+  refreshAllViews();
+}
+
+function refreshAllViews(){
+  if(mode==="search") render();
+  if(mode==="browse") renderBrowse();
+  if(mode==="category") renderByCategory();
+  if(mode==="byacad") renderByAcad();
+  if(mode==="byteach") renderByTeach();
+  if(mode==="bymonth") renderByMonth();
+  if(mode==="academy") renderAcadList();
+  if(document.getElementById("ai-q") && document.getElementById("ai-q").value) runAiSearch();
+}
+
+/* =========================================================================
+   12.7 비회원 마스킹 — 첫 12개 자유열람, 이후 CTA 카드
+   ========================================================================= */
+const FREE_CARD_LIMIT=12;
+function renderCardList(arr){
+  if(isMember() || arr.length<=FREE_CARD_LIMIT) return arr.map(courseCard).join("");
+  const shown=arr.slice(0,FREE_CARD_LIMIT).map(courseCard).join("");
+  const rest=arr.length-FREE_CARD_LIMIT;
+  return shown + `<div class="member-cta-card" onclick="openMemberSignup()">
+    <div class="ico">🔓</div>
+    <div class="ttl">회원가입하면<br><b>${rest}개 더</b><br>볼 수 있어요</div>
+    <button class="cta-btn">＋ 무료 가입 (1분)</button>
+  </div>`;
+}
+
+/* =========================================================================
+   13. NOTICE MODAL (첫 방문 공지 — 학원 양해 메일 대체용 안전장치)
+   ========================================================================= */
+const NOTICE_KEY="classpick:notice:dismissed:v1";
+function showNoticeIfFirst(){
+  if(localStorage.getItem(NOTICE_KEY)) return;
+  document.getElementById("notice-overlay").classList.add("show");
+}
+function dismissNotice(){
+  try{ localStorage.setItem(NOTICE_KEY,new Date().toISOString()); }catch(e){}
+  document.getElementById("notice-overlay").classList.remove("show");
+}
+function reopenNotice(){
+  document.getElementById("notice-overlay").classList.add("show");
+}
+
+load();
+buildMonthPick();
+buildFormCategoryPicks();
+refreshAuthButtons();
+onCityChange('f');
+render();
+renderBrowse();
+showNoticeIfFirst();
+</script>
+</body>
+</html>
