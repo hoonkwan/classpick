@@ -731,9 +731,101 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 .text-danger{color:var(--danger)}
 .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}
 .mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}.mb-16{margin-bottom:16px}.mb-24{margin-bottom:24px}
+
+/* =========== Teacher photo manager (v7.1) =========== */
+.tphoto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.tphoto-card{background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:14px;text-align:center}
+.tphoto-thumb{width:120px;height:120px;border-radius:50%;margin:0 auto 10px;background:var(--soft-bg);display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:32px;color:var(--muted)}
+.tphoto-thumb img{width:100%;height:100%;object-fit:cover}
+.tphoto-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.tphoto-count{font-size:11px;color:var(--muted);margin-bottom:10px}
+.tphoto-btn{display:inline-block;font-size:12px;padding:6px 12px;border-radius:var(--radius-pill);background:var(--soft-bg);cursor:pointer;border:0}
+.tphoto-btn:hover{background:#e8e8ed}
+.tphoto-btn.primary{background:#000;color:#fff}
+.tphoto-btn.primary:hover{background:#1d1d1f}
+.tphoto-progress{height:4px;background:var(--soft-bg);border-radius:2px;overflow:hidden;margin-top:8px;display:none}
+.tphoto-progress.on{display:block}
+.tphoto-progress span{display:block;height:100%;background:var(--accent);width:0;transition:width .2s ease}
+.cp-svc-pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--soft-bg);color:var(--muted2);margin-left:6px}
+.cp-svc-pill.on{background:#e6f7ee;color:#0a7a3a}
+
+/* =========== v8 — Beta Banner (sticky top strip) =========== */
+.beta-banner{background:linear-gradient(90deg,#0071e3,#9b4dff);color:#fff;padding:11px 22px;text-align:center;font-size:13.5px;font-weight:500;letter-spacing:-0.005em;line-height:1.45;position:relative;z-index:91}
+.beta-banner b{font-weight:700}
+.beta-banner .beta-pill{display:inline-block;background:rgba(255,255,255,0.22);padding:2px 9px;border-radius:var(--radius-pill);font-size:11.5px;font-weight:600;margin-right:8px;letter-spacing:0.02em}
+.beta-banner a{color:#fff;text-decoration:underline;font-weight:600;margin-left:6px;cursor:pointer}
+@media (max-width:760px){.beta-banner{font-size:12.5px;padding:9px 14px}.beta-banner .beta-pill{display:block;margin:0 auto 4px}}
+
+/* =========== v8 — Hero Value Trio (3 cards directly under hero) =========== */
+.hero-value-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:48px auto 0;padding:0 4px}
+@media (max-width:760px){.hero-value-trio{grid-template-columns:1fr;gap:14px;margin-top:32px}}
+.hvt-card{background:#fff;border-radius:var(--radius-xl);padding:30px 26px;box-shadow:var(--shadow-md);text-align:left;animation:fadeUp .8s var(--ease) both;animation-delay:.5s}
+.hvt-card:nth-child(2){animation-delay:.6s}
+.hvt-card:nth-child(3){animation-delay:.7s}
+.hvt-card .hvt-ico{font-size:38px;line-height:1;margin-bottom:14px;display:block}
+.hvt-card h3{font-size:18px;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;line-height:1.3}
+.hvt-card p{font-size:14px;color:var(--muted2);line-height:1.55}
+.hvt-card .hvt-tag{display:inline-block;font-size:10.5px;font-weight:600;color:var(--accent);background:rgba(0,113,227,0.08);padding:3px 9px;border-radius:5px;margin-bottom:12px;letter-spacing:0.02em}
+
+/* =========== v8 — Featured Recommendation Section (학년·기간 큐레이션) =========== */
+.reco{padding:80px 22px 20px;background:#fff;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.reco-inner{max-width:1100px;margin:0 auto}
+.reco-head{text-align:center;margin-bottom:32px}
+.reco-head .eyebrow{margin-bottom:12px}
+.reco-head h2{font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-0.025em;margin-bottom:10px;line-height:1.15}
+.reco-head .body{max-width:560px;margin:0 auto;font-size:15px}
+.reco-controls{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;align-items:center}
+.reco-axis-label{font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
+.reco-tabs{display:inline-flex;gap:4px;background:var(--soft-bg);border-radius:var(--radius-pill);padding:4px;flex-wrap:wrap;justify-content:center}
+.reco-tab{padding:8px 16px;border-radius:var(--radius-pill);font-size:13px;font-weight:500;color:var(--muted2);background:transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+.reco-tab.on{background:#000;color:#fff;box-shadow:var(--shadow-sm)}
+.reco-tab:hover:not(.on){background:#fff;color:var(--fg)}
+.reco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:14px}
+.reco-empty{text-align:center;padding:50px 20px;color:var(--muted);background:var(--soft-bg);border-radius:var(--radius-md);font-size:14px}
+.reco-cta-row{text-align:center;margin-top:22px}
+.reco-card{background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:18px;cursor:pointer;transition:all .2s var(--ease);display:flex;flex-direction:column;gap:10px}
+.reco-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--accent)}
+.reco-card .rc-top{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.reco-card .rc-subj{font-size:11px;font-weight:600;color:#fff;padding:3px 9px;border-radius:6px}
+.reco-card .rc-grade{font-size:11px;font-weight:600;border:1px solid var(--fg);color:var(--fg);border-radius:6px;padding:2px 8px;background:#fff}
+.reco-card .rc-ct{font-size:10.5px;font-weight:600;color:#fff;padding:2px 7px;border-radius:5px}
+.reco-card h4{font-size:15.5px;line-height:1.35;font-weight:600;letter-spacing:-0.015em}
+.reco-card .rc-meta{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--muted2)}
+.reco-card .rc-meta span{background:var(--soft-bg);border-radius:5px;padding:3px 8px;font-weight:500}
+.reco-card .rc-teach{font-size:12px;color:var(--muted);font-weight:500}
+.reco-card .rc-acad{font-size:11.5px;color:var(--accent);font-weight:500}
+@media (max-width:760px){.reco{padding:60px 14px 12px}.reco-tab{padding:7px 12px;font-size:12px}}
+
+/* =========== v8 — Beta-Free Badge for pricing cards =========== */
+.beta-free-badge{display:inline-flex;align-items:center;gap:3px;background:linear-gradient(90deg,#34c759,#0071e3);color:#fff;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:5px;letter-spacing:0.02em;margin-bottom:10px}
+.price-amount.beta-strike{font-size:13px;font-weight:500;color:#86868b;text-decoration:line-through;display:block;line-height:1;margin-bottom:4px}
+.price-amount.beta-zero{color:#34c759 !important}
+.price-betacopy{font-size:12px;color:#86868b;text-align:center;margin-top:14px;line-height:1.6}
+.price-betacopy b{color:#34c759}
+.tier-card .beta-mini{position:absolute;top:14px;left:14px;background:linear-gradient(90deg,#34c759,#0071e3);color:#fff;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:0.02em}
+.tier-card .tier-price .beta-strike{font-size:13px;color:#86868b;text-decoration:line-through;font-weight:500;display:block;line-height:1;margin-bottom:2px}
+.tier-card .tier-price .beta-zero{color:#34c759}
+
+/* =========== v8 — Beta forever-free banner on academy/signup =========== */
+.cta-beta-banner{background:linear-gradient(135deg,#e8f8eb,#e8f1ff);border:1px solid #bce8c5;border-radius:var(--radius-md);padding:16px 18px;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start}
+.cta-beta-banner .cba-em{font-size:26px;line-height:1;flex-shrink:0}
+.cta-beta-banner .cba-msg{flex:1;font-size:13px;color:#1f7a35;line-height:1.55}
+.cta-beta-banner .cba-msg b{color:#0a5021;font-weight:700;font-size:14px;display:block;margin-bottom:3px}
+
 </style>
+<!-- ===== External SDKs (v7.1 backend scaffolding) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://js.tosspayments.com/v1/payment"></script>
 </head>
 <body>
+
+<!-- =========== v8 — BETA STRIP (top of page) =========== -->
+<div class="beta-banner" id="beta-banner">
+  <span class="beta-pill">🚀 BETA</span>
+  <b>클래스픽 베타 오픈</b> · 모든 기능 무료 (정식 출시 후 유료 전환 예정) ·
+  <b>베타 가입자는 가입 시점 기능 영구 무료</b>
+  <a onclick="scrollToSection('pricing')">자세히 →</a>
+</div>
 
 <!-- =========== NAV =========== -->
 <nav class="nav" id="topnav">
@@ -766,61 +858,81 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 
 <!-- =========== LANDING PAGE =========== -->
 <div id="landing">
-  <!-- Hero -->
+  <!-- Hero (v8 — value-first) -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow eyebrow">부산 센텀 · 사직</div>
-      <h1 class="h-hero">맘카페에서 듣고,<br><span class="accent">클래스픽에서 비교한다.</span></h1>
-      <p class="hero-sub">동네 학원 강좌를 강좌 단위로 비교하는 사실 데이터 플랫폼.<br>학부모는 평생 무료. 가격이 아닌 정보가 모입니다.</p>
+      <div class="hero-eyebrow eyebrow">부산 센텀 · 사직 · BETA</div>
+      <h1 class="h-hero">우리 아이의 학원,<br><span class="accent">한 화면에 비교한다.</span></h1>
+      <p class="hero-sub">맘카페의 카더라와 학원 홈페이지의 광고 사이.<br>동네 학원 강좌를 사실 그대로 펼쳐, 우리 아이 시간표에 맞는 조합을 찾습니다.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary btn-lg" onclick="enterApp('browse')">지금 검색 시작</button>
-        <button class="btn btn-link" onclick="scrollToSection('pricing')">학원으로 입점 알아보기</button>
+        <button class="btn btn-primary btn-lg" onclick="enterApp('browse')">지금 강좌 보기 (무료)</button>
+        <button class="btn btn-link" onclick="enterApp('academy')">학원으로 입점 알아보기</button>
       </div>
+
+      <!-- v8 — Value Trio (직관적으로 클래스픽 가치 노출) -->
+      <div class="hero-value-trio">
+        <div class="hvt-card">
+          <span class="hvt-ico">🗺️</span>
+          <span class="hvt-tag">동네 사실 데이터</span>
+          <h3>동네 학원 시간표를 한눈에</h3>
+          <p>우리 동네 학원·강사·요일·시간·운영월을 강좌 단위로 펼쳐 보고, 시간 충돌 없는 조합을 골라냅니다.</p>
+        </div>
+        <div class="hvt-card">
+          <span class="hvt-ico">🧭</span>
+          <span class="hvt-tag">광고가 아닌 데이터</span>
+          <h3>운영팀이 직접 큐레이션</h3>
+          <p>가중치 광고·후기 매수 없습니다. 모든 학원에 동일한 정렬·노출 기준. NEW·HOT 배지는 시즌과 신규 등록 기반.</p>
+        </div>
+        <div class="hvt-card">
+          <span class="hvt-ico">🎁</span>
+          <span class="hvt-tag">베타 한정</span>
+          <h3>지금 100% 무료</h3>
+          <p>초기 베타 기간 — 학부모·학생은 평생 무료. 학원도 베타 기간 가입 시 정식 출시 후 영구 무료 혜택.</p>
+        </div>
+      </div>
+
       <div class="hero-stats">
-        <div class="hero-stat"><div class="v" id="stat-courses">100+</div><div class="l">등록 강좌</div></div>
-        <div class="hero-stat"><div class="v" id="stat-academies">5</div><div class="l">입점 학원</div></div>
-        <div class="hero-stat"><div class="v" id="stat-teachers">30+</div><div class="l">활동 강사</div></div>
+        <div class="hero-stat"><div class="v" id="stat-courses">68</div><div class="l">등록 강좌</div></div>
+        <div class="hero-stat"><div class="v" id="stat-academies">1</div><div class="l">입점 학원 (베타)</div></div>
+        <div class="hero-stat"><div class="v" id="stat-teachers">14</div><div class="l">활동 강사</div></div>
         <div class="hero-stat"><div class="v">2</div><div class="l">동네 (센텀·사직)</div></div>
       </div>
     </div>
   </section>
 
-  <!-- Why ClassPick -->
-  <section class="section section-soft" id="why">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">Why ClassPick</div>
-        <h2 class="h-section">사실만 모아둔 동네 지도.</h2>
-        <p class="body-lg">맘카페의 카더라와 학원 홈페이지의 광고 사이, 누락된 한 칸을 채웁니다.</p>
+  <!-- v8 — Featured Recommendation (학년·기간 큐레이션) -->
+  <section class="reco" id="reco">
+    <div class="reco-inner">
+      <div class="reco-head">
+        <div class="eyebrow">For Parents</div>
+        <h2>우리 아이 학년·시즌별<br>지금 주목할 강좌.</h2>
+        <p class="body">학년과 기간을 누르면 그 조합에 맞는 강좌가 펼쳐집니다. 시즌·NEW·HOT 신호를 종합해 운영팀이 자동 큐레이션합니다.</p>
       </div>
-      <div class="value-grid">
-        <div class="value-card reveal">
-          <div class="ico">📍</div>
-          <h3>지역 사실 데이터</h3>
-          <p>부산 센텀·사직 학원만, 강좌·강사·시간·요일·운영월 — 객관 정보만. 가격·후기·추천 없음.</p>
+      <div class="reco-controls">
+        <div>
+          <div class="reco-axis-label">학년</div>
+          <div class="reco-tabs" id="reco-grade-tabs"></div>
         </div>
-        <div class="value-card reveal">
-          <div class="ico">🧩</div>
-          <h3>강좌 단위 비교</h3>
-          <p>학원 간 강좌를 같은 척도로 펼쳐 비교. 자녀 학교·학년·과목으로 검색하고 시간 겹침 자동 체크.</p>
+        <div>
+          <div class="reco-axis-label">기간</div>
+          <div class="reco-tabs" id="reco-period-tabs"></div>
         </div>
-        <div class="value-card reveal">
-          <div class="ico">💝</div>
-          <h3>학부모 평생 무료</h3>
-          <p>학부모와 학생은 가입·이용·찜·시간표 모두 무료. 운영비는 학원 입점 구독제로 충당합니다.</p>
-        </div>
+      </div>
+      <div class="reco-grid" id="reco-grid"></div>
+      <div class="reco-cta-row">
+        <button class="btn btn-secondary" onclick="enterApp('browse')">전체 강좌 둘러보기 →</button>
       </div>
     </div>
   </section>
 
-  <!-- 6 View Modes -->
-  <section class="section" id="modes">
+  <!-- 6 View Modes (사용법 안내 — 보조 섹션) -->
+  <section class="section-sm" id="modes" style="padding-top:60px">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">6 ways to browse</div>
-        <h2 class="h-section">여섯 가지 보는 법.</h2>
-        <p class="body-lg">같은 데이터, 다른 시야. 학부모의 의사결정 단계마다 최적의 뷰가 켜집니다.</p>
+        <div class="eyebrow">How to browse</div>
+        <h2 class="h-section" style="font-size:clamp(26px,3.5vw,36px)">여섯 가지 보는 법.</h2>
+        <p class="body">같은 데이터, 다른 시야. 학부모의 의사결정 단계마다 최적의 뷰가 켜집니다.</p>
       </div>
       <div class="modes-grid">
         <div class="mode-card reveal" onclick="enterApp('browse')"><span class="em">🏠</span><h4>둘러보기</h4><p>시즌 추천 · 인기 TOP · 다시 보기</p></div>
@@ -833,60 +945,64 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Pricing (v8 — 베타 한정 모두 무료) -->
   <section class="section section-dark" id="pricing">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">Pricing</div>
-        <h2 class="h-section" style="color:#f5f5f7">학부모는 평생 무료.<br>학원만 입점료를 냅니다.</h2>
-        <p class="body-lg">강좌 등록·검색 노출은 무료. 우선 노출과 강사 사진·문의함은 유료 티어부터.</p>
+        <div class="eyebrow">Pricing · BETA</div>
+        <h2 class="h-section" style="color:#f5f5f7">지금은 모두 무료.<br>베타 가입자는 영구 할인.</h2>
+        <p class="body-lg">정식 출시 후 학원 유료 티어가 활성화됩니다. 단, 베타 기간 가입한 학원은 가입 시점 기능을 영구 무료로 사용합니다.</p>
       </div>
       <div class="pricing-grid">
         <div class="price-card reveal">
+          <div class="beta-free-badge">🎁 베타 한정 무료</div>
           <div class="price-tier">학부모 / 학생</div>
           <div class="price-name">Always Free</div>
-          <div class="price-amount zero">₩0<span class="unit">평생</span></div>
+          <div class="price-amount beta-zero">₩0<span class="unit">평생</span></div>
           <ul class="price-features">
             <li>전체 강좌 검색·열람</li>
             <li>찜·시간표 충돌 검사</li>
             <li>AI 자연어 검색</li>
             <li>지역 사실 데이터 무제한</li>
-            <li class="muted">— 광고는 [AD] 라벨로 표시</li>
+            <li>지금 가입 시 추후 유료 프리미엄 기능도 영구 무료</li>
           </ul>
-          <button class="price-cta" onclick="openMemberModal('signup','parent')">학부모 가입</button>
+          <button class="price-cta" onclick="openMemberModal('signup','parent')">학부모 가입 (무료)</button>
         </div>
         <div class="price-card reveal">
+          <div class="beta-free-badge">🎁 베타 한정 무료</div>
           <div class="price-tier">Academy · Free</div>
           <div class="price-name">무료 입점</div>
-          <div class="price-amount">₩0<span class="unit">/ 월</span></div>
+          <div class="price-amount beta-zero">₩0<span class="unit">/ 월</span></div>
           <ul class="price-features">
             <li>강좌 무제한 등록</li>
             <li>검색·카테고리 노출</li>
-            <li>기본 학원 페이지</li>
-            <li class="muted">— NEW/HOT 우선 노출 ✕</li>
-            <li class="muted">— 강사 사진·이미지 ✕</li>
+            <li>학원 페이지 + 12개월 타임라인</li>
+            <li>강사 페이지 자동 생성</li>
+            <li>베타 기간 가입자는 정식 출시 후 영구 무료</li>
           </ul>
-          <button class="price-cta" onclick="openMemberModal('signup','academy')">무료 시작</button>
+          <button class="price-cta" onclick="openMemberModal('signup','academy')">무료 입점</button>
         </div>
         <div class="price-card featured reveal">
           <div class="price-badge">Most Popular</div>
+          <div class="beta-free-badge">🎁 베타 한정 무료</div>
           <div class="price-tier">Academy · Premium</div>
           <div class="price-name">프리미엄</div>
-          <div class="price-amount">₩175,000<span class="unit">/ 월</span></div>
+          <div class="price-amount"><span class="beta-strike">정상가 ₩175,000 / 월</span><span class="beta-zero">₩0</span><span class="unit">/ 베타 기간</span></div>
           <ul class="price-features">
-            <li>Standard 전체 +</li>
+            <li>Free 전체 +</li>
             <li>메인 promo 회전 노출</li>
             <li>검색 상단 [Sponsored]</li>
             <li>학부모 문의 알림</li>
             <li>통계 대시보드</li>
             <li>강사 영상 첨부</li>
           </ul>
-          <button class="price-cta" onclick="openMemberModal('signup','academy')">프리미엄 시작</button>
+          <button class="price-cta" onclick="openMemberModal('signup','academy')">프리미엄 무료 시작</button>
         </div>
         <div class="price-card reveal">
+          <div class="beta-free-badge">🎁 베타 한정 무료</div>
           <div class="price-tier">Academy · Enterprise</div>
           <div class="price-name">프리미엄+</div>
-          <div class="price-amount">₩450,000<span class="unit">/ 월</span></div>
+          <div class="price-amount"><span class="beta-strike">정상가 ₩450,000 / 월</span><span class="beta-zero">₩0</span><span class="unit">/ 베타 기간</span></div>
           <ul class="price-features">
             <li>Premium 전체 +</li>
             <li>키워드 1개 점유</li>
@@ -894,12 +1010,12 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
             <li>전용 컨설팅</li>
             <li>리드 우선 분배</li>
           </ul>
-          <button class="price-cta" onclick="openMemberModal('signup','academy')">상담 신청</button>
+          <button class="price-cta" onclick="openMemberModal('signup','academy')">프리미엄+ 무료 시작</button>
         </div>
       </div>
-      <div style="margin-top:36px;text-align:center;font-size:13px;color:#86868b;line-height:1.7">
-        Standard ₩50,000/월도 별도 제공 · 7일 이내 100% 환불 · 그 이후 일할 계산<br>
-        모든 구독은 매월 1일 자동 갱신 · 언제든 다운그레이드/해지 가능 · 부가세 별도
+      <div class="price-betacopy">
+        <b>베타 기간 한정</b> · 모든 티어 0원 · 정식 출시 시 사전 안내 후 전환 · 베타 가입자는 가입 시점 기능 영구 무료<br>
+        7일 이내 100% 환불 정책 · 베타 이후 도입될 유료 티어도 자동 갱신/언제든 해지 가능 · 부가세 별도
       </div>
     </div>
   </section>
@@ -1015,6 +1131,152 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 
 <!-- =========== Toast =========== -->
 <div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   v7.1 — cpAPI adapter layer
+   - Auto-detects backend services via /api/health
+   - Mock-first: 100% functional even when no env keys are set
+   - Promotes to real services as the dashboard env vars are filled in
+   ========================================================================= */
+window.cpAPI = (function(){
+  const state = {
+    hasBackend: false,
+    services: { supabase:false, supabasePublic:false, aligo:false, datago:false, toss:false, jwt:false },
+    config: { supabaseUrl:null, supabaseAnonKey:null, tossClientKey:null, tossMode:"test" },
+    supabase: null,
+    booted: false
+  };
+
+  async function jpost(url, body){
+    try{
+      const r = await fetch(url, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(body||{}) });
+      const j = await r.json().catch(()=>({ok:false,error:"parse"}));
+      if (!r.ok && j && j.ok === undefined) j.ok = false;
+      return j;
+    }catch(e){
+      return { ok:false, error:"network", detail: e?.message };
+    }
+  }
+  async function jget(url){
+    try{
+      const r = await fetch(url);
+      return await r.json().catch(()=>({ok:false,error:"parse"}));
+    }catch(e){
+      return { ok:false, error:"network", detail:e?.message };
+    }
+  }
+
+  async function boot(){
+    if (state.booted) return state;
+    state.booted = true;
+    try{
+      const [health, config] = await Promise.all([ jget("/api/health"), jget("/api/config") ]);
+      if (health && health.ok){
+        state.services = Object.assign(state.services, health.services||{});
+        state.hasBackend = true;
+      }
+      if (config && config.ok){
+        state.config = {
+          supabaseUrl: config.supabaseUrl,
+          supabaseAnonKey: config.supabaseAnonKey,
+          tossClientKey: config.tossClientKey,
+          tossMode: config.tossMode || "test"
+        };
+        // Initialize Supabase JS client when both URL+anon key are available
+        if (state.config.supabaseUrl && state.config.supabaseAnonKey && window.supabase?.createClient){
+          try{
+            state.supabase = window.supabase.createClient(state.config.supabaseUrl, state.config.supabaseAnonKey, {
+              auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:false }
+            });
+          }catch(e){ console.warn("[cpAPI] supabase-js init failed", e); }
+        }
+      }
+    }catch(e){
+      // No backend → keep mock mode
+      state.hasBackend = false;
+    }
+    return state;
+  }
+
+  return {
+    get state(){ return state; },
+    get hasBackend(){ return state.hasBackend; },
+    get services(){ return state.services; },
+    get supabase(){ return state.supabase; },
+    boot,
+
+    // ---- SMS ----
+    async smsSend(phone, purpose){ return await jpost("/api/sms/send", { phone, purpose }); },
+    async smsVerify(phone, code, purpose){ return await jpost("/api/sms/verify", { phone, code, purpose }); },
+
+    // ---- Business number ----
+    async bizVerify(bn){ return await jpost("/api/business/verify", { bn }); },
+
+    // ---- Payment ----
+    async payCreate(academyId, tier, amount, period){ return await jpost("/api/payment/create", { academyId, tier, amount, period }); },
+    async payConfirm(paymentKey, orderId, amount){ return await jpost("/api/payment/confirm", { paymentKey, orderId, amount }); },
+
+    // ---- Upload ----
+    async uploadTeacherPhoto(academyId, file, teacherName){
+      if (!file) return { ok:false, error:"no_file" };
+      // Resize + WebP compress on the client
+      const blob = await resizeImageToWebp(file, 800, 800, 0.85).catch(()=>file);
+      const filename = (file.name||"photo.jpg").replace(/[^\w.\-]/g,"_");
+      const sign = await jpost("/api/upload/sign", { academyId, filename, contentType: blob.type||"image/webp" });
+      if (!sign.ok) return sign;
+
+      // If Supabase signed URL available → PUT
+      if (sign.signedUrl){
+        try{
+          const r = await fetch(sign.signedUrl, {
+            method:"PUT",
+            headers: { "Content-Type": blob.type||"image/webp", "x-upsert":"true" },
+            body: blob
+          });
+          if (!r.ok) return { ok:false, error:"upload_put_failed", status:r.status };
+          return { ok:true, mock:false, url: sign.publicUrl, objectName: sign.objectName, teacherName };
+        }catch(e){
+          return { ok:false, error:"upload_network", detail:e?.message };
+        }
+      }
+      // Mock fallback → data URL kept locally
+      const dataUrl = await blobToDataUrl(blob);
+      return { ok:true, mock:true, url: dataUrl, objectName: sign.objectName, teacherName };
+    }
+  };
+
+  // ---- helpers ----
+  function blobToDataUrl(blob){
+    return new Promise((resolve,reject)=>{
+      const r = new FileReader();
+      r.onload = ()=>resolve(r.result);
+      r.onerror = ()=>reject(r.error);
+      r.readAsDataURL(blob);
+    });
+  }
+  async function resizeImageToWebp(file, maxW, maxH, quality){
+    if (!(file instanceof Blob)) throw new Error("not blob");
+    const url = URL.createObjectURL(file);
+    try{
+      const img = await new Promise((res,rej)=>{
+        const im = new Image();
+        im.onload = ()=>res(im);
+        im.onerror = rej;
+        im.src = url;
+      });
+      let w = img.naturalWidth, h = img.naturalHeight;
+      const ratio = Math.min(maxW/w, maxH/h, 1);
+      w = Math.round(w*ratio); h = Math.round(h*ratio);
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+      return await new Promise(res=>c.toBlob(res, "image/webp", quality||0.85));
+    } finally { URL.revokeObjectURL(url); }
+  }
+})();
+</script>
 
 <script>
 /* =========================================================================
@@ -1327,6 +1589,24 @@ let browseArea="";
 function loadJSON(k,fb){try{return JSON.parse(localStorage.getItem(k))||fb}catch(e){return fb}}
 function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 
+/* =========================================================================
+   v8 — Phase 1.7 화이트리스트 (전국 전개 첫 발판)
+   - 교육인학원 센텀점만 표면 노출 (opt-in 받지 못한 학원 보호)
+   - 명인·명작·DEMO 등 다른 학원 데이터는 코드에 보존(향후 정식 입점 시 복원 가능)
+   - 학원이 직접 회원가입한 경우(u_acad_*)는 즉시 노출
+   ========================================================================= */
+const VISIBLE_ACADEMIES=new Set(["교육인학원 센텀점"]);
+function isVisibleAcademy(name){
+  if(!name)return false;
+  if(VISIBLE_ACADEMIES.has(name))return true;
+  // 학원이 자발적으로 회원가입한 경우만 노출 허용 (관리자 시드 계정은 제외)
+  try{
+    const m=(members||[]).find(x=>x.name===name&&(x.type==="academy"||x.type==="institute"));
+    if(m && !String(m.id||"").startsWith("m_acad_"))return true;
+  }catch(e){}
+  return false;
+}
+
 function load(){
   let userCourses=[];
   for(const lk of [...LEGACY_KEYS,KEY]){
@@ -1345,10 +1625,30 @@ function load(){
   const base=[...SEED,...MYUNGIN_SEED,...MYUNGJAK_SEED,...DEMO];
   base.forEach(c=>baseIds.add(c.id));
   const filteredUser=userCourses.filter(c=>!baseIds.has(c.id));
-  courses=[...base,...filteredUser].map(enrichCourse);
+  const all=[...base,...filteredUser].map(enrichCourse);
+  // v8 화이트리스트 — 명시적으로 허용된 학원만 노출 (데이터는 보존)
+  courses=all.filter(c=>isVisibleAcademy(c.academy));
+  // v7.1 — hydrate teacher_photo_url from local cache
+  try{
+    const tpMap = JSON.parse(localStorage.getItem("classpick:teacher-photos:v1")||"{}");
+    courses.forEach(c=>{ const photo = (tpMap[c.academy]||{})[c.teacher]; if(photo) c.teacher_photo_url = photo; });
+  }catch(e){}
+  // v8 — 사용자가 등록한 강좌(u*)는 화이트리스트와 무관하게 디스크에 보존
+  __userCoursesAll=filteredUser;
   save();
 }
-function save(){try{localStorage.setItem(KEY,JSON.stringify(courses))}catch(e){}}
+let __userCoursesAll=[];
+function save(){
+  try{
+    // 디스크에는 사용자 등록 강좌만 저장 (시드는 코드에 있음)
+    // 화이트리스트로 인해 가시 배열에서 제외된 사용자 강좌도 함께 보존
+    const userOnly=[
+      ...courses.filter(c=>c.id&&c.id.toString().startsWith("u")),
+      ...__userCoursesAll.filter(c=>!courses.find(x=>x.id===c.id))
+    ];
+    localStorage.setItem(KEY,JSON.stringify(userOnly));
+  }catch(e){}
+}
 
 let members=loadJSON(MEMBERS_KEY,[]);
 let payments=loadJSON(PAYMENTS_KEY,[]);
@@ -1574,14 +1874,26 @@ function signupForm(type){
     <div><label>소재 동네</label><select id="su-area"><option>센텀</option><option>사직</option></select></div>
     <div><label>대표 과목</label><select id="su-acad-subject"><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option><option>통합</option></select></div>`;
   }
-  return `<div class="m-form-grid">${common}${extra}</div>
+  let betaBlock="";
+  if(type==="academy"||type==="institute"){
+    betaBlock=`<div class="cta-beta-banner" style="margin:0 0 16px">
+      <span class="cba-em">🎁</span>
+      <div class="cba-msg"><b>지금 입점 = 영구 무료</b>베타 기간 가입한 학원은 정식 출시 후에도 가입 시점 기능을 평생 무과금. 센텀·사직 학원을 최우선으로 모집합니다.</div>
+    </div>`;
+  }else if(type==="parent"||type==="student"){
+    betaBlock=`<div class="cta-beta-banner" style="margin:0 0 16px">
+      <span class="cba-em">🎁</span>
+      <div class="cba-msg"><b>지금 가입 = 베타 한정 프리미엄 무료</b>학부모·학생 기본 기능은 평생 무료. 추후 도입될 프리미엄 기능도 가입 시점 기준 영구 무료.</div>
+    </div>`;
+  }
+  return `${betaBlock}<div class="m-form-grid">${common}${extra}</div>
     <div class="m-consent">
       <div class="c-row c-all"><input type="checkbox" id="c-all" onclick="toggleAllConsent(this)" /><label for="c-all">전체 동의</label></div>
       <div class="c-row"><input type="checkbox" class="c-req" id="c-tos" /><label for="c-tos">[필수] <a href="terms.html" target="_blank">이용약관</a>에 동의합니다.</label></div>
       <div class="c-row"><input type="checkbox" class="c-req" id="c-pp" /><label for="c-pp">[필수] <a href="privacy.html" target="_blank">개인정보처리방침</a>에 동의합니다.</label></div>
       <div class="c-row"><input type="checkbox" id="c-marketing" /><label for="c-marketing">[선택] 마케팅 정보 수신에 동의합니다.</label></div>
     </div>
-    <button class="m-submit" id="su-submit" onclick="submitSignup()">가입하기</button>
+    <button class="m-submit" id="su-submit" onclick="submitSignup()">가입하기 (무료)</button>
     <div class="m-switch">이미 회원이신가요? <a onclick="switchToLogin()">로그인</a></div>`;
 }
 
@@ -1721,6 +2033,12 @@ function openPayModal(tier){
   if(!u||(u.type!=="academy"&&u.type!=="institute"))return toast("학원 계정으로 로그인하세요");
   const t=TIER_INFO[tier];
   if(!t)return;
+  // v8 — BETA: 모든 티어 무료 활성화. 결제 없이 즉시 적용.
+  u.tier=tier;saveMembers();renderNavAuth();
+  toast("🎁 베타 한정 — "+t.name+" 무료 활성화되었습니다");
+  if(mode==="mypage")switchMode("mypage");
+  return;
+  /* eslint-disable no-unreachable */
   if(t.price===0){
     // downgrade to Free
     u.tier="Free";saveMembers();renderNavAuth();
@@ -1748,27 +2066,66 @@ function openPayModal(tier){
   $("#pay-overlay").classList.add("show");
 }
 function closePayModal(){$("#pay-overlay").classList.remove("show")}
-function processPayment(tier,method){
+async function processPayment(tier,method){
   const u=currentUser();if(!u)return;
   const t=TIER_INFO[tier];
   const wrap=$("#pay-modal-content");
-  wrap.innerHTML=`<div class="pay-spinner"></div><h3>결제 처리 중...</h3><p>잠시만 기다려주세요.</p>`;
-  setTimeout(()=>{
-    payments.unshift({
-      id:"pay_"+Date.now()+Math.floor(Math.random()*1000),
-      academyId:u.id,academyName:u.name,tier,amount:t.price,
-      paidAt:Date.now(),period:fmtMonth(Date.now()),
-      method,status:"paid"
-    });
-    savePayments();
-    u.tier=tier;saveMembers();
-    renderNavAuth();
-    logAdmin("payment.success",`${u.name} → ${tier} ${fmtMoney(t.price)}`);
-    wrap.innerHTML=`<div class="em" style="color:#34c759">✓</div>
-      <h3>결제가 완료되었습니다</h3>
-      <p>${t.name} 구독이 활성화되었습니다.<br>이제 ${tier==="Premium"?"메인 promo 회전 노출":tier==="Enterprise"?"전용 컨설팅":"우선 노출"}을 이용할 수 있습니다.</p>
-      <button class="btn btn-primary" onclick="closePayModal();switchMode('mypage')">마이페이지로</button>`;
-  },1500);
+  wrap.innerHTML=`<div class="pay-spinner"></div><h3>결제 준비 중...</h3><p>잠시만 기다려주세요.</p>`;
+
+  // 1) Ask backend for payment intent (server is source of truth for price)
+  const intent = await window.cpAPI.payCreate(u.id, tier, t.price, fmtMonth(Date.now()));
+  if (!intent.ok){
+    wrap.innerHTML=`<div class="em" style="color:var(--danger)">!</div><h3>결제 준비 실패</h3>
+      <p>${esc(intent.error||"unknown")}</p>
+      <button class="btn btn-secondary" onclick="closePayModal()">닫기</button>`;
+    return;
+  }
+
+  // 2) If Toss is configured AND SDK is loaded → real Toss popup
+  const tossKey = window.cpAPI.state.config.tossClientKey || intent.clientKey;
+  const tossReady = !!(window.TossPayments && tossKey && window.cpAPI.services.toss);
+  if (tossReady){
+    closePayModal();
+    try{
+      const toss = window.TossPayments(tossKey);
+      await toss.requestPayment("카드", {
+        amount: intent.amount,
+        orderId: intent.orderId,
+        orderName: intent.orderName || `클래스픽 ${tier} 1개월`,
+        customerName: u.name,
+        successUrl: location.origin + location.pathname + "#pay-success?orderId=" + encodeURIComponent(intent.orderId) + "&amount=" + intent.amount,
+        failUrl: location.origin + location.pathname + "#pay-fail?orderId=" + encodeURIComponent(intent.orderId)
+      });
+    }catch(e){
+      // User closed popup or SDK error
+      if (e && e.code !== "USER_CANCEL") toast("결제 오류: "+(e.message||e.code||"unknown"));
+    }
+    return;
+  }
+
+  // 3) Mock confirmation flow (Stage 1 default)
+  wrap.innerHTML=`<div class="pay-spinner"></div><h3>결제 처리 중... (시뮬)</h3><p>토스 키 미설정 — Stage 1 시뮬 모드</p>`;
+  const conf = await window.cpAPI.payConfirm("mock_"+Date.now(), intent.orderId, intent.amount);
+  if (!conf.ok){
+    wrap.innerHTML=`<div class="em" style="color:var(--danger)">!</div><h3>결제 실패</h3>
+      <p>${esc(conf.error||"unknown")}</p>
+      <button class="btn btn-secondary" onclick="closePayModal()">닫기</button>`;
+    return;
+  }
+  payments.unshift({
+    id:"pay_"+Date.now()+Math.floor(Math.random()*1000),
+    academyId:u.id,academyName:u.name,tier,amount:t.price,
+    paidAt:Date.now(),period:fmtMonth(Date.now()),
+    method:method||"card-sim",status:"paid"
+  });
+  savePayments();
+  u.tier=tier;saveMembers();
+  renderNavAuth();
+  logAdmin("payment.success",`${u.name} → ${tier} ${fmtMoney(t.price)} (mock)`);
+  wrap.innerHTML=`<div class="em" style="color:#34c759">✓</div>
+    <h3>결제가 완료되었습니다 (시뮬)</h3>
+    <p>${t.name} 구독이 활성화되었습니다.<br>실제 결제는 TOSS 키 등록 후 자동 전환됩니다.</p>
+    <button class="btn btn-primary" onclick="closePayModal();switchMode('mypage')">마이페이지로</button>`;
 }
 
 </script>
@@ -2080,9 +2437,15 @@ function renderTeachDetail(name){
     const sm=SEMESTERS.find(s=>s.key===currentSemester);
     if(sm)semItems=cs.filter(c=>(c.months||[]).some(m=>sm.months.includes(m)));
   }
+  // Teacher photo (v7.1): prefer course.teacher_photo_url, then localStorage cache
+  let photo = cs.map(x=>x.teacher_photo_url).find(Boolean) || null;
+  if (!photo){ for(const a of acads){ const p=getTeacherPhoto(a,name); if(p){ photo=p; break; } } }
+  const avHtml = photo
+    ? `<div class="teacher-avatar" style="overflow:hidden;padding:0"><img src="${esc(photo)}" alt="${esc(name)}" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
+    : `<div class="teacher-avatar">${esc(name[0])}</div>`;
   wrap.innerHTML=`
     <div class="teacher-summary">
-      <div class="teacher-avatar">${esc(name[0])}</div>
+      ${avHtml}
       <div class="teacher-info"><h2>${esc(name)}</h2><div class="sub">${acads.join(", ")} · ${subjects.join("·")}</div></div>
       <div class="teacher-stats">
         <div class="stat"><div class="v">${cs.length}</div><div class="l">강좌</div></div>
@@ -2237,10 +2600,15 @@ function renderAcademyView(){
   const root=$("#view-academy");
   const u=currentUser();
   if(!u){
-    root.innerHTML=`<div class="panel"><h2>학원 강좌 등록</h2>
-      <p class="lead">강좌 등록은 학원 또는 교습소 회원 계정에서 가능합니다.</p>
+    root.innerHTML=`<div class="panel">
+      <div class="cta-beta-banner">
+        <span class="cba-em">🎁</span>
+        <div class="cba-msg"><b>지금 입점하시면 영구 무료</b>정식 출시 후에도 평생 무과금 — 베타 가입자 한정. 센텀·사직 학원을 최우선으로 모십니다.</div>
+      </div>
+      <h2>학원 강좌 등록</h2>
+      <p class="lead">강좌 등록은 학원 또는 교습소 회원 계정에서 가능합니다. <b>지금 가입하시면 베타 영구 무료 혜택</b>이 적용됩니다.</p>
       <button class="btn btn-primary btn-lg" onclick="openMemberModal('login')">로그인</button>
-      <button class="btn btn-secondary btn-lg" style="margin-left:8px" onclick="openMemberModal('signup','academy')">학원 가입</button>
+      <button class="btn btn-accent btn-lg" style="margin-left:8px" onclick="openMemberModal('signup','academy')">학원 무료 가입</button>
     </div>`;
     return;
   }
@@ -2254,6 +2622,10 @@ function renderAcademyView(){
   acadForm.days=acadForm.days||[];
   acadForm.months=acadForm.months||[];
   root.innerHTML=`<div class="panel">
+    <div class="cta-beta-banner">
+      <span class="cba-em">🎁</span>
+      <div class="cba-msg"><b>${esc(u.name)} — 베타 영구 무료 가입자</b>현재 베타 기간, 강좌 등록·노출·검색 노출 모두 무료. 정식 출시 후에도 가입 시점 기능을 영구 무료로 사용합니다.</div>
+    </div>
     <h2>${esc(u.name)} · 강좌 등록</h2>
     <p class="lead">아래에 강좌 정보를 입력하면 검색·카테고리·학원별·강사별 뷰에 즉시 노출됩니다. 정보 정정·삭제는 운영 이메일로 요청해주세요.</p>
     <div class="form-grid">
@@ -2348,6 +2720,7 @@ function renderMyPage(){
   let tabs="";
   if(u.type==="academy"||u.type==="institute"){
     tabs=`<button class="${myPageTab==="acad-courses"?"on":""}" onclick="myPageTab='acad-courses';renderMyPage()">내 강좌</button>
+      <button class="${myPageTab==="acad-teachers"?"on":""}" onclick="myPageTab='acad-teachers';renderMyPage()">강사 관리</button>
       <button class="${myPageTab==="subscription"?"on":""}" onclick="myPageTab='subscription';renderMyPage()">내 구독</button>
       <button class="${myPageTab==="payments"?"on":""}" onclick="myPageTab='payments';renderMyPage()">결제 이력</button>
       <button class="${myPageTab==="stats"?"on":""}" onclick="myPageTab='stats';renderMyPage()">통계</button>
@@ -2364,6 +2737,7 @@ function renderMyPage(){
   else if(myPageTab==="favorites"){renderMyFavoritesTab(c)}
   else if(myPageTab==="profile"){renderMyProfileTab(c,u)}
   else if(myPageTab==="acad-courses"){renderAcadCoursesTab(c,u)}
+  else if(myPageTab==="acad-teachers"){renderAcadTeachersTab(c,u)}
   else if(myPageTab==="subscription"){renderSubscriptionTab(c,u)}
   else if(myPageTab==="payments"){renderPaymentsTab(c,u)}
   else if(myPageTab==="stats"){renderAcadStatsTab(c,u)}
@@ -2406,20 +2780,93 @@ function renderAcadCoursesTab(c,u){
       <button class="delbtn" onclick="deleteAcadCourse('${course.id}')">삭제</button></div>`).join(""):'<div class="empty">아직 등록한 강좌가 없습니다</div>'}
   </div>`;
 }
+/* ===== 14b) 강사 관리 (v7.1) ===== */
+const TEACHER_PHOTOS_KEY="classpick:teacher-photos:v1";
+function loadTeacherPhotos(){ try{ return JSON.parse(localStorage.getItem(TEACHER_PHOTOS_KEY)||"{}"); }catch(e){ return {}; } }
+function saveTeacherPhotos(map){ try{ localStorage.setItem(TEACHER_PHOTOS_KEY, JSON.stringify(map)); }catch(e){} }
+function getTeacherPhoto(academy, teacher){
+  const map = loadTeacherPhotos();
+  return (map[academy]||{})[teacher] || null;
+}
+function setTeacherPhoto(academy, teacher, url){
+  const map = loadTeacherPhotos();
+  if (!map[academy]) map[academy] = {};
+  map[academy][teacher] = url;
+  saveTeacherPhotos(map);
+  // Attach onto live course objects for immediate render
+  courses.forEach(crs=>{ if(crs.academy===academy && crs.teacher===teacher) crs.teacher_photo_url = url; });
+}
+
+function renderAcadTeachersTab(c,u){
+  const my = courses.filter(x=>x.academy===u.name);
+  const teachers = [...new Set(my.map(x=>x.teacher).filter(Boolean))].sort();
+  const svcOn = window.cpAPI?.services?.supabase;
+  c.innerHTML=`<div class="mypage-section">
+    <h3>강사 관리 ${svcOn?'<span class="cp-svc-pill on">Supabase 연결</span>':'<span class="cp-svc-pill">로컬 임시</span>'}</h3>
+    <p class="body-sm" style="margin-bottom:14px">강사 사진을 업로드하면 강사별 보기 / 강좌 카드에서 자동 노출됩니다. 1MB · jpg/png/webp · 800×800 리사이즈.</p>
+    ${teachers.length?`<div class="tphoto-grid">${teachers.map(t=>{
+      const photo = getTeacherPhoto(u.name, t);
+      const safeId = "tph_" + btoa(unescape(encodeURIComponent(t))).replace(/=/g,"");
+      const cnt = my.filter(x=>x.teacher===t).length;
+      return `<div class="tphoto-card" id="${safeId}">
+        <div class="tphoto-thumb">${photo?`<img src="${esc(photo)}" alt="${esc(t)}">`:"👤"}</div>
+        <div class="tphoto-name">${esc(t)}</div>
+        <div class="tphoto-count">${cnt}개 강좌</div>
+        <label class="tphoto-btn primary" for="${safeId}-input">사진 업로드</label>
+        <input type="file" id="${safeId}-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleTeacherPhotoUpload(event,'${esc(t).replace(/'/g,"\\'")}','${safeId}')">
+        ${photo?`<button class="tphoto-btn" style="margin-left:6px" onclick="removeTeacherPhoto('${esc(t).replace(/'/g,"\\'")}','${safeId}')">제거</button>`:""}
+        <div class="tphoto-progress" id="${safeId}-prog"><span></span></div>
+      </div>`;
+    }).join("")}</div>`:'<div class="empty">등록된 강좌가 없어 강사 목록이 비어있습니다. 먼저 강좌를 등록하세요.</div>'}
+  </div>`;
+}
+
+async function handleTeacherPhotoUpload(ev, teacherName, cardId){
+  const u = currentUser(); if(!u) return;
+  const file = ev.target.files?.[0]; if(!file) return;
+  if (file.size > 1024*1024*5) { toast("5MB 이하 파일만 업로드 가능합니다"); return; }
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) { toast("jpg/png/webp만 지원합니다"); return; }
+  const prog = document.getElementById(cardId+"-prog");
+  if (prog){ prog.classList.add("on"); prog.querySelector("span").style.width="35%"; }
+  const r = await window.cpAPI.uploadTeacherPhoto(u.id, file, teacherName);
+  if (prog) prog.querySelector("span").style.width="100%";
+  setTimeout(()=>{ if(prog) prog.classList.remove("on"); }, 600);
+  if (!r.ok){
+    toast("업로드 실패: " + (r.error||"unknown"));
+    return;
+  }
+  setTeacherPhoto(u.name, teacherName, r.url);
+  toast(r.mock?"사진이 저장되었습니다 (로컬)":"사진이 업로드되었습니다");
+  renderMyPage();
+}
+
+function removeTeacherPhoto(teacherName, cardId){
+  const u = currentUser(); if(!u) return;
+  const map = loadTeacherPhotos();
+  if (map[u.name]) delete map[u.name][teacherName];
+  saveTeacherPhotos(map);
+  courses.forEach(c=>{ if(c.academy===u.name && c.teacher===teacherName) delete c.teacher_photo_url; });
+  toast("사진 제거됨");
+  renderMyPage();
+}
+
 function renderSubscriptionTab(c,u){
-  c.innerHTML=`<div class="mypage-section"><h3>내 구독 · 현재 ${u.tier||"Free"} 티어</h3>
-    <p class="body-sm" style="margin-bottom:14px">티어를 선택하면 시뮬레이션 결제가 진행됩니다. 실제 청구는 발생하지 않습니다.</p>
+  c.innerHTML=`<div class="mypage-section"><h3>내 구독 · 현재 ${u.tier||"Free"} 티어 <span style="font-size:11.5px;background:linear-gradient(90deg,#34c759,#0071e3);color:#fff;padding:3px 9px;border-radius:5px;font-weight:700;margin-left:6px;letter-spacing:0.02em">🎁 BETA 무료</span></h3>
+    <p class="body-sm" style="margin-bottom:14px">베타 기간 동안 모든 티어가 무료입니다. 베타 가입자는 정식 출시 후에도 가입 시점 기능을 영구 무료로 사용할 수 있습니다.</p>
     <div class="tier-grid">${Object.keys(TIER_INFO).map(k=>{
       const t=TIER_INFO[k];
       const isCurrent=(u.tier||"Free")===k;
+      const priceBlock=t.price===0
+        ?`<span class="beta-zero">₩0</span><span class="unit">/ 월</span>`
+        :`<span class="beta-strike">정상가 ${fmtMoney(t.price)}/월</span><span class="beta-zero">₩0</span><span class="unit">/ 베타</span>`;
       return `<div class="tier-card ${isCurrent?"current":""}" onclick="openPayModal('${k}')">
-        ${isCurrent?`<div class="current-badge">현재</div>`:""}
-        <div class="tier-name">${esc(t.name)}</div>
-        <div class="tier-price">${t.price===0?"₩0":fmtMoney(t.price)}<span class="unit">/ 월</span></div>
+        ${isCurrent?`<div class="current-badge">현재</div>`:`<div class="beta-mini">🎁 BETA</div>`}
+        <div class="tier-name" style="margin-top:${isCurrent?"0":"18px"}">${esc(t.name)}</div>
+        <div class="tier-price">${priceBlock}</div>
         <div class="tier-feat"><ul>${t.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>
       </div>`;
     }).join("")}</div>
-    <div style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.7">매월 1일 자동 갱신 · 7일 이내 100% 환불 · 이후 일할 계산 · 부가세 별도</div>
+    <div style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.7"><b style="color:#34c759">베타 한정 무료</b> · 정식 출시 시 사전 안내 후 전환 · 베타 가입자는 가입 시점 기능 영구 무료 · 7일 이내 100% 환불</div>
   </div>`;
 }
 function renderPaymentsTab(c,u){
@@ -3069,23 +3516,167 @@ function setupNavScroll(){
   });
 }
 function updateHeroStats(){
-  $("#stat-courses").textContent=courses.length+"+";
-  $("#stat-academies").textContent=new Set(courses.map(c=>c.academy)).size;
-  $("#stat-teachers").textContent=new Set(courses.map(c=>c.teacher).filter(Boolean)).size+"+";
+  const aSet=new Set(courses.map(c=>c.academy));
+  const tSet=new Set(courses.map(c=>c.teacher).filter(Boolean));
+  $("#stat-courses").textContent=courses.length;
+  $("#stat-academies").textContent=aSet.size;
+  $("#stat-teachers").textContent=tSet.size;
+}
+
+/* ===== v8 — Featured Recommendation (학년·기간 매트릭스) ===== */
+const RECO_GRADES=[
+  {key:"prek1",label:"예비고1",match:c=>c.grade==="중3"},
+  {key:"k1",   label:"고1",   match:c=>(c.grade||"").indexOf("고1")>=0},
+  {key:"k2",   label:"고2",   match:c=>(c.grade||"").indexOf("고2")>=0},
+  {key:"k3",   label:"고3",   match:c=>(c.grade||"").indexOf("고3")>=0},
+  {key:"mid",  label:"중1·2·3",match:c=>/중[123]/.test(c.grade||"")}
+];
+const RECO_PERIODS=[
+  {key:"now",    label:"이번 시즌",            months:[(new Date().getMonth()+1)]},
+  {key:"summer", label:"여름방학 (7·8월)",      months:[7,8]},
+  {key:"reg",    label:"정규학기 (3~12월)",     months:[3,4,5,6,9,10,11,12]},
+  {key:"winter", label:"겨울방학 (12·1·2월)",   months:[12,1,2]}
+];
+let recoState={grade:"prek1",period:"summer"};
+function defaultRecoSeed(){
+  // 진입 시 시즌 자동 추정
+  const m=new Date().getMonth()+1;
+  if(m===6||m===7||m===8)recoState.period="summer";
+  else if(m===12||m===1||m===2)recoState.period="winter";
+  else recoState.period="reg";
+  // 학년 기본값: 가장 가까운 시즌 동향(여름이면 예비고1, 겨울이면 예비고1)
+  recoState.grade="prek1";
+}
+function scoreRecoCourse(c){
+  let s=0;
+  if(isHotCourse(c))s+=12;
+  if(isNewCourse(c))s+=6;
+  s+=(clickStats[c.id]||0)*2;
+  const dd=ddayToNextStart(c);
+  if(dd&&dd<=45)s+=5;
+  // 자사특목·방학특강 우선
+  if(["자사특목","방학특강","반년컷","수능대비","상위권"].includes(c.courseType))s+=4;
+  return s;
+}
+function renderRecoTabs(){
+  const gw=document.getElementById("reco-grade-tabs");
+  const pw=document.getElementById("reco-period-tabs");
+  if(!gw||!pw)return;
+  gw.innerHTML=RECO_GRADES.map(g=>`<button class="reco-tab ${recoState.grade===g.key?"on":""}" onclick="setReco('grade','${g.key}')">${esc(g.label)}</button>`).join("");
+  pw.innerHTML=RECO_PERIODS.map(p=>`<button class="reco-tab ${recoState.period===p.key?"on":""}" onclick="setReco('period','${p.key}')">${esc(p.label)}</button>`).join("");
+}
+function setReco(axis,key){recoState[axis]=key;renderReco()}
+function renderReco(){
+  renderRecoTabs();
+  const grid=document.getElementById("reco-grid");
+  if(!grid)return;
+  const g=RECO_GRADES.find(x=>x.key===recoState.grade)||RECO_GRADES[0];
+  const p=RECO_PERIODS.find(x=>x.key===recoState.period)||RECO_PERIODS[0];
+  const pool=courses.filter(c=>{
+    if(!g.match(c))return false;
+    const ms=c.months||[];
+    return ms.some(m=>p.months.includes(m));
+  });
+  const ranked=pool.map(c=>({c,s:scoreRecoCourse(c)})).sort((a,b)=>b.s-a.s).slice(0,6);
+  if(!ranked.length){
+    grid.innerHTML=`<div class="reco-empty">선택한 학년·기간에 해당하는 강좌가 아직 없습니다. 다른 조합을 선택해보세요.</div>`;
+    return;
+  }
+  grid.innerHTML=ranked.map(({c})=>{
+    const sigs=[];
+    if(isNewCourse(c))sigs.push(`<span class="sig sig-new">NEW</span>`);
+    if(isHotCourse(c))sigs.push(`<span class="sig sig-hot">HOT</span>`);
+    const dd=ddayToNextStart(c);
+    if(dd&&dd<=45)sigs.push(`<span class="sig sig-dday">D-<b>${dd}</b></span>`);
+    return `<div class="reco-card" onclick="enterRecoCourse('${esc(c.id)}')">
+      ${sigs.length?`<div class="signal-row">${sigs.join("")}</div>`:""}
+      <div class="rc-top">
+        <span class="rc-subj" style="background:${subjColor(c.subject)}">${esc(c.subject)}</span>
+        <span class="rc-grade">${esc(c.grade||"")}</span>
+        ${c.courseType?`<span class="rc-ct" style="background:${courseTypeColor(c.courseType)}">${courseTypeEmoji(c.courseType)} ${esc(c.courseType)}</span>`:""}
+      </div>
+      <h4>${esc(c.course)}</h4>
+      ${c.teacher?`<div class="rc-teach">👤 ${esc(c.teacher)}</div>`:""}
+      <div class="rc-meta">
+        ${(c.days||[]).slice(0,5).map(d=>`<span>${d}</span>`).join("")}
+        ${c.period?`<span>${esc(c.period)}</span>`:""}
+        ${c.time?`<span>${esc(c.time)}</span>`:""}
+      </div>
+      <div class="rc-acad">${esc(c.academy)} · ${esc(c.area)}</div>
+    </div>`;
+  }).join("");
+}
+function enterRecoCourse(id){
+  trackView(id);
+  enterApp("browse");
+  // 강좌가 속한 강사 페이지로 이동
+  const c=courses.find(x=>x.id===id);
+  if(c&&c.teacher){setTimeout(()=>goToTeacher(c.teacher),120)}
+  else if(c){setTimeout(()=>goToAcademy(c.academy),120)}
 }
 
 async function boot(){
+  // v7.1 — detect backend services (mock-safe, never throws)
+  try{ await window.cpAPI?.boot(); }catch(e){ /* keep mock mode */ }
   load();
   await seedAdminData();
+  // v8 — 시드 멤버 생성 후 화이트리스트가 새로 매칭될 수 있어 재필터링
+  load();
   setupRevealObserver();
   setupNavScroll();
   renderNavAuth();
   updateHeroStats();
+  // v8 — 첫 페이지 추천 섹션
+  defaultRecoSeed();
+  renderReco();
   // routing
   window.addEventListener("hashchange",handleHash);
   handleHash();
   // notice
   if(!isAdminRoute())setTimeout(()=>showNotice(false),900);
+  // pay-success / pay-fail hash hooks
+  handlePayHash();
+}
+async function handlePayHash(){
+  const h = location.hash || "";
+  if (h.startsWith("#pay-success")){
+    const q = new URLSearchParams(h.split("?")[1]||"");
+    const paymentKey = q.get("paymentKey")||"";
+    const orderId = q.get("orderId")||"";
+    const amount = Number(q.get("amount")||0);
+    if (orderId && amount){
+      toast("결제 승인 중...");
+      const r = await window.cpAPI.payConfirm(paymentKey, orderId, amount);
+      if (r.ok){
+        // Reflect tier locally too (mock + real)
+        const u = currentUser();
+        if (u){
+          const tier = r.payment?.tier || (orderId.split("_")[1] || u.tier);
+          if (TIER_INFO[tier]){
+            u.tier = tier; saveMembers();
+            payments.unshift({
+              id:"pay_"+Date.now(),
+              academyId:u.id, academyName:u.name, tier, amount,
+              paidAt:Date.now(), period:fmtMonth(Date.now()),
+              method: r.mock?"MOCK":"CARD", status:"paid"
+            });
+            savePayments();
+            renderNavAuth();
+            logAdmin("payment.success", `${u.name} → ${tier} ${fmtMoney(amount)}${r.mock?" (mock)":""}`);
+          }
+        }
+        toast(r.mock?"결제 완료 (시뮬)":"결제가 완료되었습니다");
+      } else {
+        toast("결제 승인 실패: "+(r.error||"unknown"));
+      }
+      location.hash = "#mypage";
+    }
+  } else if (h.startsWith("#pay-fail")){
+    toast("결제가 취소되었습니다");
+    location.hash = "#mypage";
+  } else if (h === "#mypage"){
+    if (currentUser()) switchMode("mypage");
+  }
 }
 function handleHash(){
   if(isAdminRoute()){
@@ -3095,6 +3686,7 @@ function handleHash(){
     $("#admin-page").classList.add("hidden");
     $("#topnav").style.display="";
     $("#footer").style.display="";
+    if((location.hash||"").startsWith("#pay-")) handlePayHash();
   }
 }
 
