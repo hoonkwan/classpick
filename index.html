@@ -1079,6 +1079,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
         <dt>문의·정정요청</dt><dd><a href="mailto:class-pick@naver.com">class-pick@naver.com</a></dd>
         <dt>처리기한</dt><dd>영업일 1일 이내</dd>
         <dt>단계</dt><dd>Phase 1.7 베타 · 부산 한정</dd>
+        <dt>데이터 동기화</dt><dd id="footerSyncStamp">시드 데이터 (수동)</dd>
       </dl>
     </div>
     <div class="footer-copy">
@@ -1515,6 +1516,83 @@ const EDUIN_COURSES=[
 ];
 const SEED=EDUIN_COURSES.map((c,i)=>Object.assign({id:"eduin"+i,city:"부산",area:"센텀",academy:EDUIN_SENTUM},c));
 
+/* ===== Sheet sync adapter (Google Sheet → v8 schema) =====
+ * Populated at boot() via fetch('./db/courses.json').
+ * Falls back silently to hard-coded SEED when offline / file missing.
+ */
+let REMOTE_SEED=null;          // [] of v8 course objects (or null)
+let REMOTE_SYNCED_AT=null;     // ISO string
+const TERM_TO_MONTHS={
+  "summer-2026":SUMMER,
+  "regular-may":REG_YEAR,
+  "":REG_YEAR
+};
+function deriveSheetPeriod(timeStart){
+  if(!timeStart) return "오후";
+  const h=parseInt(timeStart.split(":")[0],10)||0;
+  if(h<12) return "오전";
+  if(h<17) return "오후";
+  return "저녁";
+}
+function sheetCourseToV8(c,i){
+  const academy = c.academy || "교육인학원 센텀점";
+  const area = c.area || (academy.includes("사직") ? "사직" : "센텀");
+  const subject = c.subject || "";
+  const teacher = c.teacher || "";
+  const days = Array.isArray(c.days) ? c.days : [];
+  const time = (c.timeStart && c.timeEnd) ? (c.timeStart+"-"+c.timeEnd) : "";
+  const period = deriveSheetPeriod(c.timeStart);
+  const sessions = days.length ? ("주 "+days.length+"회") : "";
+  const months = TERM_TO_MONTHS[c.term||""] || REG_YEAR;
+  const school = c.school || "";
+  // Compose a stable course title
+  const titleBase = c.title || "";
+  const course = (school && !titleBase.includes(school))
+    ? (school+" "+titleBase).trim()
+    : (titleBase || subject);
+  const grade = c.grade || "";
+  const courseType = c.courseType || "";
+  const noteBits=[];
+  if(c.term==="summer-2026") noteBits.push("여름방학");
+  if(c.term==="regular-may") noteBits.push("5월 정규");
+  if(courseType && courseType!=="일반") noteBits.push(courseType);
+  return {
+    id: c.id || ("sheet-"+i),
+    city:"부산", area, academy,
+    grade, subject, course, teacher,
+    days, period, time, sessions, months,
+    note: noteBits.join(" · "),
+    school, courseType,
+    _source:"sheet", _sourceTab:c.sourceTab||"",
+  };
+}
+async function loadRemoteSeed(){
+  try{
+    const r=await fetch("./db/courses.json",{cache:"no-store"});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const j=await r.json();
+    if(!j||!Array.isArray(j.courses)||j.courses.length===0)throw new Error("empty");
+    REMOTE_SEED=j.courses.map(sheetCourseToV8);
+    REMOTE_SYNCED_AT=j.lastSyncedAt||null;
+    return true;
+  }catch(e){
+    REMOTE_SEED=null;
+    return false;
+  }
+}
+function updateFooterSyncStamp(){
+  const el=document.getElementById("footerSyncStamp");
+  if(!el)return;
+  if(REMOTE_SYNCED_AT){
+    const d=new Date(REMOTE_SYNCED_AT);
+    const pad=n=>String(n).padStart(2,"0");
+    const kst=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())} KST`;
+    el.textContent="시트 자동 동기화 · "+kst;
+  }else{
+    el.textContent="시드 데이터 (오프라인)";
+  }
+}
+
 const MYUNGIN="명인학원";
 const MYUNGIN_COURSES=[
  {grade:"고1",subject:"국어",course:"해운대고1 국어",teacher:"김솔미",days:["일"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"내신대비"},
@@ -1622,7 +1700,9 @@ function load(){
   }
   LEGACY_KEYS.forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
   const baseIds=new Set();
-  const base=[...SEED,...MYUNGIN_SEED,...MYUNGJAK_SEED,...DEMO];
+  // v8.1 — sheet sync takes priority over hard-coded SEED when available
+  const eduinBase = (REMOTE_SEED && REMOTE_SEED.length) ? REMOTE_SEED : SEED;
+  const base=[...eduinBase,...MYUNGIN_SEED,...MYUNGJAK_SEED,...DEMO];
   base.forEach(c=>baseIds.add(c.id));
   const filteredUser=userCourses.filter(c=>!baseIds.has(c.id));
   const all=[...base,...filteredUser].map(enrichCourse);
@@ -3618,10 +3698,14 @@ function enterRecoCourse(id){
 async function boot(){
   // v7.1 — detect backend services (mock-safe, never throws)
   try{ await window.cpAPI?.boot(); }catch(e){ /* keep mock mode */ }
+  // v8.1 — Google Sheet ground truth (db/courses.json) loaded first.
+  // Failure is non-fatal; falls back to hard-coded SEED.
+  await loadRemoteSeed();
   load();
   await seedAdminData();
   // v8 — 시드 멤버 생성 후 화이트리스트가 새로 매칭될 수 있어 재필터링
   load();
+  updateFooterSyncStamp();
   setupRevealObserver();
   setupNavScroll();
   renderNavAuth();
