@@ -1,0 +1,42 @@
+name: sync-from-sheet
+
+# 48시간마다 Google Sheet → db/courses.json 동기화.
+# UTC 기준 매일 00:00, 짝수 일자에 실행 → 한국시간(KST) 매 이틀 09:00.
+# 수동 실행: Actions 탭 → "sync-from-sheet" → Run workflow
+#         또는 CLI: gh workflow run sync-from-sheet
+
+on:
+  schedule:
+    - cron: "0 0 */2 * *"   # 매 이틀 00:00 UTC (= 09:00 KST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch sheet + build courses.json
+        run: node scripts/sync-from-sheet.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "classpick-bot"
+          git config user.email "bot@classpick.local"
+          git add db/courses.json
+          if git diff --staged --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          STAMP=$(date -u +'%Y-%m-%dT%H:%MZ')
+          git commit -m "chore(sync): refresh courses from sheet $STAMP"
+          git push
