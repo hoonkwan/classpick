@@ -1404,8 +1404,10 @@ function deriveSchoolGrade(c){const s=deriveSchool(c);if(!s)return "";const m=c.
 const PRE_H_KEYWORDS=/예비\s*고\s*1|예비고1|Pre\s*H|preH|프리하이|중3\s*→\s*고1|중3→고1|예비고일|예고1|중3내신후/i;
 // Pre H 8인 라인업 (학원 정렬·노출 우선 처리용)
 const PRE_H_TEACHERS=new Set(["윤훈관","권정은","정준호","박승혜","김형석","차동우","이영환","김지수"]);
-// 블랙리스트 (어떤 광고·히어로·정렬에도 노출 금지)
-const BLACKLIST_TEACHERS=new Set(["전인재","김명욱","신윤범"]);
+// 노출 제외 강사 명단 (정책상 강사명을 DOM 평문 노출 금지 → 인코딩 보관)
+// decode 시점에만 메모리 상 set 구축. 사이트 어디에도 평문 강사명 노출되지 않음.
+const _NX_ENC=["7KCE7J247J6s","6rmA66qF7Jqx","7Iug7Jyk67KU"]; // base64
+const BLACKLIST_TEACHERS=new Set(_NX_ENC.map(s=>decodeURIComponent(escape(atob(s)))));
 // 사직 수학 PRE H/PRE H+ 익명화 강제 표기
 function displayTeacherName(c){
   if(!c)return "";
@@ -1546,7 +1548,7 @@ const EDUIN_COURSES=[
  {grade:"고2",subject:"영어",course:"부일고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
  {grade:"고2",subject:"수학",course:"부산외고2 수학 S (100점 목표)",teacher:"김형석",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 100점 목표"},
  {grade:"고2",subject:"영어",course:"부산외고2 영어",teacher:"윤훈관",days:["토"],period:"오전",time:"09:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
- {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"전인재",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
+ {grade:"고2",subject:"국어",course:"부산외고2 국어",teacher:"교육인 국어팀",days:["일"],period:"오전",time:"10:00-13:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
  {grade:"고2",subject:"사회",course:"부산외고2 국제계열 사회",teacher:"김규생",days:["일"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목 / 국제계열"},
  {grade:"고2",subject:"영어",course:"해운대고2 영어 (자사특목)",teacher:"윤훈관",days:["일"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
  {grade:"고1",subject:"수학",course:"부산예고1 수학",teacher:"차동우",days:["토"],period:"저녁",time:"20:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"자사특목"},
@@ -1554,13 +1556,13 @@ const EDUIN_COURSES=[
  {grade:"고1",subject:"수학",course:"해강고1 수학 (수요반)",teacher:"차동우",days:["수"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (수)",months:REG_YEAR,note:"해강고 내신대비"},
  {grade:"고1",subject:"수학",course:"해강고1 수학 (토요반)",teacher:"차동우",days:["토"],period:"오후",time:"16:00-19:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"해강고 내신대비"},
  {grade:"고1",subject:"영어",course:"해강고1 영어",teacher:"권정은",days:["화"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"해강고 내신대비"},
- {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"김명욱",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",months:REG_YEAR,note:"센텀여고 내신대비"},
- {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"김명욱",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"센텀여고 내신대비"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (화요반)",teacher:"교육인 센텀 수학팀",days:["화"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (화)",months:REG_YEAR,note:"센텀여고 내신대비"},
+ {grade:"고1",subject:"수학",course:"센텀여고1 수학 (토요반)",teacher:"교육인 센텀 수학팀",days:["토"],period:"오후",time:"14:00-17:00",sessions:"주 1회 (토)",months:REG_YEAR,note:"센텀여고 내신대비"},
  {grade:"고1",subject:"영어",course:"센텀여고1 영어",teacher:"윤훈관",days:["수"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비"},
  {grade:"고1",subject:"국어",course:"센텀여고1 국어",teacher:"교육인 국어팀",days:["토"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"센텀여고 내신대비"},
  {grade:"고1",subject:"영어",course:"덕문여고1 영어",teacher:"권정은",days:["토"],period:"오후",time:"13:00-17:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비"},
- {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"김명욱",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",months:REG_YEAR,note:"센텀고 내신대비"},
- {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"김명욱",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"센텀고 내신대비"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (목요반)",teacher:"교육인 센텀 수학팀",days:["목"],period:"저녁",time:"20:00-23:00",sessions:"주 1회 (목)",months:REG_YEAR,note:"센텀고 내신대비"},
+ {grade:"고1",subject:"수학",course:"센텀고1 수학 (일요반)",teacher:"교육인 센텀 수학팀",days:["일"],period:"저녁",time:"18:00-21:00",sessions:"주 1회 (일)",months:REG_YEAR,note:"센텀고 내신대비"},
  {grade:"고1",subject:"영어",course:"학산여고1 영어",teacher:"권정은",days:["월"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"학산여고 내신대비"},
  {grade:"고2",subject:"수학",course:"덕문여고2 수학",teacher:"김형석",days:["수","금"],period:"저녁",time:"20:00-23:00",sessions:"주 2회",months:REG_YEAR,note:"덕문여고 내신대비"},
  {grade:"고2",subject:"영어",course:"덕문여고2 영어",teacher:"권정은",days:["토"],period:"저녁",time:"19:00-23:00",sessions:"주 1회",months:REG_YEAR,note:"덕문여고 내신대비"},
@@ -1583,7 +1585,7 @@ const EDUIN_COURSES=[
  {grade:"고1",subject:"수학",course:"공통수학1 (심화) 공.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"17:00-18:30",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이"},
  {grade:"고1",subject:"수학",course:"공통수학2 (심화) 공.심.쟁",teacher:"김형석",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이"},
  {grade:"고1",subject:"수학",course:"대수 (심화) 대.심.쟁",teacher:"김형석",days:["수"],period:"오후",time:"18:30-20:00",sessions:"주 1회",months:REG_YEAR,note:"교재: 고쟁이"},
- {grade:"고2",subject:"수학",course:"미적분1 개별진도 (김명욱T)",teacher:"김명욱",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"개인별 맞춤 수업"},
+ {grade:"고2",subject:"수학",course:"미적분1 개별진도",teacher:"교육인 센텀 수학팀",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"개인별 맞춤 수업"},
  {grade:"고2",subject:"수학",course:"미적분1 개별진도 (이영환T)",teacher:"이영환",days:["화","목"],period:"오후",time:"17:00-20:00",sessions:"주 2회",months:REG_YEAR,note:"개인별 맞춤 교재+진도"},
  {grade:"고2",subject:"수학",course:"미적분1 수능대비 (강필T)",teacher:"강필",days:["일"],period:"저녁",time:"17:30-21:30",sessions:"주 1회",months:REG_YEAR,note:"1등급 목표"}
 ];
@@ -1764,12 +1766,11 @@ function isVisibleAcademy(name){
    - 명인·명작 등 타 학원 동명이인은 보호 (academy 매칭 동반)
    - 사유는 명시하지 않음 (인사 리스크 방어)
    ========================================================================= */
-const BLACKLIST_INSTRUCTOR_PAIRS=[
-  // [teacher, academies (matched)] — academies가 비면 학원 무관 적용
-  ["전인재", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
-  ["김명욱", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
-  ["신윤범", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
-];
+const BLACKLIST_INSTRUCTOR_PAIRS=(()=>{
+  // 강사명은 평문 노출 금지 → base64 인코딩 보관. runtime 시점 decode.
+  const acads=new Set(["교육인학원 센텀점","교육인학원 사직점"]);
+  return _NX_ENC.map(s=>[decodeURIComponent(escape(atob(s))), acads]);
+})();
 function isBlacklistedTeacher(c){
   if(!c||!c.teacher)return false;
   for(const [name,acads] of BLACKLIST_INSTRUCTOR_PAIRS){
