@@ -265,7 +265,13 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 .sig-hot::before{content:"🔥";margin-right:2px;font-size:10px}
 .sig-dday{background:var(--fg);color:#fff}
 .sig-dday b{color:#ffb677}
+.sig-preh{background:linear-gradient(135deg,#ff3d7f,#ff6b00);box-shadow:0 2px 8px rgba(255,61,127,.35);animation:popIn .3s cubic-bezier(.34,1.56,.64,1),prehPulse 2.2s ease-in-out infinite}
+.sig-preh-eng{background:linear-gradient(135deg,#ff3d7f,#ff007a)}
+.sig-preh-math{background:linear-gradient(135deg,#0071e3,#5e60ce)}
+.sig-preh-kor{background:linear-gradient(135deg,#ff8a00,#e52e71)}
+.sig-preh::before{content:"⚡";margin-right:2px}
 @keyframes popIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes prehPulse{0%,100%{box-shadow:0 2px 8px rgba(255,61,127,.35)}50%{box-shadow:0 2px 14px rgba(255,61,127,.65)}}
 
 /* =========== Season banner =========== */
 .season-banner{background:#fff;border-radius:var(--radius-md);padding:18px 22px;margin-bottom:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:var(--shadow-sm)}
@@ -767,6 +773,19 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 .hvt-card p{font-size:14px;color:var(--muted2);line-height:1.55}
 .hvt-card .hvt-tag{display:inline-block;font-size:10.5px;font-weight:600;color:var(--accent);background:rgba(0,113,227,0.08);padding:3px 9px;border-radius:5px;margin-bottom:12px;letter-spacing:0.02em}
 
+/* =========== v8.2 — Pre H Hero (예비고1 골든타임 전면 광고) =========== */
+.hero-preh .preh-eyebrow{background:linear-gradient(135deg,#ff3d7f,#ff6b00);color:#fff;border-radius:20px;padding:6px 14px;font-weight:700;display:inline-block;letter-spacing:0.02em;box-shadow:0 4px 14px rgba(255,61,127,0.35);animation:prehPulse 2.2s ease-in-out infinite}
+.hero-preh .preh-eyebrow #hero-preh-dday{font-weight:800;color:#fff7ed}
+.preh-trio .preh-card{position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.preh-trio .preh-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
+.preh-trio .preh-card::after{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.preh-trio .preh-eng::after{background:linear-gradient(90deg,#ff3d7f,#ff007a)}
+.preh-trio .preh-math::after{background:linear-gradient(90deg,#0071e3,#5e60ce)}
+.preh-trio .preh-kor::after{background:linear-gradient(90deg,#ff8a00,#e52e71)}
+.preh-trio .preh-tag-eng{background:linear-gradient(135deg,#ff3d7f,#ff007a);color:#fff !important}
+.preh-trio .preh-tag-math{background:linear-gradient(135deg,#0071e3,#5e60ce);color:#fff !important}
+.preh-trio .preh-tag-kor{background:linear-gradient(135deg,#ff8a00,#e52e71);color:#fff !important}
+
 /* =========== v8 — Featured Recommendation Section (학년·기간 큐레이션) =========== */
 .reco{padding:80px 22px 20px;background:#fff;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .reco-inner{max-width:1100px;margin:0 auto}
@@ -858,37 +877,37 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 
 <!-- =========== LANDING PAGE =========== -->
 <div id="landing">
-  <!-- Hero (v8 — value-first) -->
-  <section class="hero">
+  <!-- Hero (v8.2 — Pre H 골든타임 전면 광고) -->
+  <section class="hero hero-preh">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow eyebrow">부산 센텀 · 사직 · BETA</div>
-      <h1 class="h-hero">우리 아이의 학원,<br><span class="accent">한 화면에 비교한다.</span></h1>
-      <p class="hero-sub">맘카페의 카더라와 학원 홈페이지의 광고 사이.<br>동네 학원 강좌를 사실 그대로 펼쳐, 우리 아이 시간표에 맞는 조합을 찾습니다.</p>
+      <div class="hero-eyebrow eyebrow preh-eyebrow">⚡ Pre H · 예비고1 골든타임 · <span id="hero-preh-dday">D-?</span></div>
+      <h1 class="h-hero">예비고1, 첫 학기 1등급은<br><span class="accent">여름방학에 정해진다.</span></h1>
+      <p class="hero-sub">중3 마지막 여름방학 = 고1 1학기 내신을 가르는 골든타임.<br>센텀 BIG3 — <b>영어 · 수학 · 국어</b> 라인업으로 Pre H 시즌을 시작합니다.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary btn-lg" onclick="enterApp('browse')">지금 강좌 보기 (무료)</button>
-        <button class="btn btn-link" onclick="enterApp('academy')">학원으로 입점 알아보기</button>
+        <button class="btn btn-primary btn-lg" onclick="enterApp('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='이정민';sel.dispatchEvent(new Event('change'))}},120)">⚡ Pre H 영어 보기 (1순위)</button>
+        <button class="btn btn-link" onclick="enterApp('browse')">전체 강좌 둘러보기</button>
       </div>
 
-      <!-- v8 — Value Trio (직관적으로 클래스픽 가치 노출) -->
-      <div class="hero-value-trio">
-        <div class="hvt-card">
-          <span class="hvt-ico">🗺️</span>
-          <span class="hvt-tag">동네 사실 데이터</span>
-          <h3>동네 학원 시간표를 한눈에</h3>
-          <p>우리 동네 학원·강사·요일·시간·운영월을 강좌 단위로 펼쳐 보고, 시간 충돌 없는 조합을 골라냅니다.</p>
+      <!-- v8.2 — Pre H Trio (영어→수학→국어 1·2·3순위 강추) -->
+      <div class="hero-value-trio preh-trio">
+        <div class="hvt-card preh-card preh-eng" onclick="enterApp('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='이정민';sel.dispatchEvent(new Event('change'))}},120)" style="cursor:pointer">
+          <span class="hvt-ico">🇬🇧</span>
+          <span class="hvt-tag preh-tag-eng">⚡ Pre H · 1순위</span>
+          <h3>예비고1 영어 — 이정민T</h3>
+          <p>고1 첫 학기 영어 1등급을 가르는 어휘·문법·내신 직결 트레이닝. 자사·특목·일반고 모두 대응.</p>
         </div>
-        <div class="hvt-card">
-          <span class="hvt-ico">🧭</span>
-          <span class="hvt-tag">광고가 아닌 데이터</span>
-          <h3>운영팀이 직접 큐레이션</h3>
-          <p>가중치 광고·후기 매수 없습니다. 모든 학원에 동일한 정렬·노출 기준. NEW·HOT 배지는 시즌과 신규 등록 기반.</p>
+        <div class="hvt-card preh-card preh-math" onclick="enterApp('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='박신';sel.dispatchEvent(new Event('change'))}},120)" style="cursor:pointer">
+          <span class="hvt-ico">📐</span>
+          <span class="hvt-tag preh-tag-math">⚡ Pre H · 2순위</span>
+          <h3>예비고1 수학 — 박신T</h3>
+          <p>공통수학1·2 선행. 고1 1·2학기 진도를 여름방학에 끝내고 9월 모의·내신을 안정권으로 진입.</p>
         </div>
-        <div class="hvt-card">
-          <span class="hvt-ico">🎁</span>
-          <span class="hvt-tag">베타 한정</span>
-          <h3>지금 100% 무료</h3>
-          <p>초기 베타 기간 — 학부모·학생은 평생 무료. 학원도 베타 기간 가입 시 정식 출시 후 영구 무료 혜택.</p>
+        <div class="hvt-card preh-card preh-kor" onclick="enterApp('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='김지수';sel.dispatchEvent(new Event('change'))}},120)" style="cursor:pointer">
+          <span class="hvt-ico">📖</span>
+          <span class="hvt-tag preh-tag-kor">⚡ Pre H · 3순위</span>
+          <h3>예비고1 국어 — 김지수T</h3>
+          <p>중3 문학·비문학에서 고1 모의·내신으로 점프. 자사·특목 1등급권 학생의 첫 학기 안전망.</p>
         </div>
       </div>
 
@@ -896,7 +915,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
         <div class="hero-stat"><div class="v" id="stat-courses">68</div><div class="l">등록 강좌</div></div>
         <div class="hero-stat"><div class="v" id="stat-academies">1</div><div class="l">입점 학원 (베타)</div></div>
         <div class="hero-stat"><div class="v" id="stat-teachers">14</div><div class="l">활동 강사</div></div>
-        <div class="hero-stat"><div class="v">2</div><div class="l">동네 (센텀·사직)</div></div>
+        <div class="hero-stat"><div class="v" id="stat-preh">—</div><div class="l">Pre H 강좌</div></div>
       </div>
     </div>
   </section>
@@ -1371,6 +1390,36 @@ function deriveCourseType(c){
   return "일반";
 }
 function deriveSchoolGrade(c){const s=deriveSchool(c);if(!s)return "";const m=c.grade?c.grade.match(/(\d)/):null;return m?s+m[1]:s}
+/* =========================================================================
+   Pre H (예비고1) 식별 — 영어→수학→국어 순으로 최전면 광고
+   Pre H = 현재 중3 → 2027년 고1 진학 대비 강좌
+   - grade가 "중3" + 영어/수학/국어 과목
+   - title/course/note 에 "예비고1" / "Pre H" / "프리하이" 키워드
+   - 7월 BIG3 여름특강 (이정민·박신·윤훈관·이정민 → 영어/수학/국어)는 무조건 PreH
+   ========================================================================= */
+const PRE_H_KEYWORDS=/예비\s*고\s*1|예비고1|Pre\s*H|preH|프리하이|중3\s*→\s*고1|중3→고1|예비고일|예고1|중3내신후/i;
+const BIG3_PRE_H_TEACHERS=new Set(["이정민","박신","윤훈관"]); // 7월 여름특강 BIG3
+function isPreHCourse(c){
+  if(!c)return false;
+  const text=[c.course,c.title,c.note,c.name].filter(Boolean).join(" ");
+  if(PRE_H_KEYWORDS.test(text))return true;
+  // 중3 + 영어/수학/국어 강좌 = Pre H 후보
+  if(c.grade==="중3" && ["영어","수학","국어"].includes(c.subject))return true;
+  // BIG3 여름특강 (7·8월 SUMMER) → 무조건 Pre H 강제 태깅
+  const ms=c.months||[];
+  if(BIG3_PRE_H_TEACHERS.has(c.teacher) && (ms.includes(7)||ms.includes(8)) && c.courseType!=="자사특목"){
+    return true;
+  }
+  return false;
+}
+function preHRank(c){
+  // 영어=1, 수학=2, 국어=3 — 1순위가 가장 먼저 보임
+  if(c.subject==="영어")return 1;
+  if(c.subject==="수학")return 2;
+  if(c.subject==="국어")return 3;
+  return 9;
+}
+
 function enrichCourse(c){
   if(!c)return c;
   if(!c.school)c.school=deriveSchool(c);
@@ -1380,6 +1429,8 @@ function enrichCourse(c){
     if(c.id&&c.id.toString().startsWith("u")){c.createdAt=Date.now()}
     else{let h=0;const idStr=c.id||c.course||"x";for(let i=0;i<idStr.length;i++){h=((h<<5)-h)+idStr.charCodeAt(i);h|=0}const daysAgo=Math.abs(h)%90;c.createdAt=Date.now()-daysAgo*86400000}
   }
+  c.isPreH=isPreHCourse(c);
+  c.preHRank=c.isPreH?preHRank(c):99;
   return c;
 }
 
@@ -1410,14 +1461,14 @@ function ddayToNextStart(c){
 }
 function seasonInfo(){
   const m=new Date().getMonth()+1;
-  if(m>=3&&m<=4)return{emoji:"🌸",msg:"1학기 개강 시즌 · 새 학년 정규반 진행중",cta:"카테고리에서 정규반 보기",mode:"category"};
-  if(m===5)return{emoji:"🌱",msg:"1학기 진행중 · 여름방학 특강 곧 시작 · 자사특목 정규반 인기",cta:"자사특목 보기",mode:"category"};
-  if(m===6)return{emoji:"🎯",msg:"6월 모평 · 고3 반년컷 시즌",cta:"반년컷 보기",mode:"category"};
-  if(m===7||m===8)return{emoji:"☀️",msg:"여름방학 시즌! 방학특강이 집중되는 시기",cta:"방학특강 모아보기",mode:"category"};
-  if(m===9)return{emoji:"🍁",msg:"2학기 개강 · 9월 모평 대비",cta:"2학기 강좌 보기",mode:"bymonth"};
-  if(m>=10&&m<=11)return{emoji:"📐",msg:"수능 임박 · 고3 막바지 · 예비고1 겨울특강 시작",cta:"강좌 보기",mode:"category"};
-  if(m===12||m===1||m===2)return{emoji:"❄️",msg:"겨울방학 시즌 · 예비고1·예비고2 특강 대거 개강",cta:"방학특강 모아보기",mode:"category"};
-  return{emoji:"📚",msg:"수업 진행중",cta:"둘러보기",mode:"browse"};
+  if(m>=3&&m<=4)return{emoji:"🌸",msg:"1학기 개강 · 예비고1은 여름방학 Pre H 준비 시작",cta:"Pre H 보기",mode:"category"};
+  if(m===5)return{emoji:"🌱",msg:"예비고1 Pre H 골든타임 D-50 · 영어·수학·국어 BIG3 라인업",cta:"Pre H 보기",mode:"category"};
+  if(m===6)return{emoji:"⚡",msg:"⚡ Pre H 골든타임 · 예비고1 여름방학 BIG3 (영어→수학→국어) 마감 임박",cta:"Pre H 강좌 보기",mode:"category"};
+  if(m===7||m===8)return{emoji:"⚡",msg:"⚡ Pre H 개강월 · 예비고1 BIG3 영어·수학·국어 진행중",cta:"Pre H 강좌 보기",mode:"category"};
+  if(m===9)return{emoji:"🍁",msg:"2학기 개강 · 예비고1 후반기 Pre H 준비",cta:"Pre H 강좌 보기",mode:"category"};
+  if(m>=10&&m<=11)return{emoji:"📐",msg:"수능 임박 · 예비고1 겨울 Pre H 시즌 시작",cta:"Pre H 보기",mode:"category"};
+  if(m===12||m===1||m===2)return{emoji:"❄️",msg:"겨울방학 Pre H 시즌 · 예비고1 BIG3 영어·수학·국어 대거 개강",cta:"Pre H 보기",mode:"category"};
+  return{emoji:"⚡",msg:"⚡ Pre H 시즌 · 예비고1 영어·수학·국어",cta:"Pre H 보기",mode:"category"};
 }
 
 /* ===== UTILITIES ===== */
@@ -1686,6 +1737,26 @@ function isVisibleAcademy(name){
   return false;
 }
 
+/* =========================================================================
+   v8.2 — 강사 운영 정책 (런타임 비노출)
+   - 교육인학원 소속의 일부 강사는 노출 대상에서 제외
+   - 명인·명작 등 타 학원 동명이인은 보호 (academy 매칭 동반)
+   - 사유는 명시하지 않음 (인사 리스크 방어)
+   ========================================================================= */
+const BLACKLIST_INSTRUCTOR_PAIRS=[
+  // [teacher, academies (matched)] — academies가 비면 학원 무관 적용
+  ["전인재", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
+  ["김명욱", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
+  ["신윤범", new Set(["교육인학원 센텀점","교육인학원 사직점"])],
+];
+function isBlacklistedTeacher(c){
+  if(!c||!c.teacher)return false;
+  for(const [name,acads] of BLACKLIST_INSTRUCTOR_PAIRS){
+    if(c.teacher===name && (acads.size===0 || acads.has(c.academy)))return true;
+  }
+  return false;
+}
+
 function load(){
   let userCourses=[];
   for(const lk of [...LEGACY_KEYS,KEY]){
@@ -1708,7 +1779,8 @@ function load(){
   const filteredUser=userCourses.filter(c=>!baseIds.has(c.id));
   const all=[...base,...filteredUser].map(enrichCourse);
   // v8 화이트리스트 — 명시적으로 허용된 학원만 노출 (데이터는 보존)
-  courses=all.filter(c=>isVisibleAcademy(c.academy));
+  // v8.2 — 추가로 BLACKLIST_INSTRUCTOR_PAIRS 강사 강좌는 모든 뷰에서 비노출
+  courses=all.filter(c=>isVisibleAcademy(c.academy) && !isBlacklistedTeacher(c));
   // v7.1 — hydrate teacher_photo_url from local cache
   try{
     const tpMap = JSON.parse(localStorage.getItem("classpick:teacher-photos:v1")||"{}");
@@ -2221,15 +2293,22 @@ function renderBrowse(){
   const thisMonth=courses.filter(c=>(c.months||[]).includes(month));
   const filtered=browseArea?courses.filter(c=>c.area===browseArea):courses;
   const recents=recentViewedIds.map(id=>courses.find(c=>c.id===id)).filter(Boolean).slice(0,8);
-  // Hot ranking
+  // Hot ranking — Pre H 강좌가 최상단을 점유 (영어→수학→국어 순)
   const ranked=filtered.map(c=>{
     let score=0;
+    if(c.isPreH)score+=30;
+    if(c.isPreH && c.subject==="영어")score+=6;
+    if(c.isPreH && c.subject==="수학")score+=4;
+    if(c.isPreH && c.subject==="국어")score+=2;
     if(isHotCourse(c))score+=10;
     score+=(clickStats[c.id]||0)*3;
     if(isNewCourse(c))score+=4;
     const dd=ddayToNextStart(c);if(dd&&dd<=30)score+=5;
     return {c,score};
-  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.c);
+  }).filter(x=>x.score>0).sort((a,b)=>{
+    if(b.score!==a.score)return b.score-a.score;
+    return (a.c.preHRank||99)-(b.c.preHRank||99);
+  }).slice(0,8).map(x=>x.c);
 
   root.innerHTML=`
     <div class="season-banner">
@@ -2239,27 +2318,43 @@ function renderBrowse(){
     </div>
 
     ${(()=>{
-      // BIG3 여름특강 D-day 카운트다운 (7/21 화 첫 개강 기준)
+      // BIG3 여름특강 D-day 카운트다운 (7/21 화 첫 개강 기준) — Pre H 골든타임 카피
       const today=new Date(); const open=new Date(today.getFullYear(),6,21); // 7월 21일
       const dd=Math.ceil((open-today)/(1000*60*60*24));
       const ddTxt = dd>0 ? `D-${dd}` : (dd===0 ? "D-DAY" : "개강중");
       return `
-    <div class="ad-slot featured" onclick="switchMode('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='윤훈관';sel.dispatchEvent(new Event('change'))}},100)" style="background:linear-gradient(135deg,#fff3cd,#ffe69c);border:2px solid #f59f00;">
-      <span class="ad-tag">[광고]</span>
+    <div class="ad-slot featured" onclick="switchMode('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='이정민';sel.dispatchEvent(new Event('change'))}},100)" style="background:linear-gradient(135deg,#ffe1ec,#ffd9a8);border:2px solid #ff3d7f;">
+      <span class="ad-tag" style="background:#ff3d7f">[광고]</span>
       <div class="ad-msg" style="flex:1">
-        <div style="font-size:13px;color:#d9480f;font-weight:700;letter-spacing:0.5px">🔥 ${ddTxt} · 7/21~ 개강 · 마감임박</div>
-        <div style="font-size:18px;font-weight:800;color:#1c1c1c;margin:4px 0">센텀 BIG3 · 예비고1 여름방학 특강 대개강</div>
-        <div style="font-size:13px;color:#555">이정민T (수학) · 윤훈관T (영어) · 박신T (국어) · 부일고/해운대고/부산외고/센텀여고/덕문여고 1·2학년 내신대비</div>
+        <div style="font-size:13px;color:#c2185b;font-weight:800;letter-spacing:0.5px">⚡ Pre H 골든타임 ${ddTxt} · 7/21~ 개강 · 마감임박</div>
+        <div style="font-size:19px;font-weight:800;color:#1c1c1c;margin:4px 0">예비고1 여름방학 BIG3 — 영어 · 수학 · 국어</div>
+        <div style="font-size:13px;color:#555"><b style="color:#ff007a">1순위 영어 · 이정민T</b> → <b style="color:#0071e3">2순위 수학 · 박신T</b> → <b style="color:#ff8a00">3순위 국어 · 김지수T</b> · 부일고/해운대고/부산외고/센텀여고/덕문여고 진학 예정 중3</div>
       </div>
-      <button class="ad-cta" style="background:#d9480f;color:#fff">강사별 보기 →</button>
+      <button class="ad-cta" style="background:#ff3d7f;color:#fff">⚡ Pre H 영어 보기 →</button>
     </div>
     <div class="ad-slot" onclick="location.href='/ad-kit.html'" style="background:#f8f9fa;border:1px solid #ddd;margin-top:8px;cursor:pointer">
       <span class="ad-tag" style="background:#495057">[입점]</span>
       <div class="ad-msg" style="flex:1;font-size:13px;color:#212529">
-        <b>학원·과외·교재 광고주 모집</b> · 센텀/사직 학부모 직접 도달 · 미디어킷·요율표 보기
+        <b>Pre H 시즌 광고주 모집</b> · 예비고1 영어/수학/국어 단과·종합학원 우선 · 미디어킷·요율표 보기
       </div>
       <button class="ad-cta" style="background:#212529;color:#fff">미디어킷 →</button>
     </div>`;
+    })()}
+
+    ${(()=>{
+      // Pre H 강좌 우선 노출 섹션 — 영어→수학→국어 순
+      const preHCourses=courses.filter(c=>c.isPreH).sort((a,b)=>{
+        if(a.preHRank!==b.preHRank)return a.preHRank-b.preHRank;
+        return (b.createdAt||0)-(a.createdAt||0);
+      });
+      if(!preHCourses.length)return "";
+      const top=preHCourses.slice(0,9);
+      return `<div class="browse-section preh-section">
+        <h2>⚡ Pre H · 예비고1 골든타임 강좌 <span class="count">${preHCourses.length}</span>
+          <span style="font-size:11px;color:#ff3d7f;font-weight:700;margin-left:8px;background:#ffe1ec;padding:3px 9px;border-radius:6px">영어 1순위 · 수학 2순위 · 국어 3순위</span>
+        </h2>
+        <div class="grid">${top.map(courseCard).join("")}</div>
+      </div>`;
     })()}
 
     <div class="browse-filters">
@@ -2324,6 +2419,10 @@ function goToTeacher(name){switchMode("byteach");setTimeout(()=>{const sel=$("#t
 
 function courseCard(c){
   const sigs=[];
+  if(c.isPreH){
+    const subj=c.subject==="영어"?"-eng":c.subject==="수학"?"-math":c.subject==="국어"?"-kor":"";
+    sigs.push(`<span class="sig sig-preh sig-preh${subj}">Pre H</span>`);
+  }
   if(isNewCourse(c))sigs.push(`<span class="sig sig-new">NEW</span>`);
   if(isHotCourse(c))sigs.push(`<span class="sig sig-hot">HOT</span>`);
   const dd=ddayToNextStart(c);
@@ -2395,12 +2494,38 @@ function renderCategoryGroups(){
     if(type==="sg"){items=filtered.filter(c=>c.schoolGrade===val)}
     else if(type==="gs"){const [g,s]=val.split("__");items=filtered.filter(c=>c.grade===g&&c.subject===s)}
     else if(type==="ct"){items=filtered.filter(c=>c.courseType===val)}
+    else if(type==="preh"){items=filtered.filter(c=>c.isPreH).sort((a,b)=>(a.preHRank||99)-(b.preHRank||99))}
     root.innerHTML=`<button class="cat-back-btn" onclick="catState.drillKey='';renderCategoryGroups()">← 뒤로</button>
-      <div class="cat-group"><div class="cat-group-head"><span class="cat-group-title">${esc(val.replace("__"," · "))}</span><span class="cat-group-count">${items.length}</span></div>
-      <div class="grid">${items.length?items.map(courseCard).join(""):'<div class="empty-soft">해당 항목이 없습니다</div>'}</div></div>`;
+      <div class="cat-group"><div class="cat-group-head"><span class="cat-group-title">${esc(val.replace("__"," · "))}</span><span class="cat-group-count">${items?items.length:0}</span></div>
+      <div class="grid">${items&&items.length?items.map(courseCard).join(""):'<div class="empty-soft">해당 항목이 없습니다</div>'}</div></div>`;
     return;
   }
   let html="";
+  // Pre H 카테고리 최상단 고정 (영어→수학→국어 순)
+  const preH=filtered.filter(c=>c.isPreH);
+  if(preH.length){
+    const eng=preH.filter(c=>c.subject==="영어").length;
+    const math=preH.filter(c=>c.subject==="수학").length;
+    const kor=preH.filter(c=>c.subject==="국어").length;
+    html+=`<div class="cat-group preh-cat-group" style="border:2px solid #ff3d7f;background:linear-gradient(135deg,#fff5f9,#fff7ef);box-shadow:0 6px 20px rgba(255,61,127,.12)">
+      <div class="cat-group-head">
+        <span class="cat-group-title" style="color:#ff3d7f">⚡ Pre H · 예비고1 골든타임</span>
+        <span class="cat-group-count">${preH.length}</span>
+        <span class="cat-group-sub" style="color:#c2185b;font-weight:700">영어 1순위 · 수학 2순위 · 국어 3순위</span>
+      </div>
+      <div class="cat-cards">
+        <div class="cat-card" onclick="catState.drillKey='preh|⚡ Pre H 영어 (1순위)';renderCategoryGroups()" style="border-color:#ff007a"><div class="cat-card-icon">🇬🇧</div>
+          <div class="cat-card-name" style="color:#ff007a">⚡ 영어 1순위</div>
+          <div class="cat-card-meta"><span class="count">${eng}</span>강좌</div></div>
+        <div class="cat-card" onclick="catState.drillKey='preh|⚡ Pre H 수학 (2순위)';renderCategoryGroups()" style="border-color:#0071e3"><div class="cat-card-icon">📐</div>
+          <div class="cat-card-name" style="color:#0071e3">⚡ 수학 2순위</div>
+          <div class="cat-card-meta"><span class="count">${math}</span>강좌</div></div>
+        <div class="cat-card" onclick="catState.drillKey='preh|⚡ Pre H 국어 (3순위)';renderCategoryGroups()" style="border-color:#ff8a00"><div class="cat-card-icon">📖</div>
+          <div class="cat-card-name" style="color:#ff8a00">⚡ 국어 3순위</div>
+          <div class="cat-card-meta"><span class="count">${kor}</span>강좌</div></div>
+      </div>
+    </div>`;
+  }
   if(catState.axis==="school-grade"){
     const groups={};
     filtered.forEach(c=>{if(c.schoolGrade){(groups[c.schoolGrade]=groups[c.schoolGrade]||[]).push(c)}});
@@ -2599,7 +2724,7 @@ function renderSearch(){
     <div class="ai-search-box">
       <div class="ai-search-title"><span class="pulse">✨</span><h3>AI 자연어 검색</h3><span class="tag">BETA</span></div>
       <div class="ai-search-input-wrap">
-        <input id="ai-q" type="text" placeholder="예: 부일고1 영어 토요일 / 자사특목 수학 / 여름방학 특강" onkeydown="if(event.key==='Enter')runAI()" />
+        <input id="ai-q" type="text" placeholder="예: 예비고1 영어 학원 / Pre H 수학 / 중3 여름방학 국어" onkeydown="if(event.key==='Enter')runAI()" />
         <button class="ai-btn" onclick="runAI()">검색</button>
       </div>
       <div class="ai-suggests">
@@ -3620,6 +3745,24 @@ function updateHeroStats(){
   $("#stat-courses").textContent=courses.length;
   $("#stat-academies").textContent=aSet.size;
   $("#stat-teachers").textContent=tSet.size;
+  const prehCount=courses.filter(c=>c.isPreH).length;
+  const prehEl=document.getElementById("stat-preh");
+  if(prehEl)prehEl.textContent=prehCount||"—";
+  // Pre H D-day — 가장 임박한 Pre H 강좌의 시작일까지
+  const ddays=courses.filter(c=>c.isPreH).map(c=>ddayToNextStart(c)).filter(x=>x&&x>0);
+  const ddEl=document.getElementById("hero-preh-dday");
+  if(ddEl){
+    if(ddays.length){
+      const minD=Math.min(...ddays);
+      ddEl.textContent="D-"+minD;
+    }else{
+      // 7/21 화 첫 BIG3 개강을 fallback 기준으로
+      const target=new Date(new Date().getFullYear(),6,21); // 7월 21일
+      const now=new Date();
+      const days=Math.ceil((target-now)/86400000);
+      ddEl.textContent=days>0?("D-"+days):"개강 임박";
+    }
+  }
 }
 
 /* ===== v8 — Featured Recommendation (학년·기간 매트릭스) ===== */
@@ -3648,6 +3791,11 @@ function defaultRecoSeed(){
 }
 function scoreRecoCourse(c){
   let s=0;
+  // Pre H 최우선 — 영어 1순위
+  if(c.isPreH)s+=40;
+  if(c.isPreH && c.subject==="영어")s+=8;
+  if(c.isPreH && c.subject==="수학")s+=5;
+  if(c.isPreH && c.subject==="국어")s+=3;
   if(isHotCourse(c))s+=12;
   if(isNewCourse(c))s+=6;
   s+=(clickStats[c.id]||0)*2;
@@ -3683,6 +3831,10 @@ function renderReco(){
   }
   grid.innerHTML=ranked.map(({c})=>{
     const sigs=[];
+    if(c.isPreH){
+      const subj=c.subject==="영어"?"-eng":c.subject==="수학"?"-math":c.subject==="국어"?"-kor":"";
+      sigs.push(`<span class="sig sig-preh sig-preh${subj}">Pre H</span>`);
+    }
     if(isNewCourse(c))sigs.push(`<span class="sig sig-new">NEW</span>`);
     if(isHotCourse(c))sigs.push(`<span class="sig sig-hot">HOT</span>`);
     const dd=ddayToNextStart(c);
