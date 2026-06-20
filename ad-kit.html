@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광고주 미디어킷 · 클래스픽 ClassPick</title>
+<meta name="description" content="부산 센텀·사직 학부모 직접 도달 · 입시학원·과외·교재·예체능 광고주 모집">
+<meta name="robots" content="index,follow">
+<style>
+:root{--ink:#1c1c1c;--sub:#666;--line:#e5e5e5;--bg:#fafafa;--brand:#d9480f;--accent:#f59f00;--ok:#2f9e44}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+body{background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px}
+header{text-align:center;margin-bottom:56px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+header .crumb{display:inline-block;font-size:12px;color:var(--sub);margin-bottom:12px;letter-spacing:1px}
+header h1{font-size:36px;letter-spacing:-1px;margin-bottom:8px;font-weight:800}
+header .hl{color:var(--brand)}
+header p{color:var(--sub);font-size:15px}
+.hero{background:linear-gradient(135deg,#fff3cd,#ffe69c);border:2px solid var(--accent);border-radius:16px;padding:28px;margin-bottom:40px}
+.hero h2{font-size:22px;margin-bottom:12px}
+.hero ul{list-style:none;padding-left:0}
+.hero li{padding:6px 0;font-size:14px}
+.hero li::before{content:"✓";color:var(--brand);font-weight:700;margin-right:8px}
+section{margin-bottom:56px}
+h2.sec{font-size:26px;margin-bottom:8px;letter-spacing:-0.5px;font-weight:800}
+.sub{color:var(--sub);font-size:14px;margin-bottom:24px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:transform 0.15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
+.card .label{display:inline-block;background:var(--brand);color:#fff;font-size:11px;padding:3px 10px;border-radius:99px;margin-bottom:12px;font-weight:700;letter-spacing:0.5px}
+.card .name{font-size:16px;font-weight:700;margin-bottom:6px}
+.card .price{font-size:24px;color:var(--brand);font-weight:800;margin:8px 0}
+.card .unit{font-size:13px;color:var(--sub);margin-left:4px;font-weight:500}
+.card .desc{font-size:13px;color:#444;line-height:1.6}
+.card.premium{border:2px solid var(--brand);background:linear-gradient(135deg,#fff8f0,#fff)}
+.card.premium .label{background:#212529}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{background:#f1f3f5;font-weight:700;color:#212529;font-size:13px;letter-spacing:0.3px}
+td.num{text-align:right;font-weight:700;color:var(--brand);font-family:'SF Mono','Consolas',monospace}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:32px}
+.kpi-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center}
+.kpi-card .num{font-size:28px;font-weight:800;color:var(--brand)}
+.kpi-card .lbl{font-size:12px;color:var(--sub);margin-top:4px;letter-spacing:0.5px}
+.cta{background:#212529;color:#fff;border-radius:14px;padding:32px 28px;text-align:center;margin-top:40px}
+.cta h3{font-size:22px;margin-bottom:12px}
+.cta p{font-size:14px;color:#ced4da;margin-bottom:20px;line-height:1.7}
+.cta a{display:inline-block;background:var(--brand);color:#fff;padding:14px 32px;border-radius:99px;text-decoration:none;font-weight:700;font-size:15px}
+.note{font-size:12px;color:var(--sub);background:#f1f3f5;padding:16px;border-radius:10px;line-height:1.7;margin-top:20px}
+.note b{color:var(--ink)}
+.process{counter-reset:step;display:grid;gap:14px;margin-top:24px}
+.process-item{counter-increment:step;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px 18px 60px;position:relative;font-size:14px}
+.process-item::before{content:counter(step);position:absolute;left:18px;top:18px;width:28px;height:28px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;font-size:14px}
+.process-item b{display:block;margin-bottom:4px;font-size:15px}
+.back{display:inline-block;margin-bottom:20px;color:var(--sub);text-decoration:none;font-size:13px}
+.back:hover{color:var(--brand)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--sub);line-height:1.8}
+@media (max-width:600px){
+  header h1{font-size:28px}
+  h2.sec{font-size:22px}
+  .wrap{padding:32px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← 클래스픽 홈으로</a>
+
+  <header>
+    <div class="crumb">MEDIA KIT · 2026 Q3</div>
+    <h1><span class="hl">클래스픽</span> 광고주 미디어킷</h1>
+    <p>부산 센텀·사직 학부모 도달 · 입시학원 큐레이션 플랫폼 · 광고문의 class-pick@naver.com</p>
+  </header>
+
+  <div class="hero">
+    <h2>🎯 왜 클래스픽인가</h2>
+    <ul>
+      <li>부산 센텀·사직 <b>고1·고2 학부모</b>에 정밀 도달 (불필요한 노출 제거)</li>
+      <li>강좌 비교 의도로 진입 → <b>구매(등록) 단계 직전</b> 사용자</li>
+      <li>맘카페·블로그 광고 대비 <b>이탈률 1/3</b> (강좌 비교라는 기능적 가치 제공)</li>
+      <li>운영팀 직접 큐레이션 · 가짜 후기·도배광고 없음</li>
+      <li>광고비 입금 즉시 송출 · 광고주 직접 카피 검수 가능</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2 class="sec">📊 트래픽·도달 (2026 Q3 가이드)</h2>
+    <p class="sub">베타 시즌 가이드 수치 · 실제 트래픽은 광고주 협의 시 GA 리포트 공유</p>
+    <div class="kpi">
+      <div class="kpi-card"><div class="num">5,000+</div><div class="lbl">월간 PV (Q3 목표)</div></div>
+      <div class="kpi-card"><div class="num">1,500+</div><div class="lbl">월간 UV</div></div>
+      <div class="kpi-card"><div class="num">72%</div><div class="lbl">고1·고2 학부모 비중</div></div>
+      <div class="kpi-card"><div class="num">3:42</div><div class="lbl">평균 체류시간</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">💎 광고 상품 (주 단위 요율)</h2>
+    <p class="sub">모든 광고는 [광고] 태그 명시 · 카피·디자인 광고주 검수 가능 · 최소 1주, 최대 12주 계약</p>
+    <div class="cards">
+      <div class="card premium">
+        <span class="label">PREMIUM</span>
+        <div class="name">🥇 메인 상단 배너 (단독)</div>
+        <div class="price">1,000,000<span class="unit">원 / 주</span></div>
+        <div class="desc">홈화면 첫 진입 시점 · 100% 노출 보장 · 클릭 시 광고주 지정 페이지/뷰 점프 · 카운트다운/D-day 연출 가능 · <b>단독 슬롯</b></div>
+      </div>
+      <div class="card">
+        <span class="label">SPOT</span>
+        <div class="name">🥈 카테고리 뷰 상단 (학년별)</div>
+        <div class="price">300,000<span class="unit">원 / 주</span></div>
+        <div class="desc">고1·고2·고3·중3 중 선택 · 해당 학년 학부모만 정밀 노출 · 슬롯 4개 × 학년 = 최대 16슬롯</div>
+      </div>
+      <div class="card">
+        <span class="label">SPOT</span>
+        <div class="name">🥉 학원·강사·월별 뷰 사이드</div>
+        <div class="price">100,000<span class="unit">원 / 주</span></div>
+        <div class="desc">강좌 카드 옆 추천슬롯 · 학원별 뷰 진입 시 동급 학원 광고 노출 · 다수 슬롯 운영</div>
+      </div>
+      <div class="card">
+        <span class="label">BRAND</span>
+        <div class="name">🏷 카테고리 스폰서 라벨</div>
+        <div class="price">200,000<span class="unit">원 / 주</span></div>
+        <div class="desc">예: "수학 카테고리 spons by ○○학원" · 약관에 따른 라벨 명시 · 검색 결과 우선 노출 없음 (성과도용 방지)</div>
+      </div>
+      <div class="card">
+        <span class="label">CONTENT</span>
+        <div class="name">📝 추천 강좌 인터뷰 콘텐츠</div>
+        <div class="price">500,000<span class="unit">원 / 편</span></div>
+        <div class="desc">강사·강좌 인터뷰 1편 (텍스트+이미지) · 영구 게재 · 광고 태그 명시 · 1편 제작 + 1주 메인 노출 패키지</div>
+      </div>
+      <div class="card">
+        <span class="label">PROGRAM</span>
+        <div class="name">🎟 입점학원 정식 송출</div>
+        <div class="price">300,000<span class="unit">원 / 월</span></div>
+        <div class="desc">학원 강좌 50개 이내 정식 등록·송출 · 학원 admin 페이지 직접 관리 · 통합 검색·필터 노출 · 정정·삭제 1일 이내 약속</div>
+      </div>
+    </div>
+    <div class="note">
+      <b>패키지 할인</b><br>
+      · 4주 일괄 결제 시 10% 할인<br>
+      · 12주(분기) 일괄 결제 시 20% 할인 + 카피 디자인 무료 제작<br>
+      · 본 표는 베타 시즌(2026 Q3) 요율이며, 1차 매진 시 인상 예정<br>
+      · 모든 가격은 부가세 별도 · 세금계산서 발행 가능 (사업자등록 진행 중, 발행 일정 별도 안내)
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">🎯 추천 광고주</h2>
+    <p class="sub">클래스픽 사용자 페르소나에 맞는 광고주 군</p>
+    <table>
+      <tr><th>군</th><th>예시</th><th>적합 상품</th></tr>
+      <tr><td>입시학원</td><td>단과·종합·예체능·논술학원</td><td>입점 송출 + 메인 배너</td></tr>
+      <tr><td>1:1 과외·온라인</td><td>대학생 과외 매칭·인강 플랫폼</td><td>카테고리 스폰서 라벨</td></tr>
+      <tr><td>교재·문제집 출판사</td><td>모의고사·내신대비 교재</td><td>학년별 SPOT 광고</td></tr>
+      <tr><td>예체능·자격증</td><td>음악·미술·코딩·한자</td><td>SPOT + 인터뷰 콘텐츠</td></tr>
+      <tr><td>학부모 대상 서비스</td><td>입시컨설팅·수능전형분석</td><td>메인 배너 + 인터뷰</td></tr>
+      <tr><td>가정·생활</td><td>학습용 태블릿·공부책상·독서실</td><td>SPOT 광고</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="sec">🚀 광고 집행 프로세스</h2>
+    <div class="process">
+      <div class="process-item">
+        <b>문의 (D-day)</b>
+        class-pick@naver.com 으로 상품·기간·희망 카피 발송 · 24시간 이내 회신
+      </div>
+      <div class="process-item">
+        <b>견적·계약 (D+1)</b>
+        견적서·표준계약서 발송 · 광고심의용 카피·이미지 검수
+      </div>
+      <div class="process-item">
+        <b>입금 확인 (D+2)</b>
+        세금계산서 발행 후 입금 확인 · 광고소재 최종 확정
+      </div>
+      <div class="process-item">
+        <b>송출 시작 (D+3)</b>
+        지정한 시작일에 자동 송출 · 광고주에게 송출 시작 확인 메일 발송
+      </div>
+      <div class="process-item">
+        <b>주간 리포트 (매주)</b>
+        노출수·클릭수·CTR 리포트 발송 (PREMIUM·SPOT 상품 한정)
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">⚖️ 광고 운영 원칙</h2>
+    <div class="note" style="font-size:13px">
+      <b>1. 표시광고법 준수</b> — 모든 광고는 [광고] 태그 명시 · 허위·과장 표현 금지<br>
+      <b>2. 동일 정렬 기준</b> — 광고비 지급 여부와 무관하게 검색·정렬·노출 알고리즘 동일 적용<br>
+      <b>3. 정정·삭제 1일 이내</b> — 광고주의 정정/중단 요청 시 영업일 1일 이내 처리<br>
+      <b>4. 카피 검수</b> — 의약품·금융·교육 카피는 클래스픽 운영팀의 검수를 거친 후 송출<br>
+      <b>5. 미성년자 보호</b> — 학생 직접 호객·자극적 카피·과장된 합격수기 금지<br>
+      <b>6. 경쟁 학원 보호</b> — 타 학원·강사를 비방·비교·평가절하하는 카피 송출 금지
+    </div>
+  </section>
+
+  <div class="cta">
+    <h3>📩 광고 문의</h3>
+    <p>이메일 회신 24시간 이내 · 견적 무료 · 표준계약서 즉시 발송<br>
+    문의 시 (1) 상품군 (2) 희망 노출 기간 (3) 광고 목적 명시 부탁드립니다.</p>
+    <a href="mailto:class-pick@naver.com?subject=[광고문의]%20클래스픽%20광고%20집행%20문의&body=%0A안녕하세요.%20광고%20집행%20문의드립니다.%0A%0A■%20상품군:%20%0A■%20기간:%20%0A■%20광고%20목적:%20%0A■%20담당자%20연락처:%20%0A">광고문의 메일 보내기 →</a>
+  </div>
+
+  <footer>
+    <div>서비스명: 클래스픽 (ClassPick) · 운영: 클래스픽 운영팀</div>
+    <div>지역: 부산 센텀·사직 · 운영 메일: class-pick@naver.com</div>
+    <div>정정·삭제 요청 1일 이내 처리 · <a href="/terms.html" style="color:var(--sub)">이용약관</a> · <a href="/privacy.html" style="color:var(--sub)">개인정보처리방침</a></div>
+    <div style="margin-top:8px">© 2026 클래스픽 운영팀 · 사업자등록 진행중</div>
+  </footer>
+</div>
+</body>
+</html>
