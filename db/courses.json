@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-06-19T02:47:58.003Z",
+  "lastSyncedAt": "2026-06-21T02:31:21.602Z",
   "source": "google-sheets:157tm9BGGbVzkOGTJN1QysDlkqVyGBhcUTOtXvylVBHs",
   "tabReport": [
     {
@@ -74,21 +74,24 @@
     "권정은",
     "김규생",
     "김도현",
+    "김명욱",
     "김지수",
     "김형석",
     "박승혜",
     "박신",
+    "신윤범",
     "안강엽",
     "윤훈관",
     "이영환",
     "이정민",
+    "전인재",
     "정준호",
     "차동우"
   ],
   "courses": [
     {
       "id": "auto-001",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -113,7 +116,7 @@
     },
     {
       "id": "auto-002",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -138,7 +141,7 @@
     },
     {
       "id": "auto-003",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -162,7 +165,7 @@
     },
     {
       "id": "auto-004",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -187,7 +190,7 @@
     },
     {
       "id": "auto-005",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -199,7 +202,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "13:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "부산외고",
       "grade": "고2",
       "courseType": "자사특목",
@@ -211,7 +214,7 @@
     },
     {
       "id": "auto-006",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -235,7 +238,7 @@
     },
     {
       "id": "auto-007",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -259,7 +262,7 @@
     },
     {
       "id": "auto-008",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -283,7 +286,7 @@
     },
     {
       "id": "auto-009",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -308,7 +311,7 @@
     },
     {
       "id": "auto-010",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -321,7 +324,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀여고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -334,7 +337,7 @@
     },
     {
       "id": "auto-011",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -359,7 +362,7 @@
     },
     {
       "id": "auto-012",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -384,7 +387,7 @@
     },
     {
       "id": "auto-013",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -408,7 +411,7 @@
     },
     {
       "id": "auto-014",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -433,7 +436,7 @@
     },
     {
       "id": "auto-015",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -458,7 +461,7 @@
     },
     {
       "id": "auto-016",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -470,7 +473,7 @@
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "개별진도",
@@ -483,7 +486,7 @@
     },
     {
       "id": "auto-017",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -508,7 +511,7 @@
     },
     {
       "id": "auto-018",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -533,7 +536,7 @@
     },
     {
       "id": "auto-019",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -558,7 +561,7 @@
     },
     {
       "id": "auto-020",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -583,7 +586,7 @@
     },
     {
       "id": "auto-021",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -608,7 +611,7 @@
     },
     {
       "id": "auto-022",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -632,7 +635,7 @@
     },
     {
       "id": "auto-023",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -644,7 +647,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -656,7 +659,7 @@
     },
     {
       "id": "auto-024",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -680,7 +683,7 @@
     },
     {
       "id": "auto-025",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -705,7 +708,7 @@
     },
     {
       "id": "auto-026",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -731,7 +734,7 @@
     },
     {
       "id": "auto-027",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -756,7 +759,7 @@
     },
     {
       "id": "auto-028",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -780,7 +783,7 @@
     },
     {
       "id": "auto-029",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -804,7 +807,7 @@
     },
     {
       "id": "auto-030",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -829,7 +832,7 @@
     },
     {
       "id": "auto-031",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -854,7 +857,7 @@
     },
     {
       "id": "auto-032",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -879,7 +882,7 @@
     },
     {
       "id": "auto-033",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -904,7 +907,7 @@
     },
     {
       "id": "auto-034",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -928,7 +931,7 @@
     },
     {
       "id": "auto-035",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -952,7 +955,7 @@
     },
     {
       "id": "auto-036",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -976,7 +979,7 @@
     },
     {
       "id": "auto-037",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1000,7 +1003,7 @@
     },
     {
       "id": "auto-038",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1025,7 +1028,7 @@
     },
     {
       "id": "auto-039",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1050,7 +1053,7 @@
     },
     {
       "id": "auto-040",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1076,7 +1079,7 @@
     },
     {
       "id": "auto-041",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1100,7 +1103,7 @@
     },
     {
       "id": "auto-042",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1113,7 +1116,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -1126,7 +1129,7 @@
     },
     {
       "id": "auto-043",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1151,7 +1154,7 @@
     },
     {
       "id": "auto-044",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1175,7 +1178,7 @@
     },
     {
       "id": "auto-045",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1199,7 +1202,7 @@
     },
     {
       "id": "auto-046",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1224,7 +1227,7 @@
     },
     {
       "id": "auto-047",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1248,7 +1251,7 @@
     },
     {
       "id": "auto-048",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1273,7 +1276,7 @@
     },
     {
       "id": "auto-049",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1298,7 +1301,7 @@
     },
     {
       "id": "auto-050",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1323,7 +1326,7 @@
     },
     {
       "id": "auto-051",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1348,7 +1351,7 @@
     },
     {
       "id": "auto-052",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1373,28 +1376,23 @@
     },
     {
       "id": "auto-053",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "국어",
-      "title": "PRE H — 자사특목대비 국어실력 완성",
-      "schedule": "화 10:00-13:00",
+      "title": "PRE H - 자사특목대비",
+      "schedule": "화 10:00 - 13:00",
       "days": [
         "화"
       ],
       "timeStart": "10:00",
       "timeEnd": "13:00",
       "teacher": "김지수",
-      "school": "자사특목",
-      "grade": "예비고1",
+      "school": "",
+      "grade": "",
       "courseType": "자사특목",
       "term": "summer-2026",
-      "openDate": "2026-07-28",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "국어-1",
-      "tagline": "자사특목 국어실력 완성",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1403,7 +1401,7 @@
     },
     {
       "id": "auto-054",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1428,7 +1426,7 @@
     },
     {
       "id": "auto-055",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1454,7 +1452,7 @@
     },
     {
       "id": "auto-056",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1479,29 +1477,23 @@
     },
     {
       "id": "auto-057",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "영어",
-      "title": "PRE H1 — 고등 최고난도 작문 & 수능훈련",
-      "schedule": "월·금 13:00-16:00",
+      "title": "PRE H1 (작문)",
+      "schedule": "월금 13-16",
       "days": [
-        "월",
         "금"
       ],
       "timeStart": "13:00",
       "timeEnd": "16:00",
       "teacher": "윤훈관",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
       "term": "summer-2026",
-      "openDate": "2026-07-24",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-2",
-      "tagline": "고등 최고난도 작문 & 수능훈련",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1510,7 +1502,7 @@
     },
     {
       "id": "auto-058",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1535,28 +1527,23 @@
     },
     {
       "id": "auto-059",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "영어",
-      "title": "PRE H+ — 고등 최고난도 작문 & 수능훈련",
-      "schedule": "수 13:00-17:00",
+      "title": "PRE H+",
+      "schedule": "수 13-17",
       "days": [
         "수"
       ],
       "timeStart": "13:00",
       "timeEnd": "17:00",
       "teacher": "윤훈관",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
       "term": "summer-2026",
-      "openDate": "2026-07-22",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-1",
-      "tagline": "Pre H 영어 라인업 1순위 · 최고난도 작문 & 수능훈련",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1565,7 +1552,7 @@
     },
     {
       "id": "auto-060",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1590,29 +1577,23 @@
     },
     {
       "id": "auto-061",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "수학",
-      "title": "PRE HH — 해운대고 대비 공수1 심화",
-      "schedule": "화·목 14:00-17:00",
+      "title": "PRE HH 공통수학1",
+      "schedule": "화목 14-17",
       "days": [
-        "화",
         "목"
       ],
       "timeStart": "14:00",
       "timeEnd": "17:00",
       "teacher": "이영환",
-      "school": "해운대고",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
       "term": "summer-2026",
-      "openDate": "2026-07-21",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-3",
-      "tagline": "해운대고 대비 공수1 심화 + 자이스토리",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1621,29 +1602,23 @@
     },
     {
       "id": "auto-062",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "수학",
-      "title": "PRE H — 일반고 최상위 (공수1/2 심화)",
-      "schedule": "화·목 14:00-17:00 (화: 공수2 심화, 목: 공수1 심화)",
+      "title": "PRE H 공통수학2 심화",
+      "schedule": "화목 14-17",
       "days": [
-        "화",
         "목"
       ],
       "timeStart": "14:00",
       "timeEnd": "17:00",
       "teacher": "차동우",
-      "school": "일반고최상위",
-      "grade": "예비고1",
+      "school": "",
+      "grade": "",
       "courseType": "심화",
       "term": "summer-2026",
-      "openDate": "2026-07-23",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-2",
-      "tagline": "일반고 최상위 심화 (공수1/2)",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1652,7 +1627,7 @@
     },
     {
       "id": "auto-063",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1677,7 +1652,7 @@
     },
     {
       "id": "auto-064",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1701,7 +1676,7 @@
     },
     {
       "id": "auto-065",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1727,7 +1702,7 @@
     },
     {
       "id": "auto-066",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1740,7 +1715,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀여고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -1752,7 +1727,7 @@
     },
     {
       "id": "auto-067",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1776,7 +1751,7 @@
     },
     {
       "id": "auto-068",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1801,30 +1776,23 @@
     },
     {
       "id": "auto-069",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "수학",
-      "title": "PRE BSH — 부산외고 대비 공수1 기본·준심화",
-      "schedule": "월·수·금 17:00-20:00",
+      "title": "PRE BSFH 공통수학1 기본-준심화",
+      "schedule": "월수금 17-20",
       "days": [
-        "월",
-        "수",
         "금"
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
       "teacher": "차동우",
-      "school": "부산외고",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "심화",
       "term": "summer-2026",
-      "openDate": "2026-07-24",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-4",
-      "tagline": "부산외고 대비 공수1 기본·준심화",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -1833,7 +1801,7 @@
     },
     {
       "id": "auto-070",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1857,7 +1825,7 @@
     },
     {
       "id": "auto-071",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1881,7 +1849,7 @@
     },
     {
       "id": "auto-072",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1893,7 +1861,7 @@
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "개별진도",
@@ -1905,29 +1873,23 @@
     },
     {
       "id": "auto-073",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "영어",
-      "title": "PRE H2 — 고등 고난도 작문 & 수능훈련",
-      "schedule": "화·목 17:00-20:00",
+      "title": "PRE H",
+      "schedule": "화목 17-20",
       "days": [
-        "화",
         "목"
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
       "teacher": "권정은",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
       "term": "summer-2026",
-      "openDate": "2026-07-23",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-3",
-      "tagline": "고등 고난도 작문 & 수능훈련",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표"
@@ -1935,7 +1897,7 @@
     },
     {
       "id": "auto-074",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1959,7 +1921,7 @@
     },
     {
       "id": "auto-075",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -1983,7 +1945,7 @@
     },
     {
       "id": "auto-076",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2007,7 +1969,7 @@
     },
     {
       "id": "auto-077",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "명작학원",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2031,7 +1993,7 @@
     },
     {
       "id": "auto-078",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "명작학원",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2055,7 +2017,7 @@
     },
     {
       "id": "auto-079",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "명작학원",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2079,7 +2041,7 @@
     },
     {
       "id": "auto-080",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2103,7 +2065,7 @@
     },
     {
       "id": "auto-081",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2127,7 +2089,7 @@
     },
     {
       "id": "auto-082",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2153,7 +2115,7 @@
     },
     {
       "id": "auto-083",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2177,7 +2139,7 @@
     },
     {
       "id": "auto-084",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2202,7 +2164,7 @@
     },
     {
       "id": "auto-085",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2226,7 +2188,7 @@
     },
     {
       "id": "auto-086",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2251,29 +2213,23 @@
     },
     {
       "id": "auto-087",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
       "subject": "수학",
-      "title": "PRE BH — 부일고 대비 공수1 심화 (고쟁이·절대등급)",
-      "schedule": "화·목 20:00-23:00",
+      "title": "PRE BH 공통수학1 심화 고쟁이",
+      "schedule": "화목 20-23",
       "days": [
-        "화",
         "목"
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
       "teacher": "김형석",
-      "school": "부일고",
-      "grade": "예비고1",
-      "courseType": "자사특목",
+      "school": "",
+      "grade": "",
+      "courseType": "심화",
       "term": "summer-2026",
-      "openDate": "2026-07-21",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-1",
-      "tagline": "부일고 대비 공수1 심화 (고쟁이, 절대등급)",
       "sourceTab": "(센텀) 여름방학시간표",
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
@@ -2282,7 +2238,7 @@
     },
     {
       "id": "auto-088",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2307,7 +2263,7 @@
     },
     {
       "id": "auto-089",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2332,7 +2288,7 @@
     },
     {
       "id": "auto-090",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2357,7 +2313,7 @@
     },
     {
       "id": "auto-091",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2381,7 +2337,7 @@
     },
     {
       "id": "auto-092",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2405,7 +2361,7 @@
     },
     {
       "id": "auto-093",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2429,7 +2385,7 @@
     },
     {
       "id": "auto-094",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "명작학원",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2453,7 +2409,7 @@
     },
     {
       "id": "auto-095",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2477,7 +2433,7 @@
     },
     {
       "id": "auto-096",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2501,7 +2457,7 @@
     },
     {
       "id": "auto-097",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2525,7 +2481,7 @@
     },
     {
       "id": "auto-098",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2549,7 +2505,7 @@
     },
     {
       "id": "auto-099",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2573,7 +2529,7 @@
     },
     {
       "id": "auto-100",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2597,7 +2553,7 @@
     },
     {
       "id": "auto-101",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2621,7 +2577,7 @@
     },
     {
       "id": "auto-102",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2645,7 +2601,7 @@
     },
     {
       "id": "auto-103",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2658,7 +2614,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀여고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -2670,7 +2626,7 @@
     },
     {
       "id": "auto-104",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2694,7 +2650,7 @@
     },
     {
       "id": "auto-105",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2718,7 +2674,7 @@
     },
     {
       "id": "auto-106",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2743,7 +2699,7 @@
     },
     {
       "id": "auto-107",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2755,7 +2711,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -2767,7 +2723,7 @@
     },
     {
       "id": "auto-108",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2791,7 +2747,7 @@
     },
     {
       "id": "auto-109",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2815,7 +2771,7 @@
     },
     {
       "id": "auto-110",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2839,7 +2795,7 @@
     },
     {
       "id": "auto-111",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2863,7 +2819,7 @@
     },
     {
       "id": "auto-112",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2887,7 +2843,7 @@
     },
     {
       "id": "auto-113",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2911,7 +2867,7 @@
     },
     {
       "id": "auto-114",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -2936,7 +2892,7 @@
     },
     {
       "id": "auto-115",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -2949,7 +2905,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "12:30",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "양정고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -2961,7 +2917,7 @@
     },
     {
       "id": "auto-116",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -2986,7 +2942,7 @@
     },
     {
       "id": "auto-117",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3010,7 +2966,7 @@
     },
     {
       "id": "auto-118",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3034,7 +2990,7 @@
     },
     {
       "id": "auto-119",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3046,7 +3002,7 @@
       ],
       "timeStart": "18:30",
       "timeEnd": "21:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "이사벨고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -3058,7 +3014,7 @@
     },
     {
       "id": "auto-120",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3082,7 +3038,7 @@
     },
     {
       "id": "auto-121",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3106,7 +3062,7 @@
     },
     {
       "id": "auto-122",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3130,7 +3086,7 @@
     },
     {
       "id": "auto-123",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3154,7 +3110,7 @@
     },
     {
       "id": "auto-124",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3178,7 +3134,7 @@
     },
     {
       "id": "auto-125",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3190,7 +3146,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "13:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "부산외고",
       "grade": "고2",
       "courseType": "자사특목",
@@ -3202,7 +3158,7 @@
     },
     {
       "id": "auto-126",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3226,7 +3182,7 @@
     },
     {
       "id": "auto-127",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3250,7 +3206,7 @@
     },
     {
       "id": "auto-128",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3274,7 +3230,7 @@
     },
     {
       "id": "auto-129",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3298,7 +3254,7 @@
     },
     {
       "id": "auto-130",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3311,7 +3267,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀여고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -3323,7 +3279,7 @@
     },
     {
       "id": "auto-131",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3347,7 +3303,7 @@
     },
     {
       "id": "auto-132",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3371,7 +3327,7 @@
     },
     {
       "id": "auto-133",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3395,7 +3351,7 @@
     },
     {
       "id": "auto-134",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3419,7 +3375,7 @@
     },
     {
       "id": "auto-135",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3443,7 +3399,7 @@
     },
     {
       "id": "auto-136",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3455,7 +3411,7 @@
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "개별진도",
@@ -3467,7 +3423,7 @@
     },
     {
       "id": "auto-137",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3491,7 +3447,7 @@
     },
     {
       "id": "auto-138",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3515,7 +3471,7 @@
     },
     {
       "id": "auto-139",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3539,7 +3495,7 @@
     },
     {
       "id": "auto-140",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3563,7 +3519,7 @@
     },
     {
       "id": "auto-141",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3587,7 +3543,7 @@
     },
     {
       "id": "auto-142",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3611,7 +3567,7 @@
     },
     {
       "id": "auto-143",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3623,7 +3579,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -3635,7 +3591,7 @@
     },
     {
       "id": "auto-144",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3659,7 +3615,7 @@
     },
     {
       "id": "auto-145",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3683,7 +3639,7 @@
     },
     {
       "id": "auto-146",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3708,7 +3664,7 @@
     },
     {
       "id": "auto-147",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3732,7 +3688,7 @@
     },
     {
       "id": "auto-148",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3756,7 +3712,7 @@
     },
     {
       "id": "auto-149",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3780,7 +3736,7 @@
     },
     {
       "id": "auto-150",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3804,7 +3760,7 @@
     },
     {
       "id": "auto-151",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3828,7 +3784,7 @@
     },
     {
       "id": "auto-152",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3852,7 +3808,7 @@
     },
     {
       "id": "auto-153",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3876,7 +3832,7 @@
     },
     {
       "id": "auto-154",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3900,7 +3856,7 @@
     },
     {
       "id": "auto-155",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3924,7 +3880,7 @@
     },
     {
       "id": "auto-156",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3948,7 +3904,7 @@
     },
     {
       "id": "auto-157",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -3972,7 +3928,7 @@
     },
     {
       "id": "auto-158",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -3996,7 +3952,7 @@
     },
     {
       "id": "auto-159",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4020,7 +3976,7 @@
     },
     {
       "id": "auto-160",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4045,7 +4001,7 @@
     },
     {
       "id": "auto-161",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4069,7 +4025,7 @@
     },
     {
       "id": "auto-162",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4082,7 +4038,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "센텀고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -4094,7 +4050,7 @@
     },
     {
       "id": "auto-163",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4118,7 +4074,7 @@
     },
     {
       "id": "auto-164",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4142,7 +4098,7 @@
     },
     {
       "id": "auto-165",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4166,7 +4122,7 @@
     },
     {
       "id": "auto-166",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4190,7 +4146,7 @@
     },
     {
       "id": "auto-167",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "사직",
       "area": "사직",
@@ -4214,7 +4170,7 @@
     },
     {
       "id": "auto-168",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4238,7 +4194,7 @@
     },
     {
       "id": "auto-169",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 사직점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4262,7 +4218,7 @@
     },
     {
       "id": "auto-170",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4274,7 +4230,7 @@
       ],
       "timeStart": "14:00",
       "timeEnd": "17:00",
-      "teacher": "교육인 강사진",
+      "teacher": "신윤범",
       "school": "",
       "grade": "중2",
       "courseType": "일반",
@@ -4286,7 +4242,7 @@
     },
     {
       "id": "auto-171",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4310,7 +4266,7 @@
     },
     {
       "id": "auto-172",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4322,7 +4278,7 @@
       ],
       "timeStart": "17:00",
       "timeEnd": "20:00",
-      "teacher": "교육인 강사진",
+      "teacher": "신윤범",
       "school": "",
       "grade": "",
       "courseType": "일반",
@@ -4334,7 +4290,7 @@
     },
     {
       "id": "auto-173",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4358,7 +4314,7 @@
     },
     {
       "id": "auto-174",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4382,7 +4338,7 @@
     },
     {
       "id": "auto-175",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4406,7 +4362,7 @@
     },
     {
       "id": "auto-176",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4418,7 +4374,7 @@
       ],
       "timeStart": "20:00",
       "timeEnd": "23:00",
-      "teacher": "교육인 강사진",
+      "teacher": "신윤범",
       "school": "덕문여고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -4430,7 +4386,7 @@
     },
     {
       "id": "auto-177",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4455,7 +4411,7 @@
     },
     {
       "id": "auto-178",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4480,7 +4436,7 @@
     },
     {
       "id": "auto-179",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -4492,7 +4448,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "12:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "방학특강",
@@ -4504,7 +4460,7 @@
     },
     {
       "id": "auto-180",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -4516,7 +4472,7 @@
       ],
       "timeStart": "13:00",
       "timeEnd": "15:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "방학특강",
@@ -4528,7 +4484,7 @@
     },
     {
       "id": "auto-181",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -4540,7 +4496,7 @@
       ],
       "timeStart": "15:00",
       "timeEnd": "17:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "일반",
@@ -4552,30 +4508,23 @@
     },
     {
       "id": "auto-182",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 사직점",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
+      "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
       "subject": "수학",
-      "title": "PRE H — 사직 공수1·공수2 심화",
-      "schedule": "월·금 17:00-19:00 (월: 공수1 심화, 금: 공수2 심화)",
+      "title": "PRE H - 공수1심화",
+      "schedule": "월금 17:00 - 19:00",
       "days": [
-        "월",
         "금"
       ],
       "timeStart": "17:00",
       "timeEnd": "19:00",
-      "teacher": "교육인 사직 수학팀",
-      "school": "사직",
-      "grade": "예비고1",
+      "teacher": "김명욱",
+      "school": "",
+      "grade": "",
       "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-24",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-사직",
-      "tagline": "사직 PRE H 공수1·공수2 심화 (강사 미정·문의)",
-      "anonymized": true,
+      "term": "",
       "sourceTab": "수학강사별 시간표",
       "sourceTabAll": [
         "수학강사별 시간표"
@@ -4583,30 +4532,23 @@
     },
     {
       "id": "auto-183",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 사직점",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
+      "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
       "subject": "수학",
-      "title": "PRE H+ — 사직 대수·미적분1 심화",
-      "schedule": "월·금 20:00-22:00 (월: 대수 심화, 금: 미적분1 심화)",
+      "title": "PRE H+ - 미적분1 심화",
+      "schedule": "월금 20:00 - 22:00",
       "days": [
-        "월",
         "금"
       ],
       "timeStart": "20:00",
       "timeEnd": "22:00",
-      "teacher": "교육인 사직 수학팀",
-      "school": "사직",
-      "grade": "예비고1",
+      "teacher": "김명욱",
+      "school": "",
+      "grade": "",
       "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-21",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-사직-상위",
-      "tagline": "사직 PRE H+ 대수·미적분1 심화 (강사 미정·문의)",
-      "anonymized": true,
+      "term": "",
       "sourceTab": "수학강사별 시간표",
       "sourceTabAll": [
         "수학강사별 시간표"
@@ -4614,7 +4556,7 @@
     },
     {
       "id": "auto-184",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -4627,7 +4569,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "12:30",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "양정고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -4639,7 +4581,7 @@
     },
     {
       "id": "auto-185",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4664,7 +4606,7 @@
     },
     {
       "id": "auto-186",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4689,7 +4631,7 @@
     },
     {
       "id": "auto-187",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4713,7 +4655,7 @@
     },
     {
       "id": "auto-188",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4737,7 +4679,7 @@
     },
     {
       "id": "auto-189",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -4761,7 +4703,7 @@
     },
     {
       "id": "auto-190",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -4773,7 +4715,7 @@
       ],
       "timeStart": "18:30",
       "timeEnd": "21:00",
-      "teacher": "교육인 수학팀",
+      "teacher": "김명욱",
       "school": "이사벨고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -4785,7 +4727,7 @@
     },
     {
       "id": "auto-191",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4809,7 +4751,7 @@
     },
     {
       "id": "auto-192",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4833,7 +4775,7 @@
     },
     {
       "id": "auto-193",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4857,7 +4799,7 @@
     },
     {
       "id": "auto-194",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4881,7 +4823,7 @@
     },
     {
       "id": "auto-195",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4905,7 +4847,7 @@
     },
     {
       "id": "auto-196",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4929,7 +4871,7 @@
     },
     {
       "id": "auto-197",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4953,7 +4895,7 @@
     },
     {
       "id": "auto-198",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -4977,7 +4919,7 @@
     },
     {
       "id": "auto-199",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5001,7 +4943,7 @@
     },
     {
       "id": "auto-200",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5025,7 +4967,7 @@
     },
     {
       "id": "auto-201",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5049,7 +4991,7 @@
     },
     {
       "id": "auto-202",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5073,7 +5015,7 @@
     },
     {
       "id": "auto-203",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5097,7 +5039,7 @@
     },
     {
       "id": "auto-204",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5121,7 +5063,7 @@
     },
     {
       "id": "auto-205",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5145,7 +5087,7 @@
     },
     {
       "id": "auto-206",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5169,7 +5111,7 @@
     },
     {
       "id": "auto-207",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5193,7 +5135,7 @@
     },
     {
       "id": "auto-208",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5217,7 +5159,7 @@
     },
     {
       "id": "auto-209",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5241,7 +5183,7 @@
     },
     {
       "id": "auto-210",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5265,7 +5207,7 @@
     },
     {
       "id": "auto-211",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5289,7 +5231,7 @@
     },
     {
       "id": "auto-212",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5313,7 +5255,7 @@
     },
     {
       "id": "auto-213",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5337,7 +5279,7 @@
     },
     {
       "id": "auto-214",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5361,7 +5303,7 @@
     },
     {
       "id": "auto-215",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5385,7 +5327,7 @@
     },
     {
       "id": "auto-216",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5409,12 +5351,12 @@
     },
     {
       "id": "auto-217",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "",
       "subject": "영어",
-      "title": "PRE H+ — 사직 최고난도 작문 & 수능훈련",
+      "title": "PRE H+",
       "schedule": "수 13:00-17:00",
       "days": [
         "수"
@@ -5422,15 +5364,10 @@
       "timeStart": "13:00",
       "timeEnd": "17:00",
       "teacher": "정준호",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
-      "term": "summer-2026",
-      "openDate": "2026-07-22",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-5",
-      "tagline": "사직 PRE H+ · 최고난도 작문 & 수능훈련",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
+      "term": "",
       "sourceTab": "영어강사별 시간표",
       "sourceTabAll": [
         "영어강사별 시간표"
@@ -5438,7 +5375,7 @@
     },
     {
       "id": "auto-218",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5462,7 +5399,7 @@
     },
     {
       "id": "auto-219",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5486,7 +5423,7 @@
     },
     {
       "id": "auto-220",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5510,7 +5447,7 @@
     },
     {
       "id": "auto-221",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5534,7 +5471,7 @@
     },
     {
       "id": "auto-222",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5558,29 +5495,23 @@
     },
     {
       "id": "auto-223",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 사직점",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
+      "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
       "subject": "영어",
-      "title": "PRE H — 사직 고난도 작문 & 수능훈련",
-      "schedule": "화·목 17:00-19:00",
+      "title": "PRE H",
+      "schedule": "화목 17:00-19:00",
       "days": [
-        "화",
         "목"
       ],
       "timeStart": "17:00",
       "timeEnd": "19:00",
       "teacher": "박승혜",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
-      "term": "summer-2026",
-      "openDate": "2026-07-23",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-6",
-      "tagline": "사직 PRE H · 고난도 작문 & 수능훈련",
+      "school": "",
+      "grade": "",
+      "courseType": "일반",
+      "term": "",
       "sourceTab": "영어강사별 시간표",
       "sourceTabAll": [
         "영어강사별 시간표"
@@ -5588,7 +5519,7 @@
     },
     {
       "id": "auto-224",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5612,7 +5543,7 @@
     },
     {
       "id": "auto-225",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5637,7 +5568,7 @@
     },
     {
       "id": "auto-226",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5661,7 +5592,7 @@
     },
     {
       "id": "auto-227",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5685,7 +5616,7 @@
     },
     {
       "id": "auto-228",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5697,7 +5628,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "13:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "",
       "grade": "고2",
       "courseType": "자사특목",
@@ -5709,7 +5640,7 @@
     },
     {
       "id": "auto-229",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5721,7 +5652,7 @@
       ],
       "timeStart": "10:00",
       "timeEnd": "13:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "",
       "grade": "고2",
       "courseType": "자사특목",
@@ -5733,7 +5664,7 @@
     },
     {
       "id": "auto-230",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5745,7 +5676,7 @@
       ],
       "timeStart": "14:00",
       "timeEnd": "17:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "부일고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -5757,7 +5688,7 @@
     },
     {
       "id": "auto-231",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5769,7 +5700,7 @@
       ],
       "timeStart": "14:00",
       "timeEnd": "17:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "해운대고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -5781,7 +5712,7 @@
     },
     {
       "id": "auto-232",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5793,7 +5724,7 @@
       ],
       "timeStart": "18:00",
       "timeEnd": "20:00",
-      "teacher": "교육인 국어팀",
+      "teacher": "전인재",
       "school": "",
       "grade": "고1",
       "courseType": "자사특목",
@@ -5805,7 +5736,7 @@
     },
     {
       "id": "auto-233",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5829,7 +5760,7 @@
     },
     {
       "id": "auto-234",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "사직",
       "area": "사직",
@@ -5853,7 +5784,7 @@
     },
     {
       "id": "auto-235",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "센텀",
@@ -5877,7 +5808,7 @@
     },
     {
       "id": "auto-236",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5901,7 +5832,7 @@
     },
     {
       "id": "auto-237",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5925,7 +5856,7 @@
     },
     {
       "id": "auto-238",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5949,7 +5880,7 @@
     },
     {
       "id": "auto-239",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
+      "syncedAt": "2026-06-21T02:31:21.602Z",
       "academy": "교육인학원 센텀점",
       "academyTag": "센텀",
       "area": "",
@@ -5969,97 +5900,6 @@
       "sourceTab": "탐구강사별 시간표",
       "sourceTabAll": [
         "탐구강사별 시간표"
-      ]
-    },
-    {
-      "id": "preh-eng-04",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "영어",
-      "title": "PRE H3 — 고등실전 작문 & 모의고사 입문난이도",
-      "schedule": "수·금 20:00-23:00",
-      "days": [
-        "수",
-        "금"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "권정은",
-      "school": "자사특목",
-      "grade": "예비고1",
-      "courseType": "자사특목",
-      "term": "summer-2026",
-      "openDate": "2026-07-24",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "영어-4",
-      "tagline": "고등실전 작문 & 모의고사 입문난이도",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표",
-        "영어강사별 시간표"
-      ]
-    },
-    {
-      "id": "preh-math-05",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "PRE H+ — 대수 심화 (이영환T)",
-      "schedule": "목 20:00-23:00",
-      "days": [
-        "목"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "이영환",
-      "school": "일반고최상위",
-      "grade": "예비고1",
-      "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-23",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-5",
-      "tagline": "PRE H+ 대수 심화",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표",
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "preh-math-06",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "PRE H+ — 미적분1 심화 (차동우T)",
-      "schedule": "토 14:00-17:00",
-      "days": [
-        "토"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "17:00",
-      "teacher": "차동우",
-      "school": "일반고최상위",
-      "grade": "예비고1",
-      "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-25",
-      "month": ["2026-07"],
-      "isPreH": true,
-      "preHRank": "수학-6",
-      "tagline": "PRE H+ 미적분1 심화",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표",
-        "수학강사별 시간표"
       ]
     }
   ]
