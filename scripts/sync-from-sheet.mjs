@@ -31,11 +31,14 @@ const SHEET_ID = "157tm9BGGbVzkOGTJN1QysDlkqVyGBhcUTOtXvylVBHs";
 const TEACHER_WHITELIST = new Set([
   "윤훈관", "정준호", "이영환", "김형석",
   "차동우", "권정은", "강필",   "김규생",
+  "박승혜",
 ]);
 const ACADEMY_WHITELIST = new Set([
   "교육인학원 센텀점",
   "교육인학원 사직점",
 ]);
+// 양점 공용 특강 강사 — 센텀/사직 두 캠퍼스에 모두 노출되도록 자동 복제
+const BOTH_BRANCH_TEACHERS = new Set(["박승혜"]);
 
 /**
  * 8 tabs. If the actual sheet uses slightly different names, edit here.
@@ -396,6 +399,18 @@ function dedupe(courses) {
       console.warn(`  · ${tab.name}: ERROR — ${e.message}`);
     }
   }
+
+  // 양점 공용 특강 강사 — 한쪽 점으로만 잡혀들어온 강좌를 양 점에 복제
+  const expanded = [];
+  for (const c of allCourses) {
+    if (BOTH_BRANCH_TEACHERS.has(c.teacher)) {
+      expanded.push({ ...c, academy: "교육인학원 센텀점", academyTag: "센텀", area: "센텀" });
+      expanded.push({ ...c, academy: "교육인학원 사직점", academyTag: "사직", area: "사직" });
+    } else {
+      expanded.push(c);
+    }
+  }
+  allCourses = expanded;
 
   const before = allCourses.length;
   const deduped = dedupe(allCourses);
