@@ -642,30 +642,6 @@
       ]
     },
     {
-      "id": "auto-023",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀고1 17-20",
-      "schedule": "목토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
       "id": "auto-024",
       "syncedAt": "2026-06-19T02:47:58.003Z",
       "academy": "교육인학원 센텀점",
@@ -908,30 +884,6 @@
       ]
     },
     {
-      "id": "auto-058",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "국어",
-      "title": "해운대고1",
-      "schedule": "수 14-23",
-      "days": [
-        "수"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "23:00",
-      "teacher": "김지수",
-      "school": "해운대고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
       "id": "auto-059",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -1021,30 +973,6 @@
       "teacher": "윤훈관",
       "school": "부일고",
       "grade": "고2",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
-      "id": "auto-063",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "국어",
-      "title": "센텀여고1",
-      "schedule": "월 17-20",
-      "days": [
-        "월"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "김지수",
-      "school": "센텀여고",
-      "grade": "고1",
       "courseType": "학교내신",
       "term": "regular-may",
       "sourceTab": "(센텀) 5월 전체강의실",
@@ -1151,104 +1079,6 @@
       ]
     },
     {
-      "id": "auto-068",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "국어",
-      "title": "부산외고2 정규",
-      "schedule": "일 10:00 - 13:00",
-      "days": [
-        "일"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "13:00",
-      "teacher": "전인재",
-      "school": "부산외고",
-      "grade": "고2",
-      "courseType": "자사특목",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
-      "id": "auto-069",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "국어",
-      "title": "해운대고1",
-      "schedule": "월 14-19",
-      "days": [
-        "월"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "19:00",
-      "teacher": "김지수",
-      "school": "해운대고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
-      "id": "auto-070",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀여고1",
-      "schedule": "화 20-23 / 토 14-17",
-      "days": [
-        "화",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀여고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실",
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-071",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀고1 17-20",
-      "schedule": "목토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실"
-      ]
-    },
-    {
       "id": "auto-072",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -1322,57 +1152,6 @@
       "sourceTabAll": [
         "(센텀) 5월 전체강의실",
         "영어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-075",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "개별진도수업",
-      "schedule": "화목 17-20",
-      "days": [
-        "목"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "김명욱",
-      "school": "",
-      "grade": "",
-      "courseType": "개별진도",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실",
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-076",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀고1",
-      "schedule": "목 20-23 / 토 17-20",
-      "days": [
-        "목",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(센텀) 5월 전체강의실",
-      "sourceTabAll": [
-        "(센텀) 5월 전체강의실",
-        "수학강사별 시간표"
       ]
     },
     {
@@ -1753,31 +1532,6 @@
       ]
     },
     {
-      "id": "auto-093",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀고1 센텀여고1",
-      "schedule": "화목 20-23 / 토 14-17",
-      "days": [
-        "목",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀여고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표"
-      ]
-    },
-    {
       "id": "auto-094",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -1897,30 +1651,6 @@
       "timeStart": "17:00",
       "timeEnd": "20:00",
       "teacher": "이영환",
-      "school": "",
-      "grade": "",
-      "courseType": "개별진도",
-      "term": "summer-2026",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표"
-      ]
-    },
-    {
-      "id": "auto-099",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "개별진도수업",
-      "schedule": "화목 17-20",
-      "days": [
-        "목"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "김명욱",
       "school": "",
       "grade": "",
       "courseType": "개별진도",
@@ -2532,31 +2262,6 @@
       ]
     },
     {
-      "id": "auto-103",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀여고1",
-      "schedule": "화 20-23 / 토 14-17",
-      "days": [
-        "화",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀여고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표"
-      ]
-    },
-    {
       "id": "auto-131",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -2627,30 +2332,6 @@
       "sourceTabAll": [
         "(센텀) 여름방학시간표",
         "영어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-134",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "센텀고1 17-20",
-      "schedule": "목토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(센텀) 여름방학시간표",
-      "sourceTabAll": [
-        "(센텀) 여름방학시간표"
       ]
     },
     {
@@ -2823,31 +2504,6 @@
       ]
     },
     {
-      "id": "auto-142",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "양정고1",
-      "schedule": "토 10:00-12:30 / 일 14-16:30",
-      "days": [
-        "토",
-        "일"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "12:30",
-      "teacher": "김명욱",
-      "school": "양정고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(사직) 5월 강의실",
-      "sourceTabAll": [
-        "(사직) 5월 강의실"
-      ]
-    },
-    {
       "id": "auto-143",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 사직점",
@@ -2911,30 +2567,6 @@
       "timeStart": "16:00",
       "timeEnd": "19:00",
       "teacher": "정준호",
-      "school": "이사벨고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "regular-may",
-      "sourceTab": "(사직) 5월 강의실",
-      "sourceTabAll": [
-        "(사직) 5월 강의실"
-      ]
-    },
-    {
-      "id": "auto-146",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "이사벨고1",
-      "schedule": "월금 18:30 - 21:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "18:30",
-      "timeEnd": "21:00",
-      "teacher": "김명욱",
       "school": "이사벨고",
       "grade": "고1",
       "courseType": "학교내신",
@@ -3523,30 +3155,6 @@
       ]
     },
     {
-      "id": "auto-143",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "센텀고1 17-20",
-      "schedule": "목토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "교육인 수학팀",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
       "id": "auto-144",
       "syncedAt": "2026-06-19T02:47:58.003Z",
       "academy": "교육인학원 사직점",
@@ -3788,30 +3396,6 @@
       ]
     },
     {
-      "id": "auto-205",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "국어",
-      "title": "해운대고1",
-      "schedule": "수 14-23",
-      "days": [
-        "수"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "23:00",
-      "teacher": "김지수",
-      "school": "해운대고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
       "id": "auto-206",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 사직점",
@@ -3900,30 +3484,6 @@
       "teacher": "윤훈관",
       "school": "부일고",
       "grade": "고2",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-210",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "국어",
-      "title": "센텀여고1",
-      "schedule": "월 17-20",
-      "days": [
-        "월"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "김지수",
-      "school": "센텀여고",
-      "grade": "고1",
       "courseType": "학교내신",
       "term": "summer-2026",
       "sourceTab": "(사직) 여름방학 시간표",
@@ -4029,103 +3589,6 @@
       ]
     },
     {
-      "id": "auto-215",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "국어",
-      "title": "부산외고2 정규",
-      "schedule": "일 10:00 - 13:00",
-      "days": [
-        "일"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "13:00",
-      "teacher": "전인재",
-      "school": "부산외고",
-      "grade": "고2",
-      "courseType": "자사특목",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-216",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "국어",
-      "title": "해운대고1",
-      "schedule": "월 14-19",
-      "days": [
-        "월"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "19:00",
-      "teacher": "김지수",
-      "school": "해운대고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-217",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "센텀여고1",
-      "schedule": "화 20-23 / 토 14-17",
-      "days": [
-        "화",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀여고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-218",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "센텀고1 17-20",
-      "schedule": "목토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
       "id": "auto-219",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 사직점",
@@ -4199,79 +3662,6 @@
       ]
     },
     {
-      "id": "auto-222",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "개별진도수업",
-      "schedule": "화목 17-20",
-      "days": [
-        "목"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "김명욱",
-      "school": "",
-      "grade": "",
-      "courseType": "개별진도",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-223",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "센텀고1",
-      "schedule": "목 20-23 / 토 17-20",
-      "days": [
-        "목",
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "김명욱",
-      "school": "센텀고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "summer-2026",
-      "sourceTab": "(사직) 여름방학 시간표",
-      "sourceTabAll": [
-        "(사직) 여름방학 시간표"
-      ]
-    },
-    {
-      "id": "auto-224",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "수학",
-      "title": "중2 수학",
-      "schedule": "화목 14-17",
-      "days": [
-        "목"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "17:00",
-      "teacher": "신윤범",
-      "school": "",
-      "grade": "중2",
-      "courseType": "일반",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
       "id": "auto-225",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -4286,30 +3676,6 @@
       "timeStart": "14:00",
       "timeEnd": "17:00",
       "teacher": "강필",
-      "school": "",
-      "grade": "",
-      "courseType": "일반",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-226",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "수학",
-      "title": "중등 S-CLASS",
-      "schedule": "화목 17-20",
-      "days": [
-        "목"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "20:00",
-      "teacher": "신윤범",
       "school": "",
       "grade": "",
       "courseType": "일반",
@@ -4359,30 +3725,6 @@
       "timeEnd": "23:00",
       "teacher": "이영환",
       "school": "센텀여고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-229",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "수학",
-      "title": "덕문여고1 17-20",
-      "schedule": "수토 20-23",
-      "days": [
-        "토"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "신윤범",
-      "school": "덕문여고",
       "grade": "고1",
       "courseType": "학교내신",
       "term": "",
@@ -4466,54 +3808,6 @@
       ]
     },
     {
-      "id": "auto-233",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "수파르타 - 공수1 (SU.MID1)",
-      "schedule": "월화수목금 10-12",
-      "days": [
-        "금"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "12:00",
-      "teacher": "김명욱",
-      "school": "",
-      "grade": "",
-      "courseType": "방학특강",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-234",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "수파르타 - 공수2",
-      "schedule": "월화수목금 13-15",
-      "days": [
-        "금"
-      ],
-      "timeStart": "13:00",
-      "timeEnd": "15:00",
-      "teacher": "김명욱",
-      "school": "",
-      "grade": "",
-      "courseType": "방학특강",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
       "id": "auto-235",
       "syncedAt": "2026-06-25T02:04:34.546Z",
       "academy": "교육인학원 센텀점",
@@ -4530,120 +3824,6 @@
       "teacher": "김형석",
       "school": "부일고",
       "grade": "고2",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-236",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "SU.MID2 - 대수기본",
-      "schedule": "월수금 15:00 - 17:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "15:00",
-      "timeEnd": "17:00",
-      "teacher": "김명욱",
-      "school": "",
-      "grade": "",
-      "courseType": "일반",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-237",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "센텀",
-      "subject": "수학",
-      "title": "공수1 테마 실전모고반 만원의 행복",
-      "schedule": "월 17-20",
-      "days": [
-        "월"
-      ],
-      "timeStart": "17:00",
-      "timeEnd": "19:00",
-      "teacher": "교육인 사직 수학팀",
-      "school": "사직",
-      "grade": "예비고1",
-      "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-24",
-      "month": [
-        "2026-07"
-      ],
-      "isPreH": true,
-      "preHRank": "수학-사직",
-      "tagline": "사직 PRE H 공수1·공수2 심화 (강사 미정·문의)",
-      "anonymized": true,
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-183",
-      "syncedAt": "2026-06-20T07:30:00.000Z",
-      "academy": "교육인학원 사직점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "PRE H+ — 사직 대수·미적분1 심화",
-      "schedule": "월·금 20:00-22:00 (월: 대수 심화, 금: 미적분1 심화)",
-      "days": [
-        "월",
-        "금"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "22:00",
-      "teacher": "교육인 사직 수학팀",
-      "school": "사직",
-      "grade": "예비고1",
-      "courseType": "심화",
-      "term": "summer-2026",
-      "openDate": "2026-07-21",
-      "month": [
-        "2026-07"
-      ],
-      "isPreH": true,
-      "preHRank": "수학-사직-상위",
-      "tagline": "사직 PRE H+ 대수·미적분1 심화 (강사 미정·문의)",
-      "anonymized": true,
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-184",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "양정고1",
-      "schedule": "토 10:00-12:30 / 일 14-16:30",
-      "days": [
-        "토",
-        "일"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "12:30",
-      "teacher": "김명욱",
-      "school": "양정고",
-      "grade": "고1",
       "courseType": "학교내신",
       "term": "",
       "sourceTab": "수학강사별 시간표",
@@ -4718,30 +3898,6 @@
       "teacher": "김형석",
       "school": "부일고",
       "grade": "고2",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "수학강사별 시간표",
-      "sourceTabAll": [
-        "수학강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-190",
-      "syncedAt": "2026-06-19T02:47:58.003Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "수학",
-      "title": "이사벨고1",
-      "schedule": "월금 18:30 - 21:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "18:30",
-      "timeEnd": "21:00",
-      "teacher": "김명욱",
-      "school": "이사벨고",
-      "grade": "고1",
       "courseType": "학교내신",
       "term": "",
       "sourceTab": "수학강사별 시간표",
@@ -5403,198 +4559,6 @@
       "sourceTab": "영어강사별 시간표",
       "sourceTabAll": [
         "영어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-282",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "영어",
-      "title": "정시파이터",
-      "schedule": "목 20:00-23:00",
-      "days": [
-        "목"
-      ],
-      "timeStart": "20:00",
-      "timeEnd": "23:00",
-      "teacher": "박승혜",
-      "school": "",
-      "grade": "",
-      "courseType": "일반",
-      "term": "",
-      "sourceTab": "영어강사별 시간표",
-      "sourceTabAll": [
-        "영어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-283",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "국어",
-      "title": "외고2윈터_문학",
-      "schedule": "월 10:00-13:00",
-      "days": [
-        "월"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "13:00",
-      "teacher": "전인재",
-      "school": "",
-      "grade": "고2",
-      "courseType": "자사특목",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-284",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "국어",
-      "title": "외고2윈터_독서",
-      "schedule": "금 10:00-13:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "13:00",
-      "teacher": "전인재",
-      "school": "",
-      "grade": "고2",
-      "courseType": "자사특목",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-285",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "국어",
-      "title": "부일고1 정규",
-      "schedule": "금 14:00-17:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "17:00",
-      "teacher": "전인재",
-      "school": "부일고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-286",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "국어",
-      "title": "해운대고1 정규",
-      "schedule": "토 14:00-17:00",
-      "days": [
-        "토"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "17:00",
-      "teacher": "전인재",
-      "school": "해운대고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-287",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "센텀",
-      "area": "",
-      "subject": "국어",
-      "title": "외고1윈터_국어 월",
-      "schedule": "금 18:00-20:00",
-      "days": [
-        "금"
-      ],
-      "timeStart": "18:00",
-      "timeEnd": "20:00",
-      "teacher": "전인재",
-      "school": "",
-      "grade": "고1",
-      "courseType": "자사특목",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-288",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "국어",
-      "title": "사직여고1, 이사벨고",
-      "schedule": "일 10:00 - 13:00",
-      "days": [
-        "일"
-      ],
-      "timeStart": "10:00",
-      "timeEnd": "13:00",
-      "teacher": "",
-      "school": "이사벨고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
-      ]
-    },
-    {
-      "id": "auto-289",
-      "syncedAt": "2026-06-25T02:04:34.546Z",
-      "academy": "교육인학원 센텀점",
-      "academyTag": "사직",
-      "area": "사직",
-      "subject": "국어",
-      "title": "사직고1",
-      "schedule": "일 14:00 - 17:00",
-      "days": [
-        "일"
-      ],
-      "timeStart": "14:00",
-      "timeEnd": "17:00",
-      "teacher": "",
-      "school": "사직고",
-      "grade": "고1",
-      "courseType": "학교내신",
-      "term": "",
-      "sourceTab": "국어강사별 시간표",
-      "sourceTabAll": [
-        "국어강사별 시간표"
       ]
     },
     {
