@@ -3,258 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>광고주 미디어킷 · 클래스픽 ClassPick</title>
-<meta name="description" content="부산 센텀·사직 학부모 직접 도달 · 입시학원·과외·교재·예체능 광고주 모집">
+<title>교육인학원 시간표 · 사이트 안내</title>
+<meta name="description" content="부산 센텀·사직 교육인학원의 한 학기 시간표 안내 페이지">
 <meta name="robots" content="index,follow">
 <style>
 :root{--ink:#1c1c1c;--sub:#666;--line:#e5e5e5;--bg:#fafafa;--brand:#d9480f;--accent:#f59f00;--ok:#2f9e44}
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
 body{background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px}
-header{text-align:center;margin-bottom:56px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+header{text-align:center;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--line)}
 header .crumb{display:inline-block;font-size:12px;color:var(--sub);margin-bottom:12px;letter-spacing:1px}
-header h1{font-size:36px;letter-spacing:-1px;margin-bottom:8px;font-weight:800}
+header h1{font-size:32px;letter-spacing:-1px;margin-bottom:8px;font-weight:800}
 header .hl{color:var(--brand)}
 header p{color:var(--sub);font-size:15px}
-.hero{background:linear-gradient(135deg,#fff3cd,#ffe69c);border:2px solid var(--accent);border-radius:16px;padding:28px;margin-bottom:40px}
-.hero h2{font-size:22px;margin-bottom:12px}
-.hero ul{list-style:none;padding-left:0}
-.hero li{padding:6px 0;font-size:14px}
-.hero li::before{content:"✓";color:var(--brand);font-weight:700;margin-right:8px}
-section{margin-bottom:56px}
-h2.sec{font-size:26px;margin-bottom:8px;letter-spacing:-0.5px;font-weight:800}
-.sub{color:var(--sub);font-size:14px;margin-bottom:24px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:transform 0.15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
-.card .label{display:inline-block;background:var(--brand);color:#fff;font-size:11px;padding:3px 10px;border-radius:99px;margin-bottom:12px;font-weight:700;letter-spacing:0.5px}
-.card .name{font-size:16px;font-weight:700;margin-bottom:6px}
-.card .price{font-size:24px;color:var(--brand);font-weight:800;margin:8px 0}
-.card .unit{font-size:13px;color:var(--sub);margin-left:4px;font-weight:500}
-.card .desc{font-size:13px;color:#444;line-height:1.6}
-.card.premium{border:2px solid var(--brand);background:linear-gradient(135deg,#fff8f0,#fff)}
-.card.premium .label{background:#212529}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
-th{background:#f1f3f5;font-weight:700;color:#212529;font-size:13px;letter-spacing:0.3px}
-td.num{text-align:right;font-weight:700;color:var(--brand);font-family:'SF Mono','Consolas',monospace}
-.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:32px}
-.kpi-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center}
-.kpi-card .num{font-size:28px;font-weight:800;color:var(--brand)}
-.kpi-card .lbl{font-size:12px;color:var(--sub);margin-top:4px;letter-spacing:0.5px}
-.cta{background:#212529;color:#fff;border-radius:14px;padding:32px 28px;text-align:center;margin-top:40px}
-.cta h3{font-size:22px;margin-bottom:12px}
-.cta p{font-size:14px;color:#ced4da;margin-bottom:20px;line-height:1.7}
-.cta a{display:inline-block;background:var(--brand);color:#fff;padding:14px 32px;border-radius:99px;text-decoration:none;font-weight:700;font-size:15px}
-.note{font-size:12px;color:var(--sub);background:#f1f3f5;padding:16px;border-radius:10px;line-height:1.7;margin-top:20px}
+section{margin-bottom:40px}
+h2.sec{font-size:22px;margin-bottom:8px;letter-spacing:-0.5px;font-weight:800}
+.sub{color:var(--sub);font-size:14px;margin-bottom:20px}
+.note{font-size:13px;color:#444;background:#fff;border:1px solid var(--line);padding:18px;border-radius:10px;line-height:1.8}
 .note b{color:var(--ink)}
-.process{counter-reset:step;display:grid;gap:14px;margin-top:24px}
-.process-item{counter-increment:step;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px 18px 60px;position:relative;font-size:14px}
-.process-item::before{content:counter(step);position:absolute;left:18px;top:18px;width:28px;height:28px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;font-size:14px}
-.process-item b{display:block;margin-bottom:4px;font-size:15px}
 .back{display:inline-block;margin-bottom:20px;color:var(--sub);text-decoration:none;font-size:13px}
 .back:hover{color:var(--brand)}
-footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--sub);line-height:1.8}
-@media (max-width:600px){
-  header h1{font-size:28px}
-  h2.sec{font-size:22px}
-  .wrap{padding:32px 16px 60px}
-}
+.cta{background:#212529;color:#fff;border-radius:14px;padding:28px;text-align:center;margin-top:40px}
+.cta h3{font-size:20px;margin-bottom:10px}
+.cta p{font-size:14px;color:#ced4da;margin-bottom:20px;line-height:1.7}
+.cta a{display:inline-block;background:var(--brand);color:#fff;padding:12px 28px;border-radius:99px;text-decoration:none;font-weight:700;font-size:14px}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--sub);line-height:1.8}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="/">← 클래스픽 홈으로</a>
+  <a class="back" href="/">← 시간표 홈으로</a>
 
   <header>
-    <div class="crumb">MEDIA KIT · 2026 Q3 · ⚡ Pre H 시즌판</div>
-    <h1><span class="hl">클래스픽</span> 광고주 미디어킷</h1>
-    <p>부산 센텀·사직 학부모 도달 · 예비고1 Pre H 시즌 한정 슬롯 · 광고문의 class-pick@naver.com</p>
+    <div class="crumb">교육인학원 시간표 · 사이트 안내</div>
+    <h1><span class="hl">교육인학원</span> 시간표 페이지</h1>
+    <p>부산 센텀점·사직점의 한 학기 강좌·강사·시간표를 한눈에 비교할 수 있도록 정리한 자체 안내 페이지입니다.</p>
   </header>
 
-  <div class="hero">
-    <h2>🎯 왜 클래스픽인가</h2>
-    <ul>
-      <li>부산 센텀·사직 <b>예비고1·고1·고2 학부모</b>에 정밀 도달 (불필요한 노출 제거)</li>
-      <li>강좌 비교 의도로 진입 → <b>구매(등록) 단계 직전</b> 사용자</li>
-      <li>맘카페·블로그 광고 대비 <b>이탈률 1/3</b> (강좌 비교라는 기능적 가치 제공)</li>
-      <li>운영팀 직접 큐레이션 · 가짜 후기·도배광고 없음</li>
-      <li>광고비 입금 즉시 송출 · 광고주 직접 카피 검수 가능</li>
-    </ul>
-  </div>
-
-  <!-- v8.2 — Pre H 시즌 한정 프리미엄 슬롯 안내 -->
-  <div class="hero" style="background:linear-gradient(135deg,#ffe1ec,#ffd9a8);border-color:#ff3d7f;margin-top:24px">
-    <h2 style="color:#c2185b">⚡ Pre H 시즌 한정 프리미엄 슬롯 (D-100 ~ D-30)</h2>
-    <ul>
-      <li><b>예비고1 영어 단과학원 1순위 모집중</b> — 메인 단독 배너 주 150만원 (평시 100만 대비 50% 할증, 시즌 한정)</li>
-      <li>적용 기간: 2026-06-12 ~ 2026-07-21 (D-100 ~ D-30 골든타임)</li>
-      <li>해당 시즌 학부모 검색 키워드 → "예비고1 영어 학원" · "Pre H 영어" · "중3 영어 여름방학"</li>
-      <li>중3 학부모는 본격적인 학원 결정 시즌이라 <b>전환률이 평시 대비 2~3배</b></li>
-      <li>시즌 한정 슬롯은 메인 1자리 / SPOT 3자리만 운영 — 마감 시 평시 슬롯으로 자동 전환</li>
-    </ul>
-  </div>
-
   <section>
-    <h2 class="sec">📊 트래픽·도달 (2026 Q3 가이드)</h2>
-    <p class="sub">베타 시즌 가이드 수치 · 실제 트래픽은 광고주 협의 시 GA 리포트 공유</p>
-    <div class="kpi">
-      <div class="kpi-card"><div class="num">5,000+</div><div class="lbl">월간 PV (Q3 목표)</div></div>
-      <div class="kpi-card"><div class="num">1,500+</div><div class="lbl">월간 UV</div></div>
-      <div class="kpi-card"><div class="num">72%</div><div class="lbl">고1·고2 학부모 비중</div></div>
-      <div class="kpi-card"><div class="num">3:42</div><div class="lbl">평균 체류시간</div></div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="sec">💎 광고 상품 (주 단위 요율)</h2>
-    <p class="sub">모든 광고는 [광고] 태그 명시 · 카피·디자인 광고주 검수 가능 · 최소 1주, 최대 12주 계약</p>
-    <div class="cards">
-      <div class="card premium" style="border-color:#ff3d7f">
-        <span class="label" style="background:#ff3d7f">⚡ Pre H 시즌</span>
-        <div class="name">🥇 메인 상단 배너 (단독) — Pre H 한정</div>
-        <div class="price">1,500,000<span class="unit">원 / 주</span></div>
-        <div class="desc">D-100 ~ D-30 골든타임 한정 · 홈 진입 첫 화면 100% 노출 · 예비고1 영어/수학/국어 1~3순위 광고주 우선 · 카운트다운·D-day 연출 · 시즌 마감 시 평시 100만/주로 자동 전환</div>
-      </div>
-      <div class="card premium">
-        <span class="label">PREMIUM</span>
-        <div class="name">🥇 메인 상단 배너 (단독) — 평시</div>
-        <div class="price">1,000,000<span class="unit">원 / 주</span></div>
-        <div class="desc">홈화면 첫 진입 시점 · 100% 노출 보장 · 클릭 시 광고주 지정 페이지/뷰 점프 · 카운트다운/D-day 연출 가능 · <b>단독 슬롯</b></div>
-      </div>
-      <div class="card">
-        <span class="label">SPOT</span>
-        <div class="name">🥈 카테고리 뷰 상단 (학년별)</div>
-        <div class="price">300,000<span class="unit">원 / 주</span></div>
-        <div class="desc">고1·고2·고3·중3 중 선택 · 해당 학년 학부모만 정밀 노출 · 슬롯 4개 × 학년 = 최대 16슬롯</div>
-      </div>
-      <div class="card">
-        <span class="label">SPOT</span>
-        <div class="name">🥉 학원·강사·월별 뷰 사이드</div>
-        <div class="price">100,000<span class="unit">원 / 주</span></div>
-        <div class="desc">강좌 카드 옆 추천슬롯 · 학원별 뷰 진입 시 동급 학원 광고 노출 · 다수 슬롯 운영</div>
-      </div>
-      <div class="card">
-        <span class="label">BRAND</span>
-        <div class="name">🏷 카테고리 스폰서 라벨</div>
-        <div class="price">200,000<span class="unit">원 / 주</span></div>
-        <div class="desc">예: "수학 카테고리 spons by ○○학원" · 약관에 따른 라벨 명시 · 검색 결과 우선 노출 없음 (성과도용 방지)</div>
-      </div>
-      <div class="card">
-        <span class="label">CONTENT</span>
-        <div class="name">📝 추천 강좌 인터뷰 콘텐츠</div>
-        <div class="price">500,000<span class="unit">원 / 편</span></div>
-        <div class="desc">강사·강좌 인터뷰 1편 (텍스트+이미지) · 영구 게재 · 광고 태그 명시 · 1편 제작 + 1주 메인 노출 패키지</div>
-      </div>
-      <div class="card">
-        <span class="label">PROGRAM</span>
-        <div class="name">🎟 입점학원 정식 송출</div>
-        <div class="price">300,000<span class="unit">원 / 월</span></div>
-        <div class="desc">학원 강좌 50개 이내 정식 등록·송출 · 학원 admin 페이지 직접 관리 · 통합 검색·필터 노출 · 정정·삭제 1일 이내 약속</div>
-      </div>
-    </div>
+    <h2 class="sec">사이트 개요</h2>
     <div class="note">
-      <b>패키지 할인</b><br>
-      · 4주 일괄 결제 시 10% 할인<br>
-      · 12주(분기) 일괄 결제 시 20% 할인 + 카피 디자인 무료 제작<br>
-      · 본 표는 베타 시즌(2026 Q3) 요율이며, 1차 매진 시 인상 예정<br>
-      · 모든 가격은 부가세 별도 · 세금계산서 발행 가능 (사업자등록 진행 중, 발행 일정 별도 안내)
+      <b>운영 주체</b> · 교육인학원 (부산 센텀점 / 사직점)<br>
+      <b>지역</b> · 부산 센텀 · 사직<br>
+      <b>대상</b> · 중·고등 학부모 및 학생<br>
+      <b>주요 콘텐츠</b> · 주간 시간표 그리드, 강사진 8인 라인업, 학년·과목별 카테고리, 월별 운영 현황<br>
+      <b>광고/외부 입점</b> · 운영하지 않음. 본 사이트는 교육인학원 자체 강좌 안내 전용입니다.
     </div>
   </section>
 
   <section>
-    <h2 class="sec">🎯 추천 광고주 (Pre H 시즌 우선순위)</h2>
-    <p class="sub">2026 Q3 Pre H 시즌 메인 광고주 페르소나 — 영어 1순위 · 수학 2순위 · 국어 3순위</p>
-    <table>
-      <tr><th>순위</th><th>군</th><th>예시</th><th>적합 상품</th></tr>
-      <tr><td>⚡ 1순위</td><td><b>예비고1 영어 단과학원</b></td><td>해운대·센텀 영어 단과 / 청담러닝 부산 / 잉글리시아이</td><td><b>Pre H 메인 150만/주 + 인터뷰 50만</b></td></tr>
-      <tr><td>⚡ 2순위</td><td>예비고1 수학 단과학원</td><td>강한수학·페르마수학·종로엠스쿨 수학</td><td>Pre H 메인 120만/주 + 학년별 SPOT</td></tr>
-      <tr><td>⚡ 3순위</td><td>예비고1 국어 단과학원</td><td>한우리국어·더플랜국어·국어단과</td><td>Pre H 메인 100만/주 + 카테고리 스폰서</td></tr>
-      <tr><td>4</td><td>전과목 종합학원</td><td>Pre H 종합반·자사고 대비반 운영 학원</td><td>입점 송출 30만/월 + SPOT 30만/주</td></tr>
-      <tr><td>5</td><td>1:1 과외·온라인</td><td>김과외·설탭·대학생 과외 매칭</td><td>카테고리 스폰서 라벨 20만/주</td></tr>
-      <tr><td>6</td><td>교재·문제집 출판사</td><td>마플·자이스토리·내신고쟁이</td><td>학년별 SPOT 30만/주</td></tr>
-      <tr><td>7</td><td>입시컨설팅·수능전형분석</td><td>1인 사업자 컨설턴트</td><td>메인 배너 + 인터뷰 콘텐츠</td></tr>
-      <tr><td>8</td><td>학부모 대상 서비스</td><td>학습용 태블릿·공부책상·독서실</td><td>SPOT 광고 10만/주</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2 class="sec">🚀 광고 집행 프로세스</h2>
-    <div class="process">
-      <div class="process-item">
-        <b>문의 (D-day)</b>
-        class-pick@naver.com 으로 상품·기간·희망 카피 발송 · 24시간 이내 회신
-      </div>
-      <div class="process-item">
-        <b>견적·계약 (D+1)</b>
-        견적서·표준계약서 발송 · 광고심의용 카피·이미지 검수
-      </div>
-      <div class="process-item">
-        <b>입금 확인 (D+2)</b>
-        세금계산서 발행 후 입금 확인 · 광고소재 최종 확정
-      </div>
-      <div class="process-item">
-        <b>송출 시작 (D+3)</b>
-        지정한 시작일에 자동 송출 · 광고주에게 송출 시작 확인 메일 발송
-      </div>
-      <div class="process-item">
-        <b>주간 리포트 (매주)</b>
-        노출수·클릭수·CTR 리포트 발송 (PREMIUM·SPOT 상품 한정)
-      </div>
+    <h2 class="sec">정정·문의 안내</h2>
+    <div class="note">
+      <b>이메일</b> · <a href="mailto:class-pick@naver.com">class-pick@naver.com</a><br>
+      <b>처리 기한</b> · 영업일 1일 이내<br>
+      <b>응대 범위</b> · 시간표·강사·요일·시간 등 사이트에 표시된 정보의 오류·누락·변경 요청<br>
+      <b>수강 상담</b> · 각 캠퍼스(센텀 / 사직) 대표번호로 직접 문의 부탁드립니다.
     </div>
   </section>
 
   <section>
-    <h2 class="sec">🎁 광고주 사례 — Pre H 8인 라인업 자가광고 모범 예시</h2>
-    <p class="sub">2026 Q3 Pre H 시즌 메인 슬롯의 실제 송출 예시 — 교육인학원 8인 라인업 (시간표 원본 검증)</p>
-    <div class="note" style="background:linear-gradient(135deg,#fff5f9,#fff7ef);border-color:#ff3d7f">
-      <div style="font-size:14px;color:#c2185b;font-weight:700;margin-bottom:8px">[광고] 예시 — 교육인학원 Pre H 8인 라인업</div>
-      <table style="margin-top:10px">
-        <tr><th>순위</th><th>과목</th><th>강사 (학원/지점)</th><th>대비반</th><th>요일·시간</th><th>개강</th></tr>
-        <tr><td>영어-1</td><td>영어</td><td>윤훈관T (센텀)</td><td>PRE H+ · 자사특목</td><td>수 13:00-17:00</td><td>7/22(수)</td></tr>
-        <tr><td>영어-2</td><td>영어</td><td>윤훈관T (센텀)</td><td>PRE H1 · 자사특목</td><td>월·금 13:00-16:00</td><td>7/24(금)</td></tr>
-        <tr><td>영어-3</td><td>영어</td><td>권정은T (센텀)</td><td>PRE H2 · 고난도</td><td>화·목 17:00-20:00</td><td>7/23(목)</td></tr>
-        <tr><td>영어-4</td><td>영어</td><td>권정은T (센텀)</td><td>PRE H3 · 실전</td><td>수·금 20:00-23:00</td><td>7/24(금)</td></tr>
-        <tr><td>영어-5</td><td>영어</td><td>정준호T (사직)</td><td>PRE H+ · 자사특목</td><td>수 13:00-17:00</td><td>7/22(수)</td></tr>
-        <tr><td>영어-6</td><td>영어</td><td>박승혜T (사직)</td><td>PRE H · 고난도</td><td>화·목 17:00-19:00</td><td>7/23(목)</td></tr>
-        <tr><td>수학-1</td><td>수학</td><td>김형석T (센텀)</td><td>PRE BH · <b>부일고 대비</b></td><td>화·목 20:00-23:00</td><td>7/21(화)</td></tr>
-        <tr><td>수학-2</td><td>수학</td><td>차동우T (센텀)</td><td>PRE H · <b>일반고 최상위</b></td><td>화·목 14:00-17:00</td><td>7/23(목)</td></tr>
-        <tr><td>수학-3</td><td>수학</td><td>이영환T (센텀)</td><td>PRE HH · <b>해운대고 대비</b></td><td>화·목 14:00-17:00</td><td>7/21(화)</td></tr>
-        <tr><td>수학-4</td><td>수학</td><td>차동우T (센텀)</td><td>PRE BSH · <b>부산외고 대비</b></td><td>월·수·금 17:00-20:00</td><td>7/24(금)</td></tr>
-        <tr><td>국어-1</td><td>국어</td><td>김지수T (센텀)</td><td>PRE H · <b>자사특목 국어실력 완성</b></td><td>화 10:00-13:00</td><td>7/28(화)</td></tr>
-      </table>
-      <div style="margin-top:10px;font-size:12px;color:#666">
-        <b>광고주: 교육인학원 센텀점·사직점</b> · 1주 노출 = 메인 배너 150만원 (Pre H 시즌 한정 슬롯)<br>
-        ※ 실제 광고주 카피는 광고주가 직접 검수·승인하며, 위 8인 라인업은 시간표 원본 100% 검증 데이터<br>
-        ※ 사직 수학 PRE H/PRE H+ 강좌는 운영 정책에 따라 강사명 비공개 (관심 학부모는 학원 직접 문의)
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="sec">⚖️ 광고 운영 원칙</h2>
-    <div class="note" style="font-size:13px">
-      <b>1. 표시광고법 준수</b> — 모든 광고는 [광고] 태그 명시 · 허위·과장 표현 금지<br>
-      <b>2. 동일 정렬 기준</b> — 광고비 지급 여부와 무관하게 검색·정렬·노출 알고리즘 동일 적용<br>
-      <b>3. 정정·삭제 1일 이내</b> — 광고주의 정정/중단 요청 시 영업일 1일 이내 처리<br>
-      <b>4. 카피 검수</b> — 의약품·금융·교육 카피는 클래스픽 운영팀의 검수를 거친 후 송출<br>
-      <b>5. 미성년자 보호</b> — 학생 직접 호객·자극적 카피·과장된 합격수기 금지<br>
-      <b>6. 경쟁 학원 보호</b> — 타 학원·강사를 비방·비교·평가절하하는 카피 송출 금지
+    <h2 class="sec">데이터 운영 원칙</h2>
+    <div class="note">
+      1. 시간표·강사 정보는 학기 운영 사정에 따라 변경될 수 있습니다.<br>
+      2. 최종 확정 정보는 해당 캠퍼스에 직접 확인해 주세요.<br>
+      3. 강사 연락처·사진·집주소 등 민감 개인정보는 노출하지 않습니다.<br>
+      4. 학부모·학생 직접 식별자(이름·전화 등) 역시 수집·노출하지 않습니다.<br>
+      5. 사이트 자체에 결제·예약 기능은 없으며, 모든 등록·수강 문의는 캠퍼스 직접 상담으로 진행합니다.
     </div>
   </section>
 
   <div class="cta">
-    <h3>📩 광고 문의</h3>
-    <p>이메일 회신 24시간 이내 · 견적 무료 · 표준계약서 즉시 발송<br>
-    문의 시 (1) 상품군 (2) 희망 노출 기간 (3) 광고 목적 명시 부탁드립니다.</p>
-    <a href="mailto:class-pick@naver.com?subject=[광고문의]%20클래스픽%20광고%20집행%20문의&body=%0A안녕하세요.%20광고%20집행%20문의드립니다.%0A%0A■%20상품군:%20%0A■%20기간:%20%0A■%20광고%20목적:%20%0A■%20담당자%20연락처:%20%0A">광고문의 메일 보내기 →</a>
+    <h3>시간표를 바로 보고 싶으신가요?</h3>
+    <p>요일·시간대로 정리된 주간 시간표에서 우리 아이 수업 가능 시간을 직접 비교해보세요.</p>
+    <a href="/">⚡ 주간 시간표 보기 →</a>
   </div>
 
   <footer>
-    <div>서비스명: 클래스픽 (ClassPick) · 운영: 클래스픽 운영팀</div>
-    <div>지역: 부산 센텀·사직 · 운영 메일: class-pick@naver.com</div>
-    <div>정정·삭제 요청 1일 이내 처리 · <a href="/terms.html" style="color:var(--sub)">이용약관</a> · <a href="/privacy.html" style="color:var(--sub)">개인정보처리방침</a></div>
-    <div style="margin-top:8px">© 2026 클래스픽 운영팀 · 사업자등록 진행중</div>
+    © 2026 교육인학원. All rights reserved.<br>
+    본 사이트는 교육인학원의 자체 시간표 안내 페이지입니다.<br>
+    문의 · <a href="mailto:class-pick@naver.com" style="color:var(--sub)">class-pick@naver.com</a>
   </footer>
 </div>
 </body>

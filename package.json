@@ -1,0 +1,13 @@
+{
+  "name": "classpick",
+  "version": "0.7.1",
+  "private": true,
+  "type": "module",
+  "description": "ClassPick — 부산 센텀·사직 동네 학원 강좌 큐레이션 (Stage 1: backend scaffolding).",
+  "scripts": {
+    "dev": "echo \"Static site — open index.html or run 'vercel dev'\" && exit 0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.0"
+  }
+}

@@ -107,7 +107,7 @@ const SCHOOL_LIST = [
 const PREFIX_TAGS = {
   "(센텀)": { area: "센텀", coursePrefix: "센텀" },
   "(사직)": { area: "사직", coursePrefix: "사직" },
-  "(명작)": { area: "센텀", coursePrefix: "명작", academy: "명작학원" },
+  // v9 — 교육인학원 단독 사이트로 전환. 외부 학원 prefix 매핑 폐기.
   "(특강)": { area: null,   coursePrefix: "특강",  courseType: "방학특강" },
 };
 
