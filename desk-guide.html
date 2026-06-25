@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>데스크 응대 가이드 · 교육인학원 (내부용)</title>
+<meta name="description" content="교육인학원 데스크 직원용 표준 응대 매뉴얼. 학년·과목 매트릭스 기반 시나리오 스크립트 + FAQ." />
+<meta name="robots" content="noindex,nofollow" />
+<style>
+:root{
+  --bg:#fbfbfd;--fg:#1d1d1f;--muted:#86868b;--muted2:#6e6e73;
+  --hair:rgba(0,0,0,0.08);--hair-strong:rgba(0,0,0,0.16);
+  --accent:#0071e3;--shadow:0 4px 20px rgba(0,0,0,0.04);
+  --soft:#f5f5f7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+body{padding-bottom:80px}
+a{color:var(--fg);font-weight:500;text-decoration:none}
+a:hover{color:var(--accent);text-decoration:underline}
+
+header.bar{position:sticky;top:0;z-index:50;height:52px;background:rgba(251,251,253,0.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair)}
+.bar-in{max-width:1080px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:baseline;gap:8px}
+.logo a{color:var(--fg);text-decoration:none;font-size:17px;font-weight:600;letter-spacing:-0.02em}
+.logo .sub{font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+.nav-spacer{flex:1}
+.back-link{color:var(--fg);font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--hair-strong);transition:.15s}
+.back-link:hover{background:#f5f5f7}
+.internal-badge{font-size:10.5px;font-weight:700;color:#fff;background:#d94f4f;padding:3px 8px;border-radius:999px;letter-spacing:0.04em}
+
+main{max-width:1080px;margin:0 auto;padding:28px 22px 60px}
+
+.hero{padding:24px 0 8px}
+.hero .eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase}
+.hero h1{font-size:32px;font-weight:700;letter-spacing:-0.022em;margin:8px 0;line-height:1.2}
+.hero p{font-size:14px;color:var(--muted2);max-width:780px;line-height:1.7}
+.hero .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.hero .badges span{font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid var(--hair)}
+
+.toc{margin:24px 0;padding:14px 18px;background:#fff;border-radius:12px;border:1px solid var(--hair);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.toc .lbl{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+.toc a{font-size:13px;color:var(--fg);text-decoration:none;padding:4px 10px;border-radius:6px}
+.toc a:hover{background:var(--soft)}
+
+section.block{margin:36px 0 0}
+section.block h2{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+section.block .lead{font-size:13.5px;color:var(--muted2);margin-bottom:18px;line-height:1.65}
+
+/* === Cohort cards === */
+.cohort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.cohort-card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;min-height:160px}
+.cohort-card .head{display:flex;align-items:center;gap:10px}
+.cohort-card .grade{font-size:13px;font-weight:700;color:#fff;background:#1d1d1f;padding:4px 10px;border-radius:999px;letter-spacing:-0.01em}
+.cohort-card .subj{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;color:#fff}
+.cohort-card .cnt{font-size:11px;color:var(--muted);margin-left:auto}
+.cohort-card .teachers{font-size:12.5px;color:var(--muted2);line-height:1.5}
+.cohort-card .teachers b{color:var(--fg);font-weight:600}
+.cohort-card .types{display:flex;gap:5px;flex-wrap:wrap}
+.cohort-card .types span{font-size:10.5px;background:var(--soft);color:var(--muted2);padding:2px 8px;border-radius:999px;font-weight:500}
+.cohort-card .script{margin-top:auto;padding:10px 12px;background:#fff8e7;border-left:3px solid #f5b400;border-radius:6px;font-size:12.5px;color:#5a3d00;line-height:1.55}
+.cohort-card .script b{display:block;font-size:10.5px;font-weight:700;color:#8a6500;letter-spacing:0.04em;margin-bottom:4px;text-transform:uppercase}
+
+/* === Types color === */
+.subj-eng{background:#3a7ce0}
+.subj-math{background:#7b5cd9}
+.subj-kor{background:#d94f4f}
+.subj-soc{background:#2fa46c}
+
+/* === FAQ === */
+.faq{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px}
+.faq details{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:14px 18px}
+.faq summary{font-size:14.5px;font-weight:600;cursor:pointer;list-style:none;outline:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before{content:"Q. ";color:var(--accent);font-weight:700}
+.faq summary:after{content:"+";font-size:18px;color:var(--muted);transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq .ans{margin-top:12px;padding-top:12px;border-top:1px dashed var(--hair);font-size:13.5px;color:var(--muted2);line-height:1.7}
+.faq .ans b{color:var(--fg)}
+
+/* === Type guide === */
+.type-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.type-card{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:14px}
+.type-card .name{font-size:13.5px;font-weight:700;margin-bottom:4px}
+.type-card .desc{font-size:12px;color:var(--muted2);line-height:1.5}
+.type-card .ex{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic}
+
+/* === Process steps === */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+.step{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;position:relative}
+.step .n{position:absolute;top:-12px;left:14px;width:28px;height:28px;background:#1d1d1f;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step h4{font-size:14.5px;font-weight:700;margin-top:4px}
+.step p{font-size:12.5px;color:var(--muted2);line-height:1.6}
+
+/* === Loading === */
+.loading{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+.err{padding:20px;background:#fff;border:1px solid #f5d4d4;border-radius:10px;color:#a44;font-size:13px}
+
+/* === Mobile === */
+@media (max-width:720px){
+  .hero h1{font-size:24px}
+  .cohort-grid{grid-template-columns:1fr}
+}
+@media print{
+  header.bar,.toc,.back-link{display:none}
+  body{padding:0}
+  section.block{break-inside:avoid;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="logo">
+      <a href="index.html">교육인학원 시간표</a>
+      <span class="sub">DESK GUIDE</span>
+    </div>
+    <span class="internal-badge">내부용</span>
+    <div class="nav-spacer"></div>
+    <a href="index.html" class="back-link">← 사이트로 돌아가기</a>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="eyebrow">데스크 응대 표준 매뉴얼 · v1.0</div>
+  <h1>학부모 상담은 사이트 매트릭스 한 화면으로 끝납니다.</h1>
+  <p>이 페이지는 데스크 직원이 항상 띄워두고 학부모 응대 시 참고하는 표준 가이드입니다. 학년 × 과목 매트릭스의 20개 셀(+ 전 학년 공통 1개)에 1:1로 매칭된 응대 스크립트가 자동 생성되며, 모든 데이터는 사이트 시간표(<code>db/courses.json</code>)와 실시간 동기화됩니다.</p>
+  <div class="badges">
+    <span>자동 갱신 · 시트 동기화</span>
+    <span>비공개 · 검색엔진 미수집</span>
+    <span>인쇄 친화 (Ctrl+P)</span>
+  </div>
+</div>
+
+<div class="toc">
+  <span class="lbl">바로가기</span>
+  <a href="#process">상담 5단계</a>
+  <a href="#cohorts">학년·과목 셀별 스크립트</a>
+  <a href="#types">강좌 분류 8종</a>
+  <a href="#faq">FAQ</a>
+  <a href="#rules">데스크 운영 원칙</a>
+</div>
+
+<section class="block" id="process">
+  <h2>1. 학부모 상담 5단계 (표준 흐름)</h2>
+  <p class="lead">학부모 전화·방문 시 이 순서를 따르세요. 모든 정보는 사이트 매트릭스에서 확인 가능합니다.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="n">1</div>
+      <h4>학교 · 학년 확인</h4>
+      <p>"자녀분 어느 학교 몇 학년이세요?" — 학교명(부일고/해운대고/부산외고 등)과 학년을 먼저 확보합니다.</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h4>과목 · 목표 파악</h4>
+      <p>"어떤 과목 상담이세요? 학교 내신 대비인가요, 자사특목 시험 대비인가요?" — 분류 태그를 사전 결정.</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h4>표준 시간표 셀 확인</h4>
+      <p>사이트 → 표준 시간표 → 해당 <b>학년 × 과목</b> 셀을 클릭. 강좌 수·강사·요일·시간이 모두 표시됩니다.</p>
+    </div>
+    <div class="step">
+      <div class="n">4</div>
+      <h4>분류 태그로 좁히기</h4>
+      <p>모달 상단의 태그(자사특목·학교내신 등)를 누르면 학부모 니즈에 맞는 강좌만 추려집니다.</p>
+    </div>
+    <div class="step">
+      <div class="n">5</div>
+      <h4>상담 예약 또는 등록</h4>
+      <p>"이 강좌는 자사특목 학생용으로 정원이 있어 상담 후 등록 가능합니다." 후 일정 안내.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cohorts">
+  <h2>2. 학년 · 과목 셀별 응대 스크립트</h2>
+  <p class="lead">매트릭스의 각 셀에서 어떤 강좌가 있는지, 어떤 강사가 담당하는지, 어떻게 안내할지가 정리되어 있습니다. <b>강좌 데이터가 갱신되면 이 카드도 자동으로 갱신됩니다.</b></p>
+  <div id="cohort-root" class="loading">시간표 데이터를 불러오는 중…</div>
+</section>
+
+<section class="block" id="types">
+  <h2>3. 강좌 분류 태그 8종 — 학부모에게 어떻게 설명할까?</h2>
+  <p class="lead">분류 태그는 강좌의 목적·대상을 한눈에 보여줍니다. 학부모가 강좌 성격을 묻거든 아래 설명을 그대로 사용하세요.</p>
+  <div class="type-grid">
+    <div class="type-card"><div class="name">자사특목</div><div class="desc">자사고·특목고 학생 자체 시험·내신 대비. 학교별 정원제 운영.</div><div class="ex">예: 부일고1 영어 (자사특목)</div></div>
+    <div class="type-card"><div class="name">학교내신</div><div class="desc">해당 학교 정기고사 기간 집중 대비. 학교별 시험 일정에 맞춰 운영.</div><div class="ex">예: 해강고1 수학 (수요반)</div></div>
+    <div class="type-card"><div class="name">방학특강</div><div class="desc">여름·겨울 방학 기간 단기 집중. 예비고1·다음 학기 선행이 핵심.</div><div class="ex">예: PRE H 공통수학 심화</div></div>
+    <div class="type-card"><div class="name">수능대비</div><div class="desc">고3·재수생 대상 정시 1등급 목표. 실전 모의고사 중심.</div><div class="ex">예: 고3 수능실전대비반</div></div>
+    <div class="type-card"><div class="name">심화</div><div class="desc">최상위권 학생용. 고쟁이·바이블 등 심화 교재 사용.</div><div class="ex">예: 공통수학1 (심화) 공.심.쟁</div></div>
+    <div class="type-card"><div class="name">개별진도</div><div class="desc">학생별 맞춤 진도·교재. 정원 소수, 상담 후 결정.</div><div class="ex">예: 미적분1 개별진도 (이영환T)</div></div>
+    <div class="type-card"><div class="name">클리닉</div><div class="desc">취약 단원·시험 직전 1:1 또는 소수 정밀 보강.</div><div class="ex">예: 해운대고1 수학 클리닉 CORE</div></div>
+    <div class="type-card"><div class="name">문법·독해·단어</div><div class="desc">영어 영역별 정규 트랙. LEVEL 1~3 수준별 분반.</div><div class="ex">예: 중등 문법 LEVEL2 (화반)</div></div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <h2>4. 자주 묻는 질문 (FAQ) · 표준 답변</h2>
+  <p class="lead">학부모가 가장 자주 묻는 10가지 질문과 표준 답변입니다. 그대로 사용해도 무방합니다.</p>
+  <div class="faq">
+
+    <details>
+      <summary>우리 아이 학교가 OO인데 다닐 수 있나요?</summary>
+      <div class="ans">사이트 → 표준 시간표 → 해당 학년·과목 셀을 누르시면 학교별 내신반이 있는지 바로 보입니다. 부일고·해운대고·부산외고·예고·해강고·센텀여고·덕문여고·동여고·학산여고 등 주요 학교는 전담 내신반이 따로 운영됩니다. <b>학교가 보이지 않으면 자사특목·일반 트랙으로 안내</b>해 주세요.</div>
+    </details>
+
+    <details>
+      <summary>예비고1인데 지금 시작해도 되나요?</summary>
+      <div class="ans">"여름방학이 가장 좋은 출발 시점입니다. <b>PRE H 시리즈</b>가 예비고1 전용 트랙으로 공통수학 심화·고등통합문법·고등독해까지 한 번에 잡습니다." 라고 안내. 사이트 표준 시간표 → <b>예비고1 행</b>을 클릭하면 전체 PRE H 강좌가 펼쳐집니다.</div>
+    </details>
+
+    <details>
+      <summary>정원이 있나요? 빈자리 있나요?</summary>
+      <div class="ans">"강좌마다 정원이 다르고 자사특목·심화·개별진도 강좌는 상담 후 등록입니다. 확인 후 회신 드리겠습니다." <b>즉답하지 말고</b> 강사 또는 원장님 확인 후 안내. 정원 정보는 사이트에 표기되지 않습니다.</div>
+    </details>
+
+    <details>
+      <summary>강사 바꿀 수 있나요?</summary>
+      <div class="ans">동일 학년·과목에서 강사가 복수일 경우(예: 부일고1 영어 윤훈관T / 부산외고1 영어) 가능합니다. 단, 강사별 정원·시간이 다르니 <b>상담 예약 후 결정</b> 안내. 같은 강사의 다른 시간대는 비교적 유연하게 조정됩니다.</div>
+    </details>
+
+    <details>
+      <summary>센텀점이랑 사직점 차이가 뭐예요?</summary>
+      <div class="ans">"강사진은 양점 공용으로 운영되고, 학생이 다니기 편한 캠퍼스를 선택하시면 됩니다. <b>강좌가 같으면 강사도 동일</b>합니다(양점 공용 배지 표시)." 거리·교통편 기준으로 권유. 표준 시간표 상단 <b>캠퍼스 토글</b>로 점별 강좌를 따로 확인 가능합니다.</div>
+    </details>
+
+    <details>
+      <summary>수업료가 얼마예요?</summary>
+      <div class="ans">"강좌별로 다르고 정확한 안내는 원장님 상담 시 드립니다. 보통 주 1회 / 4시간 기준으로 책정됩니다." <b>전화로 즉답 금지</b>. 상담 일정 잡고 끝.</div>
+    </details>
+
+    <details>
+      <summary>레벨테스트 봐야 하나요?</summary>
+      <div class="ans">"자사특목·심화·개별진도 강좌는 레벨테스트 또는 사전 상담이 필수입니다. 학교내신 강좌는 학교만 맞으면 바로 등록 가능합니다." 강좌 분류 태그로 구분.</div>
+    </details>
+
+    <details>
+      <summary>중3인데 영어만 듣고 싶어요.</summary>
+      <div class="ans">사이트 → 표준 시간표 → <b>중3 × 영어</b> 셀 클릭. SUMMIT S/K, 문법 LEVEL1~3, 독해 LEVEL1~3, 수능형 사고력 12개월 완성, 보카트레이닝 등이 모두 보입니다. 학생 수준에 맞춰 분반 안내.</div>
+    </details>
+
+    <details>
+      <summary>주말반만 가능한데요?</summary>
+      <div class="ans">자사특목 강좌는 대부분 토·일 운영입니다(부산외고·해운대고·부일고 자사특목 트랙). 표준 시간표에서 셀 클릭 → 강좌 카드의 <b>요일 칩</b>으로 즉시 확인.</div>
+    </details>
+
+    <details>
+      <summary>한 번 견학 가능해요?</summary>
+      <div class="ans">"상담 일정을 먼저 잡으시고, 원장님 상담 후 시범 수업 참관 여부를 안내드립니다." 견학 약속은 절대 즉답하지 마세요. 상담 → 결정 → 시범 순.</div>
+    </details>
+
+  </div>
+</section>
+
+<section class="block" id="rules">
+  <h2>5. 데스크 운영 원칙 5가지</h2>
+  <p class="lead">"사람 머릿속 지식"이 아닌 "사이트 매트릭스"가 응대의 정답입니다. 다음 원칙을 지키세요.</p>
+  <div class="steps">
+    <div class="step"><div class="n">①</div><h4>먼저 사이트를 본다</h4><p>기억에 의존하지 말고 사이트 표준 시간표에서 학년·과목 셀을 클릭해 확인. 학부모와 같은 화면을 보고 안내.</p></div>
+    <div class="step"><div class="n">②</div><h4>가격·정원은 즉답 금지</h4><p>"확인 후 회신 드리겠습니다." 가격·정원은 원장님 결정 사항. 데스크가 약속하지 않습니다.</p></div>
+    <div class="step"><div class="n">③</div><h4>상담 예약으로 닫는다</h4><p>모든 통화의 종료점은 <b>상담 일정 잡기</b>. 정보 전달만 하고 끊으면 잠재 등록 손실.</p></div>
+    <div class="step"><div class="n">④</div><h4>학생 이름·연락처 외 수집 X</h4><p>학년·과목·학교·관심 강좌만 메모. 사진·집주소 등 민감정보는 등록 후 학원 시스템에서 별도 수집.</p></div>
+    <div class="step"><div class="n">⑤</div><h4>모르는 건 솔직히</h4><p>"제가 정확히 확인해서 다시 연락드리겠습니다." 추측 답변보다 훨씬 신뢰감을 줍니다. 학부모는 부정확한 답에 더 민감.</p></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+const SUBJECTS=["영어","수학","국어","사회"];
+const GRADES=["중3","예비고1","고1","고2","고3","전 학년"];
+const GRADE_LABEL={"중3":"중3","예비고1":"예비고1","고1":"고1","고2":"고2","고3":"고3","전 학년":"전 학년 공통"};
+const SUBJ_CSS={"영어":"subj-eng","수학":"subj-math","국어":"subj-kor","사회":"subj-soc"};
+const SUBJ_COLOR={"영어":"#3a7ce0","수학":"#7b5cd9","국어":"#d94f4f","사회":"#2fa46c"};
+
+function inferCohort(c){
+  const g=(c.grade||"").trim();
+  if(GRADES.includes(g)&&g!=="전 학년")return g;
+  const t=String(c.title||c.course||"");
+  const ct=(c.courseType||"").trim();
+  if(/PRE\s*H/i.test(t)||/PRE\s*BH/i.test(t)||/PRE\s*BSFH/i.test(t)||/PRE\s*HH/i.test(t)||t.includes("예비고1"))return "예비고1";
+  if(t.includes("정시파이터")||t.includes("수능실전"))return "고3";
+  if(/^SU\.MID/i.test(t)){
+    if(t.includes("중등"))return "중3";
+    if(t.includes("미적분")||t.includes("확통"))return "고2";
+    return "고1";
+  }
+  if(t.includes("공통수학")||t.includes("공1심쟁")||t.includes("공2심쟁")||t.includes("대수"))return "고1";
+  if(t.includes("미적분")||t.includes("확통"))return "고2";
+  if(t.includes("중등"))return "중3";
+  if(g==="중2"||g==="중1")return "중3";
+  if(ct==="클리닉"||ct==="개별진도")return "전 학년";
+  if(t.includes("자사특목고 정규"))return "예비고1";
+  if(t.includes("문법")||t.includes("독해")){
+    if(/LEVEL\s*[123]/i.test(t))return "중3";
+    return "고1";
+  }
+  if(/FREE\s*M\b/i.test(t)||/FREE\s*SU/i.test(t))return "예비고1";
+  if(ct==="단어"){
+    if(t.includes("중등"))return "중3";
+    return "고1";
+  }
+  return g||"전 학년";
+}
+
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+function buildScript(grade,subject,courses){
+  if(!courses.length)return null;
+  const types=[...new Set(courses.map(c=>c.courseType).filter(Boolean))];
+  const teachers=[...new Set(courses.map(c=>c.teacher).filter(Boolean))];
+  const schools=[...new Set(courses.map(c=>c.school).filter(s=>s&&s.length<10))];
+  const hasJasa=types.includes("자사특목");
+  const hasNaesin=types.includes("학교내신");
+  const hasVac=types.includes("방학특강");
+  // build a short script suggestion
+  let parts=[];
+  if(grade==="예비고1"){
+    parts.push(`"여름방학이 ${subject} 가장 중요한 시기예요. PRE H 시리즈가 예비고1 전용 트랙입니다."`);
+  }else if(grade==="고3"){
+    parts.push(`"고3 ${subject}는 정시 1등급 목표 실전반 운영 중입니다. 상담 후 등록이 원칙입니다."`);
+  }else if(grade==="중3"){
+    parts.push(`"중3 ${subject}는 수준별 분반(LEVEL/SUMMIT)으로 운영됩니다. 어느 정도 수준이신가요?"`);
+  }else if(hasJasa&&hasNaesin){
+    parts.push(`"${grade} ${subject}는 자사특목 트랙과 학교내신 트랙 두 가지로 나뉩니다. 어느 학교 자녀이신가요?"`);
+  }else if(hasJasa){
+    parts.push(`"${grade} ${subject}는 자사특목 학생용으로 운영됩니다. 정원이 있어 상담 후 등록 가능합니다."`);
+  }else if(hasNaesin){
+    parts.push(`"${grade} ${subject}는 학교별 내신반으로 운영됩니다. 자녀분 어느 학교세요?"`);
+  }else{
+    parts.push(`"${grade} ${subject}는 ${types.join("·")} 트랙이 있어요. 학생 수준이 어느 정도세요?"`);
+  }
+  if(hasVac&&grade!=="예비고1"){
+    parts.push(`이 셀에는 방학특강 강좌도 ${courses.filter(c=>c.courseType==="방학특강").length}개 운영됩니다.`);
+  }
+  return parts.join(" ");
+}
+
+function renderCohortCard(grade,subject,courses){
+  if(!courses.length)return "";
+  const types=[...new Set(courses.map(c=>c.courseType).filter(Boolean))];
+  const teachers=[...new Set(courses.map(c=>c.teacher).filter(Boolean))];
+  const script=buildScript(grade,subject,courses);
+  const subjCol=SUBJ_COLOR[subject]||"#888";
+  return `<div class="cohort-card">
+    <div class="head">
+      <span class="grade">${esc(GRADE_LABEL[grade]||grade)}</span>
+      <span class="subj ${SUBJ_CSS[subject]||""}">${esc(subject)}</span>
+      <span class="cnt">${courses.length}강좌</span>
+    </div>
+    <div class="teachers"><b>강사:</b> ${teachers.length?teachers.map(esc).join(" · "):'<span style="color:var(--muted)">팀 운영</span>'}</div>
+    <div class="types">${types.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+    ${script?`<div class="script"><b>응대 스크립트</b>${esc(script)}</div>`:""}
+  </div>`;
+}
+
+async function load(){
+  const root=document.getElementById("cohort-root");
+  try{
+    const r=await fetch("./db/courses.json",{cache:"no-store"});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const j=await r.json();
+    if(!j||!Array.isArray(j.courses))throw new Error("malformed");
+    const cs=j.courses;
+    // bucket
+    const buckets={};
+    GRADES.forEach(g=>{buckets[g]={};SUBJECTS.forEach(s=>{buckets[g][s]=[]})});
+    cs.forEach(c=>{
+      const g=inferCohort(c);
+      const s=(c.subject||"").trim();
+      if(GRADES.includes(g)&&SUBJECTS.includes(s))buckets[g][s].push(c);
+    });
+    // render in matrix order, skip empty
+    let html="";
+    GRADES.forEach(g=>{
+      SUBJECTS.forEach(s=>{
+        html+=renderCohortCard(g,s,buckets[g][s]);
+      });
+    });
+    if(!html)html='<div class="err">강좌 데이터가 비어 있습니다. 시트 동기화를 확인하세요.</div>';
+    // wrap in grid
+    root.classList.remove("loading");
+    root.innerHTML=`<div class="cohort-grid">${html}</div>`;
+    // sync stamp
+    const stamp=j.lastSyncedAt?new Date(j.lastSyncedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}):"수동";
+    const note=document.createElement("div");
+    note.style.cssText="margin-top:14px;font-size:11px;color:var(--muted);text-align:right";
+    note.innerHTML=`데이터 마지막 갱신: ${esc(stamp)} · 총 ${cs.length}강좌`;
+    root.parentNode.appendChild(note);
+  }catch(e){
+    root.innerHTML=`<div class="err">시간표를 불러올 수 없습니다. (${esc(e.message||e)})<br><br>오프라인 상태이거나 db/courses.json이 없습니다. 데스크에서 사이트 표준 시간표 페이지를 직접 참고하세요.</div>`;
+  }
+}
+load();
+})();
+</script>
+
+</body>
+</html>

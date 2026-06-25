@@ -236,6 +236,71 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 
 /* =========== Course Grid & Card =========== */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+/* === 표준 시간표 매트릭스 (view-standard) === */
+.std-intro{padding:28px 0 16px}
+.std-intro .eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase}
+.std-intro h2{font-size:30px;font-weight:700;letter-spacing:-0.022em;margin:8px 0 8px;line-height:1.2}
+.std-intro p{font-size:14.5px;color:var(--muted2);line-height:1.6;max-width:680px}
+.std-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 14px;padding:12px 14px;background:#fff;border-radius:12px;border:1px solid var(--hair)}
+.std-toolbar .lbl{font-size:12px;color:var(--muted);font-weight:600}
+.std-toolbar .tg{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:500;background:var(--soft-bg);color:var(--muted2);cursor:pointer;border:1px solid transparent;transition:all .15s}
+.std-toolbar .tg.on{background:#000;color:#fff;border-color:#000}
+.std-toolbar .tg:hover:not(.on){background:#f0f0f3;color:var(--fg)}
+.std-toolbar .desk-link{margin-left:auto;font-size:12px;color:var(--accent);text-decoration:none;font-weight:600}
+.std-toolbar .desk-link:hover{text-decoration:underline}
+.std-matrix{display:grid;grid-template-columns:90px repeat(4,1fr);gap:10px;margin-bottom:24px}
+.std-matrix .std-h{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--fg);padding:10px 0;background:var(--soft-bg);border-radius:8px}
+.std-matrix .std-corner{background:transparent}
+.std-matrix .std-grow{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--fg);padding:10px 0;background:#1d1d1f;color:#fff;border-radius:8px;text-align:center;letter-spacing:-0.01em}
+.std-matrix .std-cell{background:#fff;border-radius:10px;border:1px solid var(--hair);padding:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:all .15s;min-height:110px}
+.std-matrix .std-cell:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);border-color:var(--accent)}
+.std-matrix .std-cell.empty{background:#fafafc;cursor:default;border-style:dashed}
+.std-matrix .std-cell.empty:hover{box-shadow:none;transform:none;border-color:var(--hair)}
+.std-matrix .std-cell .cnt{font-size:22px;font-weight:700;letter-spacing:-0.02em;line-height:1}
+.std-matrix .std-cell .cnt small{font-size:11px;font-weight:500;color:var(--muted);margin-left:4px}
+.std-matrix .std-cell .ts{display:flex;flex-wrap:wrap;gap:4px}
+.std-matrix .std-cell .ts .t{font-size:10.5px;background:var(--soft-bg);color:var(--fg);padding:2px 7px;border-radius:999px;font-weight:500}
+.std-matrix .std-cell .ts .more{font-size:10.5px;color:var(--muted);padding:2px 0}
+.std-matrix .std-cell .cellbtn{margin-top:auto;font-size:11.5px;color:var(--accent);font-weight:600;display:flex;align-items:center;justify-content:space-between}
+.std-matrix .std-cell.subj-eng{box-shadow:inset 3px 0 0 #3a7ce0}
+.std-matrix .std-cell.subj-math{box-shadow:inset 3px 0 0 #7b5cd9}
+.std-matrix .std-cell.subj-kor{box-shadow:inset 3px 0 0 #d94f4f}
+.std-matrix .std-cell.subj-soc{box-shadow:inset 3px 0 0 #2fa46c}
+.std-matrix .std-cell.empty.subj-eng,.std-matrix .std-cell.empty.subj-math,.std-matrix .std-cell.empty.subj-kor,.std-matrix .std-cell.empty.subj-soc{box-shadow:none}
+.std-extra-row{margin-top:8px;padding:14px;background:#fff;border-radius:10px;border:1px solid var(--hair)}
+.std-extra-row h4{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--muted2)}
+.std-extra-row .extra-cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.std-extra-row .extra-cell{padding:12px;border-radius:8px;background:var(--soft-bg);cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:all .15s}
+.std-extra-row .extra-cell:hover{background:#ececf0}
+.std-extra-row .extra-cell strong{font-size:13px;font-weight:600}
+.std-extra-row .extra-cell small{font-size:11.5px;color:var(--muted)}
+.std-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto}
+.std-modal-bg.on{display:flex}
+.std-modal{background:#fff;border-radius:16px;max-width:980px;width:100%;padding:24px;box-shadow:var(--shadow-lg);position:relative;animation:slideUp .25s var(--ease);max-height:calc(100vh - 48px);overflow-y:auto}
+.std-modal .closer{position:absolute;top:12px;right:14px;background:transparent;border:0;font-size:22px;color:var(--muted);cursor:pointer;line-height:1;padding:6px;border-radius:6px}
+.std-modal .closer:hover{background:var(--soft-bg);color:var(--fg)}
+.std-modal-head{margin-bottom:16px;padding-right:36px}
+.std-modal-head .crumbs{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:500}
+.std-modal-head h3{font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+.std-modal-head .meta-line{font-size:13px;color:var(--muted2);display:flex;gap:14px;flex-wrap:wrap}
+.std-modal-tags{display:flex;gap:6px;margin:12px 0 16px;flex-wrap:wrap}
+.std-modal-tags .tg{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--soft-bg);color:var(--muted2);cursor:pointer;border:1px solid transparent;transition:all .15s}
+.std-modal-tags .tg.on{background:#000;color:#fff}
+.std-modal-tags .tg:hover:not(.on){background:#ececf0;color:var(--fg)}
+.std-modal-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.both-branch-badge{display:inline-block;font-size:10.5px;background:#fff3e0;color:#a05a00;border:1px solid #f4d4a4;padding:2px 7px;border-radius:999px;font-weight:600;margin-left:6px;vertical-align:middle}
+@media (max-width:900px){
+  .std-matrix{grid-template-columns:80px repeat(2,1fr)}
+  .std-matrix .std-cell{min-height:90px}
+}
+@media (max-width:560px){
+  .std-matrix{grid-template-columns:1fr;gap:8px}
+  .std-matrix .std-h,.std-matrix .std-corner{display:none}
+  .std-matrix .std-grow{margin-top:12px;background:#1d1d1f;color:#fff}
+  .std-matrix .std-cell:before{content:attr(data-subject) " · ";font-size:11px;font-weight:600;color:var(--muted)}
+  .std-modal{padding:16px}
+  .std-modal-head h3{font-size:20px}
+}
 .course{background:#fff;border-radius:var(--radius-md);padding:18px 18px 16px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:11px;position:relative;transition:all .2s var(--ease);border:1px solid transparent}
 .course:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--hair)}
 .course .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -852,6 +917,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
     <div class="nav-logo" onclick="goHome()">교육인<span>학원</span> <small style="font-size:11px;color:var(--muted);font-weight:400;margin-left:6px">시간표</small></div>
     <div class="nav-spacer"></div>
     <div class="nav-menu" id="nav-menu">
+      <button class="nav-link" onclick="enterApp('standard')">표준 시간표</button>
       <button class="nav-link" onclick="enterApp('browse')">주간 시간표</button>
       <button class="nav-link" onclick="enterApp('byteach')">강사진</button>
       <button class="nav-link" onclick="enterApp('category')">학년·과목</button>
@@ -864,6 +930,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
     </button>
   </div>
   <div class="nav-mobile-menu" id="nav-mobile">
+    <button class="nav-link" onclick="enterApp('standard');toggleMobileMenu()">표준 시간표</button>
     <button class="nav-link" onclick="enterApp('browse');toggleMobileMenu()">주간 시간표</button>
     <button class="nav-link" onclick="enterApp('byteach');toggleMobileMenu()">강사진</button>
     <button class="nav-link" onclick="enterApp('category');toggleMobileMenu()">학년·과목</button>
@@ -1054,6 +1121,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 <div id="app" class="app hidden">
   <div class="container">
     <div class="view-switch" id="view-switch">
+      <button data-mode="standard" onclick="switchMode('standard')">📋 표준 시간표</button>
       <button data-mode="browse" onclick="switchMode('browse')">🏠 둘러보기</button>
       <button data-mode="category" onclick="switchMode('category')">📁 카테고리</button>
       <button data-mode="byacad" onclick="switchMode('byacad')">🏫 학원 소개</button>
@@ -1064,7 +1132,8 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       <button data-mode="mypage" onclick="switchMode('mypage')" id="btn-mypage" style="display:none">👤 마이</button>
     </div>
 
-    <div id="view-browse" class="view"></div>
+    <div id="view-standard" class="view"></div>
+    <div id="view-browse" class="view hidden"></div>
     <div id="view-category" class="view hidden"></div>
     <div id="view-byacad" class="view hidden"></div>
     <div id="view-byteach" class="view hidden"></div>
@@ -1087,6 +1156,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       <a href="ad-kit.html">사이트 안내</a>
       <button onclick="showNoticeAgain()">공지 다시 보기</button>
       <a href="mailto:class-pick@naver.com">문의·정정요청</a>
+      <a href="desk-guide.html" style="opacity:0.6;font-size:11px" target="_blank" rel="noopener">데스크 응대 가이드 (내부)</a>
     </div>
     <div class="footer-op">
       <div class="footer-op-title">서비스 운영 정보 <span class="footer-op-tag">정보통신망법 25조</span></div>
@@ -1669,7 +1739,7 @@ let courses=[];
 let myIds=[];
 let pickedDays=[];
 let pickedMonths=[];
-let mode="browse";
+let mode="standard";
 let currentMonth=(new Date().getMonth()+1)||5;
 let currentSemester="all";
 let browseArea="";
@@ -2474,6 +2544,7 @@ function toggleAdd(id){
   trackView(id);
   if(myIds.includes(id)){myIds=myIds.filter(x=>x!==id)}
   else{myIds.push(id)}
+  if(mode==="standard")renderStandard();
   if(mode==="browse")renderBrowse();
   if(mode==="search")renderSearch();
   if(mode==="category")renderCategory();
@@ -2482,6 +2553,253 @@ function toggleAdd(id){
   if(mode==="bymonth")renderByMonth();
   if(mode==="mypage")renderMyPage();
   updateDrawerCount();
+}
+</script>
+<script>
+/* ===== 7.5) 표준 시간표 매트릭스 (view-standard) =====
+   교육인학원 데스크 응대 표준화의 1차 산출물.
+   학년(5) × 과목(4) = 20셀 + "전 학년 공통" 보조 행.
+   - inferCohort(c): grade/courseType/title 기반 학년 추정 (213/213 mapping)
+   - 양점 공용 강사·중복 강좌 통합 표시
+   - 셀 클릭 → 모달에서 분류 태그(자사특목/학교내신/방학특강/...) 필터링 가능 */
+const STD_GRADES=["중3","예비고1","고1","고2","고3"];
+const STD_GRADE_LABEL={"중3":"중3","예비고1":"예비고1","고1":"고1","고2":"고2","고3":"고3","전 학년":"전 학년 공통"};
+const STD_SUBJECTS=["영어","수학","국어","사회"];
+const STD_SUBJ_CSS={"영어":"subj-eng","수학":"subj-math","국어":"subj-kor","사회":"subj-soc"};
+const STD_TYPE_PRIORITY=["자사특목","학교내신","방학특강","수능대비","심화","개별진도","클리닉","문법","독해","단어","일반"];
+
+function inferCohort(c){
+  const g=(c.grade||"").trim();
+  if(STD_GRADES.includes(g))return g;
+  const t=String(c.title||c.course||"");
+  const ct=(c.courseType||"").trim();
+  // PRE H (예비고1) — 모든 변종 흡수
+  if(/PRE\s*H/i.test(t)||/PRE\s*BH/i.test(t)||/PRE\s*BSFH/i.test(t)||/PRE\s*HH/i.test(t)||t.includes("예비고1"))return "예비고1";
+  if(t.includes("정시파이터")||t.includes("수능실전"))return "고3";
+  if(/^SU\.MID/i.test(t)){
+    if(t.includes("중등"))return "중3";
+    if(t.includes("미적분")||t.includes("확통"))return "고2";
+    return "고1";
+  }
+  if(t.includes("공통수학")||t.includes("공1심쟁")||t.includes("공2심쟁")||t.includes("대수"))return "고1";
+  if(t.includes("미적분")||t.includes("확통"))return "고2";
+  if(t.includes("중등"))return "중3";
+  if(g==="중2"||g==="중1")return "중3";
+  if(ct==="클리닉"||ct==="개별진도")return "전 학년";
+  if(t.includes("자사특목고 정규"))return "예비고1";
+  if(t.includes("문법")||t.includes("독해")){
+    if(/LEVEL\s*[123]/i.test(t))return "중3";
+    return "고1";
+  }
+  if(/FREE\s*M\b/i.test(t)||/FREE\s*SU/i.test(t))return "예비고1";
+  if(ct==="단어"){
+    if(t.includes("중등"))return "중3";
+    return "고1";
+  }
+  return g||"전 학년";
+}
+
+/* 같은 강좌가 센텀·사직 양점에 동시 운영되면 셀에서 1건으로 통합 표시.
+   group key = course title + grade + subject + teacher */
+function stdCourseKey(c){
+  return [(c.title||c.course||"").trim(),inferCohort(c),c.subject||"",c.teacher||""].join("|");
+}
+function stdGroupCourses(list){
+  const map=new Map();
+  list.forEach(c=>{
+    const k=stdCourseKey(c);
+    if(!map.has(k))map.set(k,{rep:c,areas:new Set(),items:[]});
+    const g=map.get(k);
+    if(c.area)g.areas.add(c.area);
+    g.items.push(c);
+  });
+  return Array.from(map.values()).map(g=>{
+    const rep=Object.assign({},g.rep);
+    rep._areas=Array.from(g.areas);
+    rep._items=g.items;
+    rep._bothBranches=g.areas.size>=2;
+    return rep;
+  });
+}
+
+let stdMatrixCache=null;
+function buildStdMatrix(){
+  const cells={};
+  const allGrades=[...STD_GRADES,"전 학년"];
+  allGrades.forEach(g=>{cells[g]={};STD_SUBJECTS.forEach(s=>{cells[g][s]=[]})});
+  const area=browseArea;
+  (courses||[]).filter(c=>!area||c.area===area).forEach(c=>{
+    const g=inferCohort(c);
+    const s=(c.subject||"").trim();
+    if(allGrades.includes(g)&&STD_SUBJECTS.includes(s))cells[g][s].push(c);
+  });
+  // group duplicates (양점 공용)
+  allGrades.forEach(g=>STD_SUBJECTS.forEach(s=>{cells[g][s]=stdGroupCourses(cells[g][s])}));
+  stdMatrixCache=cells;
+  return cells;
+}
+
+function teacherChips(items,max){
+  const set=[];
+  for(const c of items){
+    const t=displayTeacherName?displayTeacherName(c):(c.teacher||"");
+    if(t&&!set.includes(t))set.push(t);
+    if(set.length>=max)break;
+  }
+  return set;
+}
+
+function renderStandard(){
+  const root=$("#view-standard");
+  const M=buildStdMatrix();
+  const totalByGrade={};
+  const allG=[...STD_GRADES,"전 학년"];
+  allG.forEach(g=>{totalByGrade[g]=STD_SUBJECTS.reduce((s,sub)=>s+M[g][sub].length,0)});
+  const totalAll=allG.reduce((s,g)=>s+totalByGrade[g],0);
+
+  // grid: header row + 5 grade rows
+  const headerRow=[`<div class="std-h std-corner"></div>`,
+    ...STD_SUBJECTS.map(s=>`<div class="std-h" style="color:${subjColor(s)}">${esc(s)}</div>`)].join("");
+  const matrixRows=STD_GRADES.map(g=>{
+    const head=`<div class="std-grow">${esc(STD_GRADE_LABEL[g])}<br><small style="font-weight:400;font-size:10.5px;opacity:0.7">${totalByGrade[g]}강좌</small></div>`;
+    const cells=STD_SUBJECTS.map(s=>{
+      const items=M[g][s];
+      const cssClass=STD_SUBJ_CSS[s]||"";
+      if(!items.length){
+        return `<div class="std-cell empty ${cssClass}" data-subject="${esc(s)}"><div style="font-size:12px;color:var(--muted)">강좌 없음</div></div>`;
+      }
+      const tnames=teacherChips(items,3);
+      const more=items.length>3?`<span class="more">외 ${items.length-3}건</span>`:"";
+      return `<div class="std-cell ${cssClass}" data-subject="${esc(s)}" onclick="openStdCell('${esc(g)}','${esc(s)}')">
+        <div class="cnt">${items.length}<small>강좌</small></div>
+        <div class="ts">${tnames.map(t=>`<span class="t">${esc(t)}</span>`).join("")}${more}</div>
+        <div class="cellbtn"><span>보기</span><span>→</span></div>
+      </div>`;
+    }).join("");
+    return head+cells;
+  }).join("");
+
+  // Extra row: 전 학년 공통 (있을 때만)
+  let extraHtml="";
+  const extraCount=totalByGrade["전 학년"]||0;
+  if(extraCount>0){
+    const extraCells=STD_SUBJECTS.flatMap(s=>{
+      const items=M["전 학년"][s];
+      if(!items.length)return [];
+      const tnames=teacherChips(items,4);
+      return [`<div class="extra-cell" onclick="openStdCell('전 학년','${esc(s)}')">
+        <div><strong style="color:${subjColor(s)}">${esc(s)}</strong> · ${items.length}강좌</div>
+        <small>${tnames.map(esc).join(" · ")}${items.length>4?" 외":""}</small>
+      </div>`];
+    }).join("");
+    extraHtml=`<div class="std-extra-row">
+      <h4>전 학년 공통 (클리닉·개별진도 등) · ${extraCount}강좌</h4>
+      <div class="extra-cells">${extraCells}</div>
+    </div>`;
+  }
+
+  root.innerHTML=`
+    <div class="std-intro">
+      <div class="eyebrow">교육인학원 표준 시간표</div>
+      <h2>학년과 과목을 선택하면 강좌·강사·시간이 펼쳐집니다.</h2>
+      <p>데스크 직원도 학부모도 한 화면에서 우리 학원이 어느 학년·어느 과목을 운영하는지 즉시 파악할 수 있습니다. 총 ${totalAll}개 강좌가 학년 5축 × 과목 4축 매트릭스로 정리되어 있고, 분류 태그로 자사특목·학교내신·방학특강 등 8가지 강좌 유형이 표시됩니다.</p>
+    </div>
+    <div class="std-toolbar">
+      <span class="lbl">캠퍼스</span>
+      <button class="tg ${!browseArea?"on":""}" onclick="setStdArea('')">전체</button>
+      <button class="tg ${browseArea==="센텀"?"on":""}" onclick="setStdArea('센텀')">센텀</button>
+      <button class="tg ${browseArea==="사직"?"on":""}" onclick="setStdArea('사직')">사직</button>
+      <a class="desk-link" href="desk-guide.html" target="_blank">데스크 응대 가이드 →</a>
+    </div>
+    <div class="std-matrix">
+      ${headerRow}
+      ${matrixRows}
+    </div>
+    ${extraHtml}
+    <div class="std-modal-bg" id="std-modal-bg" onclick="if(event.target.id==='std-modal-bg')closeStdCell()">
+      <div class="std-modal" id="std-modal">
+        <button class="closer" onclick="closeStdCell()" aria-label="닫기">✕</button>
+        <div id="std-modal-inner"></div>
+      </div>
+    </div>`;
+}
+
+function setStdArea(a){
+  browseArea=a;
+  renderStandard();
+}
+
+let stdCellFilter={grade:"",subject:"",type:""};
+function openStdCell(grade,subject){
+  stdCellFilter={grade,subject,type:""};
+  const area=browseArea;
+  const list=(courses||[]).filter(c=>(!area||c.area===area)&&inferCohort(c)===grade&&c.subject===subject);
+  const groups=stdGroupCourses(list);
+  renderStdCellInner(grade,subject,groups);
+  const bg=document.getElementById("std-modal-bg");
+  if(bg)bg.classList.add("on");
+  document.body.style.overflow="hidden";
+}
+function closeStdCell(){
+  const bg=document.getElementById("std-modal-bg");
+  if(bg)bg.classList.remove("on");
+  document.body.style.overflow="";
+}
+function setStdTypeFilter(t){
+  stdCellFilter.type=stdCellFilter.type===t?"":t;
+  const area=browseArea;
+  const {grade,subject}=stdCellFilter;
+  const list=(courses||[]).filter(c=>(!area||c.area===area)&&inferCohort(c)===grade&&c.subject===subject);
+  const groups=stdGroupCourses(list);
+  renderStdCellInner(grade,subject,groups);
+}
+function renderStdCellInner(grade,subject,groups){
+  const inner=document.getElementById("std-modal-inner");
+  if(!inner)return;
+  // collect types in this cell, ordered by priority
+  const typeSet=new Set();
+  groups.forEach(g=>{if(g.courseType)typeSet.add(g.courseType)});
+  const types=STD_TYPE_PRIORITY.filter(t=>typeSet.has(t));
+  // apply filter
+  let shown=groups;
+  if(stdCellFilter.type){
+    shown=groups.filter(g=>g.courseType===stdCellFilter.type);
+  }
+  // sort: 자사특목 > 학교내신 > 방학특강 > 수능대비 > 심화 > 기타
+  shown.sort((a,b)=>{
+    const ia=STD_TYPE_PRIORITY.indexOf(a.courseType||"일반");
+    const ib=STD_TYPE_PRIORITY.indexOf(b.courseType||"일반");
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  });
+  // render — inject inferred cohort into grade field if empty
+  const cards=shown.map(c=>{
+    let cc=c;
+    if(!c.grade||!STD_GRADES.includes(c.grade)){
+      cc=Object.assign({},c,{grade:inferCohort(c)});
+    }
+    const baseHtml=courseCard(cc);
+    if(c._bothBranches){
+      return baseHtml.replace(/<h3>([\s\S]*?)<\/h3>/,(m,inner)=>`<h3>${inner}<span class="both-branch-badge">양점 공용</span></h3>`);
+    }
+    return baseHtml;
+  }).join("");
+  inner.innerHTML=`
+    <div class="std-modal-head">
+      <div class="crumbs">표준 시간표 → ${esc(STD_GRADE_LABEL[grade]||grade)} · ${esc(subject)}</div>
+      <h3 style="color:${subjColor(subject)}">${esc(STD_GRADE_LABEL[grade]||grade)} ${esc(subject)}</h3>
+      <div class="meta-line">
+        <span>총 ${groups.length}강좌</span>
+        ${browseArea?`<span>· ${esc(browseArea)}점 한정</span>`:`<span>· 센텀·사직 양점</span>`}
+        ${types.length?`<span>· 분류 ${types.length}종</span>`:""}
+      </div>
+    </div>
+    ${types.length>1?`<div class="std-modal-tags">
+      <button class="tg ${!stdCellFilter.type?"on":""}" onclick="setStdTypeFilter('')">전체</button>
+      ${types.map(t=>`<button class="tg ${stdCellFilter.type===t?"on":""}" onclick="setStdTypeFilter('${esc(t)}')">${esc(t)} · ${groups.filter(g=>g.courseType===t).length}</button>`).join("")}
+    </div>`:""}
+    <div class="std-modal-body">
+      ${shown.length?cards:'<div class="empty-soft" style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">해당 분류 강좌가 없습니다.</div>'}
+    </div>`;
 }
 </script>
 <script>
@@ -3779,7 +4097,7 @@ function enterApp(targetMode){
   $("#landing").classList.add("hidden");
   $("#app").classList.remove("hidden");
   $("#footer").style.display="";
-  switchMode(targetMode||"browse");
+  switchMode(targetMode||"standard");
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function goHome(){
@@ -3801,7 +4119,8 @@ function switchMode(m){
   $$(".view").forEach(v=>v.classList.add("hidden"));
   const target=$("#view-"+m);
   if(target)target.classList.remove("hidden");
-  if(m==="browse")renderBrowse();
+  if(m==="standard")renderStandard();
+  else if(m==="browse")renderBrowse();
   else if(m==="category")renderCategory();
   else if(m==="byacad")renderByAcad();
   else if(m==="byteach")renderByTeach();
