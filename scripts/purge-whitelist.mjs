@@ -17,7 +17,7 @@ const SEED_PATH = resolve(__dirname, "..", "db/seed.sql");
 const TEACHER_WHITELIST = new Set([
   "윤훈관", "정준호", "이영환", "김형석",
   "차동우", "권정은", "강필",   "김규생",
-  "박승혜",
+  "박승혜", "김영온",
 ]);
 const ACADEMY_WHITELIST = new Set([
   "교육인학원 센텀점",

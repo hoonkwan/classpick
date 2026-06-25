@@ -67,6 +67,7 @@
     "강필",
     "권정은",
     "김규생",
+    "김영온",
     "김형석",
     "박승혜",
     "윤훈관",
@@ -4897,6 +4898,441 @@
       "sourceTab": "영어강사별 시간표",
       "sourceTabAll": [
         "영어강사별 시간표"
+      ]
+    },
+    {
+      "id": "auto-196",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "해운대고1 정규",
+      "schedule": "토 14:00 - 17:00",
+      "days": [
+        "토"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "17:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실",
+        "국어강사별 시간표"
+      ]
+    },
+    {
+      "id": "auto-197",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "센텀여고1",
+      "schedule": "토 17:00 - 20:00",
+      "days": [
+        "토"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "센텀여고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실"
+      ]
+    },
+    {
+      "id": "auto-198",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "부산외고1 정규",
+      "schedule": "일 17:00 - 20:00",
+      "days": [
+        "일"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "부산외고",
+      "grade": "고1",
+      "courseType": "자사특목",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실",
+        "국어강사별 시간표"
+      ]
+    },
+    {
+      "id": "auto-199",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "해운대고1 정규",
+      "schedule": "수 18:30 - 21:00",
+      "days": [
+        "수"
+      ],
+      "timeStart": "18:30",
+      "timeEnd": "21:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실"
+      ]
+    },
+    {
+      "id": "auto-200",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "해운대고1",
+      "schedule": "수 14-23",
+      "days": [
+        "수"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "23:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실"
+      ]
+    },
+    {
+      "id": "auto-201",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "센텀여고1",
+      "schedule": "월 17-20",
+      "days": [
+        "월"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "센텀여고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실"
+      ]
+    },
+    {
+      "id": "auto-202",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "해운대고1",
+      "schedule": "월 14-19",
+      "days": [
+        "월"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "19:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "regular-may",
+      "sourceTab": "(센텀) 5월 전체강의실",
+      "sourceTabAll": [
+        "(센텀) 5월 전체강의실"
+      ]
+    },
+    {
+      "id": "auto-203",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "PRE H - 자사특목대비",
+      "schedule": "화 10:00 - 13:00",
+      "days": [
+        "화"
+      ],
+      "timeStart": "10:00",
+      "timeEnd": "13:00",
+      "teacher": "김영온",
+      "school": "",
+      "grade": "",
+      "courseType": "자사특목",
+      "term": "summer-2026",
+      "sourceTab": "(센텀) 여름방학시간표",
+      "sourceTabAll": [
+        "(센텀) 여름방학시간표",
+        "국어강사별 시간표"
+      ]
+    },
+    {
+      "id": "auto-204",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "자사특목고 정규",
+      "schedule": "토 14:00 - 17:00",
+      "days": [
+        "토"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "17:00",
+      "teacher": "김영온",
+      "school": "",
+      "grade": "",
+      "courseType": "자사특목",
+      "term": "summer-2026",
+      "sourceTab": "(센텀) 여름방학시간표",
+      "sourceTabAll": [
+        "(센텀) 여름방학시간표"
+      ]
+    },
+    {
+      "id": "auto-205",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "고등통합문법",
+      "schedule": "수 14:00 - 17:00",
+      "days": [
+        "수"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "17:00",
+      "teacher": "김영온",
+      "school": "",
+      "grade": "",
+      "courseType": "문법",
+      "term": "summer-2026",
+      "sourceTab": "(센텀) 여름방학시간표",
+      "sourceTabAll": [
+        "(센텀) 여름방학시간표"
+      ]
+    },
+    {
+      "id": "auto-207",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "해운대고1 정규",
+      "schedule": "토 14:00 - 17:00",
+      "days": [
+        "토"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "17:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-208",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "센텀여고1",
+      "schedule": "토 17:00 - 20:00",
+      "days": [
+        "토"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "센텀여고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-209",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "부산외고1 정규",
+      "schedule": "일 17:00 - 20:00",
+      "days": [
+        "일"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "부산외고",
+      "grade": "고1",
+      "courseType": "자사특목",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-210",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "해운대고1 정규",
+      "schedule": "수 18:30 - 21:00",
+      "days": [
+        "수"
+      ],
+      "timeStart": "18:30",
+      "timeEnd": "21:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-211",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "해운대고1",
+      "schedule": "수 14-23",
+      "days": [
+        "수"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "23:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-212",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "센텀여고1",
+      "schedule": "월 17-20",
+      "days": [
+        "월"
+      ],
+      "timeStart": "17:00",
+      "timeEnd": "20:00",
+      "teacher": "김영온",
+      "school": "센텀여고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-213",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 사직점",
+      "academyTag": "사직",
+      "area": "사직",
+      "subject": "국어",
+      "title": "해운대고1",
+      "schedule": "월 14-19",
+      "days": [
+        "월"
+      ],
+      "timeStart": "14:00",
+      "timeEnd": "19:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "summer-2026",
+      "sourceTab": "(사직) 여름방학 시간표",
+      "sourceTabAll": [
+        "(사직) 여름방학 시간표"
+      ]
+    },
+    {
+      "id": "auto-214",
+      "syncedAt": "2026-06-25T02:04:34.546Z",
+      "academy": "교육인학원 센텀점",
+      "academyTag": "센텀",
+      "area": "센텀",
+      "subject": "국어",
+      "title": "해운대고1 정규",
+      "schedule": "수 18:00 - 21:00",
+      "days": [
+        "수"
+      ],
+      "timeStart": "18:00",
+      "timeEnd": "21:00",
+      "teacher": "김영온",
+      "school": "해운대고",
+      "grade": "고1",
+      "courseType": "학교내신",
+      "term": "",
+      "sourceTab": "국어강사별 시간표",
+      "sourceTabAll": [
+        "국어강사별 시간표"
       ]
     }
   ]

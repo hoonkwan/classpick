@@ -31,7 +31,7 @@ const SHEET_ID = "157tm9BGGbVzkOGTJN1QysDlkqVyGBhcUTOtXvylVBHs";
 const TEACHER_WHITELIST = new Set([
   "윤훈관", "정준호", "이영환", "김형석",
   "차동우", "권정은", "강필",   "김규생",
-  "박승혜",
+  "박승혜", "김영온",
 ]);
 const ACADEMY_WHITELIST = new Set([
   "교육인학원 센텀점",
@@ -39,6 +39,9 @@ const ACADEMY_WHITELIST = new Set([
 ]);
 // 양점 공용 특강 강사 — 센텀/사직 두 캠퍼스에 모두 노출되도록 자동 복제
 const BOTH_BRANCH_TEACHERS = new Set(["박승혜"]);
+// 강사명 자동 rename — 시트가 구 강사명을 유지해도 sync 결과는 신 강사명으로 통일
+// (김지수 강사 강좌 전량을 김영온 강사 명의로 이관)
+const TEACHER_RENAME = { "김지수": "김영온" };
 
 /**
  * 8 tabs. If the actual sheet uses slightly different names, edit here.
@@ -383,7 +386,9 @@ function dedupe(courses) {
       for (const cell of cells) {
         const c = parseCell(cell.raw, tab);
         if (!c) continue;
-        // v9 화이트리스트 게이트 — 8인 강사·교육인학원 외 강좌는 폐기
+        // 강사명 rename (구 → 신) — 화이트리스트 체크 이전에 적용
+        if (TEACHER_RENAME[c.teacher]) c.teacher = TEACHER_RENAME[c.teacher];
+        // 화이트리스트 게이트 — 라인업 외 강사·교육인학원 외 강좌는 폐기
         if (!TEACHER_WHITELIST.has(c.teacher) || !ACADEMY_WHITELIST.has(c.academy)) {
           droppedWhitelist++;
           continue;
