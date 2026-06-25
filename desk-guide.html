@@ -272,40 +272,55 @@ section.block .lead{font-size:13.5px;color:var(--muted2);margin-bottom:18px;line
 <script>
 (function(){
 const SUBJECTS=["영어","수학","국어","사회"];
-const GRADES=["중3","예비고1","고1","고2","고3","전 학년"];
-const GRADE_LABEL={"중3":"중3","예비고1":"예비고1","고1":"고1","고2":"고2","고3":"고3","전 학년":"전 학년 공통"};
+const GRADES=["초5·6","중1","중2","중3","예비고1","고1","고2","고3","전 학년"];
+const GRADE_LABEL={"초5·6":"초5·6","중1":"중1","중2":"중2","중3":"중3","예비고1":"예비고1","고1":"고1","고2":"고2","고3":"고3","전 학년":"전 학년 공통"};
 const SUBJ_CSS={"영어":"subj-eng","수학":"subj-math","국어":"subj-kor","사회":"subj-soc"};
 const SUBJ_COLOR={"영어":"#3a7ce0","수학":"#7b5cd9","국어":"#d94f4f","사회":"#2fa46c"};
 
-function inferCohort(c){
+/* index.html의 inferCohorts와 1:1 동일 — 사이트와 응대 가이드가 같은 매트릭스를 본다 */
+function inferCohorts(c){
   const g=(c.grade||"").trim();
-  if(GRADES.includes(g)&&g!=="전 학년")return g;
+  if(GRADES.includes(g)&&g!=="전 학년")return [g];
   const t=String(c.title||c.course||"");
   const ct=(c.courseType||"").trim();
-  if(/PRE\s*H/i.test(t)||/PRE\s*BH/i.test(t)||/PRE\s*BSFH/i.test(t)||/PRE\s*HH/i.test(t)||t.includes("예비고1"))return "예비고1";
-  if(t.includes("정시파이터")||t.includes("수능실전"))return "고3";
-  if(/^SU\.MID/i.test(t)){
-    if(t.includes("중등"))return "중3";
-    if(t.includes("미적분")||t.includes("확통"))return "고2";
-    return "고1";
+  if(/FREE\s*M\b/i.test(t))return ["초5·6","중1"];
+  if(/FREE\s*SU\.?MID/i.test(t))return ["중1","중2","중3"];
+  const mMatch=t.match(/(?:^|\s)M\s*([123])(?:\s|$|문법|독해|단어|어휘)/);
+  if(mMatch)return ["중"+mMatch[1]];
+  const suMatch=t.match(/SU\.?MID\s*([123])/i);
+  if(suMatch)return ["중"+suMatch[1]];
+  if(/^SU\.?MID/i.test(t)){
+    if(t.includes("중등"))return ["중1","중2","중3"];
+    if(t.includes("미적분")||t.includes("확통"))return ["고2"];
+    return ["중1","중2","중3"];
   }
-  if(t.includes("공통수학")||t.includes("공1심쟁")||t.includes("공2심쟁")||t.includes("대수"))return "고1";
-  if(t.includes("미적분")||t.includes("확통"))return "고2";
-  if(t.includes("중등"))return "중3";
-  if(g==="중2"||g==="중1")return "중3";
-  if(ct==="클리닉"||ct==="개별진도")return "전 학년";
-  if(t.includes("자사특목고 정규"))return "예비고1";
+  if(/PRE\s*H/i.test(t)||/PRE\s*BH/i.test(t)||/PRE\s*BSFH/i.test(t)||/PRE\s*HH/i.test(t)||t.includes("예비고1"))return ["예비고1"];
+  if(t.includes("정시파이터")||t.includes("수능실전"))return ["고3"];
+  const schG=t.match(/[가-힣]+(중|고)([1-3])/);
+  if(schG){
+    const tag=schG[1]+schG[2];
+    if(GRADES.includes(tag))return [tag];
+  }
+  if(t.includes("공통수학")||t.includes("공1심쟁")||t.includes("공2심쟁")||t.includes("대수"))return ["고1"];
+  if(t.includes("미적분")||t.includes("확통"))return ["고2"];
+  if(t.includes("중등"))return ["중1","중2","중3"];
+  if(g==="중2")return ["중2"];
+  if(g==="중1")return ["중1"];
+  if(ct==="클리닉"||ct==="개별진도")return ["전 학년"];
+  if(t.includes("자사특목고 정규"))return ["예비고1"];
   if(t.includes("문법")||t.includes("독해")){
-    if(/LEVEL\s*[123]/i.test(t))return "중3";
-    return "고1";
+    if(/LEVEL\s*1/i.test(t))return ["중1"];
+    if(/LEVEL\s*2/i.test(t))return ["중2"];
+    if(/LEVEL\s*3/i.test(t))return ["중3"];
+    return ["고1"];
   }
-  if(/FREE\s*M\b/i.test(t)||/FREE\s*SU/i.test(t))return "예비고1";
   if(ct==="단어"){
-    if(t.includes("중등"))return "중3";
-    return "고1";
+    if(t.includes("중등"))return ["중1","중2","중3"];
+    return ["고1"];
   }
-  return g||"전 학년";
+  return g?[g]:["전 학년"];
 }
+function inferCohort(c){return inferCohorts(c)[0]||"전 학년";}
 
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 
@@ -323,8 +338,12 @@ function buildScript(grade,subject,courses){
     parts.push(`"여름방학이 ${subject} 가장 중요한 시기예요. PRE H 시리즈가 예비고1 전용 트랙입니다."`);
   }else if(grade==="고3"){
     parts.push(`"고3 ${subject}는 정시 1등급 목표 실전반 운영 중입니다. 상담 후 등록이 원칙입니다."`);
+  }else if(grade==="초5·6"){
+    parts.push(`"초5·6 ${subject}는 박승혜T FREE M반(영어)을 중심으로 운영합니다. 중1까지 함께 들을 수 있는 통합 트랙이에요."`);
+  }else if(grade==="중1"||grade==="중2"){
+    parts.push(`"${grade} ${subject}는 SU.MID·M${grade.slice(-1)} 트랙으로 운영됩니다. 학생 수준에 맞춰 분반 안내드릴 수 있어요."`);
   }else if(grade==="중3"){
-    parts.push(`"중3 ${subject}는 수준별 분반(LEVEL/SUMMIT)으로 운영됩니다. 어느 정도 수준이신가요?"`);
+    parts.push(`"중3 ${subject}는 수준별 분반(LEVEL/SUMMIT/SU.MID 3/M3)으로 운영됩니다. 어느 정도 수준이신가요?"`);
   }else if(hasJasa&&hasNaesin){
     parts.push(`"${grade} ${subject}는 자사특목 트랙과 학교내신 트랙 두 가지로 나뉩니다. 어느 학교 자녀이신가요?"`);
   }else if(hasJasa){
@@ -370,9 +389,12 @@ async function load(){
     const buckets={};
     GRADES.forEach(g=>{buckets[g]={};SUBJECTS.forEach(s=>{buckets[g][s]=[]})});
     cs.forEach(c=>{
-      const g=inferCohort(c);
+      const gs=inferCohorts(c);
       const s=(c.subject||"").trim();
-      if(GRADES.includes(g)&&SUBJECTS.includes(s))buckets[g][s].push(c);
+      if(!SUBJECTS.includes(s))return;
+      gs.forEach(g=>{
+        if(GRADES.includes(g))buckets[g][s].push(c);
+      });
     });
     // render in matrix order, skip empty
     let html="";
