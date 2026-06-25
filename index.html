@@ -1398,7 +1398,7 @@ function deriveSchoolGrade(c){const s=deriveSchool(c);if(!s)return "";const m=c.
    ========================================================================= */
 const PRE_H_KEYWORDS=/예비\s*고\s*1|예비고1|Pre\s*H|preH|프리하이|중3\s*→\s*고1|중3→고1|예비고일|예고1|중3내신후/i;
 // Pre H 6인 라인업 (학원 정렬·노출 우선 처리용)
-const PRE_H_TEACHERS=new Set(["윤훈관","권정은","정준호","김형석","차동우","이영환"]);
+const PRE_H_TEACHERS=new Set(["윤훈관","권정은","정준호","김형석","차동우","이영환","박승혜"]);
 // 자사 플랫폼 전환: 익명화·블랙리스트 로직 폐기. 모든 강사명 평문 노출.
 function displayTeacherName(c){
   if(!c)return "";
@@ -1474,13 +1474,13 @@ function ddayToNextStart(c){
 function seasonInfo(){
   const m=new Date().getMonth()+1;
   if(m>=3&&m<=4)return{emoji:"🌸",msg:"1학기 개강 · 예비고1은 여름방학 Pre H 준비 시작",cta:"Pre H 보기",mode:"category"};
-  if(m===5)return{emoji:"🌱",msg:"예비고1 Pre H 골든타임 D-50 · 영어·수학·국어 8인 라인업",cta:"Pre H 보기",mode:"category"};
-  if(m===6)return{emoji:"⚡",msg:"⚡ Pre H 골든타임 · 예비고1 여름방학 영어·수학·국어 8인 라인업 마감 임박",cta:"Pre H 강좌 보기",mode:"category"};
-  if(m===7||m===8)return{emoji:"⚡",msg:"⚡ Pre H 개강월 · 예비고1 영어·수학·국어 8인 라인업 진행중",cta:"Pre H 강좌 보기",mode:"category"};
+  if(m===5)return{emoji:"🌱",msg:"예비고1 Pre H 골든타임 D-50 · 영어·수학·국어 9인 라인업",cta:"Pre H 보기",mode:"category"};
+  if(m===6)return{emoji:"⚡",msg:"⚡ Pre H 골든타임 · 예비고1 여름방학 영어·수학·국어 9인 라인업 마감 임박",cta:"Pre H 강좌 보기",mode:"category"};
+  if(m===7||m===8)return{emoji:"⚡",msg:"⚡ Pre H 개강월 · 예비고1 영어·수학·국어 9인 라인업 진행중",cta:"Pre H 강좌 보기",mode:"category"};
   if(m===9)return{emoji:"🍁",msg:"2학기 개강 · 예비고1 후반기 Pre H 준비",cta:"Pre H 강좌 보기",mode:"category"};
   if(m>=10&&m<=11)return{emoji:"📐",msg:"수능 임박 · 예비고1 겨울 Pre H 시즌 시작",cta:"Pre H 보기",mode:"category"};
-  if(m===12||m===1||m===2)return{emoji:"❄️",msg:"겨울방학 Pre H 시즌 · 예비고1 영어·수학·국어 8인 라인업 대거 개강",cta:"Pre H 보기",mode:"category"};
-  return{emoji:"⚡",msg:"⚡ Pre H 시즌 · 예비고1 영어·수학·국어 8인 라인업",cta:"Pre H 보기",mode:"category"};
+  if(m===12||m===1||m===2)return{emoji:"❄️",msg:"겨울방학 Pre H 시즌 · 예비고1 영어·수학·국어 9인 라인업 대거 개강",cta:"Pre H 보기",mode:"category"};
+  return{emoji:"⚡",msg:"⚡ Pre H 시즌 · 예비고1 영어·수학·국어 9인 라인업",cta:"Pre H 보기",mode:"category"};
 }
 
 /* ===== UTILITIES ===== */
@@ -2665,7 +2665,7 @@ function renderAcadDetail(name){
 </script>
 <script>
 /* ===== 10) BY TEACHER VIEW (v9 — 8인 강사 카드 그리드) ===== */
-const EDUIN_TEACHER_ORDER=["윤훈관","정준호","이영환","김형석","차동우","권정은","강필","김규생"];
+const EDUIN_TEACHER_ORDER=["윤훈관","정준호","이영환","김형석","차동우","권정은","강필","김규생","박승혜"];
 const EDUIN_TEACHER_META={
   "윤훈관":{subject:"영어",campus:"센텀",blurb:"자사특목 영어 · Pre H+ / PRE H1"},
   "정준호":{subject:"영어",campus:"사직",blurb:"수능실전대비 · Pre H+ 영어"},
@@ -2674,7 +2674,8 @@ const EDUIN_TEACHER_META={
   "차동우":{subject:"수학",campus:"센텀",blurb:"부산외고·일반고 최상위 · PRE H / PRE BSH"},
   "권정은":{subject:"영어",campus:"센텀",blurb:"내신·자사특목 영어 · PRE H2 / PRE H3"},
   "강필":   {subject:"수학",campus:"센텀",blurb:"미적분1 수능대비 · 1등급 목표"},
-  "김규생":{subject:"사회",campus:"센텀",blurb:"통합사회·국제계열 · 자사특목 사회"}
+  "김규생":{subject:"사회",campus:"센텀",blurb:"통합사회·국제계열 · 자사특목 사회"},
+  "박승혜":{subject:"영어",campus:"양점",blurb:"양점 공용 특강 · FREE / PRE H / 정시파이터"}
 };
 function renderByTeach(){
   const root=$("#view-byteach");
@@ -2686,7 +2687,7 @@ function renderByTeach(){
   root.innerHTML=`
     <div style="padding:24px 0 8px">
       <div class="eyebrow">교육인학원 대표 강사진</div>
-      <h2 class="h-section" style="font-size:32px;margin-top:6px">8인 라인업</h2>
+      <h2 class="h-section" style="font-size:32px;margin-top:6px">9인 라인업</h2>
       <p class="body" style="margin-top:8px">강사 카드를 누르면 해당 강사의 전체 강좌·요일별 일정이 펼쳐집니다.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px">
@@ -2699,7 +2700,7 @@ function renderByTeach(){
             <div style="width:48px;height:48px;border-radius:50%;background:${col}20;color:${col};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px">${esc(t[0])}</div>
             <div>
               <div style="font-weight:700;font-size:17px">${esc(t)}<span style="color:var(--muted);font-weight:400">T</span></div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">${esc(meta.subject)} · ${esc(meta.campus)}점</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">${esc(meta.subject)} · ${meta.campus==="양점"?"양점 공용":esc(meta.campus)+"점"}</div>
             </div>
           </div>
           <div style="font-size:13px;color:var(--muted2);line-height:1.5;min-height:38px">${esc(meta.blurb)}</div>
