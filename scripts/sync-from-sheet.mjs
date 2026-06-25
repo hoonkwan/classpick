@@ -23,6 +23,20 @@ const OUT_PATH = resolve(ROOT, "db/courses.json");
 
 const SHEET_ID = "157tm9BGGbVzkOGTJN1QysDlkqVyGBhcUTOtXvylVBHs";
 
+/* ============================================================
+ * v9 — 교육인학원 단독 사이트 화이트리스트 게이트
+ * 시트에 다른 학원/강사 데이터가 남아 있어도 sync 결과에는 절대 들어오지 않음.
+ * 8인 강사 외 강좌는 시트 단계에서 폐기.
+ * ============================================================ */
+const TEACHER_WHITELIST = new Set([
+  "윤훈관", "정준호", "이영환", "김형석",
+  "차동우", "권정은", "강필",   "김규생",
+]);
+const ACADEMY_WHITELIST = new Set([
+  "교육인학원 센텀점",
+  "교육인학원 사직점",
+]);
+
 /**
  * 8 tabs. If the actual sheet uses slightly different names, edit here.
  * Each entry: [tabName, defaultArea, defaultTerm]
@@ -362,13 +376,21 @@ function dedupe(courses) {
       const cells = extractCellsFromMatrix(rows);
       let parsed = 0;
       const courses = [];
+      let droppedWhitelist = 0;
       for (const cell of cells) {
         const c = parseCell(cell.raw, tab);
-        if (c) { courses.push(c); parsed++; }
+        if (!c) continue;
+        // v9 화이트리스트 게이트 — 8인 강사·교육인학원 외 강좌는 폐기
+        if (!TEACHER_WHITELIST.has(c.teacher) || !ACADEMY_WHITELIST.has(c.academy)) {
+          droppedWhitelist++;
+          continue;
+        }
+        courses.push(c);
+        parsed++;
       }
-      tabReport.push({ tab: tab.name, rows: rows.length, cells: cells.length, parsed });
+      tabReport.push({ tab: tab.name, rows: rows.length, cells: cells.length, parsed, droppedWhitelist });
       allCourses.push(...courses);
-      console.log(`  · ${tab.name}: ${rows.length} rows, ${cells.length} cells, ${parsed} parsed`);
+      console.log(`  · ${tab.name}: ${rows.length} rows, ${cells.length} cells, ${parsed} parsed, ${droppedWhitelist} dropped(whitelist)`);
     } catch (e) {
       tabReport.push({ tab: tab.name, error: e.message });
       console.warn(`  · ${tab.name}: ERROR — ${e.message}`);
@@ -392,12 +414,12 @@ function dedupe(courses) {
     ...c,
   }));
 
-  // Collect distinct academies and teachers
+  // v9 — 화이트리스트로 이미 걸렀으므로 교육인학원 센텀점·사직점만 등장
   const academiesMap = new Map();
   for (const c of final) {
-    const id = `${c.academy.includes("센텀") ? "eduin-centum" : (c.academy.includes("사직") ? "eduin-sajik" : "etc-" + (c.academy || "x"))}`;
+    const id = c.academy.includes("사직") ? "eduin-sajik" : "eduin-centum";
     if (!academiesMap.has(id)) {
-      academiesMap.set(id, { id, name: c.academy, area: c.area || "센텀" });
+      academiesMap.set(id, { id, name: c.academy, area: c.area || (id === "eduin-sajik" ? "사직" : "센텀") });
     }
   }
   const teachers = [...new Set(final.map(c => c.teacher).filter(Boolean))].sort();
