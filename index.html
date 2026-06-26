@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>교육인학원 시간표 · 센텀·사직 한 학기 라인업 한눈에</title>
-<meta name="description" content="부산 센텀·사직 교육인학원의 정규반·특강·강사진을 한눈에. 요일·시간·강사·과목까지 사실 그대로." />
+<title>클래스픽 · 부산 동네 학원 강좌 큐레이션 (센텀·사직)</title>
+<meta name="description" content="클래스픽 운영팀이 큐레이션한 부산 센텀·사직 동네 학원 강좌. 현재 교육인학원이 유일한 입점 학원이며, 다른 학원도 순차 입점 검토 중입니다." />
 <meta name="theme-color" content="#fbfbfd" />
 
 <style>
@@ -901,10 +901,10 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 </head>
 <body>
 
-<!-- =========== v9 — TOP STRIP (교육인학원 안내) =========== -->
+<!-- =========== TOP STRIP (클래스픽 운영팀 큐레이션) =========== -->
 <div class="beta-banner" id="beta-banner">
-  <span class="beta-pill">교육인학원</span>
-  <b>센텀점·사직점 한 학기 시간표</b> · Pre H 여름방학 6인 라인업 진행중 ·
+  <span class="beta-pill">클래스픽</span>
+  <b>첫 입점 학원 — 교육인학원 센텀점·사직점</b> · Pre H 여름방학 6인 라인업 진행중 ·
   <b>요일·시간대로 한눈에 비교</b>
   <a onclick="enterApp('browse')">시간표 보기 →</a>
 </div>
@@ -912,7 +912,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 <!-- =========== NAV =========== -->
 <nav class="nav" id="topnav">
   <div class="nav-inner">
-    <div class="nav-logo" onclick="goHome()">교육인<span>학원</span> <small style="font-size:11px;color:var(--muted);font-weight:400;margin-left:6px">시간표</small></div>
+    <div class="nav-logo" onclick="goHome()">클래스<span>픽</span> <small style="font-size:11px;color:var(--muted);font-weight:400;margin-left:6px">동네 학원 큐레이션</small></div>
     <div class="nav-spacer"></div>
     <div class="nav-menu" id="nav-menu">
       <button class="nav-link" onclick="enterApp('standard')">표준 시간표</button>
@@ -940,13 +940,13 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 
 <!-- =========== LANDING PAGE =========== -->
 <div id="landing">
-  <!-- Hero (v9 — 교육인학원 단독 시간표 · Pre H 골든타임 6인 라인업) -->
+  <!-- Hero (클래스픽 큐레이션 · Pre H 골든타임 6인 라인업) -->
   <section class="hero hero-preh">
     <div class="hero-bg"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow eyebrow preh-eyebrow">⚡ Pre H · 예비고1 골든타임 · <span id="hero-preh-dday">D-?</span></div>
-      <h1 class="h-hero">교육인학원의 한 학기,<br><span class="accent">시간표 한 장에 담았습니다.</span></h1>
-      <p class="hero-sub">센텀·사직 두 캠퍼스 · 영어·수학·국어 정규 라인업 · 예비고1 여름방학 Pre H 6인 라인업까지.<br>학부모님이 한눈에 비교할 수 있도록 정리해두었습니다.</p>
+      <h1 class="h-hero">클래스픽이 큐레이션한 첫 입점 학원,<br><span class="accent">교육인학원의 한 학기 시간표.</span></h1>
+      <p class="hero-sub">부산 센텀·사직 동네 학원 강좌 큐레이션 플랫폼 클래스픽. 현재 교육인학원 한 곳이 입점해 있으며, 두 캠퍼스의 영어·수학·국어 정규 라인업과 예비고1 여름방학 Pre H 6인 라인업을 학부모님께 안내드립니다.</p>
       <div class="hero-actions">
         <button class="btn btn-primary btn-lg" onclick="enterApp('byteach')">강사진 보기 (6인 Pre H)</button>
         <button class="btn btn-link" onclick="enterApp('browse')">전체 시간표 보기</button>
@@ -975,10 +975,10 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       </div>
 
       <div class="hero-stats">
+        <div class="hero-stat"><div class="v" id="stat-academies">1</div><div class="l">입점 학원</div></div>
         <div class="hero-stat"><div class="v" id="stat-courses">—</div><div class="l">등록 강좌</div></div>
-        <div class="hero-stat"><div class="v" id="stat-academies">2</div><div class="l">교육인학원 캠퍼스</div></div>
+        <div class="hero-stat"><div class="v" id="stat-campuses">2</div><div class="l">캠퍼스</div></div>
         <div class="hero-stat"><div class="v" id="stat-teachers">8</div><div class="l">대표 강사진</div></div>
-        <div class="hero-stat"><div class="v" id="stat-preh">—</div><div class="l">Pre H 강좌</div></div>
       </div>
     </div>
   </section>
@@ -989,7 +989,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       <div class="reco-head">
         <div class="eyebrow">For Parents</div>
         <h2>우리 아이 학년·시즌별<br>지금 주목할 강좌.</h2>
-        <p class="body">학년과 기간을 누르면 그 조합에 맞는 교육인학원 강좌가 펼쳐집니다. 시즌·NEW·HOT 신호를 종합해 자동 큐레이션됩니다.</p>
+        <p class="body">학년과 기간을 누르면 그 조합에 맞는 입점 학원 강좌가 펼쳐집니다. 시즌·NEW·HOT 신호를 종합해 클래스픽이 자동 큐레이션합니다.</p>
       </div>
       <div class="reco-controls">
         <div>
@@ -1019,7 +1019,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       <div class="modes-grid">
         <div class="mode-card reveal" onclick="enterApp('browse')"><span class="em">🏠</span><h4>둘러보기</h4><p>시즌 추천 · 인기 TOP · 다시 보기</p></div>
         <div class="mode-card reveal" onclick="enterApp('category')"><span class="em">📁</span><h4>카테고리</h4><p>학교/학년/과목/강좌유형 3축 토글</p></div>
-        <div class="mode-card reveal" onclick="enterApp('byacad')"><span class="em">🏫</span><h4>학원 소개</h4><p>교육인학원 두 캠퍼스 비교 + 12개월 타임라인</p></div>
+        <div class="mode-card reveal" onclick="enterApp('byacad')"><span class="em">🏫</span><h4>학원 소개</h4><p>입점 학원 캠퍼스별 12개월 타임라인 비교</p></div>
         <div class="mode-card reveal" onclick="enterApp('byteach')"><span class="em">👤</span><h4>강사별</h4><p>1년 캘린더 + 학기 탭</p></div>
         <div class="mode-card reveal" onclick="enterApp('bymonth')"><span class="em">📅</span><h4>월별</h4><p>12개 월 pill + 학원별 그룹</p></div>
         <div class="mode-card reveal" onclick="enterApp('search')"><span class="em">🔍</span><h4>검색 + AI</h4><p>10축 필터 · 자연어 검색</p></div>
@@ -1159,17 +1159,18 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
     <div class="footer-op">
       <div class="footer-op-title">서비스 운영 정보 <span class="footer-op-tag">정보통신망법 25조</span></div>
       <dl>
-        <dt>서비스명</dt><dd>교육인학원 시간표 (classpick.vercel.app)</dd>
-        <dt>운영</dt><dd>교육인학원</dd>
-        <dt>지역</dt><dd>부산 센텀점 · 사직점</dd>
+        <dt>서비스명</dt><dd>클래스픽 (classpick.vercel.app)</dd>
+        <dt>운영</dt><dd>클래스픽 운영팀 (class-pick@naver.com)</dd>
+        <dt>서비스 지역</dt><dd>부산 센텀 · 사직</dd>
+        <dt>입점 학원</dt><dd>교육인학원 (1곳 · 다른 학원 입점 검토 중)</dd>
         <dt>문의·정정요청</dt><dd><a href="mailto:class-pick@naver.com">class-pick@naver.com</a></dd>
         <dt>처리기한</dt><dd>영업일 1일 이내</dd>
         <dt>데이터 동기화</dt><dd id="footerSyncStamp">시드 데이터 (수동)</dd>
       </dl>
     </div>
     <div class="footer-copy">
-      © 2026 교육인학원. All rights reserved.<br>
-      본 사이트는 교육인학원의 자체 시간표 안내 페이지입니다. 시간·요일·강사는 학기 운영 사정에 따라 변경될 수 있으니 수강 전 해당 캠퍼스에 직접 확인해 주세요.
+      © 2026 클래스픽 운영팀. All rights reserved.<br>
+      본 사이트는 클래스픽 운영팀이 부산 센텀·사직 동네 학원의 공개 강좌 정보를 큐레이션해 학부모님께 안내하는 정보 서비스입니다. 시간·요일·강사는 학기 운영 사정에 따라 변경될 수 있으니 수강 전 해당 학원에 직접 확인해 주세요.
     </div>
   </div>
 </footer>
@@ -1190,7 +1191,7 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
   <div class="notice-modal">
     <div class="notice-head">
       <div class="ico">📣</div>
-      <h2>교육인학원 시간표 사이트 안내</h2>
+      <h2>클래스픽 안내 — 부산 동네 학원 강좌 큐레이션</h2>
     </div>
     <div class="notice-body" id="notice-body"></div>
     <div class="notice-foot">
@@ -1460,14 +1461,14 @@ function deriveSchoolGrade(c){const s=deriveSchool(c);if(!s)return "";const m=c.
    Pre H = 현재 중3 → 2027년 고1 진학 대비 강좌
    - grade가 "중3" + 영어/수학/국어 과목
    - title/course/note 에 "예비고1" / "Pre H" / "프리하이" 키워드
-   - 7월 Pre H 시즌 — 교육인학원 6인 라인업
+   - 7월 Pre H 시즌 — 입점 학원(교육인학원) 6인 라인업
      · 영어 3인: 윤훈관·권정은(센텀) · 정준호(사직)
      · 수학 3인: 김형석(부일고)·차동우(일반고최상위/부산외고)·이영환(해운대고)
    ========================================================================= */
 const PRE_H_KEYWORDS=/예비\s*고\s*1|예비고1|Pre\s*H|preH|프리하이|중3\s*→\s*고1|중3→고1|예비고일|예고1|중3내신후/i;
 // Pre H 6인 라인업 (학원 정렬·노출 우선 처리용)
 const PRE_H_TEACHERS=new Set(["윤훈관","권정은","정준호","김형석","차동우","이영환","박승혜","김영온"]);
-// 자사 플랫폼 전환: 익명화·블랙리스트 로직 폐기. 모든 강사명 평문 노출.
+// 클래스픽 큐레이션 — 입점 학원의 공개 강사명을 평문 그대로 노출.
 function displayTeacherName(c){
   if(!c)return "";
   return c.teacher||"";
@@ -1713,8 +1714,8 @@ function updateFooterSyncStamp(){
   }
 }
 
-/* v9 — 교육인학원 단독 시간표 사이트.
-   타 학원 시드(MYUNGIN/MYUNGJAK/DEMO) 일체 제거.
+/* 클래스픽 큐레이션 플랫폼 — 현재 유일 입점 학원: 교육인학원.
+   타 학원 시드(MYUNGIN/MYUNGJAK/DEMO) 폐기. 신규 입점은 회원가입 흐름으로 처리.
    모든 강좌는 EDUIN_COURSES + REMOTE_SEED(=db/courses.json) 에서만 공급됨. */
 const MYUNGIN_SEED=[];
 const MYUNGJAK_SEED=[];
@@ -1746,9 +1747,9 @@ function loadJSON(k,fb){try{return JSON.parse(localStorage.getItem(k))||fb}catch
 function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 
 /* =========================================================================
-   v9 — 교육인학원 단독 사이트 화이트리스트
-   - 교육인학원 센텀점·사직점만 표면 노출
-   - 학원이 직접 회원가입한 경우(u_acad_*)는 즉시 노출
+   클래스픽 입점 학원 화이트리스트
+   - 현재 유일 입점 학원: 교육인학원 (센텀점·사직점)
+   - 학원이 직접 회원가입한 경우(u_acad_*)는 즉시 노출 → 신규 입점 학원 자동 추가
    ========================================================================= */
 const VISIBLE_ACADEMIES=new Set(["교육인학원 센텀점","교육인학원 사직점"]);
 function isVisibleAcademy(name){
@@ -1762,7 +1763,7 @@ function isVisibleAcademy(name){
   return false;
 }
 
-/* v9 — 강사 블랙리스트 로직 폐기. 자사 플랫폼이므로 모든 소속 강사 노출. */
+/* 클래스픽 큐레이션 — 강사 블랙리스트 로직 폐기. 입점 학원의 공개 강사 전체 노출. */
 function isBlacklistedTeacher(c){ return false; }
 
 function load(){
@@ -1786,7 +1787,7 @@ function load(){
   base.forEach(c=>baseIds.add(c.id));
   const filteredUser=userCourses.filter(c=>!baseIds.has(c.id));
   const all=[...base,...filteredUser].map(enrichCourse);
-  // v9 — 교육인학원 화이트리스트만 적용 (강사 블랙리스트 폐기)
+  // 입점 학원 화이트리스트만 적용 (강사 블랙리스트 폐기)
   courses=all.filter(c=>isVisibleAcademy(c.academy));
   // v7.1 — hydrate teacher_photo_url from local cache
   try{
@@ -1837,7 +1838,7 @@ async function seedAdminData(){
   if(loadJSON(ADMIN_SEED_KEY,false))return;
   const now=Date.now();
   // 8 academies
-  // v9 — 교육인학원 단독 사이트로 전환. 데모 학원 시드 제거.
+  // 클래스픽 입점 학원 시드 — 현재 교육인학원 1곳. 신규 입점은 회원가입 흐름으로 추가.
   const seedAcademies=[
     {name:"교육인학원 센텀점",biz:"605-87-00001",area:"센텀",tier:"Enterprise"},
     {name:"교육인학원 사직점",biz:"602-87-00002",area:"사직",tier:"Enterprise"}
@@ -2328,14 +2329,15 @@ function renderBrowse(){
       const ddETxt=ddE>0?`D-${ddE}`:(ddE===0?"D-DAY":"개강중");
       return `
     <div class="ad-slot featured" onclick="switchMode('byteach');setTimeout(()=>{const sel=document.querySelector('#teach-picker');if(sel){sel.value='윤훈관';sel.dispatchEvent(new Event('change'))}},100)" style="background:linear-gradient(135deg,#ffe1ec,#ffd9a8);border:2px solid #ff3d7f;">
-      <span class="ad-tag" style="background:#ff3d7f">[자사 안내]</span>
+      <span class="ad-tag" style="background:#ff3d7f">[광고]</span>
       <div class="ad-msg" style="flex:1">
         <div style="font-size:13px;color:#c2185b;font-weight:800;letter-spacing:0.5px">⚡ Pre H 골든타임 · 7/21~ 개강 · 마감임박</div>
-        <div style="font-size:19px;font-weight:800;color:#1c1c1c;margin:4px 0">예비고1 Pre H 6인 라인업 — 영어 · 수학</div>
+        <div style="font-size:19px;font-weight:800;color:#1c1c1c;margin:4px 0">교육인학원 — 예비고1 Pre H 6인 라인업 (영어·수학)</div>
         <div style="font-size:13px;color:#555;line-height:1.55">
           <b style="color:#ff007a">[영어 · ${ddETxt}]</b> 윤훈관T · 권정은T (센텀) / 정준호T (사직)<br>
           <b style="color:#0071e3">[수학 · ${ddTxt}]</b> 김형석T (부일고 대비) / 차동우T (일반고·부산외고) / 이영환T (해운대고 대비)
         </div>
+        <div style="font-size:11px;color:#888;margin-top:6px">광고주: 교육인학원 (입점 학원)</div>
       </div>
       <button class="ad-cta" style="background:#ff3d7f;color:#fff">⚡ Pre H 영어 보기 →</button>
     </div>`;
@@ -2555,7 +2557,7 @@ function toggleAdd(id){
 </script>
 <script>
 /* ===== 7.5) 표준 시간표 매트릭스 (view-standard) =====
-   교육인학원 데스크 응대 표준화의 1차 산출물.
+   입점 학원 데스크 응대 표준화의 1차 산출물 (교육인학원 기준).
    학년(5) × 과목(4) = 20셀 + "전 학년 공통" 보조 행.
    - inferCohort(c): grade/courseType/title 기반 학년 추정 (213/213 mapping)
    - 양점 공용 강사·중복 강좌 통합 표시
@@ -2728,9 +2730,9 @@ function renderStandard(){
 
   root.innerHTML=`
     <div class="std-intro">
-      <div class="eyebrow">교육인학원 표준 시간표</div>
+      <div class="eyebrow">교육인학원 표준 시간표 — 클래스픽 큐레이션</div>
       <h2>학년과 과목을 선택하면 강좌·강사·시간이 펼쳐집니다.</h2>
-      <p>데스크 직원도 학부모도 한 화면에서 우리 학원이 어느 학년·어느 과목을 운영하는지 즉시 파악할 수 있습니다. 초·중·고 ${STD_GRADES.length}개 학년 축 × 과목 4축 매트릭스로 정리되어 있고, 다학년 강좌(예: FREE M 초5·6+중1)는 해당 학년 셀에 모두 노출됩니다. 분류 태그로 자사특목·학교내신·방학특강 등 8가지 강좌 유형이 표시됩니다.</p>
+      <p>학부모님이 한 화면에서 입점 학원(교육인학원)이 어느 학년·어느 과목을 운영하는지 즉시 파악할 수 있도록 클래스픽이 정리했습니다. 초·중·고 ${STD_GRADES.length}개 학년 축 × 과목 4축 매트릭스로 구성되어 있고, 다학년 강좌(예: FREE M 초5·6+중1)는 해당 학년 셀에 모두 노출됩니다. 분류 태그로 자사특목·학교내신·방학특강 등 8가지 강좌 유형이 표시됩니다.</p>
     </div>
     <div class="std-toolbar">
       <span class="lbl">캠퍼스</span>
@@ -2935,7 +2937,7 @@ function renderCategoryGroups(){
 }
 </script>
 <script>
-/* ===== 9) ABOUT EDUIN VIEW (v9 — 학원별 → 교육인학원 소개로 전환) ===== */
+/* ===== 9) ABOUT VIEW — 클래스픽 입점 학원 소개 ===== */
 function renderByAcad(){
   const root=$("#view-byacad");
   const acads=[...new Set(courses.map(c=>c.academy))];
@@ -2950,11 +2952,12 @@ function renderByAcad(){
   });
   root.innerHTML=`
     <div style="text-align:center;padding:48px 16px 32px">
-      <div class="eyebrow">교육인학원</div>
-      <h1 class="h-section" style="margin-top:8px">한 학기, 시간표 한 장.</h1>
+      <div class="eyebrow">클래스픽 입점 학원</div>
+      <h1 class="h-section" style="margin-top:8px">첫 입점 파트너 — 교육인학원.</h1>
       <p class="body-lg" style="max-width:760px;margin:14px auto 0;color:var(--muted2)">
-        센텀점·사직점 두 캠퍼스에서 운영하는 정규반·특강을 학부모님이 한눈에 비교할 수 있게 정리했습니다.
+        교육인학원이 운영하는 센텀점·사직점 두 캠퍼스의 정규반·특강을 클래스픽이 학부모님 편의를 위해 큐레이션해 정리했습니다.
         강사·과목·요일·시간이 모두 사실 그대로 표시되며, 정정·삭제 요청은 영업일 1일 이내 처리합니다.
+        다른 동네 학원도 순차 입점 검토 중입니다.
       </p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:24px">
@@ -3033,9 +3036,9 @@ function renderByTeach(){
   const teamLabels=teachersInData.filter(t=>t.startsWith("교육인 "));
   root.innerHTML=`
     <div style="padding:24px 0 8px">
-      <div class="eyebrow">교육인학원 대표 강사진</div>
+      <div class="eyebrow">교육인학원 대표 강사진 — 클래스픽 큐레이션</div>
       <h2 class="h-section" style="font-size:32px;margin-top:6px">10인 라인업</h2>
-      <p class="body" style="margin-top:8px">강사 카드를 누르면 해당 강사의 전체 강좌·요일별 일정이 펼쳐집니다.</p>
+      <p class="body" style="margin-top:8px">교육인학원이 운영하는 대표 강사진입니다. 강사 카드를 누르면 해당 강사의 전체 강좌·요일별 일정이 펼쳐집니다.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px">
       ${lineup.map(t=>{
@@ -3285,7 +3288,7 @@ function renderAcademyView(){
       <div class="cba-msg"><b>${esc(u.name)} — 베타 영구 무료 가입자</b>현재 베타 기간, 강좌 등록·노출·검색 노출 모두 무료. 정식 출시 후에도 가입 시점 기능을 영구 무료로 사용합니다.</div>
     </div>
     <h2>${esc(u.name)} · 강좌 등록</h2>
-    <p class="lead">자사 관리자용 — 새 강좌 정보를 입력하면 검색·카테고리·학원 소개·강사 뷰에 즉시 노출됩니다. 정정·삭제는 운영 이메일로 요청해주세요.</p>
+    <p class="lead">입점 학원 관리자용 — 새 강좌 정보를 입력하면 검색·카테고리·학원 소개·강사 뷰에 즉시 노출됩니다. 정정·삭제는 운영팀 이메일로 요청해주세요.</p>
     <div class="form-grid">
       <div><label>지역</label><input value="${esc(u.area||"센텀")}" readonly /></div>
       <div><label>학원명</label><input value="${esc(u.name)}" readonly /></div>
@@ -3640,22 +3643,28 @@ function showNotice(force){
   if(!force&&dismissed)return;
   const body=$("#notice-body");
   body.innerHTML=`
-    <h3>📍 교육인학원 시간표란</h3>
-    <p>부산 센텀점·사직점 <b>교육인학원의 한 학기 강좌</b>를 학부모님이 한눈에 비교할 수 있도록 정리한 자체 시간표 페이지입니다. 가격·후기·추천은 다루지 않습니다.</p>
+    <h3>📍 클래스픽이란</h3>
+    <p>클래스픽 운영팀이 부산 센텀·사직 동네 학원의 <b>공개된 강좌 정보</b>를 학부모님 편의를 위해 큐레이션해 안내하는 정보 서비스입니다. 가격·후기·추천은 다루지 않습니다.</p>
+    <h3>🏫 입점 학원 현황</h3>
+    <ul>
+      <li>현재 <b>교육인학원 (센텀점·사직점)</b>이 유일한 입점 학원입니다.</li>
+      <li>다른 동네 학원도 순차 입점 검토 중입니다.</li>
+      <li>입점 학원과 운영팀은 별개 주체이며, 모든 강좌·강사는 입점 학원이 제공한 공개 자료입니다.</li>
+    </ul>
     <h3>🤝 정확한 정보 안내</h3>
     <ul>
       <li>시간표·강사·요일·시간은 학기 운영 사정에 따라 변경될 수 있습니다.</li>
       <li>강사 연락처·사진·집주소 등 민감정보는 노출하지 않습니다.</li>
       <li>정정·문의 요청은 <b>영업일 1일 이내</b> 처리합니다.</li>
-      <li>최종 확정 정보는 해당 캠퍼스(센텀 / 사직)에 직접 확인해 주세요.</li>
+      <li>최종 확정 정보는 해당 학원에 직접 확인해 주세요.</li>
     </ul>
     <h3>📞 문의·정정 요청</h3>
     <ul>
       <li>강좌 정보 오류, 누락, 변경 사항 등은 아래 이메일로 알려주세요.</li>
-      <li>학부모님 직접 상담은 각 캠퍼스 대표번호로 부탁드립니다.</li>
+      <li>학부모님 직접 상담은 각 학원 캠퍼스 대표번호로 부탁드립니다.</li>
     </ul>
     <div class="notice-takedown">
-      <b>정정·문의</b><br>
+      <b>정정·문의 · 클래스픽 운영팀</b><br>
       <a href="mailto:class-pick@naver.com">class-pick@naver.com</a>
       <span class="hint">영업일 1일 이내 처리</span>
     </div>`;
@@ -4174,16 +4183,21 @@ function setupNavScroll(){
   });
 }
 function updateHeroStats(){
-  const aSet=new Set(courses.map(c=>c.academy));
+  // 클래스픽 운영팀 큐레이션 — 입점 학원/캠퍼스/강좌/강사 카운터
+  const academyBrandSet=new Set(courses.map(c=>String(c.academy||"").replace(/\s*(센텀점|사직점)\s*$/,"")).filter(Boolean));
+  const campusSet=new Set(courses.map(c=>c.academy).filter(Boolean));
   const tSet=new Set(courses.map(c=>c.teacher).filter(Boolean));
   $("#stat-courses").textContent=courses.length;
-  $("#stat-academies").textContent=aSet.size;
-  // Pre H 라인업 강사 기준 (v9 — 자사 플랫폼이므로 블랙리스트 폐기)
+  const aEl=document.getElementById("stat-academies");
+  if(aEl)aEl.textContent=academyBrandSet.size||1;
+  const cEl=document.getElementById("stat-campuses");
+  if(cEl)cEl.textContent=campusSet.size||2;
+  // Pre H 라인업 강사 기준 (클래스픽 큐레이션 — 입점 학원 전체 노출)
   const preHTeacherSet=new Set();
   courses.filter(c=>c.isPreH).forEach(c=>{ if(c.teacher)preHTeacherSet.add(c.teacher) });
   $("#stat-teachers").textContent=preHTeacherSet.size||tSet.size;
-  const prehCount=courses.filter(c=>c.isPreH).length;
   const prehEl=document.getElementById("stat-preh");
+  const prehCount=courses.filter(c=>c.isPreH).length;
   if(prehEl)prehEl.textContent=prehCount||"—";
   // Pre H D-day — openDate 우선, 없으면 ddayToNextStart fallback
   const today=new Date();
