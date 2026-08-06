@@ -246,8 +246,6 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
 .std-toolbar .tg{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:500;background:var(--soft-bg);color:var(--muted2);cursor:pointer;border:1px solid transparent;transition:all .15s}
 .std-toolbar .tg.on{background:#000;color:#fff;border-color:#000}
 .std-toolbar .tg:hover:not(.on){background:#f0f0f3;color:var(--fg)}
-.std-toolbar .desk-link{margin-left:auto;font-size:12px;color:var(--accent);text-decoration:none;font-weight:600}
-.std-toolbar .desk-link:hover{text-decoration:underline}
 .std-matrix{display:grid;grid-template-columns:90px repeat(4,1fr);gap:10px;margin-bottom:24px}
 .std-matrix .std-h{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--fg);padding:10px 0;background:var(--soft-bg);border-radius:8px}
 .std-matrix .std-corner{background:transparent}
@@ -1154,7 +1152,6 @@ h1,h2,h3,h4{letter-spacing:-0.022em;font-weight:600;line-height:1.1}
       <a href="ad-kit.html">사이트 안내</a>
       <button onclick="showNoticeAgain()">공지 다시 보기</button>
       <a href="mailto:class-pick@naver.com">문의·정정요청</a>
-      <a href="desk-guide.html" style="opacity:0.6;font-size:11px" target="_blank" rel="noopener">데스크 응대 가이드 (내부)</a>
     </div>
     <div class="footer-op">
       <div class="footer-op-title">서비스 운영 정보 <span class="footer-op-tag">정보통신망법 25조</span></div>
@@ -2775,7 +2772,6 @@ function renderStandard(){
       <button class="tg ${!browseArea?"on":""}" onclick="setStdArea('')">전체</button>
       <button class="tg ${browseArea==="센텀"?"on":""}" onclick="setStdArea('센텀')">센텀</button>
       <button class="tg ${browseArea==="사직"?"on":""}" onclick="setStdArea('사직')">사직</button>
-      <a class="desk-link" href="desk-guide.html" target="_blank">데스크 응대 가이드 →</a>
     </div>
     <div class="std-matrix">
       ${headerRow}
