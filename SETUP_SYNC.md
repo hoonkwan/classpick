@@ -1,5 +1,12 @@
 # 시트 자동 동기화 설정 가이드 (내부용)
 
+> **2026-11-03 개편 이후 사이트(index.html)는 `db/courses.json` 을 읽지 않습니다.**
+> 강좌 원천 = `data/courses.js` (학원 배포 월별 시간표 PDF 기준, 직접 편집),
+> 강사 사진·소개 원천 = kyin 공개 강사 카탈로그 → `python scripts/sync_teachers_from_kyin.py` 로 `data/teachers.js`·`assets/teachers/` 생성.
+> 아래 시트 sync 는 `db/courses.json` 만 갱신하며 화면에는 반영되지 않습니다. 시트를 다시 원천으로 쓰려면
+> 시트 탭을 11월 기준으로 갱신(`.workspace/sheet_2026-11_교육인.csv` 참고)한 뒤 index.html 로더를 되돌려야 합니다.
+> 시트 셀의 강좌명에 「○○T」가 섞여 있어도 sync 단계에서 떼어 냅니다(`stripTeacherFromTitle`).
+
 클래스픽은 현재 입점 학원(교육인학원)이 제공한 **Google Sheet "교육in시간표"를 ground truth(데이터의 진실)** 로 사용합니다.
 GitHub Actions가 **48시간마다** 시트를 읽어 `db/courses.json`을 갱신하고, Vercel이 자동 배포합니다.
 
@@ -61,7 +68,7 @@ https://docs.google.com/spreadsheets/d/{시트ID}/gviz/tq?tqx=out:csv&sheet={탭
 
 ```powershell
 # 로컬에서 (Windows)
-cd C:\학원자료\클래스픽
+cd C:\학원자료\행정\10_기획부\12_클래스픽
 node --use-system-ca scripts/sync-from-sheet.mjs
 # → db/courses.json 갱신, 콘솔에 "[sync] 8/8 tabs OK → ... courses" 출력
 ```

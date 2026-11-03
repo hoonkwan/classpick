@@ -44,6 +44,17 @@ const BOTH_BRANCH_TEACHERS = new Set(["박승혜"]);
 // (김지수 강사 강좌 전량을 김영온 강사 명의로 이관)
 const TEACHER_RENAME = { "김지수": "김영온" };
 
+// 강좌명 정규화 — 셀에 「부산외고1 윤훈관T」처럼 강사명이 강좌명에 섞여 들어오면
+// 강사 필드와 어긋나는 사고가 난다 (2026-11-03). 강좌명에서는 「○○T」「○○ 선생님」을 항상 뗀다.
+// 강사는 강사 필드(마지막 「이름T」)로만 표시한다.
+export function stripTeacherFromTitle(title) {
+  return String(title || "")
+    .replace(/[\s\-–·(]*[가-힣]{2,4}\s*(?:T|쌤|선생님)(?=$|[\s)\/·,\-–])\)?/g, " ")
+    .replace(/\(\s*\)/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 /**
  * 8 tabs. If the actual sheet uses slightly different names, edit here.
  * Each entry: [tabName, defaultArea, defaultTerm]
@@ -229,7 +240,7 @@ function parseCell(raw, tab) {
     if (scheduleParts.includes(parts[i])) continue;
     titleIdxs.push(i);
   }
-  let title = titleIdxs.map(i => parts[i]).join(" ").trim();
+  let title = stripTeacherFromTitle(titleIdxs.map(i => parts[i]).join(" "));
   if (!title) title = parts[subjectIdx].replace(subject, "").trim() || subject;
 
   // School inference (from title)
