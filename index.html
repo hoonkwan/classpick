@@ -5,16 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>클래스픽 · 부산 센텀·사직 학원 시간표</title>
 <meta name="description" content="부산 센텀·사직 학원 강좌 시간표. 학년·과목·학교를 고르면 요일·시간·선생님을 바로 확인할 수 있습니다.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#16386a">
 <meta property="og:title" content="클래스픽 · 부산 센텀·사직 학원 시간표">
 <meta property="og:description" content="학년·과목·학교를 고르면 요일·시간·선생님이 바로 보입니다.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2316386a'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 :root{
-  --ink:#111; --ink2:#333; --sub:#555; --line:#dcdfe3; --line2:#c4c9cf; --bg:#f3f4f6; --card:#fff;
-  --k:#a8461f; --e:#1d6b47; --m:#24479a;
-  --r:14px;
+  /* 브랜드 */
+  --brand:#16386a; --brand-d:#0f2a52; --brand-t:#e9eff8;
+  --accent:#f5a524; --accent-t:#fff4dc;
+  /* 글자·바탕 */
+  --ink:#111827; --ink2:#2f3846; --sub:#4b5563; --line:#e3e7ee; --line2:#c9d0da; --bg:#f2f4f8; --card:#fff;
+  /* 과목 */
+  --k:#c2410c; --k-t:#fdeee6; --e:#0f7a52; --e-t:#e3f4ec; --m:#2f5bd3; --m-t:#e8eefd;
+  --r:18px; --sh:0 1px 2px rgba(16,24,40,.05),0 6px 18px rgba(16,24,40,.07);
   --safe-b:env(safe-area-inset-bottom,0px);
   font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",-apple-system,BlinkMacSystemFont,sans-serif;
 }
@@ -30,68 +35,96 @@ img{display:block;max-width:100%}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .u{text-decoration:underline;text-underline-offset:3px}
 
-/* 머리 */
-.head{background:#fff;border-bottom:1px solid var(--line)}
-.head-in{display:flex;align-items:center;gap:10px;min-height:56px}
-.brand{font-size:20px;font-weight:800;letter-spacing:-.03em}
-.brand-sub{font-size:15px;color:var(--sub);font-weight:600}
+/* 머리 — 브랜드 바 */
+.head{background:var(--brand);color:#fff}
+.head-in{display:flex;align-items:center;gap:10px;min-height:60px}
+.logo{display:flex;align-items:center;gap:9px}
+.logo svg{width:30px;height:30px;flex:none}
+.brand{font-size:21px;font-weight:800;letter-spacing:-.04em}
+.brand-sub{font-size:14px;color:#d3deee;font-weight:600;margin-left:auto;white-space:nowrap}
 
-/* 필터 */
-.filters{background:#fff;border-bottom:1px solid var(--line);padding:14px 0 16px}
-.frow{display:flex;align-items:flex-start;gap:10px;margin-top:10px}
-.frow:first-child{margin-top:0}
-.flabel{flex:none;width:34px;font-size:15px;font-weight:700;color:var(--ink2);padding-top:8px}
+/* 시즌 띠 */
+.season{display:block;width:100%;background:var(--accent-t);border-bottom:1px solid #f3dfb0}
+.season .wrap{display:flex;align-items:center;gap:10px;min-height:46px;font-size:16px;font-weight:700;color:#5b3d00}
+.season i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.season .tx{flex:1;min-width:0}
+.season b{color:#3b2800}
+.season em{font-style:normal;flex:none;font-size:15px;color:#7a5200;text-decoration:underline;text-underline-offset:3px}
+.season[aria-pressed="true"]{background:#ffe7ad}
+
+/* 필터 — 스크롤 시 상단 고정 */
+.filters{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:12px 0;transition:box-shadow .15s}
+.filters.stuck{box-shadow:0 4px 14px rgba(16,24,40,.10)}
+.filters.stuck .frow2{display:none}
 .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips+.chips{margin-top:8px}
 .vsep{width:1px;height:24px;background:var(--line2);margin:0 4px}
-.chip{font-size:16px;font-weight:700;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line2);background:#fff;color:var(--ink);line-height:1.3}
-.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.frow2{display:flex;gap:8px;margin-top:12px}
-.sel,.inp{border:1.5px solid var(--line2);border-radius:10px;background:#fff;padding:10px 12px;font-size:16px;color:var(--ink);min-width:0}
+.chip{font-size:16px;font-weight:700;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line2);background:#fff;color:var(--ink2);line-height:1.3}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 2px 6px rgba(22,56,106,.28)}
+.chip[aria-pressed="true"]::before{content:"✓";margin-right:5px;font-weight:800}
+.frow2{display:flex;gap:8px;margin-top:10px}
+.sel,.inp{border:1.5px solid var(--line2);border-radius:12px;background:#fff;padding:10px 12px;font-size:16px;color:var(--ink);min-width:0}
 .sel{flex:0 0 40%}
 .inp{flex:1}
+.sel:focus,.inp:focus{outline:2px solid var(--brand);outline-offset:1px}
 
 /* 결과 막대 */
-.bar{display:flex;align-items:center;gap:10px;margin:18px 0 12px}
+.bar{display:flex;align-items:center;gap:10px;margin:18px 0 6px}
 .bar b{font-size:18px}
 .bar .sp{flex:1}
-.seg{display:inline-flex;border:1.5px solid var(--line2);border-radius:10px;overflow:hidden;background:#fff;flex:none}
-.seg button{font-size:15px;font-weight:700;padding:7px 13px;color:var(--ink2)}
-.seg button+button{border-left:1.5px solid var(--line2)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.seg{display:inline-flex;border-radius:12px;overflow:hidden;background:#e6eaf1;padding:3px;flex:none}
+.seg button{font-size:15px;font-weight:700;padding:6px 13px;color:var(--ink2);border-radius:9px}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--brand);box-shadow:0 1px 3px rgba(16,24,40,.15)}
 .reset{font-size:15px;font-weight:700;color:var(--ink2)}
 
+/* 그룹 */
+.grp{margin-top:22px}
+.grp-h{display:flex;align-items:baseline;gap:8px;margin:0 2px 10px}
+.grp-h h2{white-space:nowrap;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.grp-h h2::before{content:"";display:inline-block;width:4px;height:17px;border-radius:2px;background:var(--brand);margin-right:8px;vertical-align:-2px}
+.grp-h.soon h2::before{background:var(--accent)}
+.grp-h span{font-size:15px;color:var(--sub);font-weight:600}
+
 /* 수업 카드 */
-.cards{display:flex;flex-direction:column;gap:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px}
+.cards{display:flex;flex-direction:column;gap:14px}
+.card{position:relative;background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:16px 16px 14px 20px;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--line2)}
+.card.c-국어::before{background:var(--k)} .card.c-영어::before{background:var(--e)} .card.c-수학::before{background:var(--m)}
 .card-main{display:block;width:100%}
-.card-sub{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--sub)}
+.card-sub{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--sub)}
+.pill{display:inline-block;font-size:14px;font-weight:800;padding:2px 9px;border-radius:999px}
+.p-국어{color:var(--k);background:var(--k-t)} .p-영어{color:var(--e);background:var(--e-t)} .p-수학{color:var(--m);background:var(--m-t)}
 .subj{font-weight:800}
 .s-국어{color:var(--k)} .s-영어{color:var(--e)} .s-수학{color:var(--m)}
-.card h3{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.35;margin-top:2px}
+.card h3{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.35;margin-top:6px}
 .card .tg{font-size:15px;color:var(--sub);font-weight:600;margin-top:1px}
 .sched{margin-top:10px;display:flex;flex-direction:column;gap:3px}
-.sched div{font-size:18px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.sched .lb{display:inline-block;min-width:0;margin-right:8px;font-size:15px;font-weight:700;color:var(--sub)}
+.sched div{font-size:18px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sched .lb{display:inline-block;margin-right:8px;font-size:14px;font-weight:800;color:var(--brand);background:var(--brand-t);padding:1px 7px;border-radius:6px;vertical-align:2px}
 .sched .ask{font-size:16px;font-weight:600;color:var(--sub)}
+.start{margin-top:8px;font-size:15px;font-weight:700;color:var(--ink2)}
+.start.soon{color:#9a5b00}
 .card-foot{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
-.who{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
-.av{width:48px;height:48px;border-radius:50%;background:#e5e7ea;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:800;color:#666;font-size:18px}
+.who{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.av{width:48px;height:48px;border-radius:50%;background:#e5e9ef;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:800;color:#5b6472;font-size:18px}
 .av img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.av.lg{width:68px;height:68px;font-size:24px;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--line)}
 .who b{display:block;font-size:17px;font-weight:800;line-height:1.3}
 .who span{display:block;font-size:15px;color:var(--sub);font-weight:600}
-.where{flex:none;text-align:right;font-size:15px;font-weight:700;color:var(--ink2)}
-.where small{display:block;font-size:14px;font-weight:600;color:var(--sub)}
-.start{margin-top:8px;font-size:15px;font-weight:600;color:var(--ink2)}
-.empty{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 16px;text-align:center;font-size:16px;color:var(--ink2)}
+.who .more{color:var(--brand)}
+.where{flex:none;display:flex;align-items:center;gap:5px;text-align:right;font-size:15px;font-weight:700;color:var(--ink2);background:var(--bg);border-radius:12px;padding:7px 10px;line-height:1.3}
+.where svg{width:16px;height:16px;flex:none;stroke:var(--brand);fill:none;stroke-width:2}
+.where small{display:block;font-size:14px;font-weight:700;color:var(--brand)}
+.empty{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:28px 16px;text-align:center;font-size:16px;color:var(--ink2)}
 
 /* 요일별 표 */
-.days{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.days{background:#fff;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-top:12px}
 .drow{display:flex;border-top:1px solid var(--line)}
 .drow:first-child{border-top:0}
-.dname{flex:none;width:52px;display:flex;align-items:flex-start;justify-content:center;padding-top:14px;font-size:18px;font-weight:800;background:#f7f8f9;border-right:1px solid var(--line)}
-.dname.we{color:#9a3412}
+.dname{flex:none;width:52px;display:flex;align-items:flex-start;justify-content:center;padding-top:14px;font-size:18px;font-weight:800;background:var(--brand-t);color:var(--brand)}
+.dname.we{background:var(--accent-t);color:#8a4b00}
 .dlist{flex:1;min-width:0}
-.ditem{display:flex;gap:12px;width:100%;padding:12px 14px;border-top:1px solid #eceef0;align-items:flex-start}
+.ditem{display:flex;gap:12px;width:100%;padding:12px 14px;border-top:1px solid #edf0f4;align-items:flex-start}
 .ditem:first-child{border-top:0}
 .dtime{flex:none;width:112px;white-space:nowrap;font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
 .dwhat{min-width:0}
@@ -100,68 +133,78 @@ img{display:block;max-width:100%}
 .dnone{padding:14px;font-size:15px;color:var(--sub)}
 
 /* 상세 페이지 */
-.back{display:inline-block;margin:16px 0 4px;font-size:16px;font-weight:700;color:var(--ink2)}
-.prof{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;gap:16px;align-items:flex-start}
-.prof .ph{width:120px;flex:none;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#e5e7ea}
+.back{display:inline-block;margin:16px 0 8px;font-size:16px;font-weight:700;color:var(--brand)}
+.prof{background:#fff;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
+.prof-band{height:64px;background:var(--brand)}
+.prof-in{display:flex;gap:16px;align-items:flex-start;padding:0 18px}
+.prof .ph{width:124px;flex:none;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#e5e9ef;margin-top:-40px;box-shadow:0 0 0 4px #fff,0 6px 16px rgba(16,24,40,.15)}
 .prof .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
-.prof h1{font-size:24px;font-weight:800;line-height:1.3}
-.prof .meta{font-size:16px;color:var(--sub);font-weight:600;margin-top:2px}
-.prof .quote{font-size:17px;font-weight:700;margin-top:12px;line-height:1.45}
-.prof .bio{font-size:15px;color:var(--ink2);margin-top:8px;line-height:1.6}
-.prof .bio li{list-style:none;margin:2px 0}
-.prof.acad{display:block}
-.prof.acad .meta a{color:var(--ink)}
+.prof-txt{min-width:0;padding-top:12px}
+.prof h1{font-size:24px;font-weight:800;line-height:1.3;margin-top:4px}
+.prof .meta{font-size:15px;color:var(--sub);font-weight:600;margin-top:2px}
+.prof .quote{font-size:17px;font-weight:700;margin:16px 18px 0;padding:10px 14px;border-left:4px solid var(--accent);background:var(--accent-t);border-radius:0 10px 10px 0;line-height:1.45}
+.prof .bio{font-size:15px;color:var(--ink2);margin:10px 18px 18px;line-height:1.6}
+.prof .bio li{list-style:none;margin:3px 0;padding-left:14px;position:relative}
+.prof .bio li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;border-radius:50%;background:var(--brand)}
+.prof.acad .prof-in{display:block;padding:16px 18px 18px}
+.acad-ts{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.acad-ts a{display:flex;flex-direction:column;align-items:center;gap:6px;width:72px;font-size:15px;font-weight:700;text-align:center}
 .h2{font-size:19px;font-weight:800;margin:26px 0 10px}
+.h2::before{content:"";display:inline-block;width:4px;height:17px;border-radius:2px;background:var(--brand);margin-right:8px;vertical-align:-2px}
+.src{font-size:14px;color:var(--sub);margin-top:8px}
 
 /* 시트 */
-.ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
-.sheet{background:#fff;width:100%;max-width:560px;max-height:90vh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;overflow:hidden;padding-bottom:var(--safe-b)}
-@media (min-width:640px){.ov{align-items:center;padding:20px}.sheet{border-radius:18px}}
-.sheet-h{display:flex;gap:12px;align-items:flex-start;padding:18px 18px 12px;border-bottom:1px solid var(--line)}
-.sheet-h h2{font-size:21px;font-weight:800;line-height:1.3}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(10,20,40,.5);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:#fff;width:100%;max-width:560px;max-height:90vh;border-radius:22px 22px 0 0;display:flex;flex-direction:column;overflow:hidden;padding-bottom:var(--safe-b)}
+@media (min-width:640px){.ov{align-items:center;padding:20px}.sheet{border-radius:22px}}
+.sheet-h{display:flex;gap:12px;align-items:flex-start;padding:18px 18px 14px;border-bottom:1px solid var(--line);border-top:6px solid var(--brand)}
+.sheet-h.c-국어{border-top-color:var(--k)} .sheet-h.c-영어{border-top-color:var(--e)} .sheet-h.c-수학{border-top-color:var(--m)}
+.sheet-h h2{font-size:21px;font-weight:800;line-height:1.3;margin-top:4px}
 .x{margin-left:auto;flex:none;width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center}
 .x svg{width:18px;height:18px;stroke:#222;stroke-width:2.2}
 .sheet-b{padding:4px 18px 18px;overflow-y:auto}
 .sheet-f{display:flex;gap:8px;padding:12px 18px 14px;border-top:1px solid var(--line)}
-.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line2);background:#fff;color:var(--ink)}
-.btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line2);background:#fff;color:var(--ink)}
+.btn.pri{background:var(--brand);border-color:var(--brand);color:#fff}
 .kv{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
 .kv:last-child{border-bottom:0}
 .kv dt{flex:none;width:68px;color:var(--sub);font-weight:700;font-size:15px;padding-top:1px}
 .kv dd{flex:1;min-width:0}
 .kv .sched{margin-top:0}
 .kv .sched div{font-size:17px}
-.notice h3{font-size:16px;font-weight:800;margin:14px 0 4px}
+.notice h3{font-size:16px;font-weight:800;margin:14px 0 4px;color:var(--brand)}
 .notice p,.notice li{font-size:15px;color:var(--ink2);line-height:1.6}
 .notice ul{padding-left:18px}
 
 /* 등록 폼 */
-.form{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.form{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:18px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .field{display:flex;flex-direction:column;gap:5px;font-size:15px;font-weight:700;color:var(--ink2)}
-.field input,.field select,.field textarea{border:1.5px solid var(--line2);border-radius:10px;padding:10px 12px;font-size:16px;font-weight:500;color:var(--ink);background:#fff;width:100%}
+.field input,.field select,.field textarea{border:1.5px solid var(--line2);border-radius:12px;padding:10px 12px;font-size:16px;font-weight:500;color:var(--ink);background:#fff;width:100%}
 .field textarea{min-height:80px;resize:vertical}
 .full{grid-column:1/-1}
 
 /* 바닥 */
-.foot{margin-top:40px;background:#fff;border-top:1px solid var(--line);padding:26px 0 calc(34px + var(--safe-b));font-size:15px;color:var(--ink2)}
+.foot{margin-top:40px;background:#fff;border-top:4px solid var(--brand);padding:26px 0 calc(34px + var(--safe-b));font-size:15px;color:var(--ink2)}
 .foot-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-bottom:18px}
-.foot-links a,.foot-links button{font-size:16px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.foot-links a,.foot-links button{font-size:16px;font-weight:700;color:var(--brand);text-decoration:underline;text-underline-offset:3px}
 .foot h4{font-size:15px;font-weight:800;margin-bottom:6px}
 .foot dl{display:grid;grid-template-columns:86px 1fr;gap:4px 10px;margin-bottom:14px;font-size:14px}
 .foot dt{color:var(--sub);font-weight:700}
 .foot p{font-size:14px;line-height:1.65}
 
-.toast{position:fixed;left:50%;bottom:calc(20px + var(--safe-b));transform:translateX(-50%);background:#111;color:#fff;font-size:15px;font-weight:700;padding:11px 18px;border-radius:999px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
+.toast{position:fixed;left:50%;bottom:calc(20px + var(--safe-b));transform:translateX(-50%);background:var(--brand-d);color:#fff;font-size:15px;font-weight:700;padding:11px 18px;border-radius:999px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
 .toast.on{opacity:1}
 .noscript{padding:40px 16px;text-align:center;font-size:17px}
+@media (max-width:370px){.brand-sub{font-size:13px}}
 </style>
 </head>
 <body>
 <noscript><div class="noscript">클래스픽은 자바스크립트가 필요합니다. 브라우저 설정에서 자바스크립트를 켜 주세요.</div></noscript>
 
 <header class="head"><div class="wrap head-in">
-  <a class="brand" href="#/">클래스픽</a><span class="brand-sub">부산 센텀·사직 학원 시간표</span>
+  <a class="logo" href="#/" aria-label="클래스픽 처음으로"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff"/><rect x="7" y="9" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="15" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="21" width="9" height="3" rx="1.5" fill="#16386a"/><circle cx="22.5" cy="22.5" r="3.5" fill="#f5a524"/></svg><span class="brand">클래스픽</span></a>
+  <span class="brand-sub">부산 센텀·사직 학원 시간표</span>
 </div></header>
 
 <main id="app"><div class="wrap"><div class="empty" style="margin-top:20px">시간표를 불러오는 중입니다.</div></div></main>
@@ -305,24 +348,31 @@ function startText(c){
   return md+" 개강 · 진행 중";
 }
 function photo(n){var t=TEACH[n];return t&&t.photo?t.photo:""}
-function avatar(n){var p=photo(n);return'<span class="av">'+(p?'<img src="'+esc(p)+'" alt="" loading="lazy" width="48" height="48">':esc((n||"?").slice(0,1)))+'</span>'}
+function avatar(n,lg){var p=photo(n);return'<span class="av'+(lg?' lg':'')+'">'+(p?'<img src="'+esc(p)+'" alt="" loading="lazy" width="68" height="68">':esc((n||"?").slice(0,1)))+'</span>'}
+/* 같은 그룹 안 정렬: 강사 사진 있는 수업 → 팀 수업 → 강사 미표기 (그다음은 공통 정렬) */
+function rank(c){return !c.teacher?2:(photo(c.teacher)?0:1)}
+function byRank(a,b){return rank(a)-rank(b)||cmp(a,b)}
+function soonDiff(c){return c.startDate?Math.round((c.startDate-TODAY)/864e5):null}
 function isTeam(n){return!!(TEACH[n]&&TEACH[n].team)}
 function tName(n){return isTeam(n)?n:n+" 선생님"}
 
+var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+var NOFACE='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#7b8594" stroke-width="1.7"><circle cx="12" cy="9" r="4"/><path d="M4.5 20c1.6-3.6 4.4-5.2 7.5-5.2s5.9 1.6 7.5 5.2"/></svg>';
 function card(c){
   var who=c.teacher
     ?(isTeam(c.teacher)
-      ?'<div class="who">'+avatar("국")+'<div><b>'+esc(c.teacher)+'</b><span>여러 선생님 팀 수업</span></div></div>'
-      :'<a class="who" href="#/t/'+enc(c.teacher)+'">'+avatar(c.teacher)+'<div><b>'+esc(tName(c.teacher))+'</b><span>'+esc(c.subject)+' · 소개 보기</span></div></a>')
-    :'<div class="who"><span class="av"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#8a9099" stroke-width="1.8"><circle cx="12" cy="9" r="4"/><path d="M4.5 20c1.6-3.6 4.4-5.2 7.5-5.2s5.9 1.6 7.5 5.2"/></svg></span><div><b style="font-weight:700">강사 학원 문의</b><span>시간표에 강사 표기 없음</span></div></div>';
+      ?'<div class="who"><span class="av lg">'+esc(c.subject.slice(0,1))+'</span><div><b>'+esc(c.teacher)+'</b><span>여러 선생님 팀 수업</span></div></div>'
+      :'<a class="who" href="#/t/'+enc(c.teacher)+'">'+avatar(c.teacher,1)+'<div><b>'+esc(tName(c.teacher))+'</b><span class="more">소개 보기</span></div></a>')
+    :'<div class="who"><span class="av lg">'+NOFACE+'</span><div><b style="font-weight:700">강사 학원 문의</b><span>시간표에 강사 표기 없음</span></div></div>';
   var tg=[c.target!==c.name.split(" ")[0]?c.target:"",c.level].filter(Boolean).join(" · ");
-  return'<article class="card"><button type="button" class="card-main" data-course="'+esc(c.id)+'">'
-    +'<div class="card-sub"><span class="subj s-'+esc(c.subject)+'">'+esc(c.subject)+'</span><span>'+esc(c.prog)+'</span></div>'
+  var d=soonDiff(c);
+  return'<article class="card c-'+esc(c.subject)+'"><button type="button" class="card-main" data-course="'+esc(c.id)+'">'
+    +'<div class="card-sub"><span class="pill p-'+esc(c.subject)+'">'+esc(c.subject)+'</span><span>'+esc(c.prog)+'</span></div>'
     +'<h3>'+esc(c.name)+'</h3>'+(tg?'<div class="tg">'+esc(tg)+'</div>':'')
     +schedHTML(c)
-    +(c.start?'<div class="start">'+esc(startText(c))+'</div>':'')
+    +(c.start?'<div class="start'+(d!=null&&d>=0&&d<=7?' soon':'')+'">'+esc(startText(c))+'</div>':'')
     +'</button>'
-    +'<div class="card-foot">'+who+'<a class="where" href="#/a/'+enc(c.academy)+'">'+esc(c.academy.replace(/\s*(센텀점|사직점)$/,""))+'<small>'+esc(c.area)+'점</small></a></div>'
+    +'<div class="card-foot">'+who+'<a class="where" href="#/a/'+enc(c.academy)+'">'+PIN+'<span>'+esc(c.academy.replace(/\s*(센텀점|사직점)$/,""))+'<small>'+esc(c.area)+'점</small></span></a></div>'
     +'</article>';
 }
 function cardsHTML(arr){return arr.length?'<div class="cards">'+arr.map(card).join("")+'</div>':'<div class="empty">조건에 맞는 수업이 없습니다.<br><button type="button" class="u" data-act="reset" style="margin-top:8px;font-weight:700">조건 지우기</button></div>'}
@@ -355,7 +405,7 @@ function chips(key,items){
 }
 function vList(){
   var schools=uniq(COURSES.map(function(c){return c.school})).sort(function(a,b){return a.localeCompare(b,"ko")});
-  return'<section class="filters"><div class="wrap">'
+  return seasonHTML()+'<section class="filters" id="filters"><div class="wrap">'
     +'<div class="chips" role="group" aria-label="학년">'+chips("g",GCHIPS.map(function(g){return[g[0],g[1]]}))+'</div>'
     +'<div class="chips" role="group" aria-label="과목과 지역" style="margin-top:8px">'+chips("s",SUBJ.map(function(x){return[x,x]}))+'<span class="vsep" aria-hidden="true"></span>'+chips("a",ACADS.map(function(a){return[a.area,a.area+"점"]}))+'</div>'
     +'<div class="frow2"><label class="sr" for="fsc">학교</label><select id="fsc" class="sel" data-f2="sc"><option value="">학교 전체</option>'
@@ -363,11 +413,36 @@ function vList(){
     +'<label class="sr" for="fq">검색</label><input id="fq" class="inp" type="search" placeholder="검색 (선생님, 공통수학, 토 …)" value="'+esc(F.q)+'" autocomplete="off"></div>'
     +'</div></section><div class="wrap" id="res"></div>';
 }
+/* 시즌 띠 — 지금 데이터에서 개강을 앞둔 예비고1 PRE H 를 한 줄로. 누르면 예비고1 필터 */
+function seasonHTML(){
+  var pre=COURSES.filter(function(c){return c.prog==="PRE H"});
+  if(!pre.length)return"";
+  var up=pre.filter(function(c){var d=soonDiff(c);return d!=null&&d>=0});
+  var m=TODAY.getMonth()+1;
+  var txt=up.length?'<b>예비고1 겨울 PRE H</b> '+m+'월 개강 · 수업 '+up.length+'개':'<b>예비고1 PRE H</b> 수업 '+pre.length+'개';
+  return'<button type="button" class="season" data-f="g" data-val="예비고1" aria-pressed="'+(F.g==="예비고1")+'"><span class="wrap"><i aria-hidden="true"></i><span class="tx">'+txt+'</span><em>'+(F.g==="예비고1"?"적용됨":"보기")+'</em></span></button>';
+}
+var GTITLE={"예비고1":"예비고1 · PRE H","고1":"고1","고2":"고2","고등":"고등 정규 (전학년)","중등":"중등"};
+function chipOf(c){for(var i=0;i<GCHIPS.length;i++)if(c.grades.some(function(x){return GCHIPS[i][2].indexOf(x)>=0}))return GCHIPS[i][0];return""}
+function groupsOf(r){
+  if(F.g)return[{t:GTITLE[F.g]||F.g,items:r.slice().sort(byRank)}];
+  var soon=r.filter(function(c){var d=soonDiff(c);return d!=null&&d>=0&&d<=7}).sort(function(a,b){return rank(a)-rank(b)||a.startDate-b.startDate||cmp(a,b)}); var soonAll=soon.length; soon=soon.slice(0,6);
+  var rest=r.filter(function(c){return soon.indexOf(c)<0});
+  var g=[];
+  if(soon.length)g.push({t:"이번 주·곧 개강",sub:soonAll>soon.length?soonAll+"개 중 "+soon.length+"개":soon.length+"개",soon:1,items:soon});
+  GCHIPS.forEach(function(x){var it=rest.filter(function(c){return chipOf(c)===x[0]}).sort(byRank);if(it.length)g.push({t:GTITLE[x[0]],items:it})});
+  var etc=rest.filter(function(c){return!chipOf(c)}).sort(byRank);if(etc.length)g.push({t:"기타",items:etc});
+  return g;
+}
 function renderRes(){
   var r=filtered(),el=$("#res");if(!el)return;
   var any=F.g||F.s||F.a||F.sc||F.q;
-  el.innerHTML='<div class="bar"><b>수업 '+r.length+'개</b>'+(any?'<button type="button" class="reset u" data-act="reset">조건 지우기</button>':'')+'<span class="sp"></span>'+viewSeg()+'</div>'
-    +(F.v==="days"?daysHTML(r):cardsHTML(r));
+  var body;
+  if(F.v==="days")body=daysHTML(r);
+  else if(!r.length)body=cardsHTML(r);
+  else body=groupsOf(r).map(function(g){return'<section class="grp"><div class="grp-h'+(g.soon?' soon':'')+'"><h2>'+esc(g.t)+'</h2><span>'+(g.sub?esc(g.sub):g.items.length+'개')+'</span></div>'+cardsHTML(g.items)+'</section>'}).join("");
+  el.innerHTML='<div class="bar"><b>수업 '+r.length+'개</b>'+(any?'<button type="button" class="reset u" data-act="reset">조건 지우기</button>':'')+'<span class="sp"></span>'+viewSeg()+'</div>'+body;
+  var sb=$(".season");if(sb){sb.setAttribute("aria-pressed",F.g==="예비고1");var em=sb.querySelector("em");if(em)em.textContent=F.g==="예비고1"?"적용됨":"보기"}
 }
 
 function acadLine(cs){var names=uniq(cs.map(function(c){return c.academy.replace(/\s*(센텀점|사직점)$/,"")}));return names.map(function(n){return n+" "+uniq(cs.filter(function(c){return c.academy.indexOf(n)===0}).map(function(c){return c.area+"점"})).join("·")}).join(", ")}
@@ -375,16 +450,17 @@ function acadLine(cs){var names=uniq(cs.map(function(c){return c.academy.replace
 function vTeacher(n){
   var cs=COURSES.filter(function(c){return c.teacher===n}),t=TEACH[n]||{};
   if(!cs.length)return'<div class="wrap"><a class="back" href="#/">← 수업 목록</a><div class="empty">현재 시간표에 없는 선생님입니다.</div></div>';
-  var bio=(t.bio||"").split(/\s*·\s*/).filter(Boolean);
+  var bio=(t.bio||"").split(/\s+·\s+/).filter(Boolean);
   return'<div class="wrap"><a class="back" href="'+esc(lastList)+'">← 수업 목록</a>'
-    +'<section class="prof"><div class="ph">'+(t.photo?'<img src="'+esc(t.photo)+'" alt="'+esc(n)+' 선생님">':'')+'</div><div style="min-width:0">'
-    +'<h1>'+esc(n)+' 선생님</h1><div class="meta">'+esc(t.s||cs[0].subject)+' · '+esc(acadLine(cs))+'</div>'
+    +'<section class="prof"><div class="prof-band"></div><div class="prof-in"><div class="ph">'+(t.photo?'<img src="'+esc(t.photo)+'" alt="'+esc(n)+' 선생님">':'')+'</div><div class="prof-txt">'
+    +'<div><span class="pill p-'+esc(t.s||cs[0].subject)+'">'+esc(t.s||cs[0].subject)+'</span></div><h1>'+esc(n)+' 선생님</h1><div class="meta">'+esc(acadLine(cs))+' · 수업 '+cs.length+'개</div>'
+    +'</div></div>'
     +(t.quote?'<p class="quote">'+esc(t.quote)+'</p>':'')
-    +(bio.length?'<ul class="bio">'+bio.map(function(b){return'<li>'+esc(b)+'</li>'}).join("")+'</ul>':'')
-    +'</div></section>'
-    +'<p style="font-size:14px;color:var(--sub);margin-top:8px">사진·소개: 학원이 공식 홈페이지에 공개한 자료</p>'
+    +(bio.length?'<ul class="bio">'+bio.map(function(b){return'<li>'+esc(b)+'</li>'}).join("")+'</ul>':'<div style="height:18px"></div>')
+    +'</section>'
+    +'<p class="src">사진·소개: 학원이 공식 홈페이지에 공개한 자료</p>'
     +'<h2 class="h2">요일별 수업</h2>'+daysHTML(cs,{noTeacher:true})
-    +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs)+'</div>';
+    +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs.slice().sort(byRank))+'</div>';
 }
 
 /* ───────── 학원 상세 (학원명을 눌러 들어옴) ───────── */
@@ -395,12 +471,12 @@ function vAcademy(n){
   var teachers=uniq(cs.map(function(c){return c.teacher})).filter(function(x){return x&&!isTeam(x)})
     .sort(function(x,y){return idx(SUBJ,(TEACH[x]||{}).s)-idx(SUBJ,(TEACH[y]||{}).s)||x.localeCompare(y,"ko")});
   return'<div class="wrap"><a class="back" href="'+esc(lastList)+'">← 수업 목록</a>'
-    +'<section class="prof acad"><h1>'+esc(n)+'</h1><div class="meta">부산 '+esc(a.area)+' · 수업 '+cs.length+'개 ('+SUBJ.map(function(s){return s+" "+cs.filter(function(c){return c.subject===s}).length}).join(" · ")+')</div>'
+    +'<section class="prof acad"><div class="prof-band" style="height:10px"></div><div class="prof-in"><h1>'+esc(n)+'</h1><div class="meta">부산 '+esc(a.area)+' · 수업 '+cs.length+'개 ('+SUBJ.map(function(s){return s+" "+cs.filter(function(c){return c.subject===s}).length}).join(" · ")+')</div>'
     +(a.site?'<p style="margin-top:10px"><a class="u" style="font-weight:700" href="'+esc(a.site)+'" target="_blank" rel="noopener noreferrer">공식 홈페이지 열기</a></p>':'')
-    +(teachers.length?'<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">'+teachers.map(function(x){return'<a href="#/t/'+enc(x)+'" style="display:flex;align-items:center;gap:8px;font-weight:700">'+avatar(x)+esc(x)+'</a>'}).join("")+'</div>':'')
-    +'</section>'
+    +(teachers.length?'<div class="acad-ts">'+teachers.map(function(x){return'<a href="#/t/'+enc(x)+'">'+avatar(x,1)+esc(x)+'</a>'}).join("")+'</div>':'')
+    +'</div></section>'
     +'<h2 class="h2">요일별 수업</h2>'+daysHTML(cs,{noAcad:true})
-    +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs)+'</div>';
+    +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs.slice().sort(byRank))+'</div>';
 }
 
 /* ───────── 수업 등록 (학원용) ───────── */
@@ -438,11 +514,11 @@ function openCourse(id){
   var c=BYID[id];if(!c)return;lastFocus=document.activeElement;
   var multi=c.secs.length>1;
   var tRow=c.teacher?(isTeam(c.teacher)?esc(c.teacher)+' <span style="color:var(--sub)">(팀 수업)</span>'
-      :'<a href="#/t/'+enc(c.teacher)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher)+esc(tName(c.teacher))+' <span class="u" style="font-weight:600;font-size:15px">소개</span></a>')
+      :'<a href="#/t/'+enc(c.teacher)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher,1)+esc(tName(c.teacher))+' <span class="u" style="font-weight:700;font-size:15px;color:var(--brand)">소개</span></a>')
     :'<span style="color:var(--sub)">시간표에 강사 표기 없음 · 학원 문의</span>';
   var ms=enc("[클래스픽] 정정·삭제 요청 - "+c.academy+" "+c.name),mb=enc("강좌: "+c.academy+" / "+c.name+" ("+c.id+")\n요청 내용 (정정 또는 삭제):\n");
   $("#layer").innerHTML='<div class="ov" data-act="close-ov"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">'
-    +'<div class="sheet-h"><div><div class="card-sub"><span class="subj s-'+esc(c.subject)+'">'+esc(c.subject)+'</span><span>'+esc(c.prog)+'</span></div><h2 id="sh-t">'+esc(c.name)+'</h2></div><button type="button" class="x" data-act="close" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'
+    +'<div class="sheet-h c-'+esc(c.subject)+'"><div><div class="card-sub"><span class="pill p-'+esc(c.subject)+'">'+esc(c.subject)+'</span><span>'+esc(c.prog)+'</span></div><h2 id="sh-t">'+esc(c.name)+'</h2></div><button type="button" class="x" data-act="close" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'
     +'<div class="sheet-b"><dl>'
     +'<div class="kv"><dt>요일·시간</dt><dd>'+schedHTML(c)+(multi?'<div style="font-size:15px;color:var(--sub);margin-top:4px">위 반 중 하나를 고릅니다</div>':'')+(c.freq?'<div style="font-size:15px;color:var(--ink2);margin-top:4px">'+esc(c.freq)+'</div>':'')+'</dd></div>'
     +'<div class="kv"><dt>강사</dt><dd>'+tRow+'</dd></div>'
@@ -515,6 +591,9 @@ document.addEventListener("submit",function(e){if(e.target.id==="regf"){e.preven
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&$("#layer").innerHTML&&!$("[data-act=notice-ok]"))closeLayer()});
 window.addEventListener("hashchange",function(){if($("#layer").innerHTML&&!$("[data-act=notice-ok]"))closeLayer();render()});
 
+/* 필터 바가 상단에 붙으면 그림자 + 검색 줄 접기 */
+function onScroll(){var f=$("#filters");if(!f)return;var st=f.getBoundingClientRect().top<=0&&window.scrollY>60;if(st!==f.classList.contains("stuck"))f.classList.toggle("stuck",st)}
+window.addEventListener("scroll",onScroll,{passive:true});
 render();
 setTimeout(function(){showNotice(false)},300);
 })();
