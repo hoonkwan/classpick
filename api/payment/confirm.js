@@ -8,6 +8,8 @@ import { getSupabaseAdmin } from "../_lib/supabase.js";
 const TOSS_CONFIRM = "https://api.tosspayments.com/v1/payments/confirm";
 
 export default async function handler(req, res) {
+  // 2026-11-06 — 공개 경로 비활성 (클래스픽은 결제·SMS·서명 업로드를 쓰지 않음). 다시 쓰려면 Vercel 환경변수 CP_LEGACY_API=1
+  if (process.env.CP_LEGACY_API !== "1") { res.statusCode = 404; res.setHeader("Content-Type", "application/json; charset=utf-8"); return res.end(JSON.stringify({ ok: false, error: "not_found" })); }
   if (handlePreflight(req, res)) return;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   if (req.method !== "POST") return methodNotAllowed(res, ["POST"]);
