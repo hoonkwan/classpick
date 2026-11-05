@@ -3,11 +3,12 @@
  *   id      고유값 (강좌 ac 에서 참조)
  *   name    학원명
  *   branch  지점명 (없으면 "")
- *   area    동네 ("센텀" | "사직")
+ *   area    동네 ("센텀" | "사직") — 지역 화면은 이 값으로 그 지역 학원만 보여 준다
+ *   region  지역 경로 (#/centum, #/sajik)
  *   logo    로고 경로 (학원이 공식 홈페이지에 공개한 로고만)
  *   site    공식 홈페이지
  */
 window.CP_ACADEMIES = [
-  { id: "eduin-centum", name: "교육인학원", branch: "센텀점", area: "센텀", logo: "assets/academies/eduin.webp", site: "https://kyin.co.kr" },
-  { id: "eduin-sajik",  name: "교육인학원", branch: "사직점", area: "사직", logo: "assets/academies/eduin.webp", site: "https://kyin.co.kr" }
+  { id: "eduin-centum", name: "교육인학원", branch: "센텀점", area: "센텀", region: "centum", logo: "assets/academies/eduin.webp", site: "https://kyin.co.kr" },
+  { id: "eduin-sajik",  name: "교육인학원", branch: "사직점", area: "사직", region: "sajik", logo: "assets/academies/eduin.webp", site: "https://kyin.co.kr" }
 ];

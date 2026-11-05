@@ -297,6 +297,41 @@ body:not(.is-main) #mainchrome{display:none}
 .mp-acad{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:18px;border:1px solid var(--mhair)}
 .mp-acad .n{margin-left:auto;font-size:15px;color:var(--mmuted);font-weight:600;white-space:nowrap}
 .mp-more{text-align:center;margin-top:28px}
+
+/* ───────── 지역 대분류 ───────── */
+.brand-sub{margin-left:0}
+#regtog{margin-left:auto}
+.hreg,.mp-reg{display:inline-flex;border-radius:999px;padding:3px;gap:2px}
+.hreg{background:rgba(255,255,255,.14)}
+.hreg a{font-size:15px;font-weight:700;color:#e2e9f5;padding:5px 13px;border-radius:999px}
+.hreg a[aria-pressed="true"]{background:#fff;color:var(--brand)}
+.mp-reg{background:#ececf0;margin-right:8px}
+.mp-reg a{font-size:15px;font-weight:700;color:#424245;padding:6px 14px;border-radius:999px}
+.mp-reg a[aria-pressed="true"]{background:#1d1d1f;color:#fff}
+.mp-logo{margin-right:12px}
+.mp-nav-in .mp-reg{margin-right:auto}
+@media (max-width:420px){.brand-sub{display:none}.mp-cta{display:none}}
+.gate{padding-bottom:64px}
+.gate-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:860px;margin:34px auto 0;text-align:left}
+@media (max-width:640px){.gate-cards{grid-template-columns:1fr;gap:14px}}
+.gate-card{position:relative;display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:24px;padding:28px 24px 24px;box-shadow:0 4px 20px rgba(0,0,0,.07);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.gate-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.gate-card::after{content:"";position:absolute;top:0;left:0;right:0;height:6px}
+.gate-card.g1::after{background:linear-gradient(90deg,#0071e3,#9b4dff)}
+.gate-card.g2::after{background:linear-gradient(90deg,#ff3d7f,#ff6b00)}
+.gate-name{font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.gate-card.g1 .gate-name{background:linear-gradient(135deg,#0071e3,#9b4dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gate-card.g2 .gate-name{background:linear-gradient(135deg,#ff3d7f,#ff6b00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gate-stats{display:flex;gap:22px}
+.gate-stats span{font-size:15px;color:#6e6e73;font-weight:600}
+.gate-stats b{display:block;font-size:28px;color:#1d1d1f;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.gate-sub{font-size:16px;color:#424245;font-weight:600}
+.gate-go{font-size:17px;font-weight:700;color:#0071e3;margin-top:2px}
+.gate-card.g2 .gate-go{color:#e0457b}
+.gate-recent{position:absolute;top:20px;right:20px;font-size:14px;font-weight:700;color:#424245;background:#f0f0f3;border-radius:999px;padding:3px 11px}
+.reg-h{font-size:22px;margin-top:34px;padding-top:18px;border-top:2px solid var(--line)}
+.reg-h::before{display:none}
+.reg-h span{font-size:17px;color:var(--sub)}
 </style>
 </head>
 <body>
@@ -304,8 +339,9 @@ body:not(.is-main) #mainchrome{display:none}
 
 <div id="mainchrome"></div>
 <header class="head"><div class="wrap wide head-in">
-  <a class="logo" href="#/" aria-label="클래스픽 처음으로"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff"/><rect x="7" y="9" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="15" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="21" width="9" height="3" rx="1.5" fill="#16386a"/><circle cx="22.5" cy="22.5" r="3.5" fill="#f5a524"/></svg><span class="brand">클래스픽</span></a>
-  <span class="brand-sub">부산 센텀·사직 학원 시간표</span>
+  <a class="logo" href="#/" aria-label="클래스픽 처음으로 (동네 선택)"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff"/><rect x="7" y="9" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="15" width="18" height="3" rx="1.5" fill="#16386a"/><rect x="7" y="21" width="9" height="3" rx="1.5" fill="#16386a"/><circle cx="22.5" cy="22.5" r="3.5" fill="#f5a524"/></svg><span class="brand">클래스픽</span></a>
+  <span class="brand-sub" id="hsub">부산 센텀·사직 학원 시간표</span>
+  <div id="regtog"></div>
 </div></header>
 
 <main id="app"><div class="wrap"><div class="empty" style="margin-top:20px">시간표를 불러오는 중입니다.</div></div></main>
@@ -399,6 +435,18 @@ function cmp(a,b){
 }
 COURSES.sort(cmp);
 var BYID={};COURSES.forEach(function(c){BYID[c.id]=c});
+/* ───────── 지역(대분류) — 센텀 / 사직. 지역 화면에서는 COURSES·ACADS 가 그 지역 것만 가리킨다 ───────── */
+var REGIONS=[{slug:"centum",area:"센텀"},{slug:"sajik",area:"사직"}];
+var K_REGION="classpick:region:v1";
+var ALL=COURSES, ACADS_ALL=ACADS, REG="", RA="", RP="#/";
+function regOf(slug){for(var i=0;i<REGIONS.length;i++)if(REGIONS[i].slug===slug)return REGIONS[i];return null}
+function regByArea(area){for(var i=0;i<REGIONS.length;i++)if(REGIONS[i].area===area)return REGIONS[i];return null}
+function setRegion(slug){
+  var g=regOf(slug);REG=g?g.slug:"";RA=g?g.area:"";RP="#/"+(REG?REG+"/":"");
+  COURSES=RA?ALL.filter(function(c){return c.area===RA}):ALL;
+  ACADS=RA?ACADS_ALL.filter(function(a){return a.area===RA}):ACADS_ALL;
+  if(REG)lset(K_REGION,REG);
+}
 
 /* ───────── 상태 (주소창에 같이 저장 — 링크 공유 가능) ───────── */
 var F={g:"",s:"",a:"",ac:"",sc:"",q:"",v:"list"};
@@ -409,7 +457,7 @@ function readF(qs){
 }
 function writeF(){
   var p=[];["g","s","a","ac","sc","q"].forEach(function(k){if(F[k])p.push(k+"="+enc(F[k]))});if(F.v==="days")p.push("v=days");
-  var h="#/list"+(p.length?"?"+p.join("&"):"");lastList=h;if(location.hash!==h)history.replaceState(null,"",h);
+  var h=RP+"list"+(p.length?"?"+p.join("&"):"");lastList=h;if(location.hash!==h)history.replaceState(null,"",h);
 }
 function filtered(){
   var gset=null;GCHIPS.forEach(function(g){if(g[0]===F.g)gset=g[2]});
@@ -470,13 +518,13 @@ function card(c){
   var who=c.teacher
     ?(isTeam(c.teacher)
       ?'<div class="who"><span class="av lg">'+esc(c.subject.slice(0,1))+'</span><div><b>'+esc(c.teacher)+'</b><span>여러 선생님 팀 수업</span></div></div>'
-      :'<a class="who" href="#/t/'+enc(c.teacher)+'">'+avatar(c.teacher,1)+'<div><b>'+esc(tName(c.teacher))+'</b><span class="more">소개 보기</span></div></a>')
+      :'<a class="who" href="'+RP+'t/'+enc(c.teacher)+'">'+avatar(c.teacher,1)+'<div><b>'+esc(tName(c.teacher))+'</b><span class="more">소개 보기</span></div></a>')
     :'<div class="who"><span class="av lg">'+NOFACE+'</span><div><b style="font-weight:700">강사 학원 문의</b><span>시간표에 강사 표기 없음</span></div></div>';
   var tg=[c.target!==c.name.split(" ")[0]?c.target:"",c.level].filter(Boolean).join(" · ");
   var d=soonDiff(c);
   var showProg=c.prog&&c.name.indexOf(c.prog)<0;
   return'<article class="card c-'+esc(c.subject)+'">'
-    +'<a class="card-acad" href="#/a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'<span class="go">학원 보기</span></a>'
+    +'<a class="card-acad" href="'+RP+'a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'<span class="go">학원 보기</span></a>'
     +'<button type="button" class="card-main" data-course="'+esc(c.id)+'">'
     +'<div class="card-sub"><span class="pill p-'+esc(c.subject)+'">'+esc(c.subject)+'</span>'+(showProg?'<span>'+esc(c.prog)+'</span>':'')+'</div>'
     +'<h3>'+esc(c.name)+'</h3>'+(tg?'<div class="tg">'+esc(tg)+'</div>':'')
@@ -518,7 +566,7 @@ function vList(){
   var schools=uniq(COURSES.map(function(c){return c.school})).sort(function(a,b){return a.localeCompare(b,"ko")});
   return seasonHTML()+'<section class="filters" id="filters"><div class="wrap wide">'
     +'<div class="chips" role="group" aria-label="학년">'+chips("g",GCHIPS.map(function(g){return[g[0],g[1]]}))+'</div>'
-    +'<div class="chips" role="group" aria-label="과목과 지역" style="margin-top:8px">'+chips("s",SUBJ.map(function(x){return[x,x]}))+'<span class="vsep" aria-hidden="true"></span>'+chips("a",uniq(ACADS.map(function(a){return a.area})).map(function(x){return[x,x]}))+'</div>'
+    +'<div class="chips" role="group" aria-label="과목" style="margin-top:8px">'+chips("s",SUBJ.map(function(x){return[x,x]}))+'</div>'
     +'<div class="fgrid2"><label class="sr" for="fac">학원</label><select id="fac" class="sel" data-f2="ac"><option value="">학원 전체</option>'
     +uniq(ACADS.map(function(a){return a.name})).map(function(n){return'<option'+(F.ac===n?' selected':'')+'>'+esc(n)+'</option>'}).join("")+'</select>'
     +'<label class="sr" for="fsc">학교</label><select id="fsc" class="sel" data-f2="sc"><option value="">학교 전체</option>'
@@ -558,37 +606,45 @@ function renderRes(){
   var sb=$(".season");if(sb){sb.setAttribute("aria-pressed",F.g==="예비고1");var em=sb.querySelector("em");if(em)em.textContent=F.g==="예비고1"?"적용됨":"보기"}
 }
 
-function acadBadges(cs){return uniq(cs.map(function(c){return c.acId})).map(function(id){return'<a href="#/a/'+enc(id)+'">'+acadBadge(ACBY[id]||cs.filter(function(c){return c.acId===id})[0].ac)+'</a>'}).join("")}
+function acadBadges(cs){return uniq(cs.map(function(c){return c.acId})).map(function(id){var g=regByArea((ACBY[id]||{}).area);return'<a href="#/'+(g?g.slug+'/':'')+'a/'+enc(id)+'">'+acadBadge(ACBY[id]||cs.filter(function(c){return c.acId===id})[0].ac)+'</a>'}).join("")}
 function acadLine(cs){var names=uniq(cs.map(function(c){return c.academy.replace(/\s*(센텀점|사직점)$/,"")}));return names.map(function(n){return n+" "+uniq(cs.filter(function(c){return c.academy.indexOf(n)===0}).map(function(c){return c.area+"점"})).join("·")}).join(", ")}
 /* ───────── 강사 상세 (강사 사진·이름을 눌러 들어옴) ───────── */
 function vTeacher(n){
-  var cs=COURSES.filter(function(c){return c.teacher===n}),t=TEACH[n]||{};
-  if(!cs.length)return'<div class="wrap"><a class="back" href="#/list">← 수업 목록</a><div class="empty">현재 시간표에 없는 선생님입니다.</div></div>';
+  var all=ALL.filter(function(c){return c.teacher===n}),t=TEACH[n]||{};
+  if(!all.length)return'<div class="wrap"><a class="back" href="'+RP+'list">← 수업 목록</a><div class="empty">현재 시간표에 없는 선생님입니다.</div></div>';
   var bio=(t.bio||"").split(/\s+·\s+/).filter(Boolean);
-  return'<div class="wrap"><a class="back" href="'+esc(lastList)+'">← 수업 목록</a>'
+  var areas=uniq(all.map(function(c){return c.area})).sort(function(a,b){return(a===RA?-1:0)-(b===RA?-1:0)||idx(["센텀","사직"],a)-idx(["센텀","사직"],b)});
+  var split=areas.length>1;
+  var h='<div class="wrap"><a class="back" href="'+esc(lastList)+'">← '+(RA?RA+' ':'')+'수업 목록</a>'
     +'<section class="prof"><div class="prof-band"></div><div class="prof-in"><div class="ph">'+(t.photo?'<img src="'+esc(t.photo)+'" alt="'+esc(n)+' 선생님">':'')+'</div><div class="prof-txt">'
-    +'<div><span class="pill p-'+esc(t.s||cs[0].subject)+'">'+esc(t.s||cs[0].subject)+'</span></div><h1>'+esc(n)+' 선생님</h1><div class="meta">수업 '+cs.length+'개</div>'
+    +'<div><span class="pill p-'+esc(t.s||all[0].subject)+'">'+esc(t.s||all[0].subject)+'</span></div><h1>'+esc(n)+' 선생님</h1><div class="meta">'+(split?areas.map(function(a){return a+" "+all.filter(function(c){return c.area===a}).length+"개"}).join(" · "):"수업 "+all.length+"개")+'</div>'
     +'</div></div>'
-    +'<div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 18px 0">'+acadBadges(cs)+'</div>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 18px 0">'+acadBadges(all.slice().sort(function(x,y){return areas.indexOf(x.area)-areas.indexOf(y.area)}))+'</div>'
     +(t.quote?'<p class="quote">'+esc(t.quote)+'</p>':'')
     +(bio.length?'<ul class="bio">'+bio.map(function(b){return'<li>'+esc(b)+'</li>'}).join("")+'</ul>':'<div style="height:18px"></div>')
     +'</section>'
-    +'<p class="src">사진·소개: 학원이 공식 홈페이지에 공개한 자료</p>'
-    +'<h2 class="h2">요일별 수업</h2>'+daysHTML(cs,{noTeacher:true})
-    +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs.slice().sort(byRank))+'</div>';
+    +'<p class="src">사진·소개: 학원이 공식 홈페이지에 공개한 자료</p>';
+  areas.forEach(function(a){
+    var cs=all.filter(function(c){return c.area===a});
+    var pre=split?a+' ':'';
+    h+=(split?'<h2 class="h2 reg-h">'+esc(a)+' 수업 <span>'+cs.length+'개</span></h2>':'')
+      +'<h2 class="h2">'+esc(pre)+'요일별 수업</h2>'+daysHTML(cs,{noTeacher:true})
+      +'<h2 class="h2">'+esc(pre)+'수업 '+cs.length+'개</h2>'+cardsHTML(cs.slice().sort(byRank));
+  });
+  return h+'</div>';
 }
 
 /* ───────── 학원 상세 (학원명을 눌러 들어옴) ───────── */
 function vAcademy(n){
   var a=ACBY[n]||ACADS.filter(function(x){return x.full===n})[0];
   var cs=a?COURSES.filter(function(c){return c.acId===a.id}):[];
-  if(!a)return'<div class="wrap"><a class="back" href="#/list">← 수업 목록</a><div class="empty">학원을 찾을 수 없습니다.</div></div>';
+  if(!a)return'<div class="wrap"><a class="back" href="'+RP+'list">← 수업 목록</a><div class="empty">학원을 찾을 수 없습니다.</div></div>';
   var teachers=uniq(cs.map(function(c){return c.teacher})).filter(function(x){return x&&!isTeam(x)})
     .sort(function(x,y){return idx(SUBJ,(TEACH[x]||{}).s)-idx(SUBJ,(TEACH[y]||{}).s)||x.localeCompare(y,"ko")});
-  return'<div class="wrap"><a class="back" href="'+esc(lastList)+'">← 수업 목록</a>'
+  return'<div class="wrap"><a class="back" href="'+esc(lastList)+'">← '+(RA?RA+' ':'')+'수업 목록</a>'
     +'<section class="prof acad"><div class="prof-band" style="height:10px"></div><div class="prof-in"><h1>'+acadBadge(a,"lg")+'</h1><div class="meta" style="margin-top:10px">부산 '+esc(a.area)+' · 수업 '+cs.length+'개 ('+SUBJ.map(function(s){return s+" "+cs.filter(function(c){return c.subject===s}).length}).join(" · ")+')</div>'
     +(a.site?'<p style="margin-top:10px"><a class="u" style="font-weight:700" href="'+esc(a.site)+'" target="_blank" rel="noopener noreferrer">공식 홈페이지 열기</a></p>':'')
-    +(teachers.length?'<div class="acad-ts">'+teachers.map(function(x){return'<a href="#/t/'+enc(x)+'">'+avatar(x,1)+esc(x)+'</a>'}).join("")+'</div>':'')
+    +(teachers.length?'<div class="acad-ts">'+teachers.map(function(x){return'<a href="'+RP+'t/'+enc(x)+'">'+avatar(x,1)+esc(x)+'</a>'}).join("")+'</div>':'')
     +'</div></section>'
     +'<h2 class="h2">요일별 수업</h2>'+daysHTML(cs,{noAcad:true})
     +'<h2 class="h2">수업 '+cs.length+'개</h2>'+cardsHTML(cs.slice().sort(byRank))+'</div>';
@@ -596,7 +652,7 @@ function vAcademy(n){
 
 /* ───────── 수업 등록 (학원용) ───────── */
 function vRegister(){
-  return'<div class="wrap"><a class="back" href="#/list">← 수업 목록</a><h1 style="font-size:24px;font-weight:800;margin:6px 0 4px">수업 등록 (학원용)</h1>'
+  return'<div class="wrap"><a class="back" href="'+RP+'list">← 수업 목록</a><h1 style="font-size:24px;font-weight:800;margin:6px 0 4px">수업 등록 (학원용)</h1>'
     +'<p style="font-size:16px;color:var(--ink2);margin-bottom:14px">공개 중인 강좌 정보를 보내 주시면 확인 후 반영합니다. 등록·노출 비용은 없습니다.</p>'
     +'<form class="form" id="regf" novalidate><div class="fgrid">'
     +'<label class="field">학원명 *<input name="acad" maxlength="40"></label>'
@@ -629,7 +685,7 @@ function openCourse(id){
   var c=BYID[id];if(!c)return;lastFocus=document.activeElement;
   var multi=c.secs.length>1;
   var tRow=c.teacher?(isTeam(c.teacher)?esc(c.teacher)+' <span style="color:var(--sub)">(팀 수업)</span>'
-      :'<a href="#/t/'+enc(c.teacher)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher,1)+esc(tName(c.teacher))+' <span class="u" style="font-weight:700;font-size:15px;color:var(--brand)">소개</span></a>')
+      :'<a href="'+RP+'t/'+enc(c.teacher)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher,1)+esc(tName(c.teacher))+' <span class="u" style="font-weight:700;font-size:15px;color:var(--brand)">소개</span></a>')
     :'<span style="color:var(--sub)">시간표에 강사 표기 없음 · 학원 문의</span>';
   var ms=enc("[클래스픽] 정정·삭제 요청 - "+c.academy+" "+c.name),mb=enc("강좌: "+c.academy+" / "+c.name+" ("+c.id+")\n요청 내용 (정정 또는 삭제):\n");
   $("#layer").innerHTML='<div class="ov" data-act="close-ov"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">'
@@ -637,7 +693,7 @@ function openCourse(id){
     +'<div class="sheet-b"><dl>'
     +'<div class="kv"><dt>요일·시간</dt><dd>'+schedHTML(c)+(multi?'<div style="font-size:15px;color:var(--sub);margin-top:4px">위 반 중 하나를 고릅니다</div>':'')+(c.freq?'<div style="font-size:15px;color:var(--ink2);margin-top:4px">'+esc(c.freq)+'</div>':'')+'</dd></div>'
     +'<div class="kv"><dt>강사</dt><dd>'+tRow+'</dd></div>'
-    +'<div class="kv"><dt>학원</dt><dd><a href="#/a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'</a></dd></div>'
+    +'<div class="kv"><dt>학원</dt><dd><a href="#/'+(regByArea(c.area)||{slug:""}).slug+'/a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'</a></dd></div>'
     +'<div class="kv"><dt>대상</dt><dd>'+esc([c.target,c.level,c.school].filter(Boolean).filter(function(x,i,a){return a.indexOf(x)===i}).join(" · "))+'</dd></div>'
     +(c.content?'<div class="kv"><dt>내용</dt><dd>'+esc(c.content)+'</dd></div>':'')
     +(c.start?'<div class="kv"><dt>개강</dt><dd>'+esc(startText(c))+'</dd></div>':'')
@@ -666,14 +722,48 @@ function showNotice(force){
 
 /* ───────── 메인 (개편 전 디자인 톤 복원 · 내용은 현재 데이터) ───────── */
 function firstStart(arr){var d=arr.map(function(c){return c.startDate}).filter(function(x){return x&&x>=TODAY}).sort(function(a,b){return a-b})[0];return d?(d.getMonth()+1)+"/"+d.getDate():""}
-function listHref(q){var p=[];Object.keys(q||{}).forEach(function(k){if(q[k])p.push(k+"="+enc(q[k]))});return"#/list"+(p.length?"?"+p.join("&"):"")}
+function listHref(q){var p=[];Object.keys(q||{}).forEach(function(k){if(q[k])p.push(k+"="+enc(q[k]))});return RP+"list"+(p.length?"?"+p.join("&"):"")}
+function regionToggle(cls){
+  return'<div class="'+cls+'" role="group" aria-label="지역 전환">'+REGIONS.map(function(g){return'<a href="'+swapHash(g.slug)+'" aria-pressed="'+(REG===g.slug)+'">'+g.area+'</a>'}).join("")+'</div>';
+}
+/* 지역 전환 — 지금 보던 화면(목록 필터·강사)을 그대로 두고 지역만 바꾼다 */
+function swapHash(slug){
+  var r=route();
+  if(!REG)return"#/"+slug;
+  if(r.sub==="list")return"#/"+slug+"/list"+(r.qs?"?"+r.qs:"");
+  if(r.sub==="t"&&ALL.some(function(c){return c.teacher===r.arg&&c.area===regOf(slug).area}))return"#/"+slug+"/t/"+enc(r.arg);
+  return"#/"+slug;
+}
 function mainChrome(){
+  if(!REG)return'<div class="mp"><nav class="mp-nav"><div class="mp-nav-in"><a class="mp-logo" href="#/">클래스<span>픽</span></a><a class="mp-link" href="#/register">수업 등록</a></div></nav></div>';
   var pre=COURSES.filter(function(c){return c.prog==="PRE H"});
   var fs=firstStart(pre);
-  return'<div class="mp"><a class="mp-banner" href="'+listHref({g:"예비고1"})+'"><span class="pill2">클래스픽</span><b>예비고1 겨울 PRE H</b> '+(fs?fs+' 첫 개강 · ':'')+'수업 '+pre.length+'개 <u>시간표 보기 →</u></a>'
+  return'<div class="mp">'+(pre.length?'<a class="mp-banner" href="'+listHref({g:"예비고1"})+'"><span class="pill2">'+esc(RA)+'</span><b>예비고1 겨울 PRE H</b> '+(fs?fs+' 첫 개강 · ':'')+'수업 '+pre.length+'개 <u>시간표 보기 →</u></a>':'')
     +'<nav class="mp-nav"><div class="mp-nav-in"><a class="mp-logo" href="#/">클래스<span>픽</span></a>'
-    +'<a class="mp-link" href="#/list">전체 시간표</a><a class="mp-link" href="'+listHref({g:"예비고1"})+'">예비고1</a><a class="mp-link" href="#teachers" data-act="jump">선생님</a><a class="mp-link" href="#/register">수업 등록</a>'
-    +'<a class="mp-cta" href="#/list">시간표 보기</a></div></nav></div>';
+    +regionToggle("mp-reg")
+    +'<a class="mp-link" href="'+RP+'list">전체 시간표</a><a class="mp-link" href="#teachers" data-act="jump">선생님</a>'
+    +'<a class="mp-cta" href="'+RP+'list">시간표 보기</a></div></nav></div>';
+}
+function regStats(area){
+  var cs=ALL.filter(function(c){return c.area===area});
+  return{n:cs.length,acads:uniq(ACADS_ALL.filter(function(a){return a.area===area}).map(function(a){return a.name})).length,
+    teachers:uniq(cs.map(function(c){return c.teacher})).filter(function(x){return x&&!isTeam(x)}).length,
+    pre:cs.filter(function(c){return c.prog==="PRE H"}).length};
+}
+function vGate(){
+  var recent=lget(K_REGION,"");
+  return'<div class="mp"><section class="mp-hero gate"><div class="mp-hero-bg"></div><div class="mp-hero-in">'
+    +'<div class="mp-eyebrow">부산 센텀 · 사직 학원 시간표</div>'
+    +'<h1 class="mp-h1"><span class="ln">어느 동네 학원을</span><br><span class="accent ln">찾으시나요?</span></h1>'
+    +'<p class="mp-sub">동네를 고르면 그 동네 학원의 수업·요일·시간·선생님이 나옵니다.</p>'
+    +'<div class="gate-cards">'+REGIONS.map(function(g,i){var st=regStats(g.area);
+      return'<a class="gate-card '+(i?'g2':'g1')+'" href="#/'+g.slug+'">'
+        +(recent===g.slug?'<span class="gate-recent">최근</span>':'')
+        +'<span class="gate-name">'+g.area+'</span>'
+        +'<span class="gate-stats"><span><b>'+st.n+'</b>수업</span><span><b>'+st.acads+'</b>학원</span><span><b>'+st.teachers+'</b>선생님</span></span>'
+        +(st.pre?'<span class="gate-sub">예비고1 겨울 PRE H '+st.pre+'개</span>':'')
+        +'<span class="gate-go">'+g.area+' 시간표 보기 →</span></a>'}).join("")+'</div>'
+    +'</div></section></div>';
 }
 function vMain(){
   var pre=COURSES.filter(function(c){return c.prog==="PRE H"});
@@ -684,7 +774,7 @@ function vMain(){
   var trio=[["e","영어"],["m","수학"],["k","국어"]].map(function(x){
     var cs=pre.filter(function(c){return c.subject===x[1]});if(!cs.length)return"";
     var ts=uniq(cs.map(function(c){return c.teacher})).filter(function(n){return n&&!isTeam(n)}).sort(function(a,b){return a.localeCompare(b,"ko")});
-    var areas=uniq(cs.map(function(c){return c.area})).sort(function(a,b){return a.localeCompare(b,"ko")}).reverse().join("·");
+    var areas=esc(RA);
     var f=firstStart(cs);
     return'<a class="mp-card '+x[0]+'" href="'+listHref({g:"예비고1",s:x[1]})+'"><span class="mp-tag">PRE H · '+x[1]+'</span>'
       +'<h3>예비고1 '+x[1]+' — 수업 '+cs.length+'개</h3>'
@@ -696,48 +786,63 @@ function vMain(){
   return'<div class="mp">'
     +'<section class="mp-hero"><div class="mp-hero-bg"></div><div class="mp-hero-in">'
     +'<div class="mp-eyebrow">예비고1 겨울 PRE H'+(fs?' · '+fs+' 첫 개강':'')+'</div>'
-    +'<h1 class="mp-h1"><span class="ln">센텀·사직 학원 시간표,</span><br><span class="accent ln">한 화면에서 비교하세요.</span></h1>'
-    +'<p class="mp-sub">학년과 과목을 고르면 요일·시간·선생님이 바로 보입니다. 지금은 교육인학원 센텀점·사직점 '+(TODAY.getMonth()+1)+'월 시간표를 싣고 있습니다.</p>'
-    +'<div class="mp-actions"><a class="mp-btn pri" href="#/list">전체 시간표 보기</a><a class="mp-btn sec" href="'+listHref({g:"예비고1"})+'">예비고1 PRE H 보기</a></div>'
+    +'<h1 class="mp-h1"><span class="ln">'+esc(RA)+' 학원 시간표,</span><br><span class="accent ln">한 화면에서 비교하세요.</span></h1>'
+    +'<p class="mp-sub">학년과 과목을 고르면 요일·시간·선생님이 바로 보입니다. 지금은 '+esc(ACADS.map(function(a){return a.full}).join(", "))+' '+(TODAY.getMonth()+1)+'월 시간표를 싣고 있습니다.</p>'
+    +'<div class="mp-actions"><a class="mp-btn pri" href="'+RP+'list">전체 시간표 보기</a><a class="mp-btn sec" href="'+listHref({g:"예비고1"})+'">예비고1 PRE H 보기</a></div>'
     +'<div class="mp-quick">'+GCHIPS.map(function(g){return'<a href="'+listHref({g:g[0]})+'">'+esc(g[1])+'<small>'+gcount(g[0])+'</small></a>'}).join("")+'</div>'
-    +'<div class="mp-trio">'+trio+'</div>'
-    +'<div class="mp-stats"><div><b>'+uniq(ACADS.map(function(a){return a.name})).length+'</b><span>입점 학원</span></div><div><b>'+COURSES.length+'</b><span>등록 수업</span></div><div><b>'+uniq(ACADS.map(function(a){return a.area})).length+'</b><span>동네</span></div><div><b>'+names.length+'</b><span>선생님</span></div></div>'
+    +(trio?'<div class="mp-trio">'+trio+'</div>':'')
+    +'<div class="mp-stats"><div><b>'+uniq(ACADS.map(function(a){return a.name})).length+'</b><span>입점 학원</span></div><div><b>'+COURSES.length+'</b><span>등록 수업</span></div><div><b>'+ACADS.length+'</b><span>캠퍼스</span></div><div><b>'+names.length+'</b><span>선생님</span></div></div>'
     +'</div></section>'
-    +'<section class="mp-sec soft" id="teachers"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">Teachers</div><h2>선생님</h2><p>사진을 누르면 소개와 요일별 수업이 나옵니다. 과목 순, 같은 과목은 가나다 순.</p></div>'
+    +'<section class="mp-sec soft" id="teachers"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">Teachers</div><h2>'+esc(RA)+' 선생님</h2><p>사진을 누르면 소개와 요일별 수업이 나옵니다. 과목 순, 같은 과목은 가나다 순.</p></div>'
     +'<div class="mp-tgrid">'+names.map(function(n){var t=TEACH[n]||{};var k=COURSES.filter(function(c){return c.teacher===n}).length;
-      return'<a class="mp-t" href="#/t/'+enc(n)+'"><div class="ph">'+(t.photo?'<img src="'+esc(t.photo)+'" alt="'+esc(n)+' 선생님" loading="lazy">':'')+'</div><b>'+esc(n)+'</b><span>'+esc(t.s||"")+' · 수업 '+k+'개</span></a>'}).join("")+'</div></div></section>'
-    +'<section class="mp-sec"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">By School</div><h2>학교별 내신반</h2></div>'
+      return'<a class="mp-t" href="'+RP+'t/'+enc(n)+'"><div class="ph">'+(t.photo?'<img src="'+esc(t.photo)+'" alt="'+esc(n)+' 선생님" loading="lazy">':'')+'</div><b>'+esc(n)+'</b><span>'+esc(t.s||"")+' · 수업 '+k+'개</span></a>'}).join("")+'</div></div></section>'
+    +'<section class="mp-sec"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">By School</div><h2>'+esc(RA)+' 학교별 내신반</h2></div>'
     +'<div class="mp-schools">'+schools.map(function(sc){var cs=COURSES.filter(function(c){return c.school===sc&&c.prog==="학교 내신"});return'<a class="mp-school" href="'+listHref({sc:sc})+'"><b>'+esc(sc)+'</b><span>'+cs.length+'개 · '+esc(uniq(cs.map(function(c){return c.subject})).sort(function(a,b){return idx(SUBJ,a)-idx(SUBJ,b)}).join(" "))+'</span></a>'}).join("")+'</div></div></section>'
-    +'<section class="mp-sec soft"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">Academies</div><h2>입점 학원</h2><p>다른 학원도 입점을 검토하고 있습니다.</p></div>'
-    +'<div class="mp-acads">'+ACADS.map(function(a){return'<a class="mp-acad" href="#/a/'+enc(a.id)+'">'+acadBadge(a)+'<span class="n">수업 '+COURSES.filter(function(c){return c.acId===a.id}).length+'개</span></a>'}).join("")+'</div>'
-    +'<div class="mp-more"><a class="mp-btn pri" href="#/list">전체 시간표 보기</a></div></div></section>'
+    +'<section class="mp-sec soft"><div class="mp-sec-in"><div class="mp-sec-h"><div class="mp-eb">Academies</div><h2>'+esc(RA)+' 입점 학원</h2><p>다른 학원도 입점을 검토하고 있습니다.</p></div>'
+    +'<div class="mp-acads">'+ACADS.map(function(a){return'<a class="mp-acad" href="'+RP+'a/'+enc(a.id)+'">'+acadBadge(a)+'<span class="n">수업 '+COURSES.filter(function(c){return c.acId===a.id}).length+'개</span></a>'}).join("")+'</div>'
+    +'<div class="mp-more"><a class="mp-btn pri" href="'+RP+'list">전체 시간표 보기</a></div></div></section>'
     +'</div>';
 }
 
-/* ───────── 라우터 ───────── */
+/* ───────── 라우터/* ───────── 라우터 ───────── */
 function route(){
   var h=(location.hash||"#/").replace(/^#\/?/,""),qs="",i=h.indexOf("?");if(i>=0){qs=h.slice(i+1);h=h.slice(0,i)}
   var p=h.split("/").map(function(x){try{return decodeURIComponent(x)}catch(e){return x}});
-  return{name:p[0]||"",arg:p[1]||"",qs:qs};
+  if(regOf(p[0]))return{reg:p[0],sub:p[1]||"",arg:p[2]||"",qs:qs};
+  return{reg:"",sub:p[0]||"",arg:p[1]||"",qs:qs};
 }
-var lastKey=null,lastList="#/list";
+function qsGet(qs,k){var m=("&"+qs).match(new RegExp("&"+k+"=([^&]*)"));try{return m?decodeURIComponent(m[1]):""}catch(e){return""}}
+var lastKey=null,lastList="";
+function go(h){history.replaceState(null,"",h);render()}
 function render(){
-  var r=route(),html;
+  var r=route(),html,isMain=false;
+  /* 예전 링크 처리 */
+  if(!r.reg){
+    if(r.sub==="list"||(!r.sub&&r.qs)){var g=regByArea(qsGet(r.qs,"a"));if(g){return go("#/"+g.slug+"/list?"+r.qs.replace(/(^|&)a=[^&]*/,"").replace(/^&/,""))}if(r.qs||r.sub)return go("#/")}
+    if(r.sub==="a"){var ac=ACBY[r.arg],g2=ac&&regByArea(ac.area);if(g2)return go("#/"+g2.slug+"/a/"+enc(r.arg))}
+  }
+  setRegion(r.reg);
+  if(!lastList||lastList.indexOf(RP+"list")!==0)lastList=RP+"list";
   try{
-    if(r.name==="t")html=vTeacher(r.arg);
-    else if(r.name==="a")html=vAcademy(r.arg);
-    else if(r.name==="register")html=vRegister();
-    else if(r.name==="list"){readF(r.qs);html=vList();lastList=location.hash||"#/list"}
-    else if(!r.name&&r.qs){history.replaceState(null,"","#/list?"+r.qs);readF(r.qs);html=vList();lastList=location.hash;r.name="list"}
-    else{html=vMain();r.name=""}
+    if(r.reg){
+      if(r.sub==="list"){readF(r.qs);html=vList();lastList=location.hash}
+      else if(r.sub==="t")html=vTeacher(r.arg);
+      else if(r.sub==="a")html=vAcademy(r.arg);
+      else{html=vMain();isMain=true}
+    }else{
+      if(r.sub==="register")html=vRegister();
+      else if(r.sub==="t")html=vTeacher(r.arg);
+      else{html=vGate();isMain=true}
+    }
   }catch(e){html='<div class="wrap"><div class="empty" style="margin-top:20px">화면을 그리는 중 문제가 생겼습니다. 새로고침해 주세요.</div></div>';if(window.console)console.error(e)}
-  var isMain=!r.name;
   document.body.classList.toggle("is-main",isMain);
   $("#mainchrome").innerHTML=isMain?mainChrome():"";
+  $("#regtog").innerHTML=regionToggle("hreg");
+  $("#hsub").textContent=RA?RA+" 학원 시간표":"부산 센텀·사직 학원 시간표";
   $("#app").innerHTML=html;
-  if(r.name==="list")renderRes();
-  var key=r.name+"/"+r.arg;if(key!==lastKey){if(lastKey!==null)window.scrollTo(0,0);lastKey=key}
-  $("#foot-data").textContent=(RAW.source||"")+" · "+(RAW.updated||"")+" 반영 · 수업 "+COURSES.length+"개";
+  if(r.reg&&r.sub==="list")renderRes();
+  var key=r.reg+"/"+r.sub+"/"+r.arg;if(key!==lastKey){if(lastKey!==null)window.scrollTo(0,0);lastKey=key}
+  $("#foot-data").textContent=(RAW.source||"")+" · "+(RAW.updated||"")+" 반영 · 수업 "+ALL.length+"개";
 }
 var toastT;
 function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("on")},2000)}
