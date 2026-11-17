@@ -169,7 +169,7 @@
     function upsert(list, row) { var i = list.findIndex(function (x) { return x.id === row.id; }); if (i >= 0) { Object.keys(row).forEach(function (k) { if (row[k] !== "" || !(k === "photo_url" || k === "logo_url")) list[i][k] = row[k]; }); } else list.push(row); }
     if (s.kind === "academy") {
       pid = s.target_id || "ac-" + id.replace(/-/g, "").slice(0, 10);
-      upsert(d.pub.academies, { id: pid, name: pl.name, branch: pl.branch || "", area: pl.area, logo_url: photoUrl || pl.logo_url || "", site: pl.site || "", status: "published" });
+      upsert(d.pub.academies, { id: pid, name: pl.name, branch: pl.branch || "", area: pl.area, logo_url: photoUrl || pl.logo_url || "", site: pl.site || "", kind: pl.kind || "academy", license: pl.license || "", tel: pl.tel || "", tagline: pl.tagline || "", status: "published" });
     } else if (s.kind === "teacher") {
       acad = pl.academy_id || (batchAcad && batchAcad.published_id) || null;
       pid = s.target_id || "tc-" + id.replace(/-/g, "").slice(0, 10);
@@ -179,7 +179,7 @@
       if (!acad) throw new Error("이 수업의 학원을 먼저 승인해 주세요");
       var a = d.pub.academies.filter(function (x) { return x.id === acad; })[0];
       pid = s.target_id || "cs-" + id.replace(/-/g, "").slice(0, 10);
-      upsert(d.pub.courses, { id: pid, academy_id: acad, area: pl.area || (a && a.area) || "센텀", subject: pl.subject, prog: pl.prog || "", name: pl.name, target: pl.target || "", grade: pl.grade || "", school: pl.school || "", level: pl.level || "", sections: pl.sections || [], freq: pl.freq || "", content: pl.content || "", teacher: pl.teacher || "", start_text: pl.start || "", months: pl.months || [], status: "published" });
+      upsert(d.pub.courses, { id: pid, academy_id: acad, area: pl.area || (a && a.area) || "센텀", subject: pl.subject, prog: pl.prog || "", name: pl.name, target: pl.target || "", grade: pl.grade || "", school: pl.school || "", level: pl.level || "", sections: pl.sections || [], freq: pl.freq || "", content: pl.content || "", teacher: pl.teacher || "", start_text: pl.start || "", months: pl.months || [], details: pl.details || {}, status: "published" });
     }
     s.status = "approved"; s.payload = pl; s.published_id = pid; s.decided_at = new Date().toISOString();
     d.log.push({ at: s.decided_at, action: "approve", target: s.kind + ":" + pid });

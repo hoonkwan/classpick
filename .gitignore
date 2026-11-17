@@ -18,3 +18,11 @@ api/node_modules/
 # 빌드/캐시
 .vercel/
 *.log
+
+# 카톡 미리보기 이미지는 배포 대상
+!assets/og/*.png
+
+# 내부 문서 (배포 안 함)
+제안서_*/
+HANDOFF_NOTE.md
+클래스픽_입점제안서.html

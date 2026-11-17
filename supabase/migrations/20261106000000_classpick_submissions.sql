@@ -124,6 +124,10 @@ create table if not exists public.pub_academies (
   region text generated always as (case area when '센텀' then 'centum' else 'sajik' end) stored,
   logo_url text default '',
   site text default '',
+  kind text not null default 'academy' check (kind in ('academy','tutor')),  -- tutor = 개인과외교습자
+  license text default '',                -- 개인과외교습자 신고번호 (tutor 필수)
+  tel text default '',                    -- 학원 대표번호 (공개 상담 번호만)
+  tagline text default '',                -- 학원 한 줄 소개
   status text not null default 'published' check (status in ('published','hidden')),
   updated_at timestamptz not null default now()
 );
@@ -155,6 +159,7 @@ create table if not exists public.pub_courses (
   teacher text default '',
   start_text text default '',
   months int[] default '{}',
+  details jsonb not null default '{}',    -- 수업 상세 {lv,cap,bk,how,hw,mk,plan:[[월,내용]]}
   status text not null default 'published' check (status in ('published','hidden')),
   updated_at timestamptz not null default now()
 );
@@ -200,11 +205,13 @@ begin
 
   if s.kind = 'academy' then
     pid := coalesce(s.target_id, 'ac-' || substr(replace(s.id::text,'-',''),1,10));
-    insert into public.pub_academies(id,name,branch,area,logo_url,site,status,updated_at)
-    values (pid, pl->>'name', coalesce(pl->>'branch',''), pl->>'area', coalesce(p_photo_url, pl->>'logo_url',''), coalesce(pl->>'site',''), 'published', now())
+    if coalesce(pl->>'kind','academy') = 'tutor' and coalesce(pl->>'license','') = '' then raise exception 'tutor_license_required'; end if;
+    insert into public.pub_academies(id,name,branch,area,logo_url,site,kind,license,tel,tagline,status,updated_at)
+    values (pid, pl->>'name', coalesce(pl->>'branch',''), pl->>'area', coalesce(p_photo_url, pl->>'logo_url',''), coalesce(pl->>'site',''),
+      coalesce(pl->>'kind','academy'), coalesce(pl->>'license',''), coalesce(pl->>'tel',''), coalesce(pl->>'tagline',''), 'published', now())
     on conflict (id) do update set name=excluded.name, branch=excluded.branch, area=excluded.area,
       logo_url=case when excluded.logo_url<>'' then excluded.logo_url else pub_academies.logo_url end,
-      site=excluded.site, status='published', updated_at=now();
+      site=excluded.site, kind=excluded.kind, license=excluded.license, tel=excluded.tel, tagline=excluded.tagline, status='published', updated_at=now();
 
   elsif s.kind = 'teacher' then
     acad := coalesce(pl->>'academy_id', (select published_id from public.submissions where batch_id = s.batch_id and kind='academy' and status='approved' limit 1));
@@ -219,14 +226,15 @@ begin
     if acad is null then raise exception 'academy_not_approved'; end if;
     area_v := coalesce(pl->>'area', (select area from public.pub_academies where id = acad));
     pid := coalesce(s.target_id, 'cs-' || substr(replace(s.id::text,'-',''),1,10));
-    insert into public.pub_courses(id,academy_id,area,subject,prog,name,target,grade,school,level,sections,freq,content,teacher,start_text,months,status,updated_at)
+    insert into public.pub_courses(id,academy_id,area,subject,prog,name,target,grade,school,level,sections,freq,content,teacher,start_text,months,details,status,updated_at)
     values (pid, acad, area_v, pl->>'subject', coalesce(pl->>'prog',''), pl->>'name', coalesce(pl->>'target',''), coalesce(pl->>'grade',''),
       coalesce(pl->>'school',''), coalesce(pl->>'level',''), coalesce(pl->'sections','[]'::jsonb), coalesce(pl->>'freq',''), coalesce(pl->>'content',''),
       coalesce(pl->>'teacher',''), coalesce(pl->>'start',''),
-      coalesce((select array_agg(v::int) from jsonb_array_elements_text(coalesce(pl->'months','[]'::jsonb)) v), '{}'), 'published', now())
+      coalesce((select array_agg(v::int) from jsonb_array_elements_text(coalesce(pl->'months','[]'::jsonb)) v), '{}'),
+      coalesce(pl->'details','{}'::jsonb), 'published', now())
     on conflict (id) do update set academy_id=excluded.academy_id, area=excluded.area, subject=excluded.subject, prog=excluded.prog, name=excluded.name,
       target=excluded.target, grade=excluded.grade, school=excluded.school, level=excluded.level, sections=excluded.sections, freq=excluded.freq,
-      content=excluded.content, teacher=excluded.teacher, start_text=excluded.start_text, months=excluded.months, status='published', updated_at=now();
+      content=excluded.content, teacher=excluded.teacher, start_text=excluded.start_text, months=excluded.months, details=excluded.details, status='published', updated_at=now();
   end if;
 
   update public.submissions set status='approved', payload=pl, published_id=pid, decided_at=now(), decided_by=auth.uid() where id = p_id;

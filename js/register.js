@@ -53,7 +53,16 @@
       + '<label class="field">개강일<input data-k="start" maxlength="20" placeholder="예: 12/1(월)"></label>'
       + '<label class="field">강사<select data-k="teacher"></select></label>'
       + '<label class="field full">수업 내용<textarea data-k="content" maxlength="300" rows="2"></textarea></label>'
-      + '</div></div>';
+      + '</div>'
+      + '<details class="rg-more"><summary>수업 상세 <span class="rg-sub">학부모 상담 자료로 그대로 쓰입니다 · 채울수록 페이지가 풍성해집니다</span></summary><div class="fgrid" style="margin-top:12px">'
+      + '<label class="field">대상 수준<input data-k="d_lv" maxlength="40" placeholder="예: 내신 2~3등급 → 1등급 목표"></label>'
+      + '<label class="field">정원<input data-k="d_cap" maxlength="20" placeholder="예: 8명"></label>'
+      + '<label class="field full">교재<input data-k="d_bk" maxlength="80" placeholder="예: 자체 교재 + 고쟁이"></label>'
+      + '<label class="field full">수업 방식<textarea data-k="d_how" maxlength="200" rows="2" placeholder="예: 개념 40분 → 문제 풀이 80분 → 오답 클리닉"></textarea></label>'
+      + '<label class="field">숙제·테스트<input data-k="d_hw" maxlength="80" placeholder="예: 매 수업 복습테스트"></label>'
+      + '<label class="field">보강<input data-k="d_mk" maxlength="80" placeholder="예: 결석 시 영상 + 클리닉"></label>'
+      + '<label class="field full">월별 진도 <span class="rg-sub">한 줄에 한 달 · 「12월: 내용」</span><textarea data-k="d_plan" maxlength="400" rows="3" placeholder="12월: 공통수학1 다항식·방정식&#10;1월: 부등식·경우의 수"></textarea></label>'
+      + '</div></details></div>';
   }
 
   function mount(root) {
@@ -72,11 +81,15 @@
       + '<div data-a="old" class="hidden" style="margin-top:14px"><label class="field">학원 선택<select id="rg-acad">' + opt(acads.map(function (a) { return { v: a.id, l: a.full }; })) + '</select></label>'
       + '<label class="rg-chk"><input type="checkbox" id="rg-aedit"> 학원 정보(이름·지점·홈페이지·로고)도 고칠게요</label></div>'
       + '<div data-a="fields" style="margin-top:14px"><div class="fgrid">'
-      + '<label class="field">학원명 *<input id="rg-an" maxlength="40"></label>'
+      + '<label class="field">구분 *<select id="rg-ak"><option value="academy">학원·교습소</option><option value="tutor">개인 과외 (개인과외교습자)</option></select></label>'
+      + '<label class="field" id="rg-al-w">신고번호 <span class="rg-sub">개인 과외는 필수</span><input id="rg-al" maxlength="30" placeholder="교육청 개인과외교습자 신고번호"></label>'
+      + '<label class="field">학원명 * <span class="rg-sub">개인 과외는 활동명</span><input id="rg-an" maxlength="40"></label>'
       + '<label class="field">지점<input id="rg-ab" maxlength="20" placeholder="예: 센텀점"></label>'
       + '<label class="field">동네 *<select id="rg-aa">' + opt(areaOpts) + '</select></label>'
       + '<label class="field">공식 홈페이지<input id="rg-as" maxlength="200" placeholder="https://"></label>'
-      + '</div><div class="rg-photo"><div class="rg-ph sq" id="rg-logo-ph"><span>로고</span></div><div><label class="btn sm rg-file">로고 올리기<input type="file" accept="image/jpeg,image/png,image/webp" data-rg="logo" hidden></label><p class="rg-hint">정사각으로 맞춰 줄입니다. 학원이 공개 중인 로고만.</p><p class="rg-st" id="rg-logo-st"></p></div></div></div>'
+      + '<label class="field">상담 전화 <span class="rg-sub">공개됩니다 · 대표번호만</span><input id="rg-at" maxlength="20" inputmode="tel" placeholder="예: 051-000-0000"></label>'
+      + '<label class="field">한 줄 소개<input id="rg-ag" maxlength="40" placeholder="예: 내신은 지문 분석으로 끝낸다"></label>'
+      + '</div><p class="rg-hint">개인 과외는 집 주소를 싣지 않습니다. 동네(센텀·사직)까지만 나옵니다.</p><div class="rg-photo"><div class="rg-ph sq" id="rg-logo-ph"><span>로고</span></div><div><label class="btn sm rg-file">로고 올리기<input type="file" accept="image/jpeg,image/png,image/webp" data-rg="logo" hidden></label><p class="rg-hint">정사각으로 맞춰 줄입니다. 학원이 공개 중인 로고만.</p><p class="rg-st" id="rg-logo-st"></p></div></div></div>'
       + '<h3 class="rg-h3">담당자 연락처 <span>운영팀만 봅니다 · 공개 안 함</span></h3><div class="fgrid">'
       + '<label class="field">이름 *<input id="rg-cn" maxlength="40" autocomplete="name"></label>'
       + '<label class="field">전화<input id="rg-cp" maxlength="30" inputmode="tel" autocomplete="tel"></label>'
@@ -169,6 +182,8 @@
     var c = CP.coursesOf(curAcad(el)).filter(function (x) { return x.id === id; })[0]; if (!c) return;
     $("[data-k=name]", b).value = c.name; $("[data-k=subject]", b).value = c.subject; $("[data-k=grade]", b).value = c.grades[0] || "고1";
     $("[data-k=school]", b).value = c.school; $("[data-k=prog]", b).value = c.prog || ""; $("[data-k=start]", b).value = c.start; $("[data-k=content]", b).value = c.content;
+    var dt = c.det || {}; ["lv", "cap", "bk", "how", "hw", "mk"].forEach(function (k) { var x = $("[data-k=d_" + k + "]", b); if (x) x.value = dt[k] || ""; });
+    var dp = $("[data-k=d_plan]", b); if (dp) dp.value = (dt.plan || []).map(function (p) { return p[0] + ": " + p[1]; }).join("\n");
     var box = $("[data-k=times]", b); box.innerHTML = "";
     c.secs.forEach(function (sec) {
       // 같은 시간대 슬롯은 한 줄로
@@ -187,8 +202,11 @@
     var old = curAcad(el), aedit = $("#rg-aedit", el).checked;
     var area = $("#rg-aa", el).value;
     if (old) { var oa = CP.academies().filter(function (x) { return x.id === old; })[0]; if (!aedit && oa) area = oa.area; }
-    var acadPl = { name: $("#rg-an", el).value.trim(), branch: $("#rg-ab", el).value.trim(), area: area, site: $("#rg-as", el).value.trim() };
+    var acadPl = { name: $("#rg-an", el).value.trim(), branch: $("#rg-ab", el).value.trim(), area: area, site: $("#rg-as", el).value.trim(),
+      kind: $("#rg-ak", el).value, license: $("#rg-al", el).value.trim(), tel: $("#rg-at", el).value.trim(), tagline: $("#rg-ag", el).value.trim() };
     if ((!old || aedit) && !acadPl.name) return fail("학원명을 적어 주세요", $("#rg-an", el));
+    if ((!old || aedit) && acadPl.kind === "tutor" && !acadPl.license) return fail("개인 과외는 교육청 개인과외교습자 신고번호가 필요합니다", $("#rg-al", el));
+    if (acadPl.tel && !/^[0-9\-\s()]{7,20}$/.test(acadPl.tel)) return fail("상담 전화는 숫자와 - 로만 적어 주세요", $("#rg-at", el));
     if (acadPl.site && !/^https?:\/\//.test(acadPl.site)) return fail("홈페이지 주소는 http:// 또는 https:// 로 시작해야 합니다", $("#rg-as", el));
     var contact = { name: $("#rg-cn", el).value.trim(), phone: $("#rg-cp", el).value.trim(), email: $("#rg-ce", el).value.trim() };
     if (!contact.name) return fail("담당자 이름을 적어 주세요", $("#rg-cn", el));
@@ -220,6 +238,10 @@
       var sections = (plain.length ? [{ l: "", t: [].concat.apply([], plain.map(function (x) { return x.t; })) }] : []).concat(labeled);
       var school = val(b, "school"), grade = val(b, "grade");
       var pl2 = { name: name, subject: val(b, "subject"), grade: grade, school: school, target: school && /\d/.test(grade) ? school + grade.replace(/^\D+/, "") : grade, prog: val(b, "prog"), sections: sections, start: val(b, "start"), content: val(b, "content"), teacher: val(b, "teacher"), area: area, months: [new Date().getMonth() + 1] };
+      var det = { lv: val(b, "d_lv"), cap: val(b, "d_cap"), bk: val(b, "d_bk"), how: val(b, "d_how"), hw: val(b, "d_hw"), mk: val(b, "d_mk"),
+        plan: val(b, "d_plan").split(/\n+/).map(function (ln) { var m = ln.match(/^\s*([^:：]{1,10})[:：]\s*(.+)$/); return m ? [m[1].trim(), m[2].trim()] : null; }).filter(Boolean) };
+      Object.keys(det).forEach(function (k) { if (!det[k] || (Array.isArray(det[k]) && !det[k].length)) delete det[k]; });
+      if (Object.keys(det).length) pl2.details = det;
       if (old) pl2.academy_id = old;
       var cop = val(b, "op");
       courses.push({ op: cop ? "edit" : "create", target_id: cop || null, payload: pl2 });

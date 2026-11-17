@@ -9,6 +9,9 @@
 <meta property="og:title" content="클래스픽 · 부산 센텀·사직 학원 시간표">
 <meta property="og:description" content="학년·과목·학교를 고르면 요일·시간·선생님이 바로 보입니다.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://classpick.vercel.app/assets/og/classpick.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230F766E'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'">
@@ -395,6 +398,7 @@ img{display:block;max-width:100%}
 .adm-pl span{display:block;font-size:13px;color:var(--sub);word-break:break-all}
 .adm-n{font-size:16px;color:var(--sub)}
 </style>
+<link rel="stylesheet" href="css/v6.css">
 </head>
 <body>
 <noscript><div class="noscript">클래스픽은 자바스크립트가 필요합니다. 브라우저 설정에서 자바스크립트를 켜 주세요.</div></noscript>
@@ -412,6 +416,8 @@ img{display:block;max-width:100%}
 <footer class="foot"><div class="wrap">
   <div class="foot-links">
     <a href="#/register">수업 등록 (학원용)</a>
+    <a href="#/kit">상담 링크·QR (학원용)</a>
+    <a href="#/plan">내 시간표</a>
     <a href="mailto:class-pick@naver.com?subject=%5B%ED%81%B4%EB%9E%98%EC%8A%A4%ED%94%BD%5D%20%EC%A0%95%EC%A0%95%C2%B7%EC%82%AD%EC%A0%9C%20%EC%9A%94%EC%B2%AD">정정·삭제 요청</a>
     <a href="terms.html">이용약관</a>
     <a href="privacy.html">개인정보처리방침</a>
@@ -438,9 +444,11 @@ img{display:block;max-width:100%}
 <script src="data/courses.js"></script>
 <script src="data/teachers.js"></script>
 <script src="data/config.js"></script>
+<script src="data/share.js"></script>
 <script src="js/backend.js"></script>
 <script src="js/register.js"></script>
 <script src="js/admin.js"></script>
+<script src="js/showcase.js"></script>
 <script>
 (function(){
 "use strict";
@@ -494,7 +502,14 @@ function normCourse(r){
   var a=acadOf(r.ac,r.a);
   return{id:r.id,area:r.a||a.area,ac:a,acId:a.id,acName:a.name,academy:a.full,site:a.site||"",subject:r.s,prog:r.p,name:cleanName(r.n),target:r.tg||"",
     grades:(r.g||"").split("·"),school:r.sc||"",level:r.lv||"",secs:secs,slots:all,freq:r.f||"",content:r.c||"",
-    teacher:r.t||"",start:r.st||"",startDate:parseStart(r.st),months:r.m||[]};
+    teacher:r.t||"",start:r.st||"",startDate:parseStart(r.st),months:r.m||[],det:details(r)};
+}
+/* 수업 상세 (대상 수준·정원·교재·수업 방식·숙제·보강·월별 진도) — r.d 에 학원이 준 값.
+   교재는 수업 내용에 「교재 …」로 적혀 있으면 그대로 꺼내 쓴다 (새로 지어내지 않음) */
+function details(r){
+  var d={},src=r.d||r.details||{};["lv","cap","bk","how","hw","mk","plan"].forEach(function(k){if(src[k]&&(!Array.isArray(src[k])||src[k].length))d[k]=src[k]});
+  if(!d.bk){var m=String(r.c||"").match(/교재\s*([^·]+)/);if(m)d.bk=m[1].trim()}
+  return d;
 }
 var COURSES=(RAW.courses||[]).map(normCourse);
 function cmp(a,b){
@@ -517,7 +532,7 @@ function setRegion(slug){
 }
 /* ───────── 승인된 DB 데이터 합치기 (정적 데이터로 먼저 그린 뒤 비동기로) ─────────
    같은 id 는 DB 가 덮어쓴다 (학원이 낸 수정 요청을 승인한 경우) */
-function dbCourseToRaw(c){return{id:c.id,ac:c.academy_id,a:c.area,s:c.subject,p:c.prog||"",n:c.name,tg:c.target||"",g:c.grade||"",sc:c.school||"",lv:c.level||"",sec:c.sections||[],f:c.freq||"",c:c.content||"",t:c.teacher||"",st:c.start_text||"",m:c.months||[]}}
+function dbCourseToRaw(c){return{id:c.id,ac:c.academy_id,a:c.area,s:c.subject,p:c.prog||"",n:c.name,tg:c.target||"",g:c.grade||"",sc:c.school||"",lv:c.level||"",sec:c.sections||[],f:c.freq||"",c:c.content||"",t:c.teacher||"",st:c.start_text||"",m:c.months||[],d:c.details||{}}}
 var STATIC={courses:null,acads:null,teach:null};
 function mergeRemote(pub){
   if(!pub)return false;
@@ -526,7 +541,7 @@ function mergeRemote(pub){
   ACADS_ALL=STATIC.acads.slice();ACBY={};ACADS_ALL.forEach(function(a){ACBY[a.id]=a});
   Object.keys(TEACH).forEach(function(k){delete TEACH[k]});Object.keys(STATIC.teach).forEach(function(k){TEACH[k]=STATIC.teach[k]});
   (pub.academies||[]).forEach(function(a){
-    var row={id:a.id,name:a.name,branch:a.branch||"",area:a.area,region:a.region,logo:a.logo_url||"",site:a.site||""};row.full=row.name+(row.branch?" "+row.branch:"");
+    var row={id:a.id,name:a.name,branch:a.branch||"",area:a.area,region:a.region,logo:a.logo_url||"",site:a.site||"",kind:a.kind||"academy",license:a.license||"",tel:a.tel||"",tagline:a.tagline||""};row.full=row.name+(row.branch?" "+row.branch:"");
     var i=ACADS_ALL.findIndex(function(x){return x.id===row.id});if(i>=0)ACADS_ALL[i]=row;else ACADS_ALL.push(row);ACBY[row.id]=row;
   });
   (pub.teachers||[]).forEach(function(t){TEACH[t.name]={s:t.subject||"",quote:t.quote||"",bio:t.bio||"",photo:t.photo_url||(TEACH[t.name]||{}).photo||""}});
@@ -616,13 +631,14 @@ function card(c){
   var who=c.teacher
     ?(isTeam(c.teacher)
       ?'<div class="who"><span class="av lg">'+esc(c.subject.slice(0,1))+'</span><div><b>'+esc(c.teacher)+'</b><span>여러 선생님 팀 수업</span></div></div>'
-      :'<a class="who" href="'+RP+'t/'+enc(c.teacher)+'">'+avatar(c.teacher,1)+'<div><b>'+esc(tName(c.teacher))+'</b><span class="more">소개 보기</span></div></a>')
+      :'<a class="who" href="'+tHref(c.teacher,c)+'">'+avatar(c.teacher,1)+'<div><b>'+esc(tName(c.teacher))+'</b><span class="more">소개 보기</span></div></a>')
     :'<div class="who"><span class="av lg">'+NOFACE+'</span><div><b style="font-weight:700">강사 학원 문의</b><span>시간표에 강사 표기 없음</span></div></div>';
   var tg=[c.target!==c.name.split(" ")[0]?c.target:"",c.level].filter(Boolean).join(" · ");
   var d=soonDiff(c);
   var showProg=c.prog&&c.name.indexOf(c.prog)<0;
   return'<article class="card c-'+esc(c.subject)+'">'
-    +'<a class="card-acad" href="'+RP+'a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'<span class="go">학원 보기</span></a>'
+    +(SHOW?'':'<a class="card-acad" href="'+aHref(c)+'">'+acadBadge(c.ac)+'<span class="go">학원 보기</span></a>')
+    +(window.CPS?'<button type="button" class="pick" data-pick="'+esc(c.id)+'" aria-pressed="'+CPS.has(c.id)+'" aria-label="내 시간표에 담기">'+(CPS.has(c.id)?'✓ 담김':'+ 담기')+'</button>':'')
     +'<button type="button" class="card-main" data-course="'+esc(c.id)+'">'
     +'<div class="card-sub"><span class="pill p-'+esc(c.subject)+'">'+esc(c.subject)+'</span>'+(showProg?'<span>'+esc(c.prog)+'</span>':'')+'</div>'
     +'<h3>'+esc(c.name)+'</h3>'+(tg?'<div class="tg">'+esc(tg)+'</div>':'')
@@ -753,7 +769,10 @@ function vRegister(){
   return'<div class="wrap"><a class="back" href="'+RP+'list">← 수업 목록</a><h1 style="font-size:24px;font-weight:800;margin:6px 0 4px">수업 등록 (학원용)</h1>'
     +'<p style="font-size:16px;color:var(--ink2);margin-bottom:14px">공개 중인 강좌 정보를 보내 주시면 확인 후 반영합니다. 등록·노출 비용은 없습니다.</p>'
     +'<form class="form" id="regf" novalidate><div class="fgrid">'
-    +'<label class="field">학원명 *<input name="acad" maxlength="40"></label>'
+    +'<label class="field">구분 *<select name="kind"><option value="academy">학원·교습소</option><option value="tutor">개인 과외</option></select></label>'
+    +'<label class="field">신고번호 (개인 과외 필수)<input name="lic" maxlength="30" placeholder="개인과외교습자 신고번호"></label>'
+    +'<label class="field">학원명 * (개인 과외는 활동명)<input name="acad" maxlength="40"></label>'
+    +'<label class="field">상담 전화 (공개 · 대표번호)<input name="tel" maxlength="20" inputmode="tel"></label>'
     +'<label class="field">동네 *<select name="area"><option>센텀</option><option>사직</option></select></label>'
     +'<label class="field">과목 *<select name="subj"><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option></select></label>'
     +'<label class="field">대상 학년 *<input name="grade" placeholder="예: 고1" maxlength="30"></label>'
@@ -763,7 +782,15 @@ function vRegister(){
     +'<label class="field">개강일 (선택)<input name="start" maxlength="20" placeholder="예: 11/9"></label>'
     +'<label class="field full">수업 내용 (선택)<textarea name="content" maxlength="300"></textarea></label>'
     +'<label class="field full">공개 자료 주소 (선택)<input name="src" maxlength="200" placeholder="홈페이지·블로그 시간표 주소"></label>'
-    +'</div><label style="display:flex;gap:10px;margin-top:16px;font-size:15px;align-items:flex-start"><input type="checkbox" name="agree" style="margin-top:5px;width:18px;height:18px"><span>이미 공개한 강좌 정보만 보내며, 강사 개인 연락처·주소와 학생 정보는 넣지 않았습니다. <a class="u" href="terms.html">이용약관</a>에 동의합니다.</span></label>'
+    +'</div><details class="rg-more"><summary>수업 상세 <span class="rg-sub">학부모 상담 자료로 그대로 쓰입니다</span></summary><div class="fgrid" style="margin-top:12px">'
+    +'<label class="field">대상 수준<input name="d_lv" maxlength="40" placeholder="예: 내신 2~3등급 → 1등급"></label>'
+    +'<label class="field">정원<input name="d_cap" maxlength="20" placeholder="예: 8명"></label>'
+    +'<label class="field full">교재<input name="d_bk" maxlength="80"></label>'
+    +'<label class="field full">수업 방식<textarea name="d_how" maxlength="200" placeholder="예: 개념 40분 → 문제 80분 → 오답 클리닉"></textarea></label>'
+    +'<label class="field">숙제·테스트<input name="d_hw" maxlength="80"></label>'
+    +'<label class="field">보강<input name="d_mk" maxlength="80"></label>'
+    +'<label class="field full">월별 진도 (한 줄에 한 달)<textarea name="d_plan" maxlength="400" placeholder="12월: …&#10;1월: …"></textarea></label>'
+    +'</div></details><label style="display:flex;gap:10px;margin-top:16px;font-size:15px;align-items:flex-start"><input type="checkbox" name="agree" style="margin-top:5px;width:18px;height:18px"><span>이미 공개한 강좌 정보만 보내며, 강사 개인 연락처·주소와 학생 정보는 넣지 않았습니다. <a class="u" href="terms.html">이용약관</a>에 동의합니다.</span></label>'
     +'<div style="margin-top:16px;display:flex"><button class="btn pri" type="submit">메일로 등록 신청</button></div>'
     +'<p style="font-size:15px;color:var(--ink2);margin-top:12px">메일 앱이 열립니다 (받는 곳 '+MAIL+'). 영업일 1일 이내 반영 여부를 회신하며, 등록된 강좌는 언제든 사유 없이 수정·삭제를 요청할 수 있습니다.</p>'
     +'</form></div>';
@@ -772,7 +799,8 @@ function submitRegister(f){
   var v=function(n){return(f.elements[n].value||"").trim()};
   if(!v("acad")||!v("grade")||!v("name")||!v("when")){toast("* 표시 항목을 채워 주세요");return}
   if(!f.elements.agree.checked){toast("안내 문구에 동의해 주세요");return}
-  var body=["[클래스픽 수업 등록 신청]","학원명: "+v("acad"),"동네: "+v("area"),"과목: "+v("subj"),"대상: "+v("grade"),"강좌명: "+cleanName(v("name")),"요일·시간: "+v("when"),"강사명: "+(v("teacher")||"-"),"개강일: "+(v("start")||"-"),"수업 내용: "+(v("content")||"-"),"공개 자료: "+(v("src")||"-")].join("\n");
+  if(v("kind")==="tutor"&&!v("lic")){toast("개인 과외는 신고번호가 필요합니다");return}
+  var body=["[클래스픽 수업 등록 신청]","구분: "+(v("kind")==="tutor"?"개인 과외 (신고번호 "+v("lic")+")":"학원·교습소"),"학원명: "+v("acad"),"상담 전화: "+(v("tel")||"-"),"동네: "+v("area"),"과목: "+v("subj"),"대상: "+v("grade"),"강좌명: "+cleanName(v("name")),"요일·시간: "+v("when"),"강사명: "+(v("teacher")||"-"),"개강일: "+(v("start")||"-"),"수업 내용: "+(v("content")||"-"),"공개 자료: "+(v("src")||"-"),"","[수업 상세]","대상 수준: "+(v("d_lv")||"-"),"정원: "+(v("d_cap")||"-"),"교재: "+(v("d_bk")||"-"),"수업 방식: "+(v("d_how")||"-"),"숙제·테스트: "+(v("d_hw")||"-"),"보강: "+(v("d_mk")||"-"),"월별 진도:\n"+(v("d_plan")||"-")].join("\n");
   location.href="mailto:"+MAIL+"?subject="+enc("[클래스픽] 수업 등록 신청 - "+v("acad"))+"&body="+enc(body);
   toast("메일 앱에서 보내기를 눌러 주세요");
 }
@@ -783,7 +811,7 @@ function openCourse(id){
   var c=BYID[id];if(!c)return;lastFocus=document.activeElement;
   var multi=c.secs.length>1;
   var tRow=c.teacher?(isTeam(c.teacher)?esc(c.teacher)+' <span style="color:var(--sub)">(팀 수업)</span>'
-      :'<a href="'+RP+'t/'+enc(c.teacher)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher,1)+esc(tName(c.teacher))+' <span class="u" style="font-weight:700;font-size:15px;color:var(--brand)">소개</span></a>')
+      :'<a href="'+tHref(c.teacher,c)+'" style="display:flex;align-items:center;gap:10px;font-weight:800">'+avatar(c.teacher,1)+esc(tName(c.teacher))+' <span class="u" style="font-weight:700;font-size:15px;color:var(--brand)">소개</span></a>')
     :'<span style="color:var(--sub)">시간표에 강사 표기 없음 · 학원 문의</span>';
   var ms=enc("[클래스픽] 정정·삭제 요청 - "+c.academy+" "+c.name),mb=enc("강좌: "+c.academy+" / "+c.name+" ("+c.id+")\n요청 내용 (정정 또는 삭제):\n");
   $("#layer").innerHTML='<div class="ov" data-act="close-ov"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">'
@@ -791,16 +819,25 @@ function openCourse(id){
     +'<div class="sheet-b"><dl>'
     +'<div class="kv"><dt>요일·시간</dt><dd>'+schedHTML(c)+(multi?'<div style="font-size:15px;color:var(--sub);margin-top:4px">위 반 중 하나를 고릅니다</div>':'')+(c.freq?'<div style="font-size:15px;color:var(--ink2);margin-top:4px">'+esc(c.freq)+'</div>':'')+'</dd></div>'
     +'<div class="kv"><dt>강사</dt><dd>'+tRow+'</dd></div>'
-    +'<div class="kv"><dt>학원</dt><dd><a href="#/'+(regByArea(c.area)||{slug:""}).slug+'/a/'+enc(c.acId)+'">'+acadBadge(c.ac)+'</a></dd></div>'
+    +'<div class="kv"><dt>학원</dt><dd><a href="'+aHref(c)+'">'+acadBadge(c.ac)+'</a></dd></div>'
     +'<div class="kv"><dt>대상</dt><dd>'+esc([c.target,c.level,c.school].filter(Boolean).filter(function(x,i,a){return a.indexOf(x)===i}).join(" · "))+'</dd></div>'
     +(c.content?'<div class="kv"><dt>내용</dt><dd>'+esc(c.content)+'</dd></div>':'')
     +(c.start?'<div class="kv"><dt>개강</dt><dd>'+esc(startText(c))+'</dd></div>':'')
+    +detailHTML(c)
     +'<div class="kv"><dt>출처</dt><dd style="font-size:15px;color:var(--ink2)">'+esc(RAW.source||"학원 공개 자료")+' · '+esc(RAW.updated||"")+' 반영. 등록 전 학원에 확인해 주세요.</dd></div>'
     +'</dl><p style="margin-top:12px;font-size:15px"><a class="u" href="mailto:'+MAIL+'?subject='+ms+'&body='+mb+'">이 수업 정보 정정·삭제 요청</a></p></div>'
-    +'<div class="sheet-f">'+(c.site?'<a class="btn" href="'+esc(c.site)+'" target="_blank" rel="noopener noreferrer">학원 홈페이지</a>':'')+'<button type="button" class="btn pri" data-act="close">닫기</button></div>'
+    +'<div class="sheet-f">'+(c.ac.tel?'<a class="btn" href="tel:'+esc(c.ac.tel.replace(/[^0-9]/g,""))+'">상담 전화</a>':(c.site?'<a class="btn" href="'+esc(c.site)+'" target="_blank" rel="noopener noreferrer">학원 홈페이지</a>':''))
+    +(window.CPS?'<button type="button" class="btn pri cp-pick" data-pick="'+esc(c.id)+'" aria-pressed="'+CPS.has(c.id)+'">'+(CPS.has(c.id)?'✓ 내 시간표에 담김':'+ 내 시간표에 담기')+'</button>':'<button type="button" class="btn pri" data-act="close">닫기</button>')+'</div>'
     +'</div></div>';
   document.body.style.overflow="hidden";
   var x=$(".sheet .x");if(x)x.focus();
+}
+var DET=[["lv","대상 수준"],["cap","정원"],["bk","교재"],["how","수업 방식"],["hw","숙제·테스트"],["mk","보강"]];
+function detailHTML(c){
+  var d=c.det||{},rows=DET.filter(function(x){return d[x[0]]});
+  if(!rows.length&&!(d.plan&&d.plan.length))return"";
+  return'<div class="det"><div class="det-h">수업 상세</div>'+rows.map(function(x){return'<div class="kv"><dt>'+x[1]+'</dt><dd>'+esc(d[x[0]])+'</dd></div>'}).join("")
+    +(d.plan&&d.plan.length?'<div class="kv"><dt>월별 진도</dt><dd><ol class="plan">'+d.plan.map(function(p){return'<li><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></li>'}).join("")+'</ol></dd></div>':'')+'</div>';
 }
 function closeLayer(){$("#layer").innerHTML="";document.body.style.overflow="";if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}lastFocus=null}
 
@@ -839,7 +876,8 @@ function mainChrome(){
   return pre.length?'<a class="mp-banner" href="'+listHref({g:"예비고1"})+'"><span class="pill2">'+esc(RA)+'</span><b>예비고1 겨울 PRE H</b> '+(fs?fs+' 첫 개강':'')+'<span class="bn-n"> · 수업 '+pre.length+'개</span> <u>시간표 보기</u></a>':'';
 }
 function headLinks(){
-  return(REG?'<a href="#/'+REG+'">'+esc(RA)+' 홈</a><a href="'+RP+'list">전체 시간표</a>':'')+'<a href="#/register">수업 등록</a>';
+  var n=window.CPS?CPS.count():0;
+  return(REG?'<a href="#/'+REG+'">'+esc(RA)+' 홈</a><a href="'+RP+'list">전체 시간표</a>':'')+'<a href="#/plan" class="hl-plan">내 시간표'+(n?' <b>'+n+'</b>':'')+'</a><a href="#/register">수업 등록</a>';
 }
 function regStats(area){
   var cs=ALL.filter(function(c){return c.area===area});
@@ -905,11 +943,14 @@ function vMain(){
 function route(){
   var h=(location.hash||"#/").replace(/^#\/?/,""),qs="",i=h.indexOf("?");if(i>=0){qs=h.slice(i+1);h=h.slice(0,i)}
   var p=h.split("/").map(function(x){try{return decodeURIComponent(x)}catch(e){return x}});
-  if(regOf(p[0]))return{reg:p[0],sub:p[1]||"",arg:p[2]||"",qs:qs};
-  return{reg:"",sub:p[0]||"",arg:p[1]||"",qs:qs};
+  if(regOf(p[0]))return{reg:p[0],sub:p[1]||"",arg:p[2]||"",qs:qs,p:p};
+  return{reg:"",sub:p[0]||"",arg:p[1]||"",qs:qs,p:p};
 }
 function qsGet(qs,k){var m=("&"+qs).match(new RegExp("&"+k+"=([^&]*)"));try{return m?decodeURIComponent(m[1]):""}catch(e){return""}}
-var lastKey=null,lastList="";
+var lastKey=null,lastList="",SHOW="";
+/* 쇼케이스 안에서는 강사·학원 링크가 그 학원 전용 화면 안에 머문다 (다른 학원으로 새지 않음) */
+function tHref(n,c){return SHOW?"#/p/"+enc(SHOW)+"/t/"+enc(n):"#/"+((regByArea(c&&c.area)||{slug:REG}).slug||REG)+"/t/"+enc(n)}
+function aHref(c){return SHOW?"#/p/"+enc(SHOW):"#/"+(regByArea(c.area)||{slug:""}).slug+"/a/"+enc(c.acId)}
 function go(h){history.replaceState(null,"",h);render()}
 function render(){
   var r=route(),html,isMain=false;
@@ -920,6 +961,18 @@ function render(){
   }
   setRegion(r.reg);
   if(!lastList||lastList.indexOf(RP+"list")!==0)lastList=RP+"list";
+  /* 학원 전용 쇼케이스(#/p/학원id) · 내 시간표(#/plan) · 학원용 공유 도구(#/kit/학원id) — js/showcase.js */
+  SHOW=(r.sub==="p"&&!r.reg)?r.arg:"";
+  document.body.classList.toggle("is-show",!!SHOW);
+  if(!r.reg&&window.CPS&&(r.sub==="p"||r.sub==="plan"||r.sub==="kit")){
+    var out="";try{out=r.sub==="p"?CPS.showcase(r):r.sub==="plan"?CPS.plan(r):CPS.kit(r)}catch(e){out='<div class="wrap"><div class="empty" style="margin-top:20px">화면을 그리는 중 문제가 생겼습니다. 새로고침해 주세요.</div></div>';if(window.console)console.error(e)}
+    document.body.classList.remove("is-main");$("#mainchrome").innerHTML="";
+    $("#regtog").innerHTML=regionToggle("hreg");$("#hlinks").innerHTML=headLinks();$("#hsub").textContent="부산 센텀·사직 학원 시간표";
+    $("#app").innerHTML=out;CPS.mount(r);
+    var k2=r.sub+"/"+r.arg+"/"+(r.p[2]||"")+"/"+(r.p[3]||"");if(k2!==lastKey){if(lastKey!==null)window.scrollTo(0,0);lastKey=k2}
+    $("#foot-data").textContent=(RAW.source||"")+" · "+(RAW.updated||"")+" 반영 · 수업 "+ALL.length+"개";
+    return;
+  }
   try{
     if(r.reg){
       if(r.sub==="list"){readF(r.qs);html=vList();lastList=location.hash}
@@ -944,11 +997,13 @@ function render(){
   if(!r.reg&&r.sub==="admin"&&window.CPAdmin)CPAdmin.mount($("#app"));
   var key=r.reg+"/"+r.sub+"/"+r.arg;if(key!==lastKey){if(lastKey!==null)window.scrollTo(0,0);lastKey=key}
   $("#foot-data").textContent=(RAW.source||"")+" · "+(RAW.updated||"")+" 반영 · 수업 "+ALL.length+"개";
+  if(window.CPS)CPS.leave();
 }
 var toastT;
 function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("on")},2000)}
 
 document.addEventListener("click",function(e){
+  var pk=e.target.closest("[data-pick]");if(pk&&window.CPS){e.preventDefault();CPS.toggle(pk.getAttribute("data-pick"));return}
   var t=e.target.closest("[data-course],[data-act],[data-f],[data-v]");if(!t)return;
   if(t.hasAttribute("data-course")){openCourse(t.getAttribute("data-course"));return}
   if(t.hasAttribute("data-f")){var k=t.getAttribute("data-f"),val=t.getAttribute("data-val");F[k]=F[k]===val?"":val;writeF();
@@ -975,9 +1030,14 @@ window.addEventListener("scroll",onScroll,{passive:true});
 window.CP={esc:esc,card:card,cardsHTML:cardsHTML,acadBadge:acadBadge,normCourse:normCourse,cleanName:cleanName,toast:toast,
   academies:function(){return ACADS_ALL},teachersOf:function(acId){return uniq(ALL.filter(function(c){return c.acId===acId}).map(function(c){return c.teacher})).filter(function(x){return x&&!isTeam(x)})},
   coursesOf:function(acId){return ALL.filter(function(c){return c.acId===acId})},teacher:function(n){return TEACH[n]||null},
-  GRADES:["예비고1","고1","고2","고3","고등","중1","중2","중3","중등"],PROGS:PROG_ORDER,SUBJ:["국어","영어","수학","과학","사회"],DAYS:DAYS,rerender:function(){render()},mergeRemote:mergeRemote,refreshRemote:loadRemote};
+  GRADES:["예비고1","고1","고2","고3","고등","중1","중2","중3","중등"],PROGS:PROG_ORDER,SUBJ:["국어","영어","수학","과학","사회"],DAYS:DAYS,rerender:function(){render()},mergeRemote:mergeRemote,refreshRemote:loadRemote,
+  /* 쇼케이스·내 시간표(js/showcase.js)용 */
+  all:function(){return ALL},byId:function(id){return BYID[id]},acad:function(id){return ACBY[id]||null},openCourse:openCourse,closeLayer:closeLayer,
+  schedHTML:schedHTML,startText:startText,soonDiff:soonDiff,tName:tName,isTeam:isTeam,photo:photo,avatar:avatar,fmt:fmt,byRank:byRank,cmp:cmp,
+  GCHIPS:GCHIPS,chipOf:chipOf,GTITLE:GTITLE,enc:enc,uniq:uniq,idx:idx,lget:lget,lset:lset,headRefresh:function(){$("#hlinks").innerHTML=headLinks()},
+  source:function(){return(RAW.source||"")+" · "+(RAW.updated||"")+" 반영"},MAIL:MAIL};
 render();
-setTimeout(function(){if(route().sub!=="admin")showNotice(false)},300);
+setTimeout(function(){var s=route().sub;if(["admin","p","plan","kit"].indexOf(s)<0||route().reg)showNotice(false)},300);
 setTimeout(loadRemote,0);
 })();
 </script>
